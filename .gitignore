@@ -10,6 +10,9 @@ lerna-debug.log*
 node_modules
 *.local
 
+#the .exe made by formatter
+TEX to JSON/formatter.exe
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
