@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 
+# for the .exe file made by c++
+TEX_to_JSON/*.exe
 
 # Editor directories and files
 .vscode/*
