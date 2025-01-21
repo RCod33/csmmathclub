@@ -1,15 +1,33 @@
 #include <bits/stdc++.h>
-#include "formatter.h"
-typedef vector<string> Vstr;
-typedef tuple<string,int,string,Vstr> stuff;
 using namespace std;
+namespace fs = filesystem;
+typedef vector<string> Vstr;
+typedef tuple<string, int, string, Vstr> stuff;
 //-----------------------------GLOBAL DEFINITIONS-----------------------------------
 
 #define tab 3
-vector <MathProblem> problems;
 map<char,string> TOPIC = { 
    {'A', "Algebra"}, {'Q', "Inequalities"}, {'N', "Number Theory"}, {'C', "Calculus"}  
 };
+
+class MathProblem {
+   private:
+      string major_topic;
+      int problem_level;
+      string source;
+      Vstr tex_string;
+   
+   public:
+      MathProblem(const string& t, const int& d, const string& s, const Vstr& parts)
+         : major_topic(t), problem_level(d), source(s), tex_string(parts) {}
+
+      stuff getStuff(){
+         return make_tuple(major_topic, problem_level, source, tex_string);
+      }
+
+};
+
+vector<MathProblem> problems;
 //--------------------------------FORMAT FUNCTIONS----------------------------------
 
 string qt(const string& text_quoted) {
@@ -46,6 +64,24 @@ void normalize(string& text) {
    text = escaped.str();
 }
 //--------------------------------PRINCIPAL FUNCTIONS-------------------------------
+
+void readTex(const string& in_path, Vstr& input_sources) {
+
+   if (!fs::exists(in_path) || !fs::is_directory(in_path)) {
+      cerr << "Directory does not exist or is not valid." << '\n';
+      abort(); 
+   }
+
+   // Iterate over files in the directory
+   for (const auto& entry : fs::directory_iterator(in_path)) {
+      string texfile = entry.path().filename().string();
+
+      // Check if the file ends with .tex
+      if (texfile.size() >= 4 && texfile.substr(texfile.size() - 4) == ".tex") 
+         input_sources.push_back(texfile);
+   }
+}
+
 
 void inputTex(const string& input_source) {
    string line;
