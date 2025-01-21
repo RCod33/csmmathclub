@@ -12,8 +12,8 @@ dist
 dist-ssr
 *.local
 
-#the .exe made by formatter
-TEX to JSON/formatter.exe
+# for the .exe file made by c++
+TEX_to_JSON/*.exe
 
 # Editor directories and files
 .vscode/*
