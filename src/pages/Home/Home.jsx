@@ -3,7 +3,7 @@ import React from "react";
 function Home() {
   return (
     <div>
-      <h1>Welcome to CSMathStuff</h1>
+      <h1>Welcome to CSMathClub</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, tempora
         repellendus pariatur nobis vitae maxime similique, laudantium laboriosam

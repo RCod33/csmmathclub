@@ -11,7 +11,7 @@ function ProblemSet() {
             <ul>
               <li>{currentProblem.id}</li>
               <li>
-                <Link to="/Problem" state={{ currntProblem: currentProblem }}>
+                <Link to="/Problem" state={{ currentProblem: currentProblem }}>
                   {currentProblem.title}
                 </Link>
               </li>
