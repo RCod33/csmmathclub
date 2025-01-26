@@ -1,21 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import problems from "/src/TEX_to_JSON/JSON_Files/Problems.json";
 
 function ProblemSet() {
   return (
-    <div className="container-fluid">
-      <ul>
-        <li>Problema 1</li>
-        <li>Problema 2</li>
-        <li>Problema 3</li>
-        <li>Problema 4</li>
-        <li>Problema 5</li>
-        <li>Problema 6</li>
-        <li>Problema 7</li>
-        <li>Problema 8</li>
-        <li>Problema 9</li>
-        <li>Problema 10</li>
-      </ul>
-    </div>
+    <section className="container-fluid">
+      {problems.map((currentProblem) => (
+        <div className="row" key={currentProblem.id}>
+          <div className="col">
+            <ul>
+              <li>{currentProblem.id}</li>
+              <li>
+                <Link to="/Problem" state={{ currntProblem: currentProblem }}>
+                  {currentProblem.title}
+                </Link>
+              </li>
+              <li>{currentProblem.majorTopic}</li>
+              <li>{currentProblem.problemLevel}</li>
+            </ul>
+          </div>
+        </div>
+      ))}
+    </section>
   );
 }
 

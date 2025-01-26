@@ -145,10 +145,10 @@ void printJSON(const string& output_source) {
       auto last = tex.end() - 1;
       
       outfile << tb(1) << "{\n";
-      outfile << tb(2) << qt("major-topic") << ": " << qt(topic) << ",\n";
-      outfile << tb(2) << qt("problem-level") << ": " << qt(level) << ",\n";
-      outfile << tb(2) << qt("came-from") << ": " << qt(source) << ",\n";
-      outfile << tb(2) << qt("tex-string") << ": " << "[\n";
+      outfile << tb(2) << qt("majorTopic") << ": " << qt(topic) << ",\n";
+      outfile << tb(2) << qt("problemLevel") << ": " << qt(level) << ",\n";
+      outfile << tb(2) << qt("cameFrom") << ": " << qt(source) << ",\n";
+      outfile << tb(2) << qt("texString") << ": " << "[\n";
 
       for (string pie: tex) {
          string line_break = (*last == pie)? "\n": ",\n";
