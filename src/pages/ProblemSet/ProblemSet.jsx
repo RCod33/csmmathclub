@@ -9,7 +9,7 @@ function ProblemSet() {
         <div className="row" key={currentProblem.id}>
           <div className="col">
             <ul>
-              <li>{currentProblem.id}</li>
+              <li>{currentProblem.problemID}</li>
               <li>
                 <Link to="/Problem" state={{ currentProblem: currentProblem }}>
                   {currentProblem.title}

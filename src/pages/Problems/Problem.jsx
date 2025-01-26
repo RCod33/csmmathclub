@@ -33,7 +33,7 @@ function Problem() {
         <Latex>{currentProblem.majorTopic}</Latex>
       </h2>
       <p>
-        <Latex>{currentProblem.textString.join(" ")}</Latex>
+        <Latex>{currentProblem.textString}</Latex>
       </p>
     </section>
   );

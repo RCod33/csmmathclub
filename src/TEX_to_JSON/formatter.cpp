@@ -192,7 +192,7 @@ void printJSON(const string& output_source) {
       outfile << tb(2) << qt("majorTopic") << ": " << qt(topic) << ",\n";
       outfile << tb(2) << qt("problemLevel") << ": " << qt(level) << ",\n";
       outfile << tb(2) << qt("cameFrom") << ": " << qt(source) << ",\n";
-      outfile << tb(2) << qt("texString") << ": " << "[\n";
+      outfile << tb(2) << qt("textString") << ": " << "[\n";
 
       for (string pie: tex) {
          string line_break = (*last == pie)? "\n": ",\n";
