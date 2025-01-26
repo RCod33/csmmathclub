@@ -1,29 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 namespace fs = filesystem;
+const short int maxHashSize = 4;
 typedef vector<string> Vstr;
-typedef tuple<string, int, string, Vstr> stuff;
+typedef tuple<string, int, string, string, Vstr> stuff;
 //-----------------------------GLOBAL DEFINITIONS-----------------------------------
 
 #define tab 3
+#define NaN string::npos
 map<char,string> TOPIC = { 
    {'A', "Algebra"}, {'Q', "Inequalities"}, {'N', "Number Theory"}, {'C', "Calculus"}  
+};
+map<string, string> TOPIC_INV = {
+   {"Algebra", "A"}, {"Inequalities", "Q"}, {"Number Theory", "N"}, {"Calculus", "C"}
 };
 
 class MathProblem {
    private:
-      string major_topic;
+      string problem_id, major_topic, source, title;
       int problem_level;
-      string source;
       Vstr tex_string;
    
    public:
-      MathProblem(const string& t, const int& d, const string& s, const Vstr& parts)
-         : major_topic(t), problem_level(d), source(s), tex_string(parts) {}
+      MathProblem(const string& mt, const int& d, const string& s, const string& t, const Vstr& p)
+         : major_topic(mt), problem_level(d), source(s), title(t), tex_string(p) {}
+
+      void setID(const string& id) { problem_id = id; }
 
       stuff getStuff(){
-         return make_tuple(major_topic, problem_level, source, tex_string);
+         return make_tuple(major_topic, problem_level, source, title, tex_string);
       }
+      string getID() { return problem_id; }
 
 };
 
@@ -63,6 +70,29 @@ void normalize(string& text) {
    }
    text = escaped.str();
 }
+
+void generateProblemID(MathProblem& mp) {
+   auto [topic, level, source, title, tex] = mp.getStuff();
+   string level_str = (level < 10)? "0" + to_string(level): to_string(level);
+   // Combine the input data into a single string
+   string content = topic + "|" + level_str + "|" + source + "|" + tex[0];
+
+    // Use std::hash to hash the content
+   hash<string> hasher;
+   size_t hashValue = hasher(content);
+   string hashString = to_string(hashValue);
+
+   // Truncate or pad to 4 digits
+   if (hashString.length() > maxHashSize) 
+      hashString = hashString.substr(0, maxHashSize);
+   else 
+      hashString = string(maxHashSize - hashString.length(), '0') + hashString; // Pad with leading zeros
+    
+   hashString += TOPIC_INV[topic] + level_str; 
+
+   mp.setID(hashString);
+}
+
 //--------------------------------PRINCIPAL FUNCTIONS-------------------------------
 
 void readTex(const string& in_path, Vstr& input_sources) {
@@ -82,7 +112,6 @@ void readTex(const string& in_path, Vstr& input_sources) {
    }
 }
 
-
 void inputTex(const string& input_source) {
    string line;
    
@@ -97,23 +126,34 @@ void inputTex(const string& input_source) {
       
       // \begin{problem}[A][9][USAMO 2007]
       if (line.compare(0, 15, "\\begin{problem}") == 0) {
-         string topic, source;
+         string topic, source, title ;
          int level; Vstr pieces;
+         line = line.substr(15);
+      
+         // Extract title (first {})
+         size_t open_brace = line.find('{');
+         size_t close_brace = line.find('}', open_brace);
+         if (open_brace != NaN && close_brace != NaN && close_brace > open_brace)
+            title = line.substr(open_brace + 1, close_brace - open_brace - 1);
+         else 
+            title = "Untitled"; // Default if missing
+
+         // remove what we used for simplicity
+         line = line.substr(close_brace + 1);
          int n = line.size();
-       
-         topic = (n <= 16)? "": TOPIC[line[16]];
-         if (n > 20) {
-            if (line[20] == ']'){
-               level = line[19]-'0';
-               source = (n <= 22)? "": line.substr(22, n - 23);
+         topic = (n <= 0)? "General": TOPIC[line[1]];
+         if (n > 5) {
+            if (line[5] == ']'){
+               level = line[4]-'0';
+               source = (n <= 7)? "": line.substr(7, n - 8);
             }
             else {
-               level = stoi(line.substr(19,2));
-               source = (n <= 23)? "": line.substr(23, n - 24);
+               level = stoi(line.substr(4,2));
+               source = (n <= 8)? "": line.substr(8, n - 9);
             }
          }
          else {
-            level = 1; source = "";
+            level = 0; source = "";
          }
 
          // reach end with \end{problem} 
@@ -124,7 +164,8 @@ void inputTex(const string& input_source) {
             pieces.push_back(line);
          }
          // Create a MathProblem and add to the vector
-         MathProblem mp(topic, level, source, pieces);
+         MathProblem mp(topic, level, source, title, pieces);
+         generateProblemID(mp);
          problems.push_back(mp);
       }   
    }
@@ -141,14 +182,17 @@ void printJSON(const string& output_source) {
    }
    outfile << "[\n";
    for (int i = 0; i < problems.size(); ++i) {
-      auto [topic, level, source, tex] = problems[i].getStuff();
+      auto [topic, level, source, title, tex] = problems[i].getStuff();
+      string id = problems[i].getID();
       auto last = tex.end() - 1;
       
       outfile << tb(1) << "{\n";
-      outfile << tb(2) << qt("major-topic") << ": " << qt(topic) << ",\n";
-      outfile << tb(2) << qt("problem-level") << ": " << qt(level) << ",\n";
-      outfile << tb(2) << qt("came-from") << ": " << qt(source) << ",\n";
-      outfile << tb(2) << qt("tex-string") << ": " << "[\n";
+      outfile << tb(2) << qt("problemID") << ": " << qt(id) << ",\n";
+      outfile << tb(2) << qt("title") << ": " << qt(title) << ",\n";
+      outfile << tb(2) << qt("majorTopic") << ": " << qt(topic) << ",\n";
+      outfile << tb(2) << qt("problemLevel") << ": " << qt(level) << ",\n";
+      outfile << tb(2) << qt("cameFrom") << ": " << qt(source) << ",\n";
+      outfile << tb(2) << qt("texString") << ": " << "[\n";
 
       for (string pie: tex) {
          string line_break = (*last == pie)? "\n": ",\n";
