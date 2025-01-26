@@ -1,178 +1,178 @@
 [
-  {
-    "id": 1,
-    "title": "Triangle Inequality",
-    "majorTopic": "Inequalities",
-    "problemLevel": "2",
-    "cameFrom": "Pathfinder",
-    "textString": [
-      "If $a,b,c$ are three sides of a triangle, and $a+b+c=2$, then prove that $a^2+b^2+c^2+2abc<2$"
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Polynomial Inequality",
-    "majorTopic": "Inequalities",
-    "problemLevel": "4",
-    "cameFrom": "Andreescu",
-    "textString": [
-      "Let $P$ be a polynomial with positive real coefficients. Prove that if $P(1/x) \\geq 1/P(x)$ holds for $x=1$, then it holds for all $x>0$"
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Positive Real Numbers Inequality",
-    "majorTopic": "Inequalities",
-    "problemLevel": "4",
-    "cameFrom": "",
-    "textString": [
-      "Let $a,b,c$ be positive real numbers. Prove that $\\frac{a^3}{b}+\\frac{b^3}{c}+\\frac{c^3}{a} \\geq a^2+b^2+c^2$."
-    ]
-  },
-  {
-    "id": 4,
-    "title": "Real Numbers Inequality",
-    "majorTopic": "Inequalities",
-    "problemLevel": "5",
-    "cameFrom": "Pathfinder",
-    "textString": [
-      "For $a,b \\in \\mathbb{R}^+$. Prove that ",
-      "\\begin{align*}",
-      "\\frac{a^3b}{(a+b)^4} \\leq \\frac{27}{256}",
-      "\\end{align*}"
-    ]
-  },
-  {
-    "id": 5,
-    "title": "Lenin Cup Inequality",
-    "majorTopic": "Inequalities",
-    "problemLevel": "6",
-    "cameFrom": "Lenin Cup 2024",
-    "textString": [
-      "Let $a_1,a_2,\\ldots a_n$ be positive real numbers that verify $a_1a_2 \\cdots a_n=1$. Show that ",
-      "\\begin{align*}",
-      "\\frac{a_1}{1+a_1}+\\frac{a_2}{(1+a_1)(1+a_2)}+\\ldots+\\frac{a_n}{(1+a_1)(1+a_2) \\ldots (1+a_n)} \\geq \\frac{2^n-1}{2^n}",
-      "\\end{align*}"
-    ]
-  },
-  {
-    "id": 6,
-    "title": "Cyclic Triplet",
-    "majorTopic": "Inequalities",
-    "problemLevel": "12",
-    "cameFrom": "Canadian Olympiad 2006",
-    "textString": [
-      "Consider a round-robin tournament with $2k + 1$ teams, where each team plays each other team exactly once. We say that three teams $X, Y$ and $Z$, form a cyclic triplet if $X$ beats $Y$ , $Y$ beats $Z$ and $Z$ beats $X$. There are no ties. Find the minimum and maximum possible number of cyclic triplet"
-    ]
-  },
-  {
-    "id": 7,
-    "title": "Binary Operation",
-    "majorTopic": "Algebra",
-    "problemLevel": "4",
-    "cameFrom": "Putnam 2001",
-    "textString": [
-      "Consider a set $S$ and a binary operation $*$, i.e., for each $a,b \\in S$, $a*b \\in S$. Assume $(a*b)*a = b$ for all $a,b \\in S$. Prove that $a * (b * a) = b$ for all $a,b \\in S$."
-    ]
-  },
-  {
-    "id": 8,
-    "title": "Prime Pairs",
-    "majorTopic": "Number Theory",
-    "problemLevel": "1",
-    "cameFrom": "",
-    "textString": [
-      "Find all pairs of prime numbers $(p,q)$ such that $p^2+1=q^5$"
-    ]
-  },
-  {
-    "id": 9,
-    "title": "Greatest Common Divisor",
-    "majorTopic": "Number Theory",
-    "problemLevel": "4",
-    "cameFrom": "AIME 1985",
-    "textString": [
-      "The numbers in the sequence $101, 104, 109,116, . . .$ are of the form $a_n = 100+n^2$, where $n = 1,2,3,\\ldots$ For each $n$, let $d_n$ be the greatest common divisor of $a_n$ and $a_{n+1}$. Find the maximum value of $d_n$ as $n$ ranges through the positive integers."
-    ]
-  },
-  {
-    "id": 10,
-    "title": "Perfect Square",
-    "majorTopic": "Number Theory",
-    "problemLevel": "3",
-    "cameFrom": "Iran 2005",
-    "textString": [
-      "Let $n,p>1$ be positive integers and $p$ be prime. Given that $n \\mid p-1$ and $p \\mid n^3-1$, prove that $4n-3$ is a perfect square."
-    ]
-  },
-  {
-    "id": 11,
-    "title": "GCD and Binomial Coefficient",
-    "majorTopic": "Number Theory",
-    "problemLevel": "5",
-    "cameFrom": "Putnam 2000",
-    "textString": [
-      "Show that the expression ",
-      "$$ \\frac{\\gcd(m,n)}{n} \\binom{n}{m} $$",
-      "is an integer for all pairs of integers $n \\geq m \\geq 1$"
-    ]
-  },
-  {
-    "id": 12,
-    "title": "GCD of Powers",
-    "majorTopic": "Number Theory",
-    "problemLevel": "4",
-    "cameFrom": "Justin Stevens",
-    "textString": [
-      "Prove that if $m,n \\in Z^+: m \\neq n$, then",
-      "\\begin{align*}",
-      "\\gcd \\left(a^{2^m}+1, a^{2^n}+1\\right) = ",
-      "\\begin{cases}",
-      "1 & \\text{if } a \\text{ is even} \\\\",
-      "2 & \\text{if } a \\text{ is odd}",
-      "\\end{cases}",
-      "\\end{align*}"
-    ]
-  },
-  {
-    "id": 13,
-    "title": "Polynomial Divisibility",
-    "majorTopic": "Number Theory",
-    "problemLevel": "6",
-    "cameFrom": "Polish 2003",
-    "textString": [
-      "Find all polynomials $W$ with integer coefficients satisfying the following condition: for every natural number $n$, $2^n-1$ is divisible by $W(n)$"
-    ]
-  },
-  {
-    "id": 14,
-    "title": "Integer Divisibility",
-    "majorTopic": "Number Theory",
-    "problemLevel": "8",
-    "cameFrom": "IMO 1990",
-    "textString": [
-      "Determine all integers $n>1$ such that",
-      "$$\\frac{2^n+1}{n^2} \\in \\mathbb{Z}$$"
-    ]
-  },
-  {
-    "id": 15,
-    "title": "Rational Numbers",
-    "majorTopic": "Algebra",
-    "problemLevel": "4",
-    "cameFrom": "",
-    "textString": [
-      "Let $a,b$ be real numbers such that $a^2+b^2$, $a^3+b^3$ and $a^4+b^4$ are rational numbers. Show that $a+b$ and $ab$ are also rational numbers"
-    ]
-  },
-  {
-    "id": 16,
-    "title": "Prime Product",
-    "majorTopic": "Algebra",
-    "problemLevel": "9",
-    "cameFrom": "USAMO 2007",
-    "textString": [
-      "Prove that for every nonnegative integer $n$, the number $7^{7^n}+1$ is the product of at least $2n + 3$ (not necessarily distinct) primes."
-    ]
-  }
+   {
+      "problemID": "1388Q02",
+      "title": "Triangle Bound",
+      "majorTopic": "Inequalities",
+      "problemLevel": "2",
+      "cameFrom": "Pathfinder",
+      "texString": [
+         "If $a,b,c$ are three sides of a triangle, and $a+b+c=2$, then prove that $a^2+b^2+c^2+2abc<2$"
+      ]
+   },
+   {
+      "problemID": "1143Q04",
+      "title": "Polynomials in Balance",
+      "majorTopic": "Inequalities",
+      "problemLevel": "4",
+      "cameFrom": "Andreescu",
+      "texString": [
+         "Let $P$ be a polynomial with positive real coefficients. Prove that if $P(1/x) \\geq 1/P(x)$ holds for $x=1$, then it holds for all $x>0$"
+      ]
+   },
+   {
+      "problemID": "3010Q04",
+      "title": "Generalized Symmetry",
+      "majorTopic": "Inequalities",
+      "problemLevel": "4",
+      "cameFrom": "",
+      "texString": [
+         "Let $a,b,c$ be positive real numbers. Prove that $\\frac{a^3}{b}+\\frac{b^3}{c}+\\frac{c^3}{a} \\geq a^2+b^2+c^2$."
+      ]
+   },
+   {
+      "problemID": "4502Q05",
+      "title": "Maximizing Fractions",
+      "majorTopic": "Inequalities",
+      "problemLevel": "5",
+      "cameFrom": "Pathfinder",
+      "texString": [
+         "For $a,b \\in \\mathbb{R}^+$. Prove that ",
+         "\\begin{align*}",
+         "\\frac{a^3b}{(a+b)^4} \\leq \\frac{27}{256}",
+         "\\end{align*}"
+      ]
+   },
+   {
+      "problemID": "5376Q06",
+      "title": "Nested Sums",
+      "majorTopic": "Inequalities",
+      "problemLevel": "6",
+      "cameFrom": "Lenin Cup 2024",
+      "texString": [
+         "Let $a_1,a_2,\\ldots a_n$ be positive real numbers that verify $a_1a_2 \\cdots a_n=1$. Show that ",
+         "\\begin{align*}",
+         "\\frac{a_1}{1+a_1}+\\frac{a_2}{(1+a_1)(1+a_2)}+\\ldots+\\frac{a_n}{(1+a_1)(1+a_2) \\ldots (1+a_n)} \\geq \\frac{2^n-1}{2^n}",
+         "\\end{align*}"
+      ]
+   },
+   {
+      "problemID": "1367Q12",
+      "title": "Cyclic Triplets",
+      "majorTopic": "Inequalities",
+      "problemLevel": "12",
+      "cameFrom": "Canadian Olympiad 2006",
+      "texString": [
+         "Consider a round-robin tournament with $2k + 1$ teams, where each team plays each other team exactly once. We say that three teams $X, Y$ and $Z$, form a cyclic triplet if $X$ beats $Y$, $Y$ beats $Z$ and $Z$ beats $X$. There are no ties. Find the minimum and maximum possible number of cyclic triplets."
+      ]
+   },
+   {
+      "problemID": "1359A04",
+      "title": "Binary Identities",
+      "majorTopic": "Algebra",
+      "problemLevel": "4",
+      "cameFrom": "Putnam 2001",
+      "texString": [
+         "Consider a set $S$ and a binary operation $*$, i.e., for each $a,b \\in S$, $a*b \\in S$. Assume $(a*b)*a = b$ for all $a,b \\in S$. Prove that $a * (b * a) = b$ for all $a,b \\in S$."
+      ]
+   },
+   {
+      "problemID": "6357N01",
+      "title": "Prime Pairs",
+      "majorTopic": "Number Theory",
+      "problemLevel": "1",
+      "cameFrom": "",
+      "texString": [
+         "Find all pairs of prime numbers $(p,q)$ such that $p^2+1=q^5$"
+      ]
+   },
+   {
+      "problemID": "1578N04",
+      "title": "GCD Patterns",
+      "majorTopic": "Number Theory",
+      "problemLevel": "4",
+      "cameFrom": "AIME 1985",
+      "texString": [
+         "The numbers in the sequence $101, 104, 109,116, . . .$ are of the form $a_n = 100+n^2$, where $n = 1,2,3,\\ldots$ For each $n$, let $d_n$ be the greatest common divisor of $a_n$ and $a_{n+1}$. Find the maximum value of $d_n$ as $n$ ranges through the positive integers."
+      ]
+   },
+   {
+      "problemID": "8411N03",
+      "title": "Perfect Squares",
+      "majorTopic": "Number Theory",
+      "problemLevel": "3",
+      "cameFrom": "Iran 2005",
+      "texString": [
+         "Let $n,p>1$ be positive integers and $p$ be prime. Given that $n \\mid p-1$ and $p \\mid n^3-1$, prove that $4n-3$ is a perfect square."
+      ]
+   },
+   {
+      "problemID": "1214N05",
+      "title": "Binomial Divisibility",
+      "majorTopic": "Number Theory",
+      "problemLevel": "5",
+      "cameFrom": "Putnam 2000",
+      "texString": [
+         "Show that the expression ",
+         "$$ \\frac{\\gcd(m,n)}{n} \\binom{n}{m} $$",
+         "is an integer for all pairs of integers $n \\geq m \\geq 1$"
+      ]
+   },
+   {
+      "problemID": "1680N04",
+      "title": "Power GCDs",
+      "majorTopic": "Number Theory",
+      "problemLevel": "4",
+      "cameFrom": "Justin Stevens",
+      "texString": [
+         "Prove that if $m,n \\in Z^+: m \\neq n$, then",
+         "\\begin{align*}",
+         "\\gcd \\left(a^{2^m}+1, a^{2^n}+1\\right) = ",
+         "\\begin{cases}",
+         "1 & \\text{if } a \\text{ is even} \\\\",
+         "2 & \\text{if } a \\text{ is odd}",
+         "\\end{cases}",
+         "\\end{align*}"
+      ]
+   },
+   {
+      "problemID": "1062N06",
+      "title": "Divisible Polynomials",
+      "majorTopic": "Number Theory",
+      "problemLevel": "6",
+      "cameFrom": "Polish 2003",
+      "texString": [
+         "Find all polynomials $W$ with integer coefficients satisfying the following condition: for every natural number $n$, $2^n-1$ is divisible by $W(n)$"
+      ]
+   },
+   {
+      "problemID": "7514N08",
+      "title": "Integer Conditions",
+      "majorTopic": "Number Theory",
+      "problemLevel": "8",
+      "cameFrom": "IMO 1990",
+      "texString": [
+         "Determine all integers $n>1$ such that",
+         "$$\\frac{2^n+1}{n^2} \\in \\mathbb{Z}$$"
+      ]
+   },
+   {
+      "problemID": "1668A04",
+      "title": "Rationality Test",
+      "majorTopic": "Algebra",
+      "problemLevel": "4",
+      "cameFrom": "",
+      "texString": [
+         "Let $a,b$ be real numbers such that $a^2+b^2$, $a^3+b^3$ and $a^4+b^4$ are rational numbers. Show that $a+b$ and $ab$ are also rational numbers."
+      ]
+   },
+   {
+      "problemID": "1530A09",
+      "title": "Prime Factorization Growth",
+      "majorTopic": "Algebra",
+      "problemLevel": "9",
+      "cameFrom": "USAMO 2007",
+      "texString": [
+         "Prove that for every nonnegative integer $n$, the number $7^{7^n}+1$ is the product of at least $2n + 3$ (not necessarily distinct) primes."
+      ]
+   }
 ]
