@@ -8,11 +8,11 @@ function NavBar() {
         <div className="container-fluid">
           <Link to="/Home">
             <img
-              src="../../../public/CSM_Logo.JPG"
+              src="../../../public/CSM_MATH_CLUB_LOGO.png"
               alt="Web Logo"
-              style={{ width: "50px", aspectRatio: "1/1" }}
+              style={{ width: "100px", aspectRatio: "1/1" }}
             />
-            CSMathStuff
+            CSMathClub
           </Link>
         </div>
       </nav>
@@ -25,7 +25,7 @@ function NavBar() {
             <li className="nav-item">
               <Link to="/ProblemSet">ProblemSet</Link>
             </li>
-            {/*//?Falta la ruta de Los cursos}*/}
+            {/*Falta la ruta de Los cursos}*/}
             <li className="nav-item">
               <Link to="/Courses">Courses</Link>
             </li>
