@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import problems from "/src/TEX_to_JSON/JSON_Files/Problems.json";
+import problems from "../TEX_to_JSON/JSON_Files/Problems.json";
 
 function ProblemSet() {
+  if (!Array.isArray(problems)) return null;
+
   return (
     <section className="container-fluid">
       {problems.map((currentProblem) => (
@@ -11,7 +13,7 @@ function ProblemSet() {
             <ul>
               <li>{currentProblem.problemID}</li>
               <li>
-                <Link to="/Problem" state={{ currentProblem: currentProblem }}>
+                <Link to="/Problem" state={{ currentProblem }}>
                   {currentProblem.title}
                 </Link>
               </li>
