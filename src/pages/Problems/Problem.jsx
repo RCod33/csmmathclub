@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Latex from "react-latex-next";
+import "katex/dist/katex.min.css";
 
 function Problem() {
   const location = useLocation();
@@ -33,7 +34,7 @@ function Problem() {
         <Latex>{currentProblem.majorTopic}</Latex>
       </h2>
       <p>
-        <Latex>{currentProblem.textString}</Latex>
+        <Latex>{currentProblem.textString.join("")}</Latex>
       </p>
     </section>
   );
