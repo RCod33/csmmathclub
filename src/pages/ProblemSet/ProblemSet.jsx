@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
 import problems from "../../TEX_to_JSON/JSON_Files/Problems.json";
