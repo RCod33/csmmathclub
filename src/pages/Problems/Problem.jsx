@@ -5,11 +5,13 @@ import { MathJax, MathJaxContext } from "better-react-mathjax";
 // MathJax configuration
 const mathJaxConfig = {
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]  // Enable inline math with $...$
-    }
-  };
+    inlineMath: [
+      ["$", "$"],
+      ["\\(", "\\)"],
+    ], // Enable inline math with $...$
+  },
+};
 
- 
 function Problem() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,40 +24,34 @@ function Problem() {
     }
   }, [currentProblem, navigate]);
 
-  // Add an effect to trigger re-rendering of MathJax
   useEffect(() => {
-    // Trigger MathJax re-processing
-    if (window.MathJax) {
-    window.MathJax.typeset();
-  }}, [currentProblem]);
-
-  if (!currentProblem) {
-    return null;
-  }
+    const checkMathJax = setInterval(() => {
+      if (window.MathJax) {
+        window.MathJax.typeset();
+        clearInterval(checkMathJax);
+      }
+    }, 1);
+  }, [currentProblem]);
 
   return (
-   <MathJaxContext version={3} config={mathJaxConfig}>
-     <section>
-       <h1>
-         <MathJax>{currentProblem.title}</MathJax>
-       </h1>
-       <h3>
-         <MathJax>{currentProblem.cameFrom}</MathJax>
-       </h3>
-       <h2>
-         <MathJax>{currentProblem.problemLevel}</MathJax>
-       </h2>
-       <h2>
-         <MathJax>{currentProblem.majorTopic}</MathJax>
-       </h2>
-       <p>
-         {console.log("textString contents:", currentProblem.textString)}
-         {currentProblem.textString.join("")}
-       </p>
-     </section>
-   </MathJaxContext>
- );
+    <MathJaxContext version={3} config={mathJaxConfig}>
+      <section>
+        <h1>
+          <MathJax>{currentProblem.title}</MathJax>
+        </h1>
+        <h3>
+          <MathJax>{currentProblem.cameFrom}</MathJax>
+        </h3>
+        <h2>
+          <MathJax>{currentProblem.problemLevel}</MathJax>
+        </h2>
+        <h2>
+          <MathJax>{currentProblem.majorTopic}</MathJax>
+        </h2>
+        <p>{currentProblem.textString.join("")}</p>
+      </section>
+    </MathJaxContext>
+  );
 }
-
 
 export default Problem;

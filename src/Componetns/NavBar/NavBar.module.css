@@ -1,0 +1,42 @@
+@import "../../main.css";
+
+.logoNavbarCustom {
+    background-color: rgb(48, 48, 48) !important;
+    padding: 10px;
+}
+
+.navbarCustom {
+    background-color: white;
+    border: 5px solid rgb(48, 48, 48);
+}
+
+.navbarCustom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    border: 5px solid rgb(48, 48, 48);
+    pointer-events: none;
+}
+
+.navTitle {
+    color: whitesmoke !important;
+}
+
+.logo {
+    width: 100px;
+    aspect-ratio: 1/1;
+}
+
+.navLink {
+    color: var(--deep-blue);
+    text-decoration: none;
+    padding: 10px;
+}
+
+.navLink:hover {
+    color: rgb(0, 123, 255);
+}

@@ -1,33 +1,45 @@
 import React from "react";
+import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
     <>
-      <nav className="navbar bg-body-tertiary">
-        <div className="container-fluid">
-          <Link to="/Home">
+      <nav className="navbar bg-body" style={{ padding: "0px" }}>
+        <div className={`container-fluid ${styles.logoNavbarCustom}`}>
+          <Link to="/Home" className={`navbar-brand `}>
             <img
               src="../../../public/CSM_MATH_CLUB_LOGO.png"
               alt="Web Logo"
-              style={{ width: "100px", aspectRatio: "1/1" }}
+              className={styles.logo}
             />
-            CSMathClub
+            <h1 className={styles.navTitle}>CSMathClub</h1>
           </Link>
         </div>
       </nav>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="collapse navbar-collapse" id="navbarNav">
+      <nav
+        className="navbar navbar-expand-lg bg-body"
+        style={{ padding: "0px" }}
+      >
+        <div
+          className={`collapse navbar-collapse ${styles.navbarCustom}`}
+          id="navbarNav"
+        >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/Home">Home</Link>
+              <Link to="/Home" className={styles.navLink}>
+                Home
+              </Link>
             </li>
             <li className="nav-item">
-              <Link to="/ProblemSet">ProblemSet</Link>
+              <Link to="/ProblemSet" className={styles.navLink}>
+                ProblemSet
+              </Link>
             </li>
-            {/*Falta la ruta de Los cursos}*/}
             <li className="nav-item">
-              <Link to="/Courses">Courses</Link>
+              <Link to="/Courses" className={styles.navLink}>
+                Courses
+              </Link>
             </li>
           </ul>
         </div>
