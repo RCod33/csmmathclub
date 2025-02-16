@@ -1,31 +1,38 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
+import FilterBox from "../../Componetns/FilterBox/FilterBox";
 import problems from "../../TEX_to_JSON/JSON_Files/Problems.json";
 
 function ProblemSet() {
-   if (!Array.isArray(problems)) return null;
+  if (!Array.isArray(problems)) return null;
 
-   return (
+  return (
+    <>
       <section className="container-fluid">
-         {problems.map((currentProblem) => (
-            <div className="row" key={currentProblem.problemID}>
-               <div className="col">
-                  <ul>
-                     <li>{currentProblem.problemID}</li>
-                     <li>
-                     <Link to="/Problem" state={{ currentProblem: currentProblem }}>
-                        {currentProblem.title}
-                     </Link>
-                     </li>
-                     <li>{currentProblem.majorTopic}</li>
-                     <li>{currentProblem.problemLevel}</li>
-                  </ul>
-               </div>
+        {problems.map((currentProblem) => (
+          <div className="row" key={currentProblem.problemID}>
+            <div className="col">
+              <ul>
+                <li>{currentProblem.problemID}</li>
+                <li>
+                  <Link
+                    to="/Problem"
+                    state={{ currentProblem: currentProblem }}
+                  >
+                    {currentProblem.title}
+                  </Link>
+                </li>
+                <li>{currentProblem.majorTopic}</li>
+                <li>{currentProblem.problemLevel}</li>
+              </ul>
             </div>
-         ))}
+          </div>
+        ))}
       </section>
-);
+      <FilterBox />
+    </>
+  );
 }
 
 export default ProblemSet;

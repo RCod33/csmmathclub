@@ -2,6 +2,7 @@
 
 :root {
     --sky-blue: rgb(0, 165, 255);
+    --slate-blue: SlateBlue;
     --deep-blue: rgb(37.821, 75.798, 198.9);
     --purple: rgb(90, 0, 255);
     --magenta: rgb(218, 0, 255);
@@ -10,8 +11,11 @@
 }
 
 * {
+    padding: 0;
+    margin: 0;
     font-family: 'Latin Modern Roman', sans-serif;
 }
+
 .mathjax-container {
-   font-weight: normal !important;
+    font-weight: normal !important;
 }

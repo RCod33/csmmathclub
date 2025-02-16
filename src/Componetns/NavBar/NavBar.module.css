@@ -1,67 +1,75 @@
 @import "../../main.css";
 
+
+.navBarContainer {
+  width: 100%;
+}
+
 /* TOP BAR (white) */
 .topBar {
-   width: 100%;
-   background-color: white;
-   display: flex;
-   justify-content: space-between; /* left and right alignment */
-   align-items: center;
-   padding: 10px 20px; 
- }
- 
- .topBarLeftSection {
-   display: flex;
-   align-items: center;
- }
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  /* left and right alignment */
+  align-items: center;
+  padding: 10px 20px;
+}
 
- .topBarRightSection {
-   display: flex;
-   gap: 1rem; 
- }
- 
- .logo {
-   width: 90px;
-   height: 90px;
-   margin-right: 10px;
- }
- 
- .navTitle {
-   margin: 0; 
-   font-size: 2rem;
-   font-weight: bold;
-   font-family: 'Montserrat', sans-serif !important;
-   color: var(--deep-blue); 
- }
- 
- .navLink {
-   text-decoration: none;
-   color: var(--deep-blue); 
-   font-weight: bold;
-   font-family: 'Montserrat', sans-serif !important;
-   padding: 5px;
- }
- 
- .navLink:hover {
-   color: rgb(0, 123, 255);
- }
- 
- /* SECOND BAR (SlateBlue) */
- .secondBar {
-   width: 100%;
-   background-color: SlateBlue;
-   display: flex;
-   justify-content: flex-end; 
-   align-items: center;
-   padding: 10px 20px;
- }
- 
- .searchBar {
-   font-family: 'Montserrat', sans-serif !important;
-   padding: 5px 10px;
-   border: 1px solid #ccc;
-   border-radius: 20px; 
-   outline: none;
-   width: 150px;
- }
- 
+.topBarLeftSection {
+  display: flex;
+  align-items: center;
+}
+
+.topBarRightSection {
+  display: flex;
+  padding-right: 50px;
+  gap: 1rem;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  margin-right: 10px;
+}
+
+.navTitle {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif !important;
+  color: var(--deep-blue);
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--deep-blue);
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif !important;
+  padding: 5px;
+}
+
+.navLink:hover {
+  color: rgb(0, 123, 255);
+}
+
+/* SECOND BAR (SlateBlue) */
+.secondBar {
+  width: 100%;
+  background-color: var(--slate-blue);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.searchBar {
+  font-family: 'Montserrat', sans-serif !important;
+  position: relative;
+  right: 50px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  width: 150px;
+}

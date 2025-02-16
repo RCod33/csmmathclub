@@ -1,0 +1,43 @@
+/* CategoryFilter.module.css */
+.button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.menu li {
+    padding: 8px;
+}
+
+.menu li button {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.menu li button:hover {
+    background-color: #f0f0f0;
+}
