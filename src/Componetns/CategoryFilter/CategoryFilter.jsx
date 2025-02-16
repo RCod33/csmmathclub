@@ -82,6 +82,9 @@ const CategoryFilter = () => {
             >
               Number Theory
             </button>
+            <button type="button" onClick={() => handleCategory("Cunilingus")}>
+              Cunilingus
+            </button>
           </li>
         </ul>
       )}
