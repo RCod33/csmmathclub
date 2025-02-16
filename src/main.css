@@ -10,6 +10,8 @@
 }
 
 * {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Latin Modern Roman', sans-serif;
+}
+.mathjax-container {
+   font-weight: normal !important;
 }

@@ -1,50 +1,39 @@
-import React from "react";
-import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
+import styles from "./NavBar.module.css";
 
 function NavBar() {
-  return (
-    <>
-      <nav className="navbar bg-body" style={{ padding: "0px" }}>
-        <div className={`container-fluid ${styles.logoNavbarCustom}`}>
-          <Link to="/Home" className={`navbar-brand `}>
+   return (
+   <>
+      {/* TOP BAR: White */}
+      {/* Izquierda */}
+      <div className={styles.topBar}>
+         <div className={styles.topBarLeftSection}>
             <img
-              src="../../../public/CSM_MATH_CLUB_LOGO.png"
-              alt="Web Logo"
-              className={styles.logo}
+               src="../../../public/CSM_MATH_CLUB_LOGO.png"
+               alt="Web Logo"
+               className={styles.logo}
             />
-            <h1 className={styles.navTitle}>CSMathClub</h1>
-          </Link>
-        </div>
-      </nav>
-      <nav
-        className="navbar navbar-expand-lg bg-body"
-        style={{ padding: "0px" }}
-      >
-        <div
-          className={`collapse navbar-collapse ${styles.navbarCustom}`}
-          id="navbarNav"
-        >
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link to="/Home" className={styles.navLink}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/ProblemSet" className={styles.navLink}>
-                ProblemSet
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/Courses" className={styles.navLink}>
-                Courses
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </>
+            <h1 className={styles.navTitle}>CSM Math Club</h1>
+         </div>
+         {/* Derecha */}
+         <div className={styles.topBarRightSection}>
+            <Link to="/Home" className={styles.navLink}>Home</Link>
+            <Link to="/ProblemSet" className={styles.navLink}>Problem Set</Link>
+            <Link to="/Courses" className={styles.navLink}>Courses</Link>
+         </div>
+      </div>
+
+      {/* SECOND BAR: SlateBlue */}
+      <div className={styles.secondBar}>
+         <div className={styles.searchContainer}>
+            <input 
+               type="text" 
+               placeholder="Search..." 
+               className={styles.searchBar}
+            />
+         </div>
+      </div>
+   </>
   );
 }
 

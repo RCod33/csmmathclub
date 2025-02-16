@@ -1,17 +1,14 @@
-import React from "react";
-
 function Home() {
-  return (
-    <div>
-      <h1>Welcome to CSMathClub</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, tempora
-        repellendus pariatur nobis vitae maxime similique, laudantium laboriosam
-        doloremque eius mollitia possimus maiores corporis exercitationem atque
-        illum vero delectus dolore?
-      </p>
-    </div>
-  );
+   return (
+      <div>
+         <h1>Welcome to our club website!</h1>
+         <h4>You can find us on Wednesdays at 18-305 from 1:00pm-2:30pm</h4>
+         <p>
+            The site is still under development, but a fair amount of problems are 
+            available for you to solve. We hope you enjoy your time here!
+         </p>
+      </div>
+   );
 }
 
 export default Home;

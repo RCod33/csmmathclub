@@ -1,42 +1,67 @@
 @import "../../main.css";
 
-.logoNavbarCustom {
-    background-color: rgb(48, 48, 48) !important;
-    padding: 10px;
-}
+/* TOP BAR (white) */
+.topBar {
+   width: 100%;
+   background-color: white;
+   display: flex;
+   justify-content: space-between; /* left and right alignment */
+   align-items: center;
+   padding: 10px 20px; 
+ }
+ 
+ .topBarLeftSection {
+   display: flex;
+   align-items: center;
+ }
 
-.navbarCustom {
-    background-color: white;
-    border: 5px solid rgb(48, 48, 48);
-}
-
-.navbarCustom::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 10px;
-    border: 5px solid rgb(48, 48, 48);
-    pointer-events: none;
-}
-
-.navTitle {
-    color: whitesmoke !important;
-}
-
-.logo {
-    width: 100px;
-    aspect-ratio: 1/1;
-}
-
-.navLink {
-    color: var(--deep-blue);
-    text-decoration: none;
-    padding: 10px;
-}
-
-.navLink:hover {
-    color: rgb(0, 123, 255);
-}
+ .topBarRightSection {
+   display: flex;
+   gap: 1rem; 
+ }
+ 
+ .logo {
+   width: 90px;
+   height: 90px;
+   margin-right: 10px;
+ }
+ 
+ .navTitle {
+   margin: 0; 
+   font-size: 2rem;
+   font-weight: bold;
+   font-family: 'Montserrat', sans-serif !important;
+   color: var(--deep-blue); 
+ }
+ 
+ .navLink {
+   text-decoration: none;
+   color: var(--deep-blue); 
+   font-weight: bold;
+   font-family: 'Montserrat', sans-serif !important;
+   padding: 5px;
+ }
+ 
+ .navLink:hover {
+   color: rgb(0, 123, 255);
+ }
+ 
+ /* SECOND BAR (SlateBlue) */
+ .secondBar {
+   width: 100%;
+   background-color: SlateBlue;
+   display: flex;
+   justify-content: flex-end; 
+   align-items: center;
+   padding: 10px 20px;
+ }
+ 
+ .searchBar {
+   font-family: 'Montserrat', sans-serif !important;
+   padding: 5px 10px;
+   border: 1px solid #ccc;
+   border-radius: 20px; 
+   outline: none;
+   width: 150px;
+ }
+ 
