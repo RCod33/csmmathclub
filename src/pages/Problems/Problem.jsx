@@ -41,7 +41,7 @@ function Problem() {
     <MathJaxContext config={mathJaxConfig}>
       <div className="mathjax-container">
         <h1>
-          <MathJax>{currentProblem.title}</MathJax>
+          <MathJax>{currentProblem.problemID}</MathJax>
         </h1>
         <h3>
           <MathJax>{currentProblem.cameFrom}</MathJax>
@@ -52,7 +52,7 @@ function Problem() {
         <h2>
           <MathJax>{currentProblem.majorTopic}</MathJax>
         </h2>
-        <p>{currentProblem.textString.join("")}</p>
+        <p>{currentProblem.texString.join("")}</p>
       </div>
     </MathJaxContext>
   );

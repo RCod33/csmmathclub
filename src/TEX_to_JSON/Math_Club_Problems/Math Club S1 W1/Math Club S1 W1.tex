@@ -1,0 +1,97 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,setspace,tikz} % Required for inserting images
+\usepackage{amsfonts,amssymb,amsmath,float}
+\title{Math Club First Week}
+\author{Edgar}
+
+\usetikzlibrary {positioning}
+%\usepackage {xcolor}
+\definecolor {processblue}{cmyk}{0.96,0,0,0}
+
+\parindent 0pt
+\date{September 2024}
+
+\newcounter{problem}
+\setcounter{problem}{0} % Initialize the counter at 0
+
+\newcommand{\problem}[1]{
+    \stepcounter{problem}
+    \noindent\textbf{Problem \theproblem:} #1
+     \\ % Add space after the problem statement
+}
+
+\newcommand{\solution}[1]{
+    \vspace{1em} % Add space before the solution
+    \noindent\textbf{Solution:} #1
+     % Add space after the solution
+}
+
+\setlength{\baselineskip}{5\baselineskip}
+
+\begin{document}
+
+\maketitle
+
+ \begin{spacing}{1.3}
+
+\section*{Problems and Solutions}
+
+\begin{problem}[A][1]
+   If $g(x-1) = x^2+1$ for all real numbers x, find $g(2)$.
+\end{problem}
+
+\begin{solution}
+   In this case, we can directly set $x=3$ \\
+   This comes from the fact that we will get $g(x-1)$ , similarly we would set $x=20$ if we were told to find $g(21)$
+   $$ x=3 \Rightarrow g(2) = g(3-1) = 3^2+1=10$$
+   $$ \therefore g(2)=10$$
+\end{solution}
+
+\begin{problem}[A][2]
+   What is the value of $ (\log_{624}625)(\log_{623}624)\ldots(\log_67)(\log_56) $?
+\end{problem}    
+
+\begin{solution}[4]
+   Notice that \\
+      $$m\log_ab = \log_ab^m$$
+      $$\log_aa^x = x$$
+      \\
+      This means, for example     
+      \[
+      \left( \log_{624} 625 \right) \left( \log_{623} 624 \right) = \log_{623} \left( 624^{\log_{624} 625} \right)
+      \]
+      which means
+      $$(\log_{624}625)(\log_{623}624) = (\log_{623}625)$$
+      Similarly:
+      $$(\log_{623}625)(\log_{622}623) = (\log_{622}625)$$
+      At each step, we remove one term and keep the first term with the number $625$, so at the end we will have:
+
+      $$(\log_{624}625)(\log_{623}624)\ldots(\log_67)(\log_56) = (\log_5625)$$   
+      Since $625=5^4$ , the answer is 4 \\ \\
+
+\end{solution}
+
+
+\begin{problem}[C][2]
+   A student committee must consist of two seniors and three juniors. Five seniors are able to
+   serve on the committee. What is the least number of junior volunteers needed if the selectors
+   want at least 600 different possible ways to pick the committee? \\
+\end{problem}
+
+\begin{solution}
+   The way we select our seniors is independent to how we choose our juniors, we can directly take 2 seniors out of 5 in $\binom{5}{2}=10$ ways, then call $k$ the minimum amount of juniors that we need to reach at least 600 different possible ways, since we can select the juniors in $\binom{k}{3}$ ways, we must have:
+   \begin{align*}
+       \binom{5}{2}\binom{k}{3} &\geq 600 \\
+       \iff 10 \times \frac{k!}{3!(k-3!)} &\geq 600 \\
+       \iff \frac{k(k-1)(k-2)}{6} &\geq 60 \\
+       \iff k(k-1)(k-2) &\geq 360
+   \end{align*}
+   This expression is always increasing, and since we get 336 for $k=8$ and 504 for $k=9$, we conclude that $k=9$ is our answer.
+\end{solution}
+
+\end{spacing}
+\end{document}
+
+
+
+\hspace{2pt}

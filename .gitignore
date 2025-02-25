@@ -25,3 +25,15 @@ src/TEX_to_JSON/*.exe
 *.njsproj
 *.sln
 *.sw?
+
+#Python Auxiliar Files
+src/TEX_to_JSON/__pycache__
+
+# Math Club Auxiliar Files
+src/TEX_to_JSON/Math_Club_Problems/**/*.aux
+src/TEX_to_JSON/Math_Club_Problems/**/*.pdf
+src/TEX_to_JSON/Math_Club_Problems/**/*.fdb_latexmk
+src/TEX_to_JSON/Math_Club_Problems/**/*.fls
+src/TEX_to_JSON/Math_Club_Problems/**/*.synctex.gz
+src/TEX_to_JSON/Math_Club_Problems/**/*.xdv
+src/TEX_to_JSON/Math_Club_Problems/**/*.txt
