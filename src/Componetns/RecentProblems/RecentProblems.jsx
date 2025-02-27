@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import problemsDataBase from "../../TEX_to_JSON/JSON_Files/Problems_2.json";
+import problemsDataBase from "../../TEX_to_JSON/JSON_Files/Problems.json";
 
 function RecentProblems() {
   return (
@@ -10,7 +10,7 @@ function RecentProblems() {
         {
           // prettier-ignore
           problemsDataBase.slice(-7).reverse().map((problem) => (
-            <li key={problem.id}>
+            <li key={`recent-problem-${problem.problemID}`}>
               <Link to="/Problem" state={{ currentProblem: problem }}>
                 {problem.title}
               </Link>

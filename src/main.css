@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700&display=swap');
 
 :root {
-    --sky-blue: rgb(0, 165, 255);
-    --slate-blue: SlateBlue;
-    --deep-blue: rgb(37.821, 75.798, 198.9);
-    --purple: rgb(90, 0, 255);
-    --magenta: rgb(218, 0, 255);
-    --pink: rgb(255, 0, 165);
-    --red: rgb(255, 0, 37);
+    --primary-color: SlateBlue;
+    --secondary-color: rgb(37.821, 75.798, 198.9);
+    --hover-link: rgb(0, 123, 255);
+    --ligght-gray: #ccc;
 }
 
 * {
