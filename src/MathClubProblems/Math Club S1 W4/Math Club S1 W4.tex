@@ -1,0 +1,263 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,tikz,tikz-network,tkz-euclide} % Required for inserting images
+\usepackage{amsfonts,amsmath,amssymb}
+\title{Math Club Fourth Week Solutions}
+\usetikzlibrary{positioning}
+\definecolor{processblue}{cmyk}{0.96,0,0,0}
+
+\parindent 0pt
+\date{October 2024}
+
+\newcounter{problem}
+\setcounter{problem}{0} % Initialize the counter at 0
+
+\newenvironment{problem}{%
+    \stepcounter{problem}
+    \noindent\textbf{Problem \theproblem:}%
+}{%
+    \par
+}
+
+\newenvironment{solution}{%
+    \vspace{1em} % Add space before the solution
+    \noindent\textbf{Solution:}%
+}{%
+    \par
+}
+
+\newcommand{\multChoice}[5]{%
+    \begin{tabular}{l @{\hskip 1.5cm} l @{\hskip 1.5cm} l @{\hskip 1.5cm} l @{\hskip 1.5cm} l}
+    A. #1 & B. #2 & C. #3 & D. #4 & E. #5
+\end{tabular}
+}
+
+\begin{document}
+
+
+\maketitle
+
+
+
+\begin{problem}[C][1][AMATYC Fall 2018/3]
+   % Counting ^ Student Math League
+   A 40 yd. by 30 yd. garden was subdivided into 1200 squares, each with
+   side length 1 yd. A post was placed at each corner of each square (only one
+   post was placed on shared corners). A single section of fence of length 1
+   yard was placed on each shared side and also along the outside border. Let
+   $P$ be the number of posts used and $F$ the number of fence sections used. Find $P + F$. 
+\end{problem}
+
+
+\begin{solution}[D]
+See that, for each row, we have 41 posts, and that we have 31 rows, making $P=31 \times 41$.
+For the fence sections in vertical, we see that, between two rows, there are 41 fences. Since we have 30 pairs of consecutive posts, it adds up to $30 \times 41$. Similarly, we have $40 \times 31$ for the horizontal fences. Therefore, 
+\[
+P+F= 31 \times 41 + 30 \times 41 + 40 \times 31 = 3741.
+\]
+\end{solution}
+
+\vskip 1cm
+
+\begin{problem}[A][4][AMATYC Fall 2017/6]
+   % Algebra ^ Trig ^ Student Math League
+   Assume $\sin x + \cos x = 1/4$. \\
+   What is the value of $\sin^3x + \cos^3x $ ? 
+\end{problem}
+\multChoice{5/26}{11/32}{31/64}{47/128}{59/256}
+
+\begin{solution}[D]
+Notice that 
+\[
+\sin^3x + \cos^3x = (\sin x + \cos x)(\sin^2x - \sin x \cos x + \cos^2x)
+\]
+\[
+= \frac{1}{4} \left ( 1 - \sin x \cos x \right ).
+\]
+We must find $\sin x \cos x$, using that
+\[
+(\sin x + \cos x)^2 = \sin^2x + 2\sin x \cos x + \cos^2x.
+\]
+\[
+\Rightarrow \frac{1}{16} - 1 = 2\sin x \cos x.
+\]
+\[
+\Rightarrow -\frac{15}{32} = \sin x \cos x.
+\]
+Finally,
+\[
+\sin^3x + \cos^3x = \frac{1}{4} \left ( 1 + \frac{15}{32} \right ) = \frac{47}{128}.
+\]
+\end{solution}
+
+\vskip 1cm
+
+\begin{problem}[C][2][AMATYC Fall 2017/9]
+   % Knights and Knaves ^ Discrete ^ Student Math League
+   Three people $(X, Y, Z)$ are in a room with you. One is a knight (knights always tell the
+   truth), one is a knave (knaves always lie), and the other is a spy (spies may either lie or tell the truth). $X$ says “I am not a spy.”, $Y$ says “$X$ is a knave.”, and $Z$ says “$Y$ is a spy.” Which
+   of the following correctly identifies all three people? 
+   \begin{center}
+      \begin{tabular}{l @{\hskip 1.5cm} l @{\hskip 1.5cm} l @{\hskip 1.5cm} l @{\hskip 1.5cm} l}
+         A. $X$ is the spy, $Y$ is the knight, $Z$ is the knave & 
+         B. $X$ is the spy, $Y$ is the knave, $Z$ is the knight & 
+         C. $X$ is the knight, $Y$ is the knave, $Z$ is the spy & 
+         D. $X$ is the knight, $Y$ is the spy, $Z$ is the knave & 
+         E. $X$ is the knave, $Y$ is the spy, $Z$ is the knight 
+      \end{tabular}
+      \end{center}
+\end{problem}
+
+
+
+\begin{solution}[C]
+See that $X$ being a knave contradicts the first statement. \\
+If $X$ is the spy, then the second statement is false, so $Y$ is the knave, but then $Z$ would be the knight, contradicting their statement $\rightarrow \leftarrow$. \\
+Therefore, $X$ is the knight. \\
+If $Y$ were the spy, then the last statement is true, making $Z$ the knave, which contradicts the setup $\rightarrow \leftarrow$. \\
+Thus, $Y$ is the knave, implying $Z$ is the spy. 
+\end{solution}
+
+\begin{problem}[C][4][AMATYC Fall 2007/7]
+   % Lattice points ^ Counting ^ Student Math League
+   A lattice point is a point with both coordinates integers. How many lattice points
+    lie on or inside the triangle with vertices (0, 0), (10, 0), and (0, 8)? 
+\end{problem}
+ \multChoice{51}{52}{53}{54}{55}
+\begin{solution}[A]
+   These points lie under the hypotenuse of the triangle, that is, the segment that is part of the line $y=8-4x/5$ where $x \in [0,10]$.\\ For a lattice point $(a,b)$ the reader may check that each choice of $a$ gives $ \lfloor 9-4a/5 \rfloor$ choices for $b$, evaluating all $a$ with $0 \leq a \leq 10$ gives \\
+    $9+8+7+6+5+5+4+3+2+1+1 = 5 \times 9 + 5 + 1 = 51$ possiblities
+\end{solution}
+
+\vskip 1cm
+
+\begin{problem}[A][3][AMATYC Fall 2010/11]
+   % Algebra ^ Student Math League
+   Let:
+    $$f(x) = \ln \left ( x+\sqrt{1+x^2} \right )$$
+    Find $f^{-1}(\ln7)$ 
+\end{problem}
+
+\begin{solution}[B]
+    We are asked to find $\varphi$ such that $f(\varphi)=\ln 7$, that is:
+    \begin{align*}
+        &\ln 7 = \ln \left ( \varphi+\sqrt{1+\varphi^2} \right ) \\
+        \iff& 7 - \varphi = \sqrt{1+\varphi^2} \\
+        \Rightarrow& \varphi^2 - 14\varphi + 49 = \varphi^2 + 1 \\
+        \iff& \varphi = \frac{49-1}{14} = \frac{24}{7}
+    \end{align*}
+\end{solution}
+
+\begin{problem}[G][3][AMATYC Spring 2004/12]
+   % Pythagorean Theorem ^ Geometry ^ Student Math League
+   A circular table is pushed into a corner of a rectangular room so that it touches both walls. A point on the edge of the table between the two points of contact is two inches from one wall and 9 inches from the other wall. What is the radius of the table? 
+\end{problem}
+\multChoice{5''}{12''}{15''}{17''}{20''}
+\begin{solution}[17]
+   \begin{center}
+      \begin{tikzpicture}
+          % Every aspect of the figure can be altered through these definitions
+          \def\radius{4} \def\X{0.35} \def\labelSpacing{1.1}
+          \def\A{110} \def\B{210} %\def\C{350} \def\D{70}
+          
+          \tkzDefPoints{0/0/A, \radius/0/R, 4.25/4.25/B, 0/4.25/C, 4.25/0/O, 0.5/2/X, 0.5/0/X'} 
+          \tkzDefPointBy[projection=onto A--C](X) \tkzGetPoint{R1}
+          \tkzDefPointBy[projection=onto B--C](X) \tkzGetPoint{R2}
+         
+          
+         % Drawing
+         \tkzDrawSegments(X,R1 X,R2 A,O O,B O,X A,X)
+         \tkzDrawCircle(O,A) % Draw the circumcircle
+         \tkzDrawSegments[dash pattern=on 5pt off 5pt](X,X') 
+         \tkzDrawLine[add = 0.9 and 0,dash pattern=on 5pt off 5pt](A,C)
+         \tkzDrawLine[add = 0 and 0.9,dash pattern=on 5pt off 5pt](C,B)
+         
+          \tkzLabelPoints[below](A,O){A,O}
+          \tkzLabelPoints[above right](B,X){B,X}
+          \tkzLabelPoint[above](C){C}
+          \tkzLabelPoint[below right](X'){X'}
+          \tkzLabelSegment[below](X',O){$r-2$}
+          \tkzLabelSegment[right](X,X'){$r-9$}
+          \tkzLabelSegment[above](O,X){$r$}
+          %\node at (\radius - 0.3,\radius / 2 - 1) [right] {$\omega$}; 
+      \end{tikzpicture}
+      \end{center}
+      
+    Let $X$ be the point that is 2 inches from one wall and 9 inches from the other wall.
+    Let $A,B$ be the points where the rectangle is tangent to the circle and let $C$
+    be the vertice of the rectangle between $A$ and $B$ \\
+    Call $r$ to the radius of the circle, since $AO=OB=r$ and $\angle ACB = 90^\circ$ we
+    must have $AOBC$ to be a square, so we can define $X'$ to be the projection of $X$ onto 
+    AO, meaning $OX'=r-2$ and $XX'=r-9$. \\
+    By the Pythagorean Theorem:
+    \begin{align*}
+        &(r-2)^2 + (r-9)^2 = r^2 \\
+        \iff& r^2-22r+85=0 \\
+        \iff& (r-5)(r-17)=0
+    \end{align*}
+    Since $XX'$ exists, we cannot have $r=5$, so we must have $r=17$
+\end{solution}
+
+
+\vskip 1cm
+These problems relate to Calculus content, the Student Math League does not require it, that being said, you may try them as well if you want
+\vskip 1cm
+
+\begin{problem}[R][4]
+   % Functionals ^ Derivatives
+   Find all functions $f:\mathbb{R} \rightarrow \mathbb{R}$ such that for any real value $x$:
+   $$ f(x) = f'(x) + f''(x) + f'''(x) + \ldots $$ 
+\end{problem}
+
+\begin{solution}
+   By implicit differentiation we see that 
+   $$f'(x) = f''(x) + f'''(x) + \ldots$$
+   That is
+   $$ f(x) = f'(x) + (f''(x) + f'''(x) + \ldots) = 2f'(x) $$
+   Now let $g$ be a function such that $f(x) = e^{g(x)}$, thus 
+   $$ f'(x) = g'(x)e^{g(x)}$$ 
+   \newpage
+   Finally 
+   $$e^{g(x)} = f(x) = 2f'(x) = 2g'(x)e^{g(x)}$$
+   \begin{align*}
+       &\Rightarrow g'(x) = 1/2 \\
+       &\Rightarrow g(x) = x/2 + C \\
+       &\Rightarrow f(x) = e^{x/2+C}
+   \end{align*}
+   Note that $e^{x/2+C}$ and $ce^{x/2}$ are equivalent expressions, just let $c=e^C$ 
+\end{solution}
+
+\begin{problem}[R][5]
+    % Tangent Line Trick ^ Inequalities ^ Derivatives
+    Let $a,b,c$ be three positive real numbers such that $a+b+c=2$. Show that
+    $$ a^2+b^2+c^2+1 \geq \frac{1}{a^2+1}+\frac{1}{b^2+1}+\frac{1}{c^2+1}  $$
+    Hint: Define some function $f$ and try to show that $f$ is concave in the interval we want. \\
+    A function $f$ is concave if its tangent line lies above $f$, it happens when $f''(x)\leq 0$
+    \end{problem}
+
+\begin{solution}
+   Let $f(x) = \frac{1}{x^2+1} - x^2$, then
+    $$f'(x) = \frac{-2x}{(x^2+1)^2} - 2x$$
+    $$f''(x) = \frac{2(3x^2-1)}{(x^2+1)^3}-2$$
+    
+    Let's show that $f''(x)<0$ for $x<0$:
+    \begin{align*}
+        \frac{2(3x^2-1)}{(x^2+1)^3}-2 &< 0 \\
+        \iff 3x^2-1 &< (x^2+1)^3
+    \end{align*}
+    \newpage
+    It is clear that the Right Hand Side grows much faster, but a formal proof can be done by the AM-GM inequality:
+    \begin{align*}
+        (x^2+1)^3 + 1 + 1 &\geq 3\sqrt[3]{(1)(1)(x^2+1)^3} = 3x^2+3\\
+        \iff (x^2+1)^3 &\geq 3x^2+1 > 3x^2-1
+    \end{align*}
+    Since $f$ is concave, its tangent line lies above $f$ for $x>0$, in particular for $x=1$:
+
+    \begin{align*}
+        f(x) &\leq f'(1)(x-1) + f(1) \\
+        \iff f(x) &\leq 2-5x/2 \\
+        \Rightarrow f(a)+f(b)+f(c) &\leq 6-5\frac{(a+b+c)}{2}=1
+    \end{align*}
+    $\Box$
+\end{solution}
+
+\end{document}

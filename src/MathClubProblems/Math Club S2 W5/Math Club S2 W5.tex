@@ -1,0 +1,120 @@
+\input{Packages}
+\input{Definitions}
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+%this removes numbering from the section, from some reason the \section*{} command doesnt work once you redefine it
+\setcounter{secnumdepth}{0} 
+
+% Define variables for week number and meeting date
+\newcommand{\weekNum}{5} % Change this to update the week number
+\newcommand{\meetingDate}{February 19th, 2025} 
+
+\begin{document}
+\pagestyle{empty}
+\sloppy
+\maketitle
+
+\section{Selected Topic: Modular Arithmetic} %may change, but it'll be NT stuff
+
+\begin{problem}[N][4][AMATYC Spring 2010/6]
+    % Brute Force ^ Student Math League
+    All solutions to the equation \( a^3 + b^3 + c^2 = 2010 \) (\( a, b, c \) positive integers) have the same value for \( a + b \). Find this value of \( a + b \).
+\end{problem}
+\multOpt[5]{$11$}[$12$][$13$][$14$][$15$]
+
+\begin{problem}[N][4][AIME 1989/9]
+    % MOD ^ AIME
+    One of Euler's conjectures was disproved in the 1960s by three American mathematicians when they showed there was a positive integer $n$ such that
+    $$ 133^5 + 110^5 + 84^5 + 27^5 = n^5 $$
+    Find the value of $n$.
+\end{problem}
+
+\begin{problem}[N][4][Putnam 2024/A1]
+    % Infinite Descent ^ MOD ^ Putnam
+    Determine all positive integers $n$ for which there exist positive integers $a$, $b$, and $c$ satisfying
+    \[
+    2a^n + 3b^n = 4c^n.
+    \]
+\end{problem}
+
+\begin{problem}[N][3][AoPS]
+    % Chinese Remainder Theorem
+    Show that for $c \in \mathbb{Z}$ and a prime $p$, exists an integer $x$ such that $p \mid  x^x - c$.
+\end{problem}
+
+\begin{problem}[N][4]
+    % Primes ^ MOD 
+    Find all pairs of prime numbers $(p,q)$ such that $2p^2 + 1 = q^5$.
+\end{problem}
+
+\begin{problem}[N][6][Justin Stevens]
+    % Divisibility ^ GCD ^ p-adic valuation
+    Let $a,b,c$ be positive integers, show that if $\text{lcm}(a,b,c) \cdot \gcd (a,b,c) = abc$, then $\gcd(a,b) = \gcd(b,c) = \gcd(c,a) = 1$
+\end{problem}
+
+\begin{problem}[N][5][USAMO 1973/2]
+    % MOD ^ Algebra
+    Let $\{ X_n \}$ be a sequence of integers defined by $(X_0, X_1) = (1,1)$, and $X_{n+1} = X_n + 2X_{n-1} , n \geq 1$. Let $\{Y_n\}$ be defined by $(Y_0, Y_1) = (1,7)$, and $Y_{n+1} = 2Y_n + 3Y_{n-1}, n \geq 1$. Thus the first few terms are
+    \begin{align*}
+        X : 1,1,3, 5, 11, 21, \ldots \\
+        Y: 1, 7, 17, 55, 161, 487, \ldots
+    \end{align*}
+    Prove that no term greater than one occurs in both sequences.
+\end{problem}
+
+\begin{problem}[N][8][USAMO 1973]
+   % Algebra ^ Divisibility ^ USAMO
+   Show that the cube roots of three distinct prime numbers cannot be three terms (not necessarily consecutive) of an arithmetic progression.
+\end{problem}
+
+\begin{problem}[N][7][ISL 2005/6]
+   % MOD
+   Let $a,b$ be positive integers such that $b^n+n$ is a multiple of $a^n+n$ for all positive integers $n$. Prove that $a=b$.\\[2mm]
+   \emph{Possible Hint:} Try and prove it for $a=1$. What happens if $a \equiv  b \pmod p$ for a prime $p$ large enough?
+\end{problem}
+
+\begin{problem}[N][5][Balkan]
+    % MOD 
+    Let $n$ be a positive integer with $n \geq 3$. Prove that 
+    $$n^{n^n} - n^n$$
+    is divisible by 1989.
+\end{problem}
+
+\begin{problem}[N][7][Putnam 2003/B3]
+    % p-adic valuation ^ Putnam
+    Show that for each positive integer $n$
+    $$  n! = \prod_{i=1}^n \text{lcm} 
+    \left \{ 1, 2, \ldots, \left \lfloor \frac{n}{i} \right \rfloor \right \}$$
+    Here lcm denotes the least common multiple, and $\lfloor x \rfloor$ denotes the greatest integer $\leq x$.
+\end{problem}
+
+\begin{problem}[N][6][Putnam 2022/A3]
+    % Counting ^ MOD ^ Putnam
+    Let \( p \) be a prime number greater than 5. Let \( f(p) \) denote the number of infinite sequences \( a_1, a_2, a_3, \dots \) such that  \( a_n \in \{1,2,\dots, p-1\} \) and  \( a_n a_{n+2} \equiv 1 + a_{n+1} \pmod{p} \) for all \( n \geq 1 \). Prove that \( f(p) \) is congruent to 0 or 2 modulo 5.
+    \end{problem}
+
+\begin{solution}
+    For any integer $a$ with $\gcd(a,p)=1$, we define $a^{-1} \pmod p$ as the unique integer $0 <x < p$ such that $a \cdot x \equiv 1 \pmod p$. We say that $x$ is the modular inverse of $a \mod p$. 
+    We will show that $f(p) \equiv 0,2 \pmod{5}$ by showing that $f(p) = (p-2)(p-3)$.\\[2mm]
+    Note that each sequence is uniquely determined by $a_1$ and $a_2$, for any $n \geq 3$, $a_n$ is given by the residue of $a_{n-2}^{-1} (1 + a_{n+1}) \pmod p$. Thus, we need to determine all the pairs $(a_1,a_2)$ that give valid sequences. Call $(a_1,a_2)$ a good pair if $1 \leq a_1, a_2 \leq p-2$ and $a_2 \not \equiv -a_1-1 \pmod p$.\\[2mm]
+    \textbf{Claim 1 :} All valid sequences are formed by good pairs \\[1mm]
+        Note that for any $i > 1$ we have $a_i \not \equiv -1 \pmod p$, otherwise the next term $a_{i+1}$ would be divisible by $p$,  and the sequence is defined in $[1,p-1]$. It is also true that $a_1 \not \equiv -1 \pmod p$, otherwise $-a_3 \equiv a_2 + 1 \Rightarrow a_2a_4 \equiv -a_2 \Rightarrow a_4 \equiv -1 \pmod p$. It follows that $1 \leq a_1, a_2 \leq p-2$. The additional value that $a_2$ cannot take is $-a_1 -1 \pmod{p}$. Indeed, that would cause $a_3 \equiv a_1^{-1}(a_2+1) \equiv -1 \pmod p$. $\Box$ \\[2mm]
+    \textbf{Claim 2 :} All good pairs form a valid sequence \\[1mm]
+        From Claim 1 we showed that being a good pair is a necessary condition, it turns out that it is also sufficient, we can select absolutely any pair $(a_1,a_2)$ considered a good pair, and it will work. We prove this by contradiction: \\
+        Assume that exists a good pair $(a_1,a_2)$ that does not generate a valid sequence, that is, we still have an integer $k$ such that $a_k \equiv -1 \pmod p$ (equivalent to say $a_k = p-1$). Assume further that $k$ is the smallest integer with this property (the first term that invalidates the sequence). This means that $a_i \not \equiv -1 \pmod p$ for $1 \leq i < k$. We can check for small values and deduce that $k \geq 4$, then:
+        \begin{align*}
+            &a_ka_{k-2} \equiv a_{k-1} + 1 \pmod p \\
+            \iff& -a_{k-2} \equiv a_{k-3}^{-1}(a_{k-2}+1) + 1 \pmod p\\ 
+            \iff& 0 \equiv a_{k-3}^{-1} a_{k-2} + a_{k-3}^{-1} + a_{k-2} + 1 \pmod p  \\
+            \iff& 0 \equiv(a_{k-2} + 1) (a_{k-3}^{-1} + 1) \pmod p
+        \end{align*}
+        This forces one of the terms $a_{k-2}, a_{k-3}$ to be $p-1$, contradicting the minimaility of $k$. $\Box$ \\
+        Combining Claims 1 and 2, we conclude that a valid sequence is given by a good pair $(a_1,a_2)$, since we have $p-2$ choices for $a_1$ and $p-3$ choices for $a_2$. We conclude that $f(p) = (p-2)(p-3)$, the reader may check that this expression is always congruent with 0 or $2 \hspace{-4pt}\mod 5$ $\Box$
+
+\end{solution}
+
+
+% i may remove some of the problems i added if we have too many problems -- Edgar
+
+% Honestly, I think these are too hard. Certainly, they are doable in a contest with lots of time and adequate preparation. I do not think they are suitable for a first introduction though. 
+
+\end{document}

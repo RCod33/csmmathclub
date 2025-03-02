@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"node src/Logic/WatcherLogic/Watcher.js\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -13,6 +13,7 @@
     "@types/react-latex": "^2.0.3",
     "better-react-mathjax": "^2.1.0",
     "bootstrap": "^5.3.3",
+    "chokidar": "^4.0.3",
     "katex": "^0.16.21",
     "mathjax": "^3.2.2",
     "mathjax-react": "^2.0.1",
@@ -27,6 +28,8 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.1.2",
     "eslint": "^9.17.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",

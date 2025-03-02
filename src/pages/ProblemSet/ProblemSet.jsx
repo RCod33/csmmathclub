@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../Componetns/Pagination/Pagination";
 import FilterBox from "../../Componetns/FilterBox/FilterBox";
-import problems from "../../TEX_to_JSON/JSON_Files/Problems.json";
+import problems from "../../JsonFiles/Problems.json";
 import styles from "./ProblemSet.module.css";
 
 const pageRange = 30;
@@ -49,7 +50,7 @@ function ProblemSet() {
                 <td>{`Level: ${problem.problemLevel}`}</td>
                 <td>
                   {problem.weekDiscussed[0] === "0" &&
-                  problem.weekDiscussed[1] === "0"
+                   problem.weekDiscussed[1] === "0"
                     ? "None"
                     : `S${problem.weekDiscussed[0]} W${problem.weekDiscussed[1]}`}
                 </td>

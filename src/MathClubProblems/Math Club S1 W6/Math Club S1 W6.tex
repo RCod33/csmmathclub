@@ -1,0 +1,376 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,tikz,tikz-network,tkz-euclide}
+\usepackage{amsfonts,amsmath,amssymb}
+\title{Math Club Sixth Week}
+\usetikzlibrary {positioning}
+%\usepackage {xcolor}
+\definecolor {processblue}{cmyk}{0.96,0,0,0}
+
+\parindent 0pt
+\date{October 2024}
+
+\newcounter{problem}
+\setcounter{problem}{0} % Initialize the counter at 0
+\newcounter{sectionB}
+\setcounter{sectionB}{0}
+
+\newcommand{\problem}[1]{
+    \stepcounter{problem}
+    \noindent\textbf{Problem $A\theproblem$:} #1
+     \\ % Add space after the problem statement
+}
+\newcommand{\problemB}[1]{
+    \stepcounter{sectionB} % Increment the counter for Section B
+    \noindent\textbf{Problem $B\thesectionB$:} #1
+    \\[1em] % Space after the problem statement
+}
+\newcommand{\multChoice}[5]{
+    \begin{tabular}{l @{\hskip 1.5cm} l @{\hskip 1.5cm} l @{\hskip 1.5cm} l @{\hskip 1.5cm} l}
+    A. #1 & B. #2 & C. #3 & D. #4 & E. #5
+\end{tabular}
+
+}
+\newcommand{\solution}[1]{
+    \vspace{1em} % Add space before the solution
+    \noindent\textbf{Solution:} #1
+     % Add space after the solution
+}
+
+\setlength{\baselineskip}{5\baselineskip}
+
+
+\usetikzlibrary {positioning}
+%\usepackage {xcolor}
+\definecolor {processblue}{cmyk}{0.96,0,0,0}
+\newcommand{\myVertex}[3]{
+    \Vertex[x=#1,y=#2,size=0.5,label=$#3$,position=90,fontscale=2,style={color=red}]{#3}
+}
+\newcommand{\simpleVertex}[3]{
+    \Vertex[x=#1,y=#2,size=0.5,position=180,fontscale=2,style={color=red}]{#3}
+}
+\newcommand{\invisibleVertex}[3]{
+    \Vertex[x=#1,y=#2,size=0.5,opacity =0,position=180,fontscale=2,style={color=white}]{#3}
+}
+
+\begin{document}
+\sloppy
+\maketitle
+
+\section*{AMATYC problems}
+
+\begin{problem}[G][2][AMATYC Fall 2007/3]
+   % Geometry
+   A square is covered by a design made up of four identical rectangles
+   surrounding a central square, as shown above. If the area of the
+   central square is 4/9 of the area of the entire design, find the ratio of the length of a rectangle to the side of the central square. 
+   \begin{center}
+      \begin{tikzpicture}
+          \tkzDefPoints{0/0/A_1, 3/0/B_1, 3/3/C_1, 0/3/D_1}
+          \tkzDefPoints{0.5/0/A_2, 3/0.5/B_2, 2.5/3/C_2, 0/2.5/D_2}
+          \tkzDefPoints{0.5/0.5/A_3, 2.5/0.5/B_3, 2.5/2.5/C_3, 0.5/2.5/D_3}
+            
+          \tkzDrawSegments(A_1,B_1 B_1,C_1 C_1,D_1 D_1,A_1)
+          \tkzDrawSegments(D_3,A_2 A_3,B_2 B_3,C_2 C_3,D_2)
+          
+          \node at (-6,3) [left] {A. $5/4$};
+          \node at (-3,3) [left] {B. $4/3$};
+          \node at (-6,1.8) [left] {C. $7/5$};
+          \node at (-3,1.8) [left] {D. $3/2$};
+          \node at (-4.5,0.6) [left] {E. $8/5$};
+      \end{tikzpicture}
+      \end{center}
+\end{problem}
+
+\begin{solution}
+      A. $5/4$ \\
+      Let $x$ be the side length of the inner square, the $y$ be the side length of the outer square, and $z$ be the width (the shorter side) of each rectangle. Note that we are looking for the ratio between $x+z$ and $x$. Also, obverse that
+      \begin{align}
+         z=\frac{1}{2}(y-x)
+      \end{align}
+      Since $A_{in}/A_{out}=4/9$, we can say 
+      \begin{align} \setcounter{equation}{1}
+         \frac{x^2}{y^2} = \frac{4}{9} \: \Rightarrow \: x = \frac{2}{3}y
+      \end{align}
+      We can then plug this into (1) to get 
+      \begin{align*}
+         z = \frac{1}{2}(y-\frac{2}{3}y) = \frac{1}{6}y
+      \end{align*}
+      Now we have what we are looking for: 
+      \begin{align*}
+         \frac{x+z}{x} &= \frac{(\frac{2}{3}+\frac{1}{6})y}{\frac{2}{3}y} \\
+         &= \boxed{\frac{5}{4}}
+      \end{align*}
+\end{solution}
+
+\begin{problem}[N][3][AMATYC Spring 2017/4]
+   % Divisibility ^ MinMax ^ Student Math League
+   If cars hold 5 passengers and charge for \$29 a trip to the airport, and vans hold 7 passengers and charge \$41, find the minimum cost to transport 49 people to the airport. \\
+\end{problem}
+\multChoice{\$290}{\$285}{\$287}{\$280}{\$282}
+
+
+\begin{solution}[B. \$285]
+   Let integers $c$ and $v$ represent the number of cars and vans used respectively, and let $B$ represent the cost we are trying to minimize. Then
+   \begin{align} \setcounter{equation}{0}
+       5c + 7v &= 49 \\
+       29c + 41v &= B
+   \end{align}
+   Rewriting (1) gives us
+   \begin{align*}
+       5c &= 49 - 7v \\
+       &= 7(7-7v)
+   \end{align*}
+   which tells us that $7 \mid 5c$. Since $7 \nmid 5$, we can say that $7 \mid c$. But (1) makes it obvious that $c < 10$, so we must conclude that $c=7$. Plugging this back into (1) gives us $v=2$. This appears to be the only solution in which $c$ and $v$ are both positive and integers so we are reasonable to conclude that these values give us the correct answer. \\[5pt] Finally, we use (2) to evaluate the minimum cost.
+   \begin{align*}
+       29(7) + 41(2) = 203 + 82 = \boxed{285}
+   \end{align*}
+\end{solution}
+
+\begin{problem}[A][3][AMATYC Fall 2008/8]
+   % Algebra ^ Trig ^ Student Math League
+   $$ \csc^{-1}{\left(\frac{5}{4}\right)}+\sec^{-1}{\left(\frac{5}{4}\right)}+\cot^{-1}{\left(\frac{5}{4}\right)}+\cot^{-1}{\left(\frac{4}{5}\right)}$$
+\end{problem}
+\multChoice{$2\pi$}{$\pi$}{$\pi/2$}{$\pi/3$}{$\pi/4$}
+
+
+\begin{solution}[B]
+   First, let's make this problem a bit more comfortable for everyone by remembering that $\sin{\theta}=1/\csc{\theta}$, $\cos{\theta}=1/\sec{\theta}$, and $\tan{\theta}=1/\cot{\theta}$. This allows us to rewrite the expression as 
+   \begin{align*}
+      \sin^{-1}{\left(\frac{4}{5}\right)}+\cos^{-1}{\left(\frac{4}{5}\right)}+\tan^{-1}{\left(\frac{4}{5}\right)}+\tan^{-1}{\left(\frac{5}{4}\right)}
+   \end{align*}
+   Our main tool here will be the identity
+   \begin{align} \setcounter{equation}{0}
+      \sin{(\frac{\pi}{2}-x)}=\cos{(x)}
+   \end{align}
+   Now, let $\theta_1 = \sin^{-1}{\left(\frac{4}{5}\right)}$ and $\theta_2 = \cos^{-1}{\left(\frac{4}{5}\right)}$ and note that $-\frac{\pi}{2} \leq \theta_1 \leq \frac{\pi}{2}$ and $0 \leq \theta_2 \leq \pi$.
+   Since
+   \begin{align*}
+      \sin{\theta_1} = \frac{4}{5}, \: \cos{\theta_2} = \frac{4}{5} \: \Rightarrow \: \sin{\theta_1} = \cos{\theta_2}
+   \end{align*}
+   we can use (1) to conclude that $\theta_1 = \frac{\pi}{2} - \theta_2$. Thus,
+   \begin{align*}
+      \sin^{-1}{\left(\frac{4}{5}\right)}+\cos^{-1}{\left(\frac{4}{5}\right)} &= \theta_1 + \theta_2 \\
+      &= (\frac{\pi}{2} - \theta_2) + \theta_2 \\
+      &= \frac{\pi}{2}
+   \end{align*}
+   A similar process can be used to show that 
+   \begin{align*}
+      \tan^{-1}{\left(\frac{4}{5}\right)}+\tan^{-1}{\left(\frac{5}{4}\right)} = \frac{\pi}{2}
+   \end{align*}
+   Finally, adding these together, we find that 
+   \begin{align*}
+      \sin^{-1}{\left(\frac{4}{5}\right)}+\cos^{-1}{\left(\frac{4}{5}\right)}+\tan^{-1}{\left(\frac{4}{5}\right)}+\tan^{-1}{\left(\frac{5}{4}\right)} &= \frac{\pi}{2} + \frac{\pi}{2} \\
+      &= \boxed{\pi}
+\end{align*}
+\end{solution}
+
+\newpage
+
+\begin{problem}[N][3][AMATYC Fall 2004/4]
+   % System of Equations ^ Student Math League
+   Lucia is not yet 80 years old. Each of her sons has as many sons as brothers. The combined number of Lucia’s sons and grandsons equals her age, and her oldest grandson is 29. How old is Lucia? (Assume you must be 17 or older to have children.) 
+    
+\end{problem}
+
+\begin{solution}
+   64 \\
+   Let $L$ represent Lucia's age. The problem tells us that she is younger than 80 and that her oldest grandson is 29. This means she has a son that is at least 46 ($29+17$) and that Lucia herself is at least 63. So $63 \leq L \leq 79$. \\[5pt]
+   We also know that if Lucia has $x$ sons, then each of those sons has $x-1$ brothers (since you would not count yourself as a brother). As a result, all $x$ sons raise $x-1$ of their own sons for a total of $x(x-1)$ grandsons. Lucia's age, then, is $L = x + x(x-1) = x^2$. \\[5pt]
+   Since the only perfect square between 63 and 79 is $8^2$, we conclude $L=\boxed{64}$.
+\end{solution}
+
+\vskip 1cm
+
+\begin{problem}[N][5][AMATYC Spring 2017/7]
+   % Algebra ^ Inequalities ^ Student Math League
+   Let $a$ and $b$ be positive integers such that $(a,b)$ is a solution to
+   $$\sqrt[3]{a+4\sqrt{b}} + \sqrt[3]{a-4\sqrt{b}} = 3$$
+   Find the smallest possible value of $a+b$.
+   \multChoice{14}{18}{22}{26}{30}
+\end{problem}
+
+\vskip 0.5cm
+
+\begin{solution}[A]
+   We are starting with 
+   \begin{align} \setcounter{equation}{0}
+      \sqrt[3]{a+4\sqrt{b}} + \sqrt[3]{a-4\sqrt{b}} = 3
+   \end{align}
+   The cube roots obviously make this equation ugly, and we are tempted to cube both sides, hoping it works out. Let's see if this is a productive route. Note that
+   \begin{align} 
+      (x+y)^3 &= x^3 + 3x^2y + 3xy^2 + y^3 \notag \\
+      &= x^3 + 3xy(x+y) + y^3
+   \end{align}
+   If we let $x=\sqrt[3]{a+4\sqrt{b}}$ and $y=\sqrt[3]{a-4\sqrt{b}}$ and plug these into the terms of (2), there are quite a few nice simplifications here, especially making use of (1), which tell us that $x+y=3$.
+   \begin{align}
+      (x+y)^3 &= x^3 + 3xy(x+y) + y^3 \notag \\
+      &= \left(a+4\sqrt{b}\right) + 3\left[\sqrt[3]{\left(a+4\sqrt{b}\right)\left(a-4\sqrt{b}\right)}\right]\!(3) + \left(a-4\sqrt{b}\right) \notag \\
+      &= 2a + 9\sqrt[3]{a^2-16b}
+   \end{align}
+   This seems promising. We now know that cubing both sides of (1) gives us (3) on the left and 27 on the right.
+   \begin{align}
+      \left(\sqrt[3]{a+4\sqrt{b}} + \sqrt[3]{a-4\sqrt{b}}\right)^3 &= 3^3 \notag \\
+      2a + 9\sqrt[3]{a^2-16b} &= 27
+   \end{align}
+   Since $a\in\mathbb{Z}$, we know $\sqrt[3]{a^2-16b}\in\mathbb{Z}$ as well (since the terms in (4) sum to an integer). From this it follows that $2a=27-9k=9(3-k)$, so $9\mid2a$, which further implies $9\mid a$.
+   \\[5pt]
+   So $a=9, 18, 27,\dots$ (recall that $a>0$). Notice that depending on the value of $a$, the cube root could be positive or negative. Let's consider two cases: $a = 9$ and $a \geq 18$.
+   \\[5pt]
+   If $a = 9$, we have
+   \begin{align*}
+      2(9) + 9\sqrt[3]{(9)^2-16b} &= 27 \\
+      \sqrt[3]{81-16b} &= 1 \\
+      16b &= 80 \\
+      b &= 5
+   \end{align*}
+   So a potential solution with $a=9$ and $b=5$ for $a+b=14$. Since $b$ cannot be negative, we can quickly see that in the $a \geq 18$ case, $a+b\geq18>14$. This means $a+b=9+5=\boxed{14}$ must be our solution.
+\end{solution}
+
+\begin{problem}[A][5][AMATYC Spring 2006]
+   % Bezout's Identity ^ Algebra ^ Student Math League
+   Which of the following imply that the real number $x$ must be rational? \hspace{2.7em} \\ 
+   $$\text{(I): } x^5,x^7 \text{ are both rationals}$$
+   $$\text{(II): } x^6,x^8 \text{ are both rationals}$$
+   $$\text{(III): } x^5,x^8 \text{ are both rationals}$$
+   \multChoice{I,II}{I,III}{II,III}{III only}{none of these}
+\end{problem}
+
+\begin{solution}[B]
+   First note that $a,b \in \mathbb{Q}$ means that  $a/b$ and $ab$ are also rationals \\
+    Let's analyze (I), (II) and (III) to see what conditions are sufficient for $x$ to be a rational number.
+    \begin{align*}
+        (I) &\Rightarrow (x^7)^2 = x^{14} \in \mathbb{Q} \\
+        &\Rightarrow (x^5)^3 = x^{15} \in \mathbb{Q} \\
+        &\Rightarrow \frac{x^{15}}{x^{14}} = x \in \mathbb{Q}
+    \end{align*}
+    Then (I) is sufficient.
+    \begin{align*}
+        (III) &\Rightarrow  (x^8)^2 = x^{16} \in \mathbb{Q} \\
+        &\Rightarrow (x^5)^3 = x^{15} \in \mathbb{Q} \\
+        &\Rightarrow \frac{x^{16}}{x^{15}} = x \in \mathbb{Q}
+    \end{align*}
+    Then (III) is also sufficient. \\
+    Now let's show that (II) it is not by letting $x=\sqrt{2}$.\\ 
+Clearly $x^6,x^8 \in \mathbb{Q}$ but $x \notin \mathbb{Q}$. \\
+Then our answer is $\boxed{B}$ 
+\vskip 0.2cm
+In general if we have that $x^n,x^m \in \mathbb{Q}$ with $n,m \in \mathbb{Z}^{+} $, then we have $x \in \mathbb{Q}$ only when there exist $u,v \in \mathbb{Z}$ such that $nu+mv=1$, this happens if and only if $\gcd(n,m)=1$ , the reader may look at Bezout's Theorem to understand why. 
+\end{solution}
+
+\begin{problem}[A][6][AMATYC Spring 2010/14]
+   % Induction ^ Student Math League
+   For a function $f(x)$, define $f^2(x)=f(f((x))$ , $f^3(x)=f(f(f(x)))$, and so on. For the function 
+    $$f(x) = \sqrt{\frac{x^2+1}{x^2-1}} \text{ where } x \in (-\infty,-1) \cup (1,\infty) $$
+    We have $f^{2010}(x)$ to be: \\
+    \multChoice{$x$}{$|x|$}{$x^2$}{$1/x$}{$1/x^2$}
+\end{problem}
+
+\begin{solution}[B]
+      First let's find $f^2(x) = f(f(x))$:
+      \begin{align*}
+         f(f(x)) &= \sqrt{ \frac{ (x^2+1)/(x^2-1)+1 } { (x^2+1)/(x^2-1) -1} } \\
+         &= \sqrt{ \frac{ (2x^2)/(x^2-1) }{ 2/(x^2-1) } } \\
+         &= \sqrt{x^2} = |x|
+      \end{align*}
+      Note that for any $\varphi>1$ ,  $f^2(\varphi) = |\varphi| = \varphi$
+      Since $f(x)>1$, we have \\
+      \begin{align*}
+         f^3(x)=f^2(f(x)) = f(x) \\
+         f^4(x) = f(f^3(x)) = f(f(x)) = f^2(x) = |x|
+      \end{align*}
+      Since $f^n$ alternates between these two values, we see that
+      \begin{align*}
+         f^{2010}(x) &= f^2(f^{2008}(x)) = f^{2008}(x)\\
+         &= f^2(f^{2006}(x)) = f^{2006}(x) \\
+         &= \ldots \\
+         &= f^2(f^2(x)) = f^2(x) \\
+         &= \boxed{|x|}
+      \end{align*}
+      It is also possible to prove by induction that \\
+      $f^{2n+1}(x) = f(x)$ and $f^{2n}(x)=|x|$ for any $n \in \mathbb{Z}^{+}$.
+\end{solution}
+
+\newpage
+
+\section*{Calculus Problems}
+
+\begin{problem}[R][4][BMT 2021/4]
+   % Integrals ^ BMT
+   Compute the area of the region of points satisfying the inequalities 
+\[ y \leq 4 - \frac{x^2}{9}, \quad y \geq \frac{x^2}{9} - 4, \quad x \leq 4 - \frac{y^2}{9}, \quad \text{and} \quad x \geq \frac{y^2}{9} - 4. \]
+\end{problem}
+
+\vspace{-1.5cm}
+
+\begin{solution}[52]
+   The region enclosed by these parabolas is a square with extra parabola lumps of equal size, with vertices at the intersections of the parabolas at \((\pm 3, \pm 3)\). The area of a parabola lump is \(\int_{-3}^{3} \left( \left(4 - \frac{x^2}{9}\right) - 3 \right) \, dx = 4\), and the area of the square is \(6^2 = 36\), so the area of the region is $36 + 4 \cdot 4 = \boxed{52}$.
+\end{solution}
+
+\vspace{1cm}
+
+\begin{problem}[R][6][BMT 2021/6]
+   % Induction ^ Limits ^ BMT
+   Let \(x_1 = -4\), and for \(n \geq 1\) define \(x_{n+1} = -4^{x_n}\). Similarly, define $f_n$ as \(f_1(x) = \sin(\arccos(x))\), and for \(n \geq 1\): \(f_{n+1}(x) = f_1(f_n(x))\). Compute 
+    \[
+    \lim_{n \to \infty} f_n(2^{2^n}).
+    \]
+    You may assume that this limit exists.
+\end{problem}
+
+\begin{solution}[$\frac{1}{\sqrt{2}}$]
+   We start by finding \(\lim_{n \to \infty} x_n\). Say that this limit evaluates to \(x\). We are given that
+\[
+x_{n+1} = -4^{x_n}.
+\]
+Taking the limit of both sides as \(n \to \infty\),
+\[
+x = -4^x.
+\]
+Drawing the graphs for these functions, we observe that they intersect only once. Hence, there is only one solution for \(x\). After some guess and check, we find that \(x = -\frac{1}{2}\) works and must be the unique solution. \\[10pt]
+We now evaluate the desired limit:
+\[
+\lim_{n \to \infty} f_n(2^{x_n}) = \lim_{n \to \infty} f_n(2^x) = \lim_{n \to \infty} f_n\left(\frac{1}{\sqrt{2}}\right).
+\]
+Note that \(f_1\left(\frac{1}{\sqrt{2}}\right) = \frac{1}{\sqrt{2}}\), so it can be shown through induction that \(f_n\left(\frac{1}{\sqrt{2}}\right) = \frac{1}{\sqrt{2}}\) for all integers \(n\). \\[10pt]
+Therefore, we have
+\[
+\lim_{n \to \infty} f_n(2^{x_n}) = \boxed{\frac{1}{\sqrt{2}}}.
+\]
+\end{solution}
+
+\vspace{1cm}
+
+\begin{problem}[R][5][BMT 2021/7]
+   % Derivatives ^ BMT
+   Let \( c(x) \) be a function defined on the interval \(1 \leq x \leq 2\). Let \(c^{-1}(x)\) be the inverse of \(c(x)\). If
+   \[c(x) = \frac{e^x + e^{-2x}}{2}\]
+   Compute
+   \[ \int_{c(1)}^{c(2)} c^{-1}(x) \, dx. \]
+\end{problem}
+
+\vspace{-1.2cm}
+
+\begin{solution}[ $\frac{1}{2}e^2+\frac{5}{4}e^{-4}-\frac{3}{4}e^{-2}$]
+   We don't really want to figure out what $c^{-1}(x)$ is, so instead, we'll opt for a clever u-substitution.
+\begin{align*}
+    u = c^{-1}(x) \iff x &= c(u) \\
+    dx &= c'(u)du
+\end{align*}
+Also, we change the bounds:
+\begin{align*}
+    x = c(2) &\rightarrow u = 2 \\
+    x = c(1) &\rightarrow u = 1
+\end{align*}
+So now we have
+\begin{align*}
+    \int_{c(1)}^{c(2)} c^{-1}(x) \, dx = \int_{1}^{2} u \, c'(u) \, du
+\end{align*}
+which can be computed fairly easily using integration by parts.
+\begin{align*}
+    \int_{1}^{2} u \, c'(u) \, du &= u\,c(u) \bigg\rvert_{1}^{2} - \int_{1}^{2} c(u) \, du \\
+    &= \frac{1}{2}(u)(e^u + e^{-2u}) - \frac{1}{2}(e^u - \frac{1}{2}e^{-2u}) \bigg\rvert_{1}^{2} \\
+    &= \boxed{\frac{1}{2}e^2+\frac{5}{4}e^{-4}-\frac{3}{4}e^{-2}}
+\end{align*}
+\end{solution}
+
+\end{document}

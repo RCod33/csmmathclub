@@ -43,7 +43,7 @@
 
 .navLink {
   text-decoration: none;
-  color: var(--deep-secondary);
+  color: var(--secondary-color);
   font-weight: bold;
   font-family: 'Montserrat', sans-serif !important;
   padding: 5px;

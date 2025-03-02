@@ -1,0 +1,323 @@
+\input{Packages}
+\input{Definitions}
+
+%this removes numbering from the section, from some reason the \section*{} command doesnt work once you redefine it
+\setcounter{secnumdepth}{0} 
+
+
+\begin{document}
+\pagestyle{empty}
+\sloppy
+\maketitle
+
+\section{Selected Topic: Polynomials}
+
+\begin{problem}[A][3][AIME I 2018/1]
+    % Vieta ^ AIME
+    Let \( S \) be the number of ordered pairs of integers \( (a, b) \) with \( 1 \leq a \leq 100 \) and \( b \geq 0 \) such that the polynomial \( x^2 + ax + b \) can be factored into the product of two (not necessarily distinct) linear factors with integer coefficients. Find the remainder when \( S \) is divided by 1000.
+\end{problem}
+
+\begin{solution}[601]
+    For roots $r$ and $s$, we have \((x-r)(x-s)=x^2+(r+s)x+rs=x^2+ax+b\) and so $a=r+s$ and $b=rs$. To find potential $(a,b)$ pairs, we'll count $(r,s)$ pairs with $r \leq s$ for $1 \leq r+s \leq 100$, recalling that $r$ and $s$ are integers.
+
+    For example, for $a=3$, we have $(0,3)$ and $(1,2)$. For $a=4$, we have $(0,4)$, $(1,3)$, and $(2,2)$. In general, we have $(0,a), (1, a-1),\dots, \left( \left\lfloor\frac{a}{2}\right\rfloor, a - \left\lfloor\frac{a}{2}\right\rfloor \right)$ and thus $\left\lfloor\frac{a}{2}\right\rfloor + 1$ pairs for each $a$ from 1 to 100.
+        
+    Therefore, the total number of $(a,b)$ pairs are
+    \begin{align*}
+        S = \sum_{n=1}^{100} \left( \left\lfloor\frac{n}{2}\right\rfloor + 1 \right) = 1 + 1 +2+2+\dots+50+50+51=2\left[\frac{50(50+1)}{2}\right]+51 = 2601
+    \end{align*}
+    And thus the remainder after $S$ is divided by 1000 is \boxed{601}.
+\end{solution}
+
+\begin{problem}[A][4][AMATYC Fall 2018/15]
+    % Polynomials ^ Vieta ^ Student Math League
+    The roots of \( ax^2 + bx + c = 0 \), where \( a \), \( b \), and \( c \) are real numbers with \( a \neq 0 \), are \( r \) and \( s \). If \( \frac{r}{1+r} \) and \( \frac{s}{1+s} \) are the roots of \( x^2 + dx + e = 0 \) (\( d, e \) are real), find \( d + e \).
+\end{problem}
+\multOpt[5]{
+    $\dfrac{b-c}{a-b+c}$}[
+    $\dfrac{b-c}{b-a+2c}$][
+    $\dfrac{3c-b}{a-b+c}$][
+    $\dfrac{3c-b}{b-a+2c}$][
+    $\dfrac{b+c}{b-a+2c}$]
+
+\begin{solution}[A]
+    We start with
+    \begin{align*}
+          a(x-r)(x-s) = a[x^2+(-r-s)x+rs] &= x^2+(-r-s)x+rs\\
+          &= ax^2+bx+c
+    \end{align*}
+    Pairing up coefficients, we get \(-r-s=\frac{b}{a}\) and \(rs=\frac{c}{a}\). Now let's consider the other quadratic.
+    \begin{align*}
+        \left(x-\frac{r}{1+r}\right)\left(x-\frac{s}{1+s}\right) &= x^2 + \left(-\frac{r}{1+r}-\frac{s}{1+s}\right)x + \frac{rs}{(1+r)(1+s)}\\
+        &= x^2 + dx + e
+    \end{align*}
+    Pairing up coefficients again, we have
+    \begin{align*}
+        d = -\frac{r}{1+r}-\frac{s}{1+s} = \frac{(-r-s)-2rs}{(1+r)(1+s)} \qquad \text{and} \qquad e= \frac{rs}{(1+r)(1+s)}
+    \end{align*}
+    We still need \((1+r)(1+s)\) and we can get this by plugging in $-1$ for $x$ into the first quadratic to get
+    \begin{align*}
+        a(-1-r)(-1-s) = a(-1)^2+b(-1)+c \quad \Rightarrow \quad (r+1)(s+1) = 1 - \frac{b}{a} + \frac{c}{a}
+    \end{align*}
+    And thus
+    \begin{align*}
+        d+e &= \frac{(-r-s)-2rs}{(1+r)(1+s)} + \frac{rs}{(1+r)(1+s)}\\
+        &= \frac{(-r-s)-rs}{(1+r)(1+s)}\\
+        &= \frac{\frac{b}{a}-\frac{c}{a}}{1-\frac{b}{a}+\frac{c}{a}} = \boxed{\frac{b-c}{a-b+c}}
+    \end{align*}
+\end{solution}
+
+\begin{problem}[A][6][AMATYC Spring 2014/19]
+   % Vieta ^ Polynomials ^ Student Math League
+   The polynomial \( P(x) = x^4 + mx^3 + nx^2 - 24x + 144 \) has exactly 2 distinct integer roots, and no other roots, real or complex. Find \( m + n \).
+   \end{problem}
+\multOpt[5]{$-27$}[$-25$][$-23$][$-21$][$-19$]
+
+\begin{solution}[D]
+    For this problem, we'll use Vieta's Formulas, which calculate the coefficients of a polynomial, given its roots. To illustrate this, look at the polynomial $S(x)$ with roots \( r_1, r_2, \dots, r_n \).
+    \[
+        S(x) = (x-r_1)(x-r_2)\dots(x-r_n) = x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0
+    \]
+    Vieta's Formulas state that the coefficients \( a_0, a_1, \dots, a_n \) of \(S(x)\) will satisfy
+    \begin{equation*}
+    \begin{cases}
+    a_{n-1} = (-1)[r_1 + r_2 + \cdots + r_{n-1} + r_n] \\
+    a_{n-2} = (-1)^2[(r_1r_2 + r_1r_3 + \cdots + r_1r_n) + (r_2r_3 + r_2r_4 + \cdots + r_2r_n) + \cdots + r_{n-1}r_n] \\
+    \vdots \\
+     a_0 \quad = (-1)^n[r_1r_2 \cdots r_n].
+    \end{cases}
+    \end{equation*}
+    Or, more succinctly, 
+    \[
+        a_{n-k}=(-1)^k\!\sum_{1 \leq i_1 < i_2 < \cdots < i_k \leq n} 
+        \!\left( \prod_{j=1}^k r_{i_j} \right). 
+    \]
+    
+    In our case, to have exactly 2 distinct integer roots, $P(x)$ must be of the form A) $P(x)=(x-s)^2(x-t)^2$ or B) $P(x)=(x-s)(x-t)^3$.
+    
+    \underline{Case A.} Using Vieta's Formulas, we find that \(a_1=2s^2t+2st^2\) and \(a_0=s^2t^2\). We can set these equal to the values given by the problem.
+    \[
+        a_0 = s^2t^2 = 144
+        \qquad \qquad \qquad
+        a_1 = 2s^2t+2st^2 = -(-24)
+    \]
+    Considering \(a_0\) first we find that \(st=\pm12\), and then subbing this into the \(a_1\) equation gives us
+    \[
+        2(\pm12)s+2(\pm12)t=24 \quad \Rightarrow \quad s+t=\pm1.
+    \]
+    Since \(s\) and \(t\) are integers, one must be positive and the other negative to add to \(\pm1\), meaning we must have \(st=-12\) and \(s+t=-1\). Thus, WLOG, we have $s=3$ and $t=-4$. To find \(m\) and \(n\), we'll use Vieta's Formulas again:
+    \[
+        m = a_3 = -(2s+2t) = 2
+        \qquad \qquad
+        n = a_2 = s^2 + t^2 + 4st = -23
+    \]
+    So \(m+n=\boxed{-21}\). For the sake of thoroughness, we'll consider the other case as well.
+    
+    \underline{Case B.} We have
+    \[
+        a_0 = st^3 = 144
+        \qquad \qquad \qquad
+        a_1 = 3st^2 + t^3 = -(-24)
+    \]
+    Since $st^3=2^43^2=144$, we must have $t=2$ (there's no other factor we have three of). Plugging this into the $a_1$ equation gives us \(12s + 8 = 24 \ \Rightarrow \ 12s=16\), meaning $s$ is not an integer. This is impossible and so this case can be ruled out.
+\end{solution}
+
+\begin{problem}[A][5][AMC 12A 2017/23]
+    % Polynomials ^ Algebra ^ Student Math League
+    For certain real numbers \( a \), \( b \), and \( c \), the polynomial
+    \( g(x) = x^3 + ax^2 + x + 10 \)
+    has three distinct roots, and each root of \( g(x) \) is also a root of the polynomial
+    \( f(x) = x^4 + x^3 + bx^2 + 100x + c. \)
+    What is \( f(1) \)?
+\end{problem}
+\multOpt[5]{$-9009$}[$-8008$][$-7007$][$-6006$][$-5005$]
+
+\begin{solution}[C]
+    Since each root of $g(x)$ is a root of $f(x)$, we know
+    \[
+        f(x)=g(x)(x-r)=(x^3 + ax^2 + x + 10)(x-r)=x^4+(a-r)x^3+(1-ar)x^2+(10-r)x-10r.
+    \]
+    Then, knowing $f(x)=x^4 + x^3 + bx^2 + 100x + c$, we can pair terms together. The $x^1$ terms, for example, give us that $10-r=100$ and so we know $r=-90$. Additionally, the $x^3$ terms give us $a-r=1 \Rightarrow a+90=1 \Rightarrow a=-89$. This is actually all the information we need, since we can now determine $g(1)=1-89+1+10=-77$ and thus
+    \[
+        f(1) = g(1)(1-(-90)) = (-77)(91) = \boxed{-7007}.
+    \]
+\end{solution}
+
+\begin{problem}[A][3][University of Toronto Math Competition 2010/6]
+    % Polynomials ^ Algebra ^ Student Math League
+    Let \( f(x) \) be a quadratic polynomial. Prove that there exist quadratic polynomials \( g(x) \) and \( h(x) \) such that \( f(x)f(x+1) = g(h(x)) \).
+\end{problem}
+
+\begin{solution}
+    Consider $f(x)=a(x-r)(x-s)$, with $a,s,r\in\mathbb{C}$. We have
+    \begin{align*}
+        f(x)f(x+1)  &=  a(x-r)(x-s)\cdot a(x-r+1)(x-s+1)\\
+                    &=  a^2\, \big[(x-r)(x-s+1)\big]\big[(x-s)(x-r+1)\big]\\
+                    &=  a^2\,\big[\, {\color{red}((x-r)(x-s)+x)}-r\, \big]\big[\, {\color{red}((x-r)(x-s)+x)}-s\, \big]
+    \end{align*}
+    And so given quadratic $f(x)$, we can choose $g(x)=a^2(x-r)(x-s)$ and $h(x)=(x-r)(x-s)+x$ to satisfy. $\Box$
+\end{solution}
+
+\begin{problem}[A][3][Alexander Remorov, Polynomials, 2011/2a]
+    % Polynomials ^ Algebra ^ Functionals
+    Determine all polynomials \( P(x) \) with real coefficients such that \( P(x^2) = P^2(x) \).
+\end{problem}
+
+\begin{solution}
+    We claim our answer is the power function $P(x) = x^{n}$ for some nonnegative integer $n$. Which clearly works, now we show that is the only family of solutions. \\[3mm]
+    The leading coefficient $c \neq 0$ of $P$ must meet $c = c^2$, so $P$ is a monic polynomial, i.e, $c=1$.
+    Let $R = \{ r \, | P(r) = 0 \}$ be the set of roots of $P$ , then a for a root $r$ we have $0 = P^2(r) = P(r^2)$, so $r^2 \in R$, then $0 = P^2(r^2) = P(r^4) \Rightarrow r^4 \in R$, this could be extended to say $r^{2^k} \in R$. We can't have this process to go forever, so we must actually have $r = r^m$ for some nonnegative integer $m$ , because $R$ is finite. So the only roots that $P$ can have are -1, 0 and 1. With this in mind, we represent our polynomial as $P(x) = x^n (x-1)^i (x+1)^j$ and by definition we have
+    \begin{align*}
+        x^{2n} (x^2-1)^i (x^2 + 1)^j = x^{2n} (x-1)^{2i} (x+1)^{2j} \\ 
+        \text{at $x$ = 2: } \, 3^i \cdot 5^j = 3^{2j} \Rightarrow i,j=0 \\
+    \end{align*}
+    This leaves $P(x) = x^n$ as intended $\Box$
+\end{solution}
+
+\begin{problem}[A][4][Alexander Remorov, Polynomials, 2011/2b]
+    % Polynomials ^ Algebra ^ Functionals
+    Determine all polynomials \( P(x) \) with real coefficients such that \( P(x^2) = P(x)P(x+1) \).
+\end{problem}
+
+\begin{solution}
+    Consider \(P(x) = a(x-r)(x-s)\), then set \(P(x^2)=P(x)P(x+1)\):
+    \begin{align*}
+        P(x^2) &= P(x)P(x+1)\\
+        a(x^2-r)(x^2-s) &= a(x-r)(x-s)\cdot a(x-r+1)(x-s+1)\\
+                    &=  a^2\, \big[(x-r)(x-s+1)\big]\big[(x-s)(x-r+1)\big]\\
+                    &= a^2\,\big[\, (x^2+(1-r-s)x+rs)-r\, \big]\big[\, (x^2+(1-r-s)x+rs)-s\, \big]
+    \end{align*}
+    For the sides to be equal, we must have $a^2=a \ \Rightarrow \ a=1$, as well as
+    \[
+    \begin{cases}
+        1-r-s=0\\rs=0
+    \end{cases}
+    \qquad \Rightarrow \qquad
+    s=0,\ r=1
+    \]
+    (assuming, WLOG, that $r>s$). And so we claim that all polynomials satisfying \( P(x^2) = P(x)P(x+1) \) are of the form \( P(x) = x^n(x-1)^n \) for \(n\in\mathbb{N}\).
+
+    To prove this, we'll use a similar strategy as was used for Problem A6. Let $R = \{ r \, | P(r) = 0 \}$ be the set of roots of $P$. So for a root $r\in R$, we have \(P(r) = 0\ \Rightarrow \ P(r)P(r+1)=0 \ \Rightarrow \ P(r^2)=0\) and thus $r^2 \in R$ also. It then follows that \( P(r^2)P(r^2+1)=P(r^4)=0 \) and so we have \( r^4 \in R\) as well. This can be continued forever, meaning that for all $r \in R$, we have $r^{2n} \in R$ for $n \in \mathbb{N}$. But since $R$ must be finite (polynomials can't have infinite roots), we must have \(r=r^2=r^4=r^{2n}\), and thus our only actual roots are $R=\{-1,0,1\}$. This gives us \(P(x)=x^i (x-1)^j (x+1)^k\) and we then have
+    \begin{align*}
+        P(x^2)&=P(x)P(x+1)\\
+        (x^2)^i (x^2-1)^j (x^2+1)^k &= x^i(x-1)^j(x+1)^k\cdot(x+1)^ix^j(x+2)^k\\
+        x^{2i}(x-1)^j(x+1)^j(x^2+1)^k &= x^{i+j}(x-1)^j(x+1)^{i+k}(x+2)^k.
+    \end{align*}
+    At $x=2$ we get \(2^{2i}3^j5^k=2^{i+j+2k}3^{i+k}\), giving us
+    \[
+        \begin{cases}
+            2i=i+j+2k\\
+            j=i+k\\
+            k=0
+        \end{cases}
+        \quad \Rightarrow \quad
+        j = i, \ k = 0
+    \]
+    and thus all solutions are of the form \(P(x)=x^n(x-1)^n,\ n\in\mathbb{N}\).
+\end{solution}
+
+\begin{problem}[A][10][Cuban TST 2023]
+    % Polynomials ^ Algebra ^ Vieta
+    Let $P$ be a polynomial over the reals with degree $n$, such that each coefficient is 1, with the exception of one of them. In other words 
+    $$ P(x) = a_nx^n + a_{n-1}x^{n-1} + \ldots + a_1x + a_0 \hspace{7pt} \text{ for all } x \in \mathbb{R}$$
+    Such that there's a unique $k$ for which $a_i = 1$ whenever $i \neq k$ and $a_k \neq 1$. If all the roots of $P$ are real, find the maximum possible $n$ for which such $P$ exists
+\end{problem}
+
+\begin{solution}[$n=4$]
+    Let $a_k$ be the coefficient different from 1 and let $r_1, r_2, \ldots , r_n$ be the roots of $P$. We will use $\sum r_{1} r_2 \cdots r_i$ to refer to the sum of the $\binom{n}{i}$ terms defined by the product of taking $i$ at a time from $r_1, r_2, \ldots, r_n$. For example 
+    $$\sum r_1 = r_1+r_2 + \ldots + r_n  \hspace{7pt} \text{and} \hspace{7pt} \sum r_1r_2 = \sum_{1 \leq i < j \leq n} r_ir_j$$
+    We claim that $n \leq 4$ always holds by using Contradiction; showing that otherwise we would have at least a complex root.  \\[3mm]
+    By the Vietta's rellations, we have:
+    \begin{align*}
+        \text{(I): } \sum r_1 = -a_{n-1} && \text{(III): } \sum r_1 r_2 \cdots r_{n-2} = (-1)^{n-2} a_2 \\
+        \text{(II): } \sum r_1r_2 = a_{n-2} && \text{(IV): }\sum r_1 r_2 \cdots r_{n-1} = (-1)^{n-1} a_1
+    \end{align*}
+    As a special case, we call $R = r_1r_2 \cdots r_n = (-1)^n$. \\[1.5mm]
+    Claim 1: $n-2 \leq k \leq n$ \\[1.2mm]
+        Assume by contradiction that $1 = a_n = a_{n-1} = a_{n-2}$, then by (I) and (II):
+        \begin{align*}
+            \left ( \sum r_1 \right )^2 = \sum r_1^2 + 2 \sum r_1 r_2 \\
+            \iff -1 = \sum r_1^2 
+        \end{align*}
+        Since the sum of all the squares of the roots is -1, it cannot be the case that all are real, therefore $a_k$ must be within the first three coefficients. $\Box$ \\[2mm]
+    Claim 2: $0 \leq k \leq 2$ \\[1.2mm]
+        In a similar manner, assume by contradiction that $1 = a_0 = a_1 = a_2$, then by (III) and (IV):
+        \begin{align*}
+            \sum r_1 r_2 \ldots r_{n-1} = R \sum \frac{1}{r_1} = (-1)^{n-1}\iff \sum \frac{1}{r_1} = -1 \\
+            \sum r_1r_2 \cdots r_{n-2} = R \sum \frac{1}{r_1 r_2} = (-1)^{n-2} \iff \sum \frac{1}{r_1 r_2} = 1 \\
+            \left( \sum \frac{1}{r_1}\right)^2 = \sum \frac{1}{r_1^2} + 2\sum \frac{1}{r_1 r_2} \iff \sum \frac{1}{r_1^2} = -1
+        \end{align*}
+        Like Claim 1, this is impossible as long as all the roots are reals. So $a_k$ must also be within the last three coefficients $\Box$ \\[1.5mm]
+        Joining Claims 1 and 2, we have $\ n-2 \leq k \leq 2 \Rightarrow n \leq 4$. \\[2mm]
+    Claim 3: $n=4$ works \\[1.2mm]
+        Set $k = 2$ and $a_2 = -4$:
+        \begin{align*}
+            P(x) = x^4 + x^3 - 4x^2+ x + 1 = (x-1)^2 (x^2+3x+1)
+        \end{align*}
+        Since $n \leq 4$, and $n=4$ works, it must be our maximum. $\Box$
+\end{solution}
+
+\begin{problem}[A][9][INMO 2018]
+    % Polynomials ^ Algebra ^ Functionals
+    Find all polynomials with real coefficients \( P(x) \) such that  
+\( P(x^2 + x + 1) \) divides \( P(x^3 - 1) \).
+\end{problem}
+
+\begin{solution}[$P(x) = cx^n$ for an arbitrary constant $c$ and some positive integer $n$]
+    Our solution works since $c(x^2+x+1)^n \mid c (x^3-1)^n = c(x-1)^n(x^2+x+1)^n$. Now we aim to show that this is our only solution. Proceed by contradiction, and assume that $P$ has at least two different roots. \\[3mm]
+    Let $R,n$ be the set of roots and the degree of $P$, respectively. We will define $r_+,r_-$ for every $r \in R$ as the two solutions of the equation $r_{\pm}^2 + r_{\pm}+1 = r$. An important property from Vietta's relations is that $r_+ + r_- = -1$. 
+    \begin{align*}
+        \forall r \in R: \hspace{10pt} P(r) = P(r_{\pm}^2 + r_{\pm}+1) = 0 \Rightarrow P(r_{\pm}^3 - 1) = 0 
+    \end{align*}
+    Since $R$ is finite, we should have $a,b \in R$ such that 
+    \begin{align*}
+        r(r_+-1) = a \hspace{5pt} \text{ and } \hspace{5pt} r(r_--1)=b \\
+        \Rightarrow r(r_- + r_+ - 2) = -3r = a + b \hspace{7pt} 
+    \end{align*}
+    The result is equivalent to say that, for any $a,b \in R: a\neq b$, we also have $-\frac{a+b}{3} \in R$, from which $R$ becomes arbitrarily large, unless our assumption is false, and $P$ only has one root, which would mean $a=b=r$ and $a+b = -3r \Rightarrow r=0$. So $P(x)=cx^n$, for some constant $c$ $\Box$  
+\end{solution}
+
+\begin{problem}[A][10][Theorem on Finite Differences]
+    % Polynomials ^ Algebra 
+    Define the finite difference of a sequence \( a_1, a_2, \dots \) as  
+\[
+a_2 - a_1, \quad a_3 - a_2, \quad a_4 - a_3, \dots.
+\]
+The \( d \)th degree finite difference is the sequence obtained by iterating that process \( d \) times. 
+
+Show that if the \( d \)th degree finite difference is a nonzero constant \( c \), then the sequence is given by a polynomial of degree \( d \), with leading term \( \frac{c}{d!} \).
+\end{problem}
+
+\begin{solution}
+    Let $P$ be the set of all polynomials with real coefficients. For the sake of simplicity, we will make a function $\mathcal{L}: P \rightarrow \mathbb{R}$ that takes a polynomial $p \in P$ and returns its leading coefficient, for example if $p(x) = 3x^2-1$, then  $\mathcal{L}(p)=3$. An important property is that, for a constant $r$, we have $\mathcal{L}(rp) = r \mathcal{L}(p)$  \\[2mm]
+    \textbf{Claim 1:} For $n,k \in \mathbb{N}$, the sum $1^k + 2^k + \ldots + n^k$ can be represented as a polynomial of degree $k+1$ in terms of $n$, more than that, $\mathcal{L}(1^k + 2^k + \ldots + n^k) = \frac{1}{k+1}$ \\[3mm]
+    This sounds strange at first, but recall fairly known identities like $1 + 2 + \ldots + n = \frac{n(n+1)}{2}$ or $1^2+2^2 + \ldots + n^2 = \frac{n(n+1)(2n+1)}{6}$ which seem to agree with this claim. Now consider the next telescopic sum, aimed to add everything and lead only the first and last term on the LHS. Here $p(n)$ corresponds to the rest of the terms of the binomial expansion, which are unimportant to $\mathcal{L}$ since $\deg p < k$
+    \begin{align*}
+        (n+1)^{k+1} - n^{k+1} &= (k+1)n^k + p(n) \\
+        n^{k+1} - (n-1)^{k+1} &= (k+1)(n-1)^k + p(n-1) \\
+        &\vdots \\
+        2^k - 1^k &= (k+1)2^k + p(1) \\
+        \Rightarrow (n+1)^k - 1 &= (k+1)(1^k+2^k+ \ldots + n^k) + \sum_{i=1}^n p(i) \\
+        \Rightarrow \mathcal{L}((n+1)^k-1) &= \mathcal{L}((k+1)(1^k+2^k + \ldots+n^k)) \\
+        \Rightarrow1 &= (k+1) \mathcal{L}(1^k + 2^k + \ldots + n^k) \hspace{7pt}\Box
+    \end{align*}
+    Note that once we get $1^k + 2^k + \ldots n^k$ in terms of $p$ and $(n+1)^k$, it already means that it's a polynomial, so it's valid within the Domain of $\mathcal{L}$, which was introduced for the only purpose of forgetting the rest of terms, so we don't really need to rely on Faulhaber's formula. \\[2mm]
+    Now going back to the problem, call $a_i^d$ to the $i$th term of the $d$th degree finite difference, so it is not the case that $a^2_3 = a_3 \cdot a_3$, but rather $a^2_3 = a_4^1 - a_3^1 = a_5 - 2a_4 + a_3$. \newpage
+    \textbf{Claim 2:} If $a_{i+1}^d = c$ for each $i \geq 1$, then $a_i$ is a polynomial in terms of $i$, with degree $d$ and $\mathcal{L}(a_i) = \frac{c}{d!}$ \\[2mm]
+    We prove this claim through induction, if $d=1$ then $a^1_i = a_{i+1} - a_i = c$, from where the recurrence give us $a_n = (n-1)c + a_1$ which completes the base case. (note that for a general $n$, $a_1$ is just a constant). \\
+    Now for the inductive hypothesis, assume that if $a_n^d = c$ then 
+    $$a_n = \frac{c}{d!} n^d + p(n) \hspace{7pt} \text{ again $p$ just means all the other terms}$$
+    Now we assume that $a_n^{d+1} = c$, which by the induction step means that the first degree difference is a polynomial of degree $d$, and:
+    \begin{align*}
+        a_{n+1} - a_n &= \frac{c}{d!} n^d + p(n) \\
+        a_n - a_{n-1} &= \frac{c}{d!} (n-1)^d + p(n-1) \\
+        \vdots \\ 
+        a_2 - a_1 &=  \frac{c}{d!} 1^d + p(1) \\
+        \Rightarrow a_{n+1} - a_1 &= \frac{c}{d!}(1^d + 2^d + \ldots + n^d) + \sum_{i=1}^n p(i) \\
+    \end{align*}
+    Then by Claim 1:
+     $$ \mathcal{L} (a_{n+1}) = \frac{c}{d!} \cdot \frac{1}{d+1} = \frac{c}{(d+1)!}\hspace{7pt} \Box $$
+    Here is also important to see that once we have $a_{n+1}$ in terms of other polynomials (and the constant term $a_1)$ then we can say it's a polynomial, and only then use $\mathcal{L}$, and since Claim 2 is pretty much the problem statement, we are done.
+\end{solution}
+
+\end{document}
