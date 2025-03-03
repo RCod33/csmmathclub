@@ -55,8 +55,8 @@ function Problem() {
                   </h2>
                </div>
                {/* Right side: Major Topic */}
-               <h2 className={styles.majorTopic}>
-                  <MathJax>{currentProblem.majorTopic}</MathJax>
+               <h2 className={styles.subTopic}>
+                  <MathJax>{currentProblem.subTopic}</MathJax>
                </h2>
             </div>
             <div className={styles.problemBox}>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useMemo, useContext } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../Componetns/Pagination/Pagination";
@@ -46,7 +47,7 @@ function ProblemSet() {
                     {problem.title}
                   </Link>
                 </td>
-                <td>{problem.majorTopic}</td>
+                <td>{problem.subTopic}</td>
                 <td>{`Level: ${problem.problemLevel}`}</td>
                 <td>
                   {problem.weekDiscussed[0] === "0" &&
