@@ -1,27 +1,62 @@
-/* CategoryFilter.module.css */
-.button {
-    background-color: #007bff;
-    color: white;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+}
+
+.selectedCategories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.selectedButton {
+    background: var(--primary-color);
+    justify-content: center;
+    color: black;
     border: none;
     padding: 8px 12px;
-    font-size: 16px;
+    border-radius: 20px;
     cursor: pointer;
-    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     transition: background 0.3s;
 }
 
-.button:hover {
-    background-color: #0056b3;
+.dropdownButton {
+    background: white;
+    border: 1px solid var(--light-gray);
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.dropdownButton:hover {
+    background: #f0f0f0;
+    color: black;
 }
 
 .menu {
     list-style: none;
     padding: 0;
-    margin: 8px 0;
+    margin-top: 5px;
     background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 200px;
+    text-align: left;
 }
 
 .menu li {
@@ -33,9 +68,10 @@
     background: none;
     border: none;
     text-align: left;
-    padding: 8px;
+    padding: 10px;
     cursor: pointer;
-    transition: background 0.2s;
+    font-size: 14px;
+    transition: background 0.3s;
 }
 
 .menu li button:hover {

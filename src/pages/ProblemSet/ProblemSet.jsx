@@ -1,27 +1,28 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../Componetns/Pagination/Pagination";
 import FilterBox from "../../Componetns/FilterBox/FilterBox";
-import problems from "../../TEX_to_JSON/JSON_Files/Problems.json";
+import { ProblemContext } from "../../Context/ProblemContext/ProblemContext";
+import { FiltersProvider } from "../../Context/FiltersContext/FiltersContext";
 import styles from "./ProblemSet.module.css";
 
-const pageRange = 30;
-const totalProblems = problems.length;
-const totalPages = Math.ceil(totalProblems / pageRange);
+//todo: cambiar el nombre de filteredProblems por filtred filteredProblems
 
 function ProblemSet() {
   const [currentProblemPage, setCurrentProblemPage] = useState(0);
+  const { filteredProblems, totalPages, pageRange } =
+    useContext(ProblemContext);
 
-  const paginatedProblems = useMemo(
-    () =>
-      problems.slice(
+  if (!Array.isArray(filteredProblems)) return null;
+
+  //prettier-ignore
+  const paginatedProblems = useMemo(() =>
+      filteredProblems.slice(
         currentProblemPage * pageRange,
         currentProblemPage * pageRange + pageRange
       ),
-    [currentProblemPage]
+    [currentProblemPage, filteredProblems, pageRange]
   );
-
-  if (!Array.isArray(problems)) return null;
 
   return (
     <>
@@ -64,7 +65,9 @@ function ProblemSet() {
           onPageChange={setCurrentProblemPage}
         />
       </section>
-      <FilterBox />
+      <FiltersProvider>
+        <FilterBox />
+      </FiltersProvider>
     </>
   );
 }
