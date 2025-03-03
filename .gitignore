@@ -27,13 +27,13 @@ src/TEX_to_JSON/*.exe
 *.sw?
 
 #Python Auxiliar Files
-src/TEX_to_JSON/__pycache__
+src/Logic/ParsingLogic/__pycache__
 
 # Math Club Auxiliar Files
-src/TEX_to_JSON/Math_Club_Problems/**/*.aux
-src/TEX_to_JSON/Math_Club_Problems/**/*.pdf
-src/TEX_to_JSON/Math_Club_Problems/**/*.fdb_latexmk
-src/TEX_to_JSON/Math_Club_Problems/**/*.fls
-src/TEX_to_JSON/Math_Club_Problems/**/*.synctex.gz
-src/TEX_to_JSON/Math_Club_Problems/**/*.xdv
-src/TEX_to_JSON/Math_Club_Problems/**/*.txt
+src/MathClubProblems/**/*.aux
+src/MathClubProblems/**/*.pdf
+src/MathClubProblems/**/*.fdb_latexmk
+src/MathClubProblems/**/*.fls
+src/MathClubProblems/**/*.synctex.gz
+src/MathClubProblems/**/*.xdv
+src/MathClubProblems/**/*.txt

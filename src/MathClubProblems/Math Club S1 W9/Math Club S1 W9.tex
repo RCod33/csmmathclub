@@ -1,0 +1,384 @@
+\input{W9/Packages}
+\input{W9/Definitions}
+\definecolor{midnightblue}{HTML}{006699}
+\fancyhf{}
+\fancypagestyle{firstpageheader}{
+    \fancyhf{}
+% Header
+    \fancyhead[L]{\MathClubW{9}}
+    \fancyhead[R]{Date}
+% Footer
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt} 
+}
+
+\parindent 0pt
+\marginparsep 3pt
+
+\NewDocumentCommand{\myFloor}{o m}{%
+  \ensuremath{%
+  \left\lfloor%
+  \IfValueTF{#1}{%
+    \frac{#2}{#1}%
+  }{%
+    #2%
+  }
+  \right\rfloor%
+  }
+}
+
+\setlength{\baselineskip}{5\baselineskip}
+\setlength{\parskip}{5pt}
+
+\NewDocumentCommand{\myVertex}{o m m m}{%
+    \Vertex[x=#2,y=#3, size=0.4, label=$#4$, position=178, fontscale=1.6,
+            style={color=\IfValueTF{#1}{#1}{red}}]{#4}%
+}
+
+\newcommand{\simpleVertex}[3]{
+    \Vertex[x=#1,y=#2,size=0.4,position=180,fontscale=1.6,style={color=gray}]{#3}
+}
+\newcommand{\invisibleVertex}[3]{
+    \Vertex[x=#1,y=#2,size=0.5,opacity =0,position=180,fontscale=2,style={color=white}]{#3}
+}
+
+\newcommand{\AWAY}{A\mkern0mu W\mkern-4mu A\mkern0mu Y}
+\newcommand{\AMA}{A\mkern0mu M\mkern-2mu A}
+\newcommand{\TYC}{T\mkern1mu Y\mkern-2mu C}
+
+\clubpenalty=500 % Control break penalty for single lines at top
+\widowpenalty=500 % Control break penalty for single lines at bottom
+\displaywidowpenalty=500
+\interlinepenalty=0 % Encourage breaks between lines
+
+
+\begin{document}
+
+\sloppy
+\thispagestyle{fancy}
+
+\section*{AMATYC Problems}
+
+\begin{problem}[A][1][AMATYC Fall 2019/3]
+    % Algebra ^ Student Math League
+    Which of the following numbers has the greatest value?
+\end{problem}
+
+\multOpt[5]{$2^{1000}$}[$6^{500}$][$30^{200}$][$50^{100}$][$1000^{75}$]
+
+\begin{solution}[B]
+    We will compare $\boxed{6^{500}}$ to every other possibility to show it is the greatest:
+    \begin{align*}
+        \textcolor{blue}{6^{500}} >& 6^{225}\cdot6^{225}>2^{225}\cdot5^{225} = \textcolor{red}{1000^{75}} > 2^{200}\cdot5^{100}=\textcolor{red}{50^{100}} \\
+        \textcolor{blue}{6^{500}} >& 4^{500} = \textcolor{red}{2^{1000}} = 16^{200} \cdot 2^{200} >
+        15^{200} \cdot 2^{200} = \textcolor{red}{30^{200}} 
+    \end{align*}
+\end{solution}
+
+\begin{problem}[N][1][AMATYC Fall 2018/13]
+    % Divisibility ^ Student Math League
+    Let $R$ be the remainder when $1! + 2! + 3! + \dots + 100!$ is divided by $15$. Let $N$ be the smallest integer greater than $1$ such that $N^N$ is the square of an integer. Find $R + N$.
+\end{problem}
+
+\multOpt[5]{$5$}[$7$][$9$][$13$][$17$]
+
+\begin{solution}[A]
+    Note that for $n\geq 5$: $3 \mid n!$ and $5\mid n!$, so $15 \mid n!$ , we also have $15 \mid 4!+3! = 30$, so $R=1!+2!=3$. On the other hand we see that $N=2$ is valid, and is minimum since it is the smallest integer less than 1, so $R+N=3+2=\boxed{5}$
+\end{solution}
+
+\begin{problem}[N][2][AMATYC Spring 2014/7]
+    % Divisibility ^ Student Math League
+    The 5-digit number $217xy$ has 5 different digits and a factor of $45$. Find $x + y$.
+\end{problem}
+
+\multOpt[5]{$8$}[$9$][$10$][$11$][$12$]
+
+\begin{solution}[A]
+     For the number to be divisible by 5, we must have $y\in \{0,5\}$, and for it to be divisible by 9, that $9 \mid 2+1+7+x+y \Rightarrow 9 \mid x+y+1$. If $y=0$ we get $x=8$, and if $y=5$ we get $y=3$, both cases have $x+y=\boxed{8}$
+\end{solution}
+
+\begin{problem}[N][4][AMATYC Fall 2015/12]
+    % Divisibility ^ Diophantic Equations ^ Student Math League
+    For $n$ a nonnegative integer, find all positive integer values of $a$ and $b$ such that $4n + 9 = a^2$ and $9n + 1 = b^2$, and then find the sum of all such $a$’s and $b$’s.
+\end{problem}
+
+\multOpt[5]{4}[10][32][36][42]
+
+\begin{solution}[D]
+     Let's get rid of the $n$:
+    \begin{align*}
+        4n+9=a^2 &\iff 36n+81=9a^2 \\
+        9n+1 = b^2 &\iff 36n+4=4b^2 \\
+        \Rightarrow77 &= 9a^2-4b^2 
+        \\11\cdot 7&=(3a+2b)(3a-2b) \\
+    \end{align*}
+    Then $3a+2b$ and $3a-2b$ are divisors of 77, since $3a+2b>3a-2b$ we have two possibilities:
+    \begin{align*}
+        &\text{First Case: }  &\text{Second Case: }  \\
+        &3a+2b=77                &3a+2b=11\\
+        &3a-2b=1                 &3a-2b=7\\
+        \Rightarrow a&=13,b=19  &\Rightarrow a=3,b=1
+    \end{align*}
+    It is easy to check that both cases work, so our answer is 19+13+3+1 = $\boxed{36}$
+\end{solution}
+
+\begin{problem}[P][4][AMATYC Fall 2019/13]
+     %  Probability ^ Student Math League
+     A biased die is rolled until two $1$s are rolled in succession, or until a $1$ and then a $2$ are rolled in succession (in that order). The die lands on $1$ with probability $50\%$, on $2$ with probability $20\%$, and on something else with probability $30\%$. What is the probability that the rolling will end with successive $1$s?
+\end{problem}
+\multOpt[5]{$1/3$}[$1/2$][$4/7$][$2/3$][$5/7$]
+
+\begin{solution}[E]
+    Call $\mathbb{P}_1, \mathbb{P}_2$ to the probabilities of finishing with two consecutive 1s and finishing with a 1 after a 2, respectively. Since these are the only ways to finish the game we have $\mathbb{P}_1+\mathbb{P}_2=1$ Define $D_k$ to the statement "the current roll landed on $k$". Let's represent a game that is one step away from being finished by a string $R$, that ends in 1, using $\{1,2,x\}$ where $x$ means anything different from 1 and 2. For example a valid string is $1xx221xx1$. Let $\mathbb{P}(R)$ be the probability of $R$ to occur. Then 
+    \begin{align*}
+        \mathbb{P}(R \rightarrow D_1) = 0.5\mathbb{P}(R)\\
+        \mathbb{P}(R \rightarrow D_2) = 0.2\mathbb{P}(R)
+    \end{align*}
+    So the ratio of finishing $R$ with a 1 to finishing $R$ with a 2 is $0.5 : 0.2 = 5:2$. By going through all possible strings $R$ we see that $\mathbb{P}_1 : \mathbb{P}_2 = 5:2$, then 
+    \begin{align*}
+        \mathbb{P}_1+\mathbb{P}_2 = 1 &\iff \mathbb{P}_1+\frac{2}{5}\mathbb{P}_1=1 \\
+        &\iff \mathbb{P}_1 = \boxed{\frac{5}{7}}
+    \end{align*}
+\end{solution}
+
+\begin{problem}[C][3][AMATYC Fall 2014/8]
+    % Algebra ^ Student Math League
+    In the equation $\AMA + \TYC= \AWAY$, identical letters are replaced by identical digits and different letters are replaced by different digits $0-9$ to produce one 4-digit and two 3-digit numbers. If leading digits cannot be $0$, how many different values of $Y$ are possible?
+\end{problem}
+\multOpt[5]{3}[4][5][6][7]
+
+
+
+\begin{solution}[A]
+    Because it's the sum of two 3-digit numbers, we have $1000<\AWAY<2000$, meaning $A=1$ and $100<\AMA<200$. This further implies $800<\TYC<1000$ and so $1000<\AWAY<1200$. This means $W=0$ or $W=1$, and we can conclude $W=0$ since 1 is taken by $A$. It also suggests either $T=8$ or $T=9$. To identify whether $8$ or $9$ is correct, let's use $A=1$ and $W=0$ to update the bounds for $\AMA$ and $\AWAY$, recalling that each letter is a unique digit.
+    \begin{alignat*}{7}
+        1012\ &\leq& \ \ &\mathmakebox[1.3cm][c]{\AWAY}& \ &\leq& \ \ 1019 \\
+         121\ &\leq& \ \ &\mathmakebox[1.3cm][c]{\AMA}& \ &\leq& \ \ 191 \; \,
+    \end{alignat*}
+    Then, since $\TYC = \AWAY - \AMA$, we have:
+    \begin{alignat*}{7}
+        1012 - 191 \ &\leq& \ \ &\mathmakebox[2.7cm][c]{\AWAY - \AMA}& \ &\leq& \ \ 1019 - 121\\
+              821 \ &\leq& \ &\mathmakebox[2.7cm][c]{\TYC}& \ \ &\leq& \ \ 898 \qquad \quad \,
+    \end{alignat*}
+    So $T=8$. Now, taking mod 10 of $\AMA + \TYC = \AWAY$ (giving us just the last digits) and plugging in $1$ for $A$ we get
+    \begin{align*}
+        A + C \equiv Y \quad \Rightarrow \quad
+        1 + C \equiv Y \pmod{\!10}\text{.}
+    \end{align*}
+    Since $C,Y<10$, we can replace congruence with equality to get $Y=C+1$ as long as $C\neq9$. This is fine since $C=9$ would imply $Y=0$ which we can't have. Furthermore, since $C,Y \neq 0,1,8,9$ is known, our possible solutions are $(C,Y)=\{(2,3),\, (3,4),\, (4,5),\, (5,6),\, (6,7)\}$.
+    
+    So a tentative answer is 5, but let's be sure that considering $M$ will not impose any further restrictions. Plugging $(A,C,M,T,W,Y)=(1,\ Y-1,\ M,\ 8,\ 0,\ Y)$ into $\AMA+\TYC=\AWAY$ and then rearranging gives us    
+    \begin{align*}
+            (100A + 10M + 1) + (100T + 10Y + C) &= 1000A + 100W + 10A + Y\\ 
+            \Rightarrow M &= 11 - Y \text{.}
+    \end{align*}
+    Now we can describe all possible solutions as $S_y=(1,\ y-1,\ 11-y,\ 8,\ 0,\ y)$ for $3 \leq y \leq 7$.
+    \[\begin{array}{l@{\hskip 30pt}l@{\hskip 30pt}l}
+    S_3 = (1, 2, 8, 8, 0, 3) & S_4 = (1, 3, 7, 8, 0, 4) & S_5 = (1, 4, 6, 8, 0, 5) \\[1mm]
+    S_6 = (1, 5, 5, 8, 0, 6) & S_7 = (1, 6, 4, 8, 0, 7)
+    \end{array}\]
+    $S_3$ and $S_6$ have duplicates and are invalid. Therefore there are \fbox{3} possible solutions.
+\end{solution}
+
+\begin{problem}[A][1][AMATYC Fall 2006/16]
+    % Algebra ^ Student Math League
+    Find the number of points of intersection of the unit circle and the graph of the equation\\
+    $$y^2 - xy - x|y| + x|x| = 0.$$
+\end{problem}
+
+\multOpt[5]{$3$}[$4$][$5$][$6$][$7$]
+
+\begin{solution}[A]
+    Recall that all points $(x,y)$ in the unit circle are defined by $x^2+y^2=1$, with that in mind we divide the equation in 4 cases regarding the signs of $x$ and $y$:\\
+    If $x,y \geq 0$ then $0=y^2-2xy+x^2=(x-y)^2 \iff x=y=1/\sqrt2$\\
+    If $x,y < 0$ then $y^2=x^2 \iff y=x=-1/ \sqrt2$\\
+    If $y \geq 0 >x$ then $y^2-2xy-x^2=0 \iff (y-x)^2=2x^2 \iff y=(1-\sqrt2)x$, since $1<\sqrt2$ this will give us a valid solution, but it's too ugly to write it here, you can find it by yourself\\
+    If $x \geq 0 > y$ then $0=x^2+y^2=1$ which is clearly false\\
+    So we end up with $\boxed{3}$ intersections
+\end{solution}
+
+\section*{Assorted Problems}\vspace{-15pt}
+
+\begin{problem}[N][6][Putnam 2020-A1]
+   % Divisibility ^ MOD ^ Putnam
+    How many positive integers \( N \) satisfy all of the following three conditions?
+    \begin{enumerate}[label=(\roman*), topsep=1mm]
+        \item \( N \) is divisible by \( 2020 \).
+        \item \( N \) has at most \( 2020 \) decimal digits.
+        \item The decimal digits of \( N \) are a string of consecutive ones followed by a string of consecutive zeros.
+    \end{enumerate}%
+\end{problem}
+
+\begin{solution}[508,536]
+    Take a valid example like 111,100, this is the same as:\\
+    $111,111-11=(999,999-99)/9=\left[(10^6-1)-(10^2-1)\right]/9=(10^6-10^2)/9$\\
+    In general, iii) means that $N$ is of the form $(10^a-10^b)/9$. More than that, i) means that $10^a-10^b \equiv 0 \pmod{2020}$, since $2020=2^2 \cdot 5 \cdot 101$, we can analyze each of its prime factors separately.\\
+    $9N=10^b(10^{a-b}-1)$, then $4 \nmid (10^{a-b}-1) \Rightarrow 4\mid 10^b \Rightarrow b\geq 2$\\ 
+    Since $N$ finishes with a string of zeros, it is evident that is always divisible by 5, same as saying that $10^a-10^b\equiv0-0=0 \pmod 5$\\
+    To ensure $101 \mid N$, knowing $101 \nmid 10^b$, we should have $10^{a-b} \equiv 1 \pmod{101}$, a quick computation shows $10^x \equiv 10,-1,-10,1 \pmod{101}$, same as saying $\operatorname{ord}_{101}(10) = 4$, anyhow, this means that $4 \mid a-b$.\\
+    Take ii) to see $a\leq 2020$, if we fix $b$, then we should have $\myFloor[4]{2020-b}$ choices for $a$, so our answer is
+    \begin{align*}
+    504+504+504+503+503+503+503+\ldots+1+1+1+1\\
+    =3\cdot504 +1006\cdot504=1009\cdot504\\
+    =\boxed{508,536}
+    \end{align*}
+\end{solution}
+
+\begin{problem}[A][6][Putnam 1985]
+     % Induction ^ Limits ^ Putnam
+     Let $d$ be a real number. For each integer $m \geq 0$, define a sequence $\{a_m(j)\},j=0,1,2,\ldots$ by the condition $a_m(0)=d/2^m$ and
+    $$ a_m(j+1) = [a_m(j)]^2 + 2a_m(j) \text{,}\hspace{15pt} \text{ for all }  j\geq0 $$
+    Evaluate $ \lim_ {n \rightarrow \infty} a_n(n)$.%
+\end{problem}
+
+\begin{solution}[$e^d-1$]
+    Let $A_j=a_m(j)$. We have (1) $A_{j+1}=(A_j)^2+2(A_j)=(A_j+1)^2-1$. Let's see a few iterations of recursion and try to determine a pattern.
+    \begin{align*}
+        A_{1} &= (A_0+1)^2-1\\
+        A_{2} &= [A_{1}+1]^2-1=\left[(A_0+1)^2-1+1\right]^2-1 = (A_0+1)^4-1\\
+        A_{3} &= [A_{2}+1]^2-1=\left[(A_0+1)^4-1+1\right]^2-1 = (A_0+1)^8-1
+    \end{align*}\raggedright
+    Seems like $\displaystyle A_j=(A_0+1)^{\textstyle 2^j}$. This can be proven through induction. Since (1) gives us
+    \[
+    A_1=(A_0)^2+2(A_0)=(A_0+1)^{\textstyle 2^1}-1\text{,}
+    \]
+    our base case holds. Then, assuming $\displaystyle A_k=(A_0+1)^{\textstyle 2^k}-1$, we get 
+    \begin{align*}
+        A_{k+1} &= [A_k+1]^2-1\\
+        &= [(A_0+1)^{\textstyle 2^k}-1+1]^2-1\\
+        &=(A_0+1)^{\textstyle 2^k\cdot2}-1\\
+        &=(A_0+1)^{\textstyle 2^{k+1}}-1.
+    \end{align*}
+    Thus, by induction, $A_j=a_m(j)=(a_m(0)+1)^{\textstyle 2^j}-1$ for all $j>0$. Recalling that $a_m(0)=d/2^m$, we have
+    \[
+    a_m(j)=\left(\frac{d}{2^m}+1\right)^{\textstyle\!2^j}-1 \quad \Rightarrow \quad a_n(n)=\left(\frac{d}{2^n}+1\right)^{\textstyle\!2^n}-1
+    \]
+    Finally, let's take a limit of $a_n(n)$ as $n\rightarrow\infty$. Recognizing the similarity between our limit and the definition of $e$, and also hoping to simplify the problem, we'll define $k=2^m/d$ so we have
+    \begin{align*}
+            \lim_{n\rightarrow\infty}{\left(\frac{d}{2^n}+1\right)^{\textstyle\!2^n}-1} &= \lim_{k\rightarrow\infty}{\left(\frac{1}{k}+1\right)^{\textstyle\!kd}-1}\\[1mm]
+            &= \left(\lim_{k\rightarrow\infty}\!\left(\frac{1}{k}+1\right)^{\!k}\right)^{\!\!d}-1\\[1mm]
+            &= \boxed{e^d-1}
+    \end{align*}
+\end{solution}
+
+\begin{problem}[C][7][A Walk Through Combinatorics]
+    % Discrete 
+    At a tennis tournament, every two players played against each other exactly one time. After all games were over, each player listed the names of those he defeated, and the names of those defeated by someone he defeated. Prove that at least one player listed the names of everybody else.%
+\end{problem}
+
+\begin{solution}[By Contradiction]
+    Let's assume that such player doesn't exist, let $p$ be a person who got the maximum number of players in his list, say that he got $k<n-1$ names. Let $H$ be the set of all persons that $p$ defeated and let $R$ be the persons defeated by at least one person $h \in H$. This definition give us two categories for all the players in $p$'s list, it is also clear that $|R \cup H| = k$. \vspace{3mm}\\
+     Using the fact that $p$ does not have all names, we must have at least one person $z$ that isn't on his list. Since $z \notin H$ we know $z$ defeated $p$ and therefore in $z$'s list are included the names of $p$ and all players in $H$. Furthermore, $z \notin R$ implies that $z$ defeated all players in $H$, which means $z$ has the names of all players $r\in R$. So in $z$'s list, we have the names of $p$ and all the players $x \in R \cup H$, this means that his list has $k+1$ names, since we assumed $k$ to be maximum, this is a contradiction and therefore we always have a person with the names of everyone else $\Box$
+    
+    \vspace{-3mm}
+    \begin{center}
+    \begin{tikzpicture}
+    
+        \myVertex[black]{0}{0}{p}
+        \Vertex[x=4,y=-0.5,size=0.4,label=$z$,position=0,fontscale=1.6,style = {color=midnightblue}]{z}
+       
+        \myVertex[red]{-2}{-2}{h_1}
+        \myVertex[red]{0}{-2}{h_2}
+        \myVertex[red]{2}{-2}{h_3}
+    
+        \myVertex[blue]{-3}{-4}{r_1}
+        \myVertex[blue]{-1.5}{-4}{r_2}
+        \myVertex[blue]{0}{-4}{r_3}
+        \myVertex[blue]{1.5}{-4}{r_4}
+        \myVertex[blue]{3}{-4}{r_5}
+        
+        \Edge[Direct](p)(h_1)
+        \Edge[Direct](p)(h_2)
+        \Edge[Direct](p)(h_3)
+        \Edge[Direct, style={dashed}](z)(p)
+        \Edge[Direct, style={dashed}](z)(h_1)
+        \Edge[Direct, style={dashed}](z)(h_2)
+        \Edge[Direct, style={dashed}](z)(h_3)
+    
+        \Edge[Direct](h_1)(r_2)
+        \Edge[Direct](h_1)(r_5)
+        \Edge[Direct](h_2)(r_1)
+        \Edge[Direct](h_2)(r_2)
+        \Edge[Direct](h_2)(r_4)
+        \Edge[Direct](h_3)(r_3)
+    
+        \simpleVertex{-2}{-0.2}{x_1}
+        \simpleVertex{-3}{-0.5}{x_2}
+        \simpleVertex{-4}{-1}{x_3}
+        \simpleVertex{-3.5}{-2.5}{x_4}
+        \simpleVertex{-4.3}{-3}{x_5}
+        \simpleVertex{-4.1}{-1.7}{x_6}
+        \simpleVertex{3.2}{-2.2}{x_7}
+        \simpleVertex{3.7}{-3.1}{x_8}
+        
+        \node at (-7,-0.5) [left] {Example for $k=8$};
+        \node at (-8,-1.5) [left] {$h_i \in \textcolor{red}{H}$};
+        \node at (-8,-2) [left] {$r_i \in \textcolor{blue}{R}$};
+         
+    \end{tikzpicture}
+    \end{center}
+\end{solution}
+
+\begin{problem}[A][5][Cuban Olympiad 2006]
+    % Algebra ^ Polynomials 
+    Find all monic polynomials $P(x)$ of degree 3 with integer coefficients that satisfy all of the following conditions:
+    \begin{enumerate}[label=(\roman*), topsep=1mm]
+        \item $x-1$ divides $P(x)$
+        \item When $P(x)$ is divided by $x-5$, it leaves the same remainder as when it is divided by $x+5$.
+        \item $P(x)$ has a root between 2 and 3 exclusive
+    \end{enumerate}%
+\end{problem}
+
+\begin{solution}
+    Since $P(x)$ is degree 3, (i) implies the existence of integers $b,c$ such that $P(x) = (x-1)(x^2+bx+c)$. We know that there is no ``$a$'' in front of $x^2$ because $P(x)$ is monic. (A monic polynomial is a polynomial where the coefficient of the highest power is 1.)
+
+    Then, since (ii) implies $P(5) = P(-5)$, we can say that
+    \begin{align*}
+        \underbrace{(5-1)(5^2+5b+c)}_{P(5)} = \underbrace{(-5-1)((-5)^2-5b+c)}_{P(-5)} &\qRq 100+20b+4c = -150 +30b-6c\\[-15pt]
+        &\qRq c = b - 25
+    \end{align*}
+    Giving us $P(x)=(x-1)(x^2+bx+(b-25))$.
+    
+    Finally, (iii) says that $P(x)$ has a root $n\in(2,3)$, meaning that $n$ must be a root of the quadratic part of $P(x)$. We'll find possible values of $n$, then, using the quadratic formula:
+    \begin{align*}
+        n=\frac{-b \pm \sqrt{b^2-4(1)(b-25)}}{2(1)}
+    \end{align*}
+    Simplifying and applying $2<n<3$ we get
+    \begin{alignat*}{2}
+        2 &< \frac{-b \pm \sqrt{b^2-4b+100}}{2} \, &&< 3 \\
+        b + 4 &< \quad \pm\sqrt{b^2-4b+100} \, &&< b + 6 \\
+        \cancel{b^2} + 8b + 16 &< \quad \ \ \cancel{b^2} - 4b + 100 \, &&< \cancel{b^2} + 12b + 36
+    \end{alignat*}
+    Splitting this into two inequalities you end up with $4<b$ and $b<7$ so the possible values of $b$ are 5 and 6, giving you two possible $P(x)$:
+    \begin{align*}
+        b=5 &\qRq \boxed{P(x) = (x-1)(x^2+5x-20)}\\
+        b=6 &\qRq \boxed{P(x) = (x-1)(x^2+6x-19)}
+    \end{align*}
+\end{solution}
+
+\begin{problem}[N][3][Putnam 1985 A4]
+    % Induction ^ MOD ^ Putnam
+    Define a sequence $\{a_i\}$ by $a_1=3$ and $a_{i+1}=3^{a_i}$ for $i \geq 1$. Which integers between 00 and 99 inclusive occur as the last two digits in the decimal expansion of infinitely many $a_i$?\\
+    (It is strongly recommended, yet not completely necessary, to know Euler's $\varphi$ (phi) function before attempting this problem)
+\end{problem}
+
+\begin{solution}[only 87]
+    We can quickly see that $a_2=27$, but we want the integers as the last two digits of infinitely many terms, we'll see that 27 just occurs once, and that actually every other term ends up in 87. That is, that $a_i \equiv87 \pmod{100}$ for $i\geq3$. It is fairly easy to prove by induction, but I'll use another approach that involves no guessing.
+    
+    \textbf{Lemma:} Let $a,n \in \mathbb{Z}^+$ : $\gcd(a,n)=1$. If $k \equiv r \pmod{\varphi(n)}$, then $a^k \equiv a^r \pmod{n}$ 
+    \vspace{3mm}\\
+    I know this may looks out of place at first, but it basically uses the fact that $a^{\varphi(n)} \equiv 1 \pmod n$ to leave only a remainder, for example we have that $3^{98} = 3^{4 \cdot24} \cdot 3^2 \equiv 3^2 \equiv 4 \pmod5$, here $(a,n,k,r)=(3,5,98,2)$. Since I knew that $3^{\varphi(5)}=3^4\equiv1 \pmod 5$, I tried to express 98 as $4k+r$ for convenience; the general proof does the exact same thing:\\
+    We know there's an integer $q$ such that $k-r = q \cdot \varphi(n)$ which means $a^{k-r} \equiv 1 \pmod n$, so $a^k \equiv a^r \pmod n$ as desired. $\Box$ \vspace{3mm} \\
+
+    It is easy to see that $a_i$ is always odd, then $a_{i+1} \equiv 3^{a_i} \equiv(-1)^{a_i} \equiv -1 \equiv 3\pmod 4$, since $a_1$ also leaves a remainder of 3 (because it is literally 3) then we should have $a_i \equiv 3 \pmod4$  for $i \geq 1$.
+    Since $\varphi(5)=4$ and $a_i \equiv 3 \pmod4$, we have $a_{i+1} \equiv 3^{a_i} \equiv 3^3 \equiv 2 \pmod 5$. Which means that $a_i \equiv 2 \pmod 5$ for $i \geq 2$ \\
+    But why bothering in using all this? Well, we want to find how infinietly many terms look like mod 100, and $100 = 25 \cdot 4$, so it is useful to get how infinitely many terms look like mod 4 and mod 25
+    \begin{align*}
+        a_i \equiv 3 &\pmod4 \hspace{15pt}  i\geq 1\\
+        a_i \equiv 2 &\pmod5 \hspace{15pt}  i\geq 2 \\
+        \Rightarrow a_i \equiv 7 &\pmod {20} \hspace{10pt} i\geq 2
+    \end{align*}
+    Since $\varphi(25)=20$ and $a_i \equiv 7 \pmod {20}$ then $a_{i+1} = 3^{a_i} \equiv 3^7 = 81 \cdot 27 \equiv6\cdot2 \equiv 12 \pmod{25}$, which translates into $a_i \equiv 12 \pmod{25}$ for $i \geq 3$. Then we have all we needed to set mod 100, recall $a_i \equiv 3 \pmod4$ to conclude $a_i \equiv 87 \pmod{100}$ for $i \geq 3$ $\Box$
+\end{solution}
+    
+\end{document}

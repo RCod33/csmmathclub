@@ -1,6 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { Link } from "react-router-dom";
-import problemsDataBase from "../../TEX_to_JSON/JSON_Files/Problems.json";
+import problemsDataBase from "../../JsonFiles/Problems.json";
 
 function RecentProblems() {
   return (

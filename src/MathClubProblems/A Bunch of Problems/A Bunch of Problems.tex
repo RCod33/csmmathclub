@@ -1,0 +1,163 @@
+\input{Main/Packages}
+\input{Main/Definitions}
+\fancypagestyle{firstpageheader}{
+    \fancyhf{}
+% Header
+    \fancyhead[L]{\ABunchOf{problems}}
+    \fancyhead[R]{12/21/2024}
+% Footer
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt} 
+}
+\definecolor{colordef}{cmyk}{0.81,0.62,0.00,0.22}
+\definecolor{nicepurple}{RGB}{176, 92, 155}
+
+
+\begin{document}
+\sloppy
+\maketitle
+
+% Abstract 
+\begin{center}
+    %\textbf{\textcolor{colordef}{Abstract}} \\[0.5em]
+    \begin{minipage}{0.8\textwidth} 
+        \small 
+        \setlength{\parindent}{0.3in}
+        \lipsum[2] %i should change to actual abstract
+    \end{minipage}
+\end{center}
+
+\vspace{2em} 
+
+
+\setlength{\parindent}{0.3in} \lipsum[3] \\ %I will eventually put the actual text 
+\setlength{\parindent}{0.3in} \lipsum[2] \\
+
+\newpage
+\thispagestyle{firstpageheader}
+
+\section{Inequalities}
+
+%{\textcolor{colordef}{This is some colored text.}}
+
+\begin{problem}[Q][2][Pathfinder]
+    % Inequalities ^ Algebra
+    If $a,b,c$ are three sides of a triangle, and $a+b+c=2$, then prove that $a^2+b^2+c^2+2abc<2$
+\end{problem}
+\vskip 3mm
+
+\begin{problem}[Q][4][Andreescu]
+    %Inequalities ^ Algebra ^ Polynomials
+    Let $P$ be a polynomial with positive real coefficients. Prove that if $P(1/x) \geq 1/P(x)$ holds for $x=1$, then it holds for all $x>0$
+\end{problem}
+
+\begin{problem}[Q][4]
+    %Inequalities 
+    Let $a,b,c$ be positive real numbers. Prove that $\frac{a^3}{b}+\frac{b^3}{c}+\frac{c^3}{a} \geq a^2+b^2+c^2$.
+\end{problem}
+
+\begin{problem}[Q][5][Pathfinder]
+    %Inequalities 
+    For $a,b \in \mathbb{R}^+$. Prove that 
+    \begin{align*}
+        \frac{a^3b}{(a+b)^4} \leq \frac{27}{256}
+    \end{align*}
+\end{problem}
+
+\begin{problem}[Q][6][Lenin Cup 2024]
+    %Inequalities ^ Algebra ^ Telescopic Cancellation
+    Let $a_1,a_2,\ldots a_n$ be positive real numbers that verify $a_1a_2 \cdots a_n=1$. Show that 
+    \begin{align*}
+        \frac{a_1}{1+a_1}+\frac{a_2}{(1+a_1)(1+a_2)}+\ldots+\frac{a_n}{(1+a_1)(1+a_2) \ldots (1+a_n)} \geq \frac{2^n-1}{2^n}
+    \end{align*}
+\end{problem}
+
+\begin{problem}[Q][12][Canadian Olympiad 2006]
+    %Inequalities ^ MinMax ^ Jensen ^ Discrete 
+    Consider a round-robin tournament with $2k + 1$ teams, where each team plays each other team exactly once. We say that three teams $X, Y$ and $Z$, form a cyclic triplet if $X$ beats $Y$ , $Y$ beats $Z$ and $Z$ beats $X$. There are no ties. Find the minimum and maximum possible number of cyclic triplet
+\end{problem}
+
+
+\newpage
+\thispagestyle{firstpageheader}
+\section{Number Theory}
+
+\begin{problem}[N][1]
+    % MOD ^ Primes 
+    Find all pairs of prime numbers $(p,q)$ such that $2p^2+1=q^5$
+\end{problem}
+
+\begin{solution}
+    aver
+\end{solution}
+
+\begin{problem}[N][4][AIME 1985]
+    % Divisibility ^ GCD ^ AIME
+    The numbers in the sequence $101, 104, 109,116, . . .$ are of the form $a_n = 100+n^2$, where $n = 1,2,3,\ldots$ For each $n$, let $d_n$ be the greatest common divisor of $a_n$ and $a_{n+1}$. Find the maximum value of $d_n$ as $n$ ranges through the positive integers.
+\end{problem}
+
+
+\begin{problem}[N][3][Iran 2005]
+    % Divisibility ^ MOD ^ Primes
+    Let $n,p>1$ be positive integers and $p$ be prime. Given that $n \mid p-1$ and $p \mid n^3-1$, prove that $4n-3$ is a perfect square.
+\end{problem}
+
+\begin{problem}[N][5][Putnam 2000]
+    % Divisibility ^ Bezout's Identity ^ GCD
+    Show that the expression 
+    $$ \frac{\gcd(m,n)}{n} \binom{n}{m} $$
+    is an integer for all pairs of integers $n \geq m \geq 1$
+\end{problem}
+
+\begin{problem}[N][4][Justin Stevens]
+    % Divisibility 
+    Prove that if $m,n \in Z^+: m \neq n$, then
+    \begin{align*}
+        \gcd \left(a^{2^m}+1, a^{2^n}+1\right) = 
+        \begin{cases}
+            1 & \text{if } a \text{ is even} \\
+            2 & \text{if } a \text{ is odd}
+        \end{cases}
+    \end{align*}
+\end{problem}
+
+\begin{problem}[N][6][Polish 2003]
+    % Polynomials ^ MOD ^ Primes
+    Find all polynomials $W$ with integer coefficients satisfying the following condition: for every natural number $n$, $2^n-1$ is divisible by $W(n)$
+\end{problem}
+
+\begin{problem}[N][8][IMO 1990]
+    % p-adic valuation ^ MOD ^ Primes
+    Determine all integers $n>1$ such that
+    $$\frac{2^n+1}{n^2} \in \mathbb{Z}$$
+\end{problem}
+
+\newpage
+
+\section{Algebra}
+
+\begin{problem}[A][4]
+    % Algebra
+    Let $a,b$ be real numbers such that  $a^2+b^2$, $a^3+b^3$ and $a^4+b^4$ are rational numbers. Show that $a+b$ and $ab$ are also rational numbers
+\end{problem}
+
+\begin{problem}[A][9][USAMO 2007]
+    % Induction ^ Algebra
+    Prove that for every nonnegative integer $n$, the number $7^{7^n}+1$ is the product of at least $2n + 3$ (not necessarily distinct) primes.
+\end{problem}
+
+
+
+\newpage
+
+\section{Calculus and Analysis}
+
+
+\end{document}
+%rolan-rolan
+
+
+
+
+
+

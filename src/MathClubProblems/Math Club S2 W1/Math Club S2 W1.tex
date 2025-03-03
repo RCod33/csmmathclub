@@ -1,0 +1,234 @@
+\input{Packages}
+\input{Definitions}
+
+\begin{document}
+
+\sloppy
+\maketitle
+
+\section{AMATYC Problems}
+
+\begin{problem}[P][3][AMATYC Fall 2016/13]
+    % Counting ^ Probability ^ Student Math League
+    A party is held for only people born in April. If the probability of being born on any particular day in April is the same as any other day, find the least number of people to attend which makes the probability greater than 50\% that two people at the party were born on the same day of the month.
+\end{problem}
+\multOpt[5]{7}[8][9][12][15]
+
+\begin{solution}[A]
+    We can equivalently count the least $n$ for which the probability of having each person with a unique birthday in a $n$-people party is no greater than $50\%$.
+    We count the favorable cases of doing this as $30 \cdot 29 \cdots (30-n+1)$, i.e, the first person can have its birthday in any day of April, the second one in any day different from the first one, and so on. All the possible ways are in total $30^n$. So we need the least $n$ for which
+    \begin{align*}
+        \frac{30 \cdot 29 \cdots (30-n+1)}{30^n} < \frac{1}{2}
+    \end{align*}
+    By checking $n=7$ we obtain the LHS to be $\frac{2639}{5625} \approx 0.47$, this is the smallest option of all 5, corresponding to option $A$ $\Box$ \\[3mm]
+    Note: It can be shown that it is minimum in general, not only among our possible choices (altough it is recommended to stop in this contest as soon as you're fairly sure of an answer), since  $n=6$ gives $\frac{2639}{4500} \approx 0.59$ and the function $f(n) = 30!/30^n(30-n)!$ is decreasing so we won't find anything smaller in $[0,7)$ (because $f(n+1) < f(n)$ )
+\end{solution}
+
+\begin{problem}[N][4][AMATYC Fall 2015/11]
+    % Divisibility ^ Simon's Favorite Factoring Trick ^ Student Math League
+    Let $\triangle ABC$ be a right triangle with integer length sides whose perimeter is numerically equal to its area. What is the largest possible value for its perimeter?
+\end{problem}
+
+\begin{solution}[30]
+    Call $a,b,c$ to the integer length sides, such that $a^2+b^2=c^2$ and $2(a+b+c)=ab$. Let $s=a+b$ to see that:
+    \begin{align*}
+        & 4(a+b+c) = 2ab \iff (a+b)^2 = c^2 + 4(a+b+c) \\
+        \iff& s^2 -4s= c^2+4c \iff (s-2)^2 = (c+2)^2 \iff s=c+4 \\
+        \iff& a+b = \left( \frac{ab}{2} -a - b\right) + 4 \iff (a-4)(b-4) = 8
+    \end{align*}
+    Luckily enough, $8$ can only be decomposed into $(4,2)$ and $(8,1)$, recovering $c$ from our second equation we obtain the results $(a,b,c) =  (5,12,13),(6,8,10),$ giving perimeters of 30 and 24 respectively, so our answer is 30
+\end{solution}
+
+\begin{problem}[C][5][AMATYC Fall 2019/8]
+    % Counting ^ Student Math League
+    Find the sum of all base-10 eight-digit (the first digit cannot be zero) numbers that contain no digits other than 0 or 1 (for example: 10100101, 10000000, 11111111).
+\end{problem}
+\multOpt[5]{711,111,104}[1,010,101,010][1,031,111,104][1,351,111,104][1,422,222,208]
+
+\begin{solution}[D]
+    Is easy to see that we will add up $2^7$ such numbers. We can add them based on their digits and then scale the sum from the $i$th digit by $10^{7-i}$. Since the first digit is always 1, that position will give us $2^7$, then every other position will have $2^6$ 0's and $2^6$ 1's, so our answer must be $2^7 \cdot 10^7 + 2^6 ( 10^6+10^5 + \ldots + 1) = 20^7 + 2^6(10^7-1)/9 = 1,351,111,104$ $\Box$ 
+\end{solution}
+\begin{problem}[A][4][AMATYC Spring 2020 P6]
+   % Algebra ^ Student Math League
+    Let $K$ be an integer that is greater than 1, a perfect square, and equal to $1+2+\ldots+D$ for some integer $D$. Find 
+    $$\left[ 1+2+\ldots+ (\sqrt{K} - 1)\right] - \left[ (\sqrt{K}+1) + (\sqrt{K} + 2) + \ldots + D\right]$$
+    in terms of $K$
+\end{problem}
+\multOpt[5]{$-K / 2$}[$-\sqrt{K} / 2$][0][$\sqrt{K} / 2$][$K / 2$]
+
+\begin{solution}[C]
+    The well-known identity $1 + 2 + \ldots + n = n(n+1)/2$ can easily generalized to start in any number $m$ as $m + (m+1 ) + \ldots + n = (m-n+1)(m+n)/2$. This allows us to transform the given expression to:
+    \begin{align*}
+        &\frac{\sqrt{K} \left( \sqrt{K} - 1\right)}{2} - \frac{\left( D - \sqrt{K} \right) \left( D + \sqrt{K} + 1 \right) }{2} \\
+        =& \frac{1}{2} \left( K - \sqrt{K} - D^2 + K - D + \sqrt{K}\right) = \boxed{0}
+    \end{align*}
+    Recall that $1+2 \ldots + D = K$, so $D^2 + D = 2K$ $\Box$
+\end{solution}
+
+\begin{problem}[C][4][AMATYC Spring 2008/15]
+    % Discrete ^ Student Math League
+    You have 8 identical red counters and $n$ identical green counters. You find that you can line them up in a single row in such a way that the number of counters whose right-hand neighbor is the same color equals the number of counters whose right-hand neighbor is the other color. What is the largest possible value of $n$?
+\end{problem}
+\multOpt[5]{17}[19][21][25][27]
+
+\begin{solution}[D]
+    Call $S,D$ to the number of counters whose right-hand neighbor is the same color and the number those whose right-hand neighbor is the other color, respectively. Intuitively, we don't want any red counters together, to add as many greens as possible. Indeed, we will show that an optimal configuration contains a green immediately after any red. \\[3mm]
+    A valid configuration with at least two reds together can be seen as $(CC\ldots C \textcolor{red}{R} \textcolor{red}{R} C  \ldots C)$ where $C \in \{ \textcolor{red}{R} , \textcolor{green}{G}\}$. Since we assumed it to be valid, $S=D$ holds, but we can construct the sequence $(CC\ldots C \textcolor{red}{R} \textcolor{green}{GGGG}  \textcolor{red}{R} C  \ldots C)$. Both $S$ and $D$ increase by 2, so is still a valid configuration, but we observe the change $n := n + 4$. Therefore, it is never optimal to set two reds together... basically because we can add more greens in between and get a bigger $n$. \\[3mm]
+    To have $S=D$ and no two reds together , we come to the setting of the form $( \textcolor{green}{GGG} \textcolor{red}{R})$ repeated 8 times, plus another $\textcolor{green}{G}$ at the end, from which $n = 3 \cdot 8 + 1 = \boxed{25}$
+\end{solution}
+
+\begin{problem}[C][5][AMATYC Fall 2019 /20]
+    % Discrete ^ Student Math League
+    Five distinct integers $a, b, c, d, e$ are to be ordered from least to greatest. You are told that $e, d, c, b, a$ has at least 3 of the 5 values correctly placed; $e, b, c, d, a$ has an odd number of the values correctly placed; and $a, d, c, b, e$ is not the solution. You can choose 3 letters and learn their order from least to greatest. Which 3 should you choose to guarantee that the ordering of all 5 numbers can be correctly determined?
+\end{problem}
+    \multOpt[5]{$a, b, d$}[$a, b, e$][$b, c, d$][$b, c, e$][$c, d, e$]
+
+% When is says "correctly placed" I'm assuming it's saying that there are 5 fixed positions and it is in the correct one, right? not that the numbers are correctly placed relative to each other? 
+\begin{solution}[C]
+    The problem says at least $3$ of $e, d, c, b, a$ (call this $S$) is correctly placed. This means that we know, for example, that moving $b$ between $e$ and $d$ would be incorrect, since doing this would change 3 positions, at least one of which would be correctly placed. Thus we can determine that the correct solution can be found by swapping the positions of either two or zero numbers from $e, d, c, b, a$.
+
+    We'll consider two cases: first, that $b$ and $d$ are correctly placed, and then that they are incorrectly placed.
+
+    \underline{Case 1:} If they are correctly placed, one possible solution is that $S$ is correctly ordered from the start. Alternatively, any single swap between $a, c, \text{and } e$ may also work--except that we know we can't swap $a$ and $e$ because that would be the incorrect sequence mentioned in the problem. Thus we have two additional possible solutions: $e, d, a, b, c$ and $c, d, e, b, a$.
+
+    \underline{Case 2:} If $b$ and $d$ are incorrectly placed, it may seem like there are tons of alternate positions for them. But remember that the solution must be a single swap in $S$. Additionally, remember that there must be an odd number of differences between the solution sequence and $e, b, c, d, a$ (call this $T$). As a result, any single swap of $b$ or $d$ with $a, c, \text{or } e$ couldn't produce a solution because then $T$ would have an even number of correctly placed values. Thus the only option is to swap $b$ and $d$ with each other to get $e, d, c, d, a$.
+
+    Now we'll consider which three values we would want ordered. Our four possible solutions are 
+    \[
+    \begin{array}{cccccc}
+    1. & e, & b, & c, & d, & a \\[1mm]
+    2. & e, & d, & c, & b, & a \\[1mm]
+    3. & e, & d, & a, & b, & c \\[1mm]
+    4. & c, & d, & e, & b, & a
+    \end{array}
+    \]
+    From this, you can see that determining the relative positions of $\boxed{b, c, d}$ is enough to distinguish between the four possible sequences. 
+\end{solution}
+
+\newpage
+\section{More challenging problems}
+
+\begin{problem}[P][4][BMT Discrete 2023/5]
+    % Algebra ^ Probability ^ BMT
+    Kait rolls a fair 6-sided die until she rolls a 6. If she rolls a 6 on the $N$th roll, she then rolls the die $N$ more times. What is the probability that she rolls a 6 during these next $N$ times?
+\end{problem}
+
+\begin{solution}
+    On any given roll, Kait has a $1/6$ chance of success and $5/6$ chance of having to roll again. We'll denote the chance of rolling a 6 in $N$ rolls as $S_N$. After her initial $N$ rolls, the probability of her rolling a 6 in the subsequent $N$ rolls is
+    \begin{align*}
+        P &= \frac{1}{6}S_1 + \frac{1}{6} \left(\frac{5}{6}\right) S_2 + \frac{1}{6} \left(\frac{5}{6}\right)^{\!\!2}S_3 + \frac{1}{6} \left(\frac{5}{6}\right)^{\!\!3}S_4 + \dots\\
+        &= \frac{1}{6}\sum_{n=0}^\infty \left(\frac{5}{6}\right)^{\!\!k}S_{k+1}
+    \end{align*}
+    Now we'll find $S_N$. Given $N$ rolls, the chance of Kait failing to get a 6 every single time is $\left(\frac{5}{6}\right)^N$, so the chance of her getting at least one 6 is $S_N=1-\left(\frac{5}{6}\right)^N$, and thus we have
+    \begin{align*}
+        P &= \frac{1}{6}\sum_{n=0}^\infty \left(\frac{5}{6}\right)^{\!\!k}\left(1-\left(\frac{5}{6}\right)^{\!\!{k+1}}\right)\\
+        &= \frac{1}{6}\sum_{n=0}^\infty \left(\frac{5}{6}\right)^{\!\!k} - \frac{5}{36}\sum_{n=0}^\infty \left(\frac{25}{36}\right)^{\!\!k}\\
+        &= \frac{1}{6}\left(\frac{1}{1-\tfrac{5}{6}}\right) - \frac{5}{36}\left(\frac{1}{1-\tfrac{25}{36}}\right) = 1 - \frac{5}{11} = \boxed{\frac{6}{11}}
+    \end{align*}
+\end{solution}
+
+\begin{problem}[A][4][Putnam 2013/B1]
+    % Telescopic Cancellation ^ Putnam
+    For positive integers \( n \), let the numbers \( c(n) \) be determined by the rules \( c(1) = 1 \), \( c(2n) = c(n) \), and \( c(2n+1) = (-1)^n c(n) \). Find the value of
+    \[
+    \sum_{n=1}^{2013} c(n)c(n+2).
+    \]
+\end{problem}
+
+\begin{solution}[-1]
+    It turns out that most terms cancel out quite nicely. Dividing the terms based on parity, and keeping in mind that $(-1)^n(-1)^{n+1} = -1$; we have $c(2n)c(2n+2) = c(n)c(n+1)$ and $c(2n+3)c(2n+1) = -c(n)c(n+1)$. So $c(2n)c(2n+2) + c(2n+1)c(2n+3) = 0$, which means that every term, starting from $c(2)c(4)$, cancels out, leaving only $c(1)c(3) = -1$ $\Box$
+\end{solution}
+
+\begin{problem}[N][6][St. Petersburg 2008/ ]
+    % Divisibility ^ MOD 
+    Given three distinct natural numbers $a,b,c$ show that
+    $$ \gcd (1+ab,1+bc,1+ca) \leq \frac{a+b+c}{3} $$ 
+\end{problem}
+
+\begin{solution}
+    Let $g = \gcd (1+ab,1+bc,1+ca)$, which means that 
+    $ab \equiv bc \equiv ca \equiv -1 \pmod g$. \\[3mm]
+    Let's prove that $g$ has no common factors with $a,b$ and $c$. \\
+    Let $d_a$ = $\gcd(a,g)$, then $d_a \mid g \mid ab+1$ , but we also have $d_a \mid a$ by definition, so  $0  \equiv ab +1 \equiv1 \pmod {d_a}$. Which can only be true for $d_a=1$. We can make an equivalent argument with $d_b$ and $d_c$. $\Box$ \\[2mm]
+    This becomes useful because now $ab \equiv bc \pmod g \Rightarrow a \equiv c \pmod g$ and $ac \equiv bc \pmod g \Rightarrow a \equiv b \pmod g$, so $a \equiv b \equiv c \pmod g$. \\[2mm]
+    Since $a,b,c$ are distint natural numbers, asumme WLOG $a>b>c$, which implies 
+    \begin{align*}
+        &a \geq b + g \geq c + 2d \\
+        \Rightarrow &a + b + c \geq 3c + 3g \geq 3g \\
+        \iff &\frac{a+b+c}{3} \geq \gcd (1+ab,1+bc,1+ca)
+    \end{align*}
+    $\Box$
+\end{solution}
+
+\begin{problem}[R][6][Putnam 2001/A1]
+    % Discrete ^ Putnam
+    Consider a set $S$ and a binary operation $*$, i.e., for each $a,b \in S$, $a*b \in S$. Assume $(a*b)*a = b$ for all $a,b \in S$. Prove that $a * (b * a) = b$ for all $a,b \in S$.
+\end{problem}
+
+\begin{solution}
+    This is deceptively simple. We know $b*a\in S$ and thus we can replace $a$ with $b*a$ to get
+    \begin{align*}
+            (a*b)*a &= b\\
+            ((b*a)*b)*(b*a) &= b\\
+            a*(b*a) &= b \ \Box
+    \end{align*}
+\end{solution}
+
+\begin{problem}[R][7][Columbus State 2017/ ]
+    % Integrals ^ Limits ^ Riemann Sum
+    We have for some natural number \( m \)
+    \[
+    \lim_{n \to \infty} \sum_{k=1}^{n} \frac{k}{n^2 + k^2} = \frac{\ln m}{m}
+    \]
+    Find \( m \).
+\end{problem}
+\multOpt[5]{$1$}[$2$][$3$][$4$][$5$]
+
+\begin{solution}[B]
+    At first look, it has the form of a Riemann Sum, so it's our task to find a convenient function that aligns our needs. The right Riemann Sum over the interval $[0,1]$ has the form of $\sum f(x_k) \Delta x$ with $x_k = k/n$ for $k \in [n]$ and $\Delta x = 1/n$. Using it, we transform our original expression to
+    $$ \lim _{n \rightarrow \infty} \left(\sum_{k=1}^n \frac{\frac{k}{n}}{1 + \frac{k^2}{n^2}} \right) \frac{1}{n} = \int_0^1 \frac{x}{1 + x^2} \mathrm{d}x$$
+    Then we can finish with $u = x^2+1$, giving us:
+    $$ \frac{1}{2}\int_1^2 \frac{\mathrm{d}u}{u} = \frac{\ln u}{2} \bigg|_1^2 = \frac{\ln 2}{2}$$
+    So our answer is $m=2$ $\Box$
+\end{solution}
+
+\begin{problem}[A][8]
+    % Algebra
+    Let $a,b$ be real numbers such that  $a^2+b^2$, $a^3+b^3$ and $a^4+b^4$ are rational numbers. Show that $a+b$ and $ab$ are also rational numbers.
+\end{problem}
+
+\begin{solution}
+    Keep in mind that $x, y \in \mathbb{Q} \Rightarrow x+y, xy \in \mathbb{Q}$. If at least one of $a,b$ is 0, then it is clearly true, from now on assume $a,b \neq 0$, so:
+    \begin{align*}
+        \textcolor{blue}{(}a^2+b^2\textcolor{blue}{)}^2 = \textcolor{blue}{(} a^4+b^4 \textcolor{blue}{)} + 2a^2b^2 \in \mathbb{Q} \Rightarrow a^2b^2 \in \mathbb{Q} \\
+        \textcolor{blue}{(}a^4+b^4\textcolor{blue}{)} \textcolor{blue}{(} a^2+b^2 \textcolor{blue}{)} = a^6+b^6 +  \color{blue} \left ( \color{black} a^2b^2(a^2+b^2) \color{blue}\right ) \\
+        \Rightarrow a^6+b^6 \in \mathbb{Q} \\
+        \textcolor{blue}{(} a^3+b^3 \textcolor{blue}{)}^2 = \textcolor{blue}{(} a^6 + b^6 \textcolor{blue}{)} + 2a^3b^3 \Rightarrow a^3b^3 \in \mathbb{Q}
+    \end{align*}
+    So $a^3b^3 / a^2b^2 = ab \in \mathbb{Q}$, and $a^3+b^3 = (a+b)(a^2+ab+b^2)$ directly means $a+b \in \mathbb{Q}$ as well $\Box$
+    
+\end{solution}
+
+$$e^{i \theta} = \cos {\theta} + i \sin {\theta} $$
+
+\begin{problem}[R][9][MIT 18/A34]
+    % Integrals ^ Analysis
+    Let $0 < a < b$. Prove that for any continuous functions $f \colon [a,b] \rightarrow \mathbb{R}$, 
+    \[\int_{a}^{b}\int_{a}^{b} \frac{f(x)f(y)}{(x+y)^2} \, \mathrm{d}x \mathrm{d}y \geq 0.\]
+    (Hint: Use Inverse Laplace Transform)
+\end{problem}
+
+\begin{solution}
+    We will use the following fact for $s>0$ (prove it!):
+    $$ \int_0^{\infty} te^{-st} \mathrm{d}t = \frac{1}{s^2}$$
+    In our equation, we then have
+    \begin{align*}
+        \int_{a}^{b}\int_{a}^{b} \frac{f(x)f(y)}{(x+y)^2} \, \mathrm{d}x \mathrm{d}y &= \int_{a}^{b}\int_{a}^{b} f(x)f(y) \left( \int_{0}^{\infty} te^{-(x+y)t} \mathrm{d}t \right) \mathrm{d}x \mathrm{d}y \\
+        &= \int_{0}^{\infty} t \left(  \int_{a}^{b}\int_{a}^{b} f(x)f(y) e^{-(x+y)t} \mathrm{d}x \mathrm{d}y \right)  \mathrm{d}t \\
+        &= \int_{0}^{\infty} t \left(  \int_{a}^{b} f(x) e^{-xt} \mathrm{d}x\right) \left(  \int_{a}^{b} f(y) e^{-yt} \mathrm{d}y\right)  \mathrm{d}t \\
+        &= \int_{0}^{\infty} t \left(  \int_{a}^{b} f(x) e^{-xt} \mathrm{d}x\right)^2 \mathrm{d}t \geq 0
+    \end{align*}
+    $\Box$
+\end{solution}
+
+\end{document}
