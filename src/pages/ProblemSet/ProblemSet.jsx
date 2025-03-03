@@ -1,28 +1,28 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../Componetns/Pagination/Pagination";
 import FilterBox from "../../Componetns/FilterBox/FilterBox";
-import problems from "../../JsonFiles/Problems.json";
+import { ProblemContext } from "../../Context/ProblemContext/ProblemContext";
+import { FiltersProvider } from "../../Context/FiltersContext/FiltersContext";
 import styles from "./ProblemSet.module.css";
 
-const pageRange = 30;
-const totalProblems = problems.length;
-const totalPages = Math.ceil(totalProblems / pageRange);
+//todo: cambiar el nombre de filteredProblems por filtred filteredProblems
 
 function ProblemSet() {
   const [currentProblemPage, setCurrentProblemPage] = useState(0);
+  const { filteredProblems, totalPages, pageRange } =
+    useContext(ProblemContext);
 
-  const paginatedProblems = useMemo(
-    () =>
-      problems.slice(
+  if (!Array.isArray(filteredProblems)) return null;
+
+  //prettier-ignore
+  const paginatedProblems = useMemo(() =>
+      filteredProblems.slice(
         currentProblemPage * pageRange,
         currentProblemPage * pageRange + pageRange
       ),
-    [currentProblemPage]
+    [currentProblemPage, filteredProblems, pageRange]
   );
-
-  if (!Array.isArray(problems)) return null;
 
   return (
     <>
@@ -50,7 +50,7 @@ function ProblemSet() {
                 <td>{`Level: ${problem.problemLevel}`}</td>
                 <td>
                   {problem.weekDiscussed[0] === "0" &&
-                   problem.weekDiscussed[1] === "0"
+                  problem.weekDiscussed[1] === "0"
                     ? "None"
                     : `S${problem.weekDiscussed[0]} W${problem.weekDiscussed[1]}`}
                 </td>
@@ -65,7 +65,9 @@ function ProblemSet() {
           onPageChange={setCurrentProblemPage}
         />
       </section>
-      <FilterBox />
+      <FiltersProvider>
+        <FilterBox />
+      </FiltersProvider>
     </>
   );
 }

@@ -6,6 +6,7 @@ import Home from "../../pages/Home/Home";
 import ProblemSet from "../../pages/ProblemSet/ProblemSet";
 import Problem from "../../pages/Problems/Problem";
 import Courses from "../../pages/Courses/Courses";
+import { ProblemProvider } from "../../Context/ProblemContext/ProblemContext"; // Importa el Provider
 
 function App() {
   return (
@@ -14,8 +15,15 @@ function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route index element={<Home />} />
-        <Route path="/problemset" element={<ProblemSet />} />
-        <Route path="/Courses" element={<Courses />} />
+        <Route
+          path="/problemset"
+          element={
+            <ProblemProvider>
+              <ProblemSet />
+            </ProblemProvider>
+          }
+        />
+        <Route path="/courses" element={<Courses />} />
         <Route path="/problem" element={<Problem />} />
       </Routes>
     </main>

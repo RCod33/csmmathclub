@@ -1,96 +1,82 @@
-import React, { useState } from "react";
-import styles from "./CategoryFilter.module.css"; // Importamos el CSS Module
+import React, { useRef, useState, useEffect } from "react";
+import styles from "./CategoryFilter.module.css";
 
-const SubCategoryFilter = () => {
+function CategoryFilter({ category, setCategory }) {
   const [open, setOpen] = useState(false);
-  const [subCategory, setSubCategory] = useState("Sub Category");
+  const dropdownRef = useRef(null);
 
-  const handleSubCategory = (newSubCategory) => {
-    setSubCategory(newSubCategory);
-    setOpen(false);
+  const handleEraseCategory = (eraseCategory) => {
+    setCategory((prevCategory) =>
+      prevCategory.filter((element) => element !== eraseCategory)
+    );
   };
 
-  return (
-    <>
-      <button
-        type="button"
-        className={styles.button}
-        onClick={() => setOpen((prev) => !prev)}
-      >
-        {subCategory}
-      </button>
-      {open && (
-        <ul className={styles.menu}>
-          <li>
-            <button type="button" onClick={() => handleSubCategory("Lorem")}>
-              Lorem
-            </button>
-          </li>
-          <li>
-            <button type="button" onClick={() => handleSubCategory("Ipsum")}>
-              Ipsum
-            </button>
-          </li>
-          <li>
-            <button type="button" onClick={() => handleSubCategory("Dolor")}>
-              Dolor
-            </button>
-          </li>
-        </ul>
-      )}
-    </>
-  );
-};
-
-const CategoryFilter = () => {
-  const [open, setOpen] = useState(false);
-  const [category, setCategory] = useState("Category");
-
-  const handleCategory = (newCategory) => {
-    setCategory(newCategory);
-    setOpen(false); // Cierra el menú al seleccionar una categoría
+  const handleAddCategory = (newCategory) => {
+    setCategory((prevCategory) => {
+      if (prevCategory.includes(newCategory)) {
+        return prevCategory;
+      }
+      return [...prevCategory, newCategory];
+    });
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  //todo: add a button to erase all categories
+  //todo: fix the dropdown menu to close when clicking inside the dropdown
+
   return (
-    <>
-      <button
-        type="button"
-        className={styles.button}
-        onClick={() => {
-          setOpen((prev) => !prev);
-          setCategory("Category");
-        }}
-      >
-        {category}
-      </button>
+    <section className={styles.container}>
+      <div className={styles.selectedCategories}>
+        {category.map((element) => (
+          <button
+            key={`erase-button-${element}`}
+            type="button"
+            className={styles.selectedButton}
+            onClick={() => handleEraseCategory(element)}
+          >
+            {element} ✖
+          </button>
+        ))}
+        <button
+          type="button"
+          className={styles.dropdownButton}
+          onClick={() => setOpen((prevOpen) => !prevOpen)}
+        >
+          Categorys &#9660;
+        </button>
+      </div>
       {open && (
-        <ul className={styles.menu}>
-          <li>
-            <button type="button" onClick={() => handleCategory("Algebra")}>
-              Algebra
-            </button>
-          </li>
-          <li>
-            <button type="button" onClick={() => handleCategory("Analysis")}>
-              Analysis
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              onClick={() => handleCategory("Number Theory")}
-            >
-              Number Theory
-            </button>
-            <button type="button" onClick={() => handleCategory("Cunilingus")}>
-              Cunilingus
-            </button>
-          </li>
+        <ul ref={dropdownRef} className={styles.menu}>
+          {[
+            "Algebra",
+            "Calculus",
+            "Combinatorics",
+            "Number Theory",
+            "Geometry",
+            "Miscellaneous",
+          ].map((element) => (
+            <li key={element}>
+              <button type="button" onClick={() => handleAddCategory(element)}>
+                {element}
+              </button>
+            </li>
+          ))}
         </ul>
       )}
-      {category !== "Category" && <SubCategoryFilter />}
-    </>
+    </section>
   );
-};
+}
 
 export default CategoryFilter;
