@@ -19,7 +19,10 @@ function FilterBox() {
   } = React.useContext(FiltersContext);
   const navigate = useNavigate();
 
-  const handleGo = () => {
+  //Si en algun momento el boton go no funciona, utiliza el y quieres arreglarlo contrareloj,
+  //  en el discord de edgar esta fijado un useEffect
+
+  const handleApplyFilters = () => {
     setTempProblems(() => {
       return originalProblems.filter((element) =>
         element.title.toLowerCase().includes(nameFiltred.toLowerCase()) &&
@@ -48,6 +51,12 @@ function FilterBox() {
     setTags([]);
     setTempProblems([...originalProblems]);
   };
+
+  useEffect(() => {
+    if (category.length === 0) {
+      setTags([]);
+    }
+  }, [category]);
 
   useEffect(() => {
     setFilteredProblems([...tempProblems]);
@@ -103,18 +112,18 @@ function FilterBox() {
           className={styles.categoryFilter}
         />
 
-        {/* Two buttons in one row */}
-        <div className={styles.buttonRow}>
-          <button className={styles.button} type="button" onClick={handleGo}>
-            Apply Filters
-          </button>
-          <button className={styles.button} type="button" onClick={handleClearAllFilters}>
-            Clear All
-          </button>
-        </div>
-
-        {/* Randomizer on its own row (or move it above if you prefer) */}
-        <button className={styles.button} type="button" onClick={handleRandomizer}>
+        <button
+          className={styles.button}
+          type="button"
+          onClick={handleApplyFilters}
+        >
+          Apply Filters
+        </button>
+        <button
+          className={styles.button}
+          type="button"
+          onClick={handleRandomizer}
+        >
           Randomizer
         </button>
       </form>
