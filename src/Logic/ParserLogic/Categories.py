@@ -29,8 +29,7 @@ print(50*'+')
 with open(json_categories_path, 'w') as f:
    for major_topic in CATEGORIES:
       major_topics_dict = {
-         "majorTopic": major_topic,
-         "labels": list(CATEGORIES[major_topic])
+         major_topic: list(CATEGORIES[major_topic])
       }
       print(f"The topic {major_topic} has {len(CATEGORIES[major_topic])} labels")
       major_topics_list.append(major_topics_dict)

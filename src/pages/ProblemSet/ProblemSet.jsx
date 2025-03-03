@@ -12,8 +12,6 @@ function ProblemSet() {
   const { filteredProblems, totalPages, pageRange } =
     useContext(ProblemContext);
 
-  if (!Array.isArray(filteredProblems)) return null;
-
   //prettier-ignore
   const paginatedProblems = useMemo(() =>
       filteredProblems.slice(
@@ -22,6 +20,8 @@ function ProblemSet() {
       ),
     [currentProblemPage, filteredProblems, pageRange]
   );
+
+  if (!Array.isArray(filteredProblems)) return null;
 
   return (
     <>
