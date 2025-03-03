@@ -25,8 +25,8 @@ function FilterBox() {
       //prettier-ignore
       return originalProblems.filter((element) =>
           element.title.toLowerCase().includes(nameFiltred.toLowerCase()) &&
-          element.problemLevel >= minLevel &&
-          element.problemLevel <= maxLevel &&
+          (minLevel !== -1 ? element.problemLevel >= minLevel : true) &&
+          (maxLevel !== -1 ? element.problemLevel <= maxLevel : true) &&
           (category.length > 0 ? category.includes(element.majorTopic) : true) &&
           (tags.length > 0 ? element.tags.some((tag)=> tags.includes(tag)): true)
       );
@@ -45,8 +45,8 @@ function FilterBox() {
 
   const handleClearAllFilters = () => {
     setNameFiltred("");
-    setMinLevel(1);
-    setMaxLevel(12);
+    setMinLevel(-1);
+    setMaxLevel(-1);
     setCategory([]);
     setTempProblems([...originalProblems]);
   };
@@ -74,9 +74,9 @@ function FilterBox() {
             className={styles.inputText}
             id="filter by min level"
             type="text"
-            value={minLevel === 1 ? "" : minLevel} //para que no se vea el 1 por defecto
+            value={minLevel === -1 ? "" : minLevel} //para que no se vea el 1 por defecto
             onChange={(event) => setMinLevel(Number(event.target.value))}
-            placeholder="1"
+            placeholder="0"
           />
           <label htmlFor="filter by max level"> Max lvl:</label>
           <input
@@ -84,7 +84,7 @@ function FilterBox() {
             className={styles.inputText}
             id="filter by max level"
             type="text"
-            value={maxLevel === 12 ? "" : maxLevel} //para que no se vea el 12 por defecto
+            value={maxLevel === -1 ? "" : maxLevel} //para que no se vea el 12 por defecto
             onChange={(event) => setMaxLevel(Number(event.target.value))}
             placeholder="12"
           />

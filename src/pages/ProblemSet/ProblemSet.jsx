@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useMemo, useContext } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../Componetns/Pagination/Pagination";
@@ -37,24 +36,30 @@ function ProblemSet() {
             </tr>
           </thead>
           <tbody>
-            {paginatedProblems.map((problem) => (
-              <tr key={problem.problemID}>
-                <td>{problem.problemID}</td>
-                <td>
-                  <Link to="/Problem" state={{ currentProblem: problem }}>
-                    {problem.title}
-                  </Link>
-                </td>
-                <td>{problem.subTopic}</td>
-                <td>{`Level: ${problem.problemLevel}`}</td>
-                <td>
-                  {problem.weekDiscussed[0] === "0" &&
-                  problem.weekDiscussed[1] === "0"
-                    ? "None"
-                    : `S${problem.weekDiscussed[0]} W${problem.weekDiscussed[1]}`}
-                </td>
+            {paginatedProblems.length > 0 ? (
+              paginatedProblems.map((problem) => (
+                <tr key={problem.problemID}>
+                  <td>{problem.problemID}</td>
+                  <td>
+                    <Link to="/Problem" state={{ currentProblem: problem }}>
+                      {problem.title}
+                    </Link>
+                  </td>
+                  <td>{problem.majorTopic}</td>
+                  <td>{`Level: ${problem.problemLevel}`}</td>
+                  <td>
+                    {problem.weekDiscussed[0] === "0" &&
+                    problem.weekDiscussed[1] === "0"
+                      ? "None"
+                      : `S${problem.weekDiscussed[0]} W${problem.weekDiscussed[1]}`}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <span>No results founds</span>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
 
