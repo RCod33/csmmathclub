@@ -7,6 +7,7 @@ export const FiltersProvider = ({ children }) => {
   const [minLevel, setMinLevel] = useState(1);
   const [maxLevel, setMaxLevel] = useState(12);
   const [category, setCategory] = useState([]);
+  const [tags, setTags] = useState([]);
 
   return (
     <FiltersContext.Provider
@@ -19,6 +20,8 @@ export const FiltersProvider = ({ children }) => {
         setMaxLevel,
         category,
         setCategory,
+        tags,
+        setTags,
       }}
     >
       {children}

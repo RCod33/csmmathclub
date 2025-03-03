@@ -27,7 +27,16 @@ function NavBar() {
           <Link to="/ProblemSet" className={styles.navLink}>
             Problem Set
           </Link>
-          <Link to="/Courses" className={styles.navLink}>
+          <Link
+            to="/Courses"
+            className={styles.navLink}
+            onClick={(e) => {
+              e.preventDefault();
+              alert(
+                "Courses page is under construction, sorry for the inconvenience :)"
+              );
+            }}
+          >
             Courses
           </Link>
         </div>
@@ -39,6 +48,7 @@ function NavBar() {
           <input
             type="text"
             placeholder="Search..."
+            id="searchBar"
             className={styles.searchBar}
           />
         </div>

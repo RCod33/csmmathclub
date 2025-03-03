@@ -11,7 +11,7 @@ function FilterBox() {
   // prettier-ignore
   const {
     nameFiltred, setNameFiltred, minLevel, setMinLevel, 
-    maxLevel, setMaxLevel, category, setCategory,
+    maxLevel, setMaxLevel, category, setCategory, tags, setTags
   } = React.useContext(FiltersContext);
   const { setFilteredProblems } = React.useContext(ProblemContext);
   const navigate = useNavigate();
@@ -26,7 +26,8 @@ function FilterBox() {
           element.title.toLowerCase().includes(nameFiltred.toLowerCase()) &&
           element.problemLevel >= minLevel &&
           element.problemLevel <= maxLevel &&
-          (category.length > 0 ? category.includes(element.majorTopic) : true)
+          (category.length > 0 ? category.includes(element.majorTopic) : true) &&
+          (tags.length > 0 ? element.tags.some((tag)=> tags.includes(tag)): true)
       );
     });
   };
@@ -55,7 +56,7 @@ function FilterBox() {
 
   return (
     <section className={styles.filterBox}>
-      <form>
+      <form id="filterForm" className={styles.filterForm}>
         <input
           key={"filter by name"}
           className={styles.inputText}
@@ -91,8 +92,13 @@ function FilterBox() {
           category={category}
           setCategory={setCategory}
           setTempProblems={setTempProblems}
+          tags={tags}
+          setTags={setTags}
           className={styles.categoryFilter}
         />
+        {
+          //todo: mejorar la logica de clear all ya q al implemetar el boton de go no funciona como estaba pensado
+        }
         {tempProblems.length !== originalProblems.length && (
           <button type="button" onClick={handleClearAllFilters}>
             Clear All

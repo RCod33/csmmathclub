@@ -2,7 +2,7 @@ import React from "react";
 
 function Courses() {
   return (
-    <div className="container-fluid">
+    <div>
       <h1>Courses</h1>
       <p>Welcome to the Courses page!</p>
       <ul>
