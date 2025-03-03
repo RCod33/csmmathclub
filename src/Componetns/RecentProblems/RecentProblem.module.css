@@ -1,0 +1,33 @@
+.recentProblemsBox {
+   border: 1px solid var(--light-gray); 
+   padding: 20px;                      
+   border-radius: 5px;                 
+   box-shadow: 0 4px 6px var(--black);  
+   margin-bottom: 30px;                
+ }
+ 
+ .recentProblemsBox h3 {
+   margin-top: 0;                     
+   font-size: 1.4em;
+  
+   text-align: center;
+ }
+ 
+ .recentProblemsList {
+   list-style: none;                   
+   padding: 0;                         
+ }
+ 
+ .recentProblemsList li {
+   margin: 10px 0;                    
+ }
+ 
+ .recentProblemsList a {
+   text-decoration: none;              
+   color: var(--primary-color);        
+ }
+ 
+ .recentProblemsList a:hover {
+   text-decoration: underline;         
+ }
+ 
