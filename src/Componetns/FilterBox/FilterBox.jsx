@@ -7,36 +7,33 @@ import originalProblems from "../../JsonFiles/Problems.json";
 import styles from "./FilterBox.module.css";
 
 function FilterBox() {
-  const { filteredProblems, setFilteredProblems } =
-    React.useContext(ProblemContext);
+  const { filteredProblems, setFilteredProblems } = React.useContext(ProblemContext);
   const [tempProblems, setTempProblems] = useState(originalProblems);
   // prettier-ignore
   const {
-    nameFiltred, setNameFiltred, minLevel, setMinLevel, 
-    maxLevel, setMaxLevel, category, setCategory, tags, setTags
+    nameFiltred, setNameFiltred,
+    minLevel, setMinLevel,
+    maxLevel, setMaxLevel,
+    category, setCategory,
+    tags, setTags
   } = React.useContext(FiltersContext);
   const navigate = useNavigate();
 
-  //Si en algun momento el boton go no funciona, utiliza el y quieres arreglarlo contrareloj,
-  //  en el discord de edgar esta fijado un useEffect
-
   const handleGo = () => {
     setTempProblems(() => {
-      //prettier-ignore
       return originalProblems.filter((element) =>
-          element.title.toLowerCase().includes(nameFiltred.toLowerCase()) &&
-          (minLevel !== -1 ? element.problemLevel >= minLevel : true) &&
-          (maxLevel !== -1 ? element.problemLevel <= maxLevel : true) &&
-          (category.length > 0 ? category.includes(element.majorTopic) : true) &&
-          (tags.length > 0 ? element.tags.some((tag)=> tags.includes(tag)): true)
+        element.title.toLowerCase().includes(nameFiltred.toLowerCase()) &&
+        (minLevel !== -1 ? element.problemLevel >= minLevel : true) &&
+        (maxLevel !== -1 ? element.problemLevel <= maxLevel : true) &&
+        (category.length > 0 ? category.includes(element.majorTopic) : true) &&
+        (tags.length > 0 ? element.tags.some((tag)=> tags.includes(tag)) : true)
       );
     });
   };
 
   const handleRandomizer = () => {
-    const randomProblem =
-      filteredProblems[Math.floor(Math.random() * tempProblems.length)];
-    if (randomProblem === undefined) {
+    const randomProblem = filteredProblems[Math.floor(Math.random() * tempProblems.length)];
+    if (!randomProblem) {
       alert("No problems found with the current filters");
       return;
     }
@@ -48,47 +45,55 @@ function FilterBox() {
     setMinLevel(-1);
     setMaxLevel(-1);
     setCategory([]);
+    setTags([]);
     setTempProblems([...originalProblems]);
   };
 
   useEffect(() => {
     setFilteredProblems([...tempProblems]);
-  }, [tempProblems]);
+  }, [tempProblems, setFilteredProblems]);
 
   return (
     <section className={styles.filterBox}>
       <form id="filterForm" className={styles.filterForm}>
+
+        {/* Search input */}
         <input
-          key={"filter by name"}
           className={styles.inputText}
-          id="filter by name"
           type="text"
           value={nameFiltred}
-          onChange={(event) => setNameFiltred(event.target.value)}
-          placeholder={"Search problem..."}
+          onChange={(e) => setNameFiltred(e.target.value)}
+          placeholder="Search problem..."
         />
-        <div>
-          <label htmlFor="filter by min level"> Min lvl:</label>
-          <input
-            key={"filter by min level"}
-            className={styles.inputText}
-            id="filter by min level"
-            type="text"
-            value={minLevel === -1 ? "" : minLevel} //para que no se vea el 1 por defecto
-            onChange={(event) => setMinLevel(Number(event.target.value))}
-            placeholder="0"
-          />
-          <label htmlFor="filter by max level"> Max lvl:</label>
-          <input
-            key={"filter by max level"}
-            className={styles.inputText}
-            id="filter by max level"
-            type="text"
-            value={maxLevel === -1 ? "" : maxLevel} //para que no se vea el 12 por defecto
-            onChange={(event) => setMaxLevel(Number(event.target.value))}
-            placeholder="12"
-          />
+
+        {/* Min/Max level side by side */}
+        <div className={styles.levelInputs}>
+          <div className={styles.minMaxInput}>
+            <label htmlFor="minLevel">Min lvl:</label>
+            <input
+              id="minLevel"
+              type="text"
+              value={minLevel === -1 ? "" : minLevel}
+              onChange={(e) => setMinLevel(Number(e.target.value))}
+              placeholder="0"
+              className={styles.inputText}
+            />
+          </div>
+
+          <div className={styles.minMaxInput}>
+            <label htmlFor="maxLevel">Max lvl:</label>
+            <input
+              id="maxLevel"
+              type="text"
+              value={maxLevel === -1 ? "" : maxLevel}
+              onChange={(e) => setMaxLevel(Number(e.target.value))}
+              placeholder="12"
+              className={styles.inputText}
+            />
+          </div>
         </div>
+
+        {/* Category filter */}
         <CategoryFilter
           category={category}
           setCategory={setCategory}
@@ -98,18 +103,19 @@ function FilterBox() {
           className={styles.categoryFilter}
         />
 
-        <button className={styles.button} type="button" onClick={handleGo}>
-          Apply Filters
-        </button>
-        <button
-          className={styles.button}
-          type="button"
-          onClick={handleRandomizer}
-        >
+        {/* Two buttons in one row */}
+        <div className={styles.buttonRow}>
+          <button className={styles.button} type="button" onClick={handleGo}>
+            Apply Filters
+          </button>
+          <button className={styles.button} type="button" onClick={handleClearAllFilters}>
+            Clear All
+          </button>
+        </div>
+
+        {/* Randomizer on its own row (or move it above if you prefer) */}
+        <button className={styles.button} type="button" onClick={handleRandomizer}>
           Randomizer
-        </button>
-        <button type="button" onClick={handleClearAllFilters}>
-          Clear All
         </button>
       </form>
     </section>

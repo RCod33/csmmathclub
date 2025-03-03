@@ -1,73 +1,80 @@
 /***********************************************************************************/
-/* Settings for the whole grid */
-.table {
-  width: 70%;
-  max-width: 900px;
-  margin: 30px auto;
-  /* Center the table */
-  border-collapse: separate;
-  text-align: center;
-  border-spacing: 0 10px;
-}
-
-/* header : ID - Title - etc */
-.table thead th {
-  background-color: var(--background-white);
-  padding: 12px;
-  text-align: center;
-  border-bottom: 2px solid var(--border-bottom);
-}
-
-/* card look */
-.table tbody tr {
-  background: var(--white);
-  border-radius: 8px;
-  box-shadow: 0 2px 5px var(--black);
-}
-
-/* Padding and right border for table cells */
-.table tbody tr td {
-  padding: 12px 15px;
-  border-right: 1px solid var(--border-bottom);
-}
-
-/* 
-.table a, a:hover {
-   text-decoration: none;
+/* Container for the grid and the filter box */
+.problemSetWrapper {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   gap: 20px; /* space between grid and filter */
+   margin: 30px auto;
  }
- */
-
-/* hover effect */
-.table tbody tr:hover {
-  background: var(--hover-background);
-}
-
-/***********************************************************************************/
-/* specific columns */
-
-/* ID */
-.table td:nth-child(1) {
-  width: 80px;
-  font-weight: bold;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-
-/* Difficulty */
-.table td:nth-child(4) {
-  width: 80px;
-  padding: 5px 10px;
-  font-size: 14px;
-}
-
-/* Week Discussed */
-.table tbody tr td:nth-child(5) {
-  width: 50px;
-  border-right: none;
-  padding: 5px 10px;
-  font-size: 14px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-/***********************************************************************************/
+ 
+ /* Ensure the problems container doesn't shrink */
+ .problemsContainer {
+   flex-shrink: 0;
+ }
+ 
+ /* Existing table styles remain unchanged */
+ .table {
+   width: 70%;
+   max-width: 900px;
+   border-collapse: separate;
+   text-align: center;
+   border-spacing: 0 10px;
+ }
+ 
+ .table thead th {
+   background-color: var(--background-white);
+   padding: 12px;
+   text-align: center;
+   border-bottom: 2px solid var(--border-bottom);
+ }
+ 
+ .table tbody tr {
+   background: var(--white);
+   border-radius: 8px;
+   box-shadow: 0 2px 5px var(--black);
+ }
+ 
+ .table tbody tr td {
+   padding: 12px 15px;
+   border-right: 1px solid var(--border-bottom);
+ }
+ 
+ .table tbody tr:hover {
+   background: var(--hover-background);
+ }
+ 
+ .table td:nth-child(1) {
+   width: 80px;
+   font-weight: bold;
+   border-top-left-radius: 8px;
+   border-bottom-left-radius: 8px;
+ }
+ 
+ .table td:nth-child(4) {
+   width: 80px;
+   padding: 5px 10px;
+   font-size: 14px;
+ }
+ 
+ .table tbody tr td:nth-child(5) {
+   width: 50px;
+   border-right: none;
+   padding: 5px 10px;
+   font-size: 14px;
+   border-top-right-radius: 8px;
+   border-bottom-right-radius: 8px;
+ }
+ 
+ /***********************************************************************************/
+ /* Filter Box Styles */
+ .filterBoxWrapper {
+   width: 500px;           /* Smaller width */
+   background-color: var(--background-white);
+   border: 1px solid var(--border-bottom);
+   border-radius: 8px;
+   padding: 10px;          /* Reduced padding */
+   box-shadow: 0 2px 5px var(--black);
+   font-size: 0.85rem;     /* Smaller font */
+ }
+ 

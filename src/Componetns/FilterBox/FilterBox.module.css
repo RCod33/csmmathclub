@@ -1,72 +1,83 @@
 @import "../../main.css";
 
 .filterBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: var(--background-color);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* You can adjust width to shrink the big gray box if you want: */
+  max-width: 350px;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.filterBox form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 400px;
+/* Form container */
+.filterForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  /* max-width: 400px; You can remove or reduce if it's too wide */
 }
 
-.filterBox input[type="text"] {
-    padding: 10px;
-    border: 1px solid var(--light-gray);
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    transition: border-color 0.3s;
+/* Text inputs */
+.inputText {
+  padding: 10px;
+  border: 1px solid var(--light-gray);
+  border-radius: 5px;
+  font-size: 15px;
+  width: 100%;
+  transition: border-color 0.3s;
 }
 
-.filterBox input[type="text"]:focus {
-    border-color: var(--primary-color);
+/* Min/Max level side by side */
+.levelInputs {
+  display: flex;
+  gap: 15px;
+  /* If you want them equally wide: */
+  justify-content: space-between;
+  max-width: 350px;
 }
 
-.filterBox button {
-    background: none;
-    border: 1px solid var(--light-gray);
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s, color 0.3s;
-    font-size: 16px;
-    width: 100%;
-    max-width: 150px;
+.minMaxInput {
+  display: flex;
+  flex-direction: column;
 }
 
-.filterBox button:hover {
-    background: #f0f0f0;
-    color: black;
+/* Category filter (unchanged, except if you want to reduce width) */
+.categoryFilter {
+  width: 100%;
+  /* max-width: 300px; */
 }
 
-.filterBox button:active {
-    background: var(--primary-color);
-    color: black;
+/* Buttons row for Apply Filters & Clear All */
+.buttonRow {
+  display: flex;
+  gap: 15px; /* space between the two buttons */
+  justify-content: space-between;
 }
 
-.filterBox .categoryFilter {
-    width: 100%;
-    max-width: 300px;
+/* Buttons: remove or override width:100% so they fit side-by-side nicely */
+.button {
+  background: none;
+  border: 1px solid var(--light-gray);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+  font-size: 12px;
+  width: 35%; /* override the old width: 100% */
+  max-width: none; /* override max-width if it was set */
 }
 
-.filterBox .categoryFilter select {
-    padding: 10px;
-    border: 1px solid var(--light-gray);
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    transition: border-color 0.3s;
+/* Hover & active states (unchanged) */
+.button:hover {
+  background: #f0f0f0;
+  color: black;
 }
 
-.filterBox .categoryFilter select:focus {
-    border-color: var(--primary-color);
+.button:active {
+  background: var(--primary-color);
+  color: black;
 }
