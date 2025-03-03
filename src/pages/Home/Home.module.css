@@ -1,0 +1,56 @@
+.homeContainer {
+   display: flex;              /* Flex layout */
+   justify-content: center;     /* Center the whole layout */
+   margin: 20px auto;           /* Top and bottom margin, auto centers horizontally */
+   max-width: 1200px;           /* Optional: Limit the width of the whole layout */
+ }
+ 
+ .mainContent {
+   width: 70%;                  /* Main content area */
+   padding: 20px;
+   box-shadow: 0 4px 6px var(--black);
+   background-color: var(--white);
+   border-radius: 5px;
+ }
+
+ .welcomeSection {
+   text-align: center;               /* Center-align all text */
+   padding: 40px 20px;               /* Generous padding */
+   
+   border-radius: 10px;              /* Rounded corners */
+   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);  /* Smooth shadow */
+   margin-bottom: 30px;
+   animation: fadeIn 1.2s ease-in-out; /* Subtle animation */
+ }
+ 
+ .welcomeSection h1 {
+   font-size: 3em;                   /* Bigger size */
+   color: var(--primary-color);       /* Main color */
+   letter-spacing: 1.5px;            /* Slight spacing */
+   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+   margin-bottom: 10px;
+ }
+ 
+ .welcomeSection h4 {
+   font-size: 1.5em;
+   color: var(--secondary-color);
+   margin-bottom: 20px;
+ }
+ 
+ .welcomeSection p {
+   font-size: 1.2em;
+   line-height: 1.6;
+   color: var(--text-gray);
+ }
+ 
+ 
+ /*//////////////////////////////////////////////////////////////////////*/
+ 
+ .sidebar {
+   width: 35%;                  /* Sidebar width */
+   margin-left: 30px;           /* Gap between main content and sidebar */
+   display: flex;
+   flex-direction: column;       /* Stack components vertically */
+ }
+ 
+ 

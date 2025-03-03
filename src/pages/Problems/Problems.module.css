@@ -1,75 +1,77 @@
 /* Container for the main layout */
 .container {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
-/* Main content area */
-.mainContent {
-  width: 60%;
-  padding: 20px;
-  box-shadow: 0 4px 6px var(--black);
-  background-color: var(--white);
-}
-
-/* Sidebar area */
+   display: flex;
+   justify-content: center;
+   margin: 20px;
+ }
+ 
+ /* Main content area */
+ .mainContent {
+   width: 60%;
+   padding: 20px;
+   box-shadow: 0 4px 6px var(--black);
+   background-color: var(--white);
+ }
+ 
+ /* Sidebar area */
 .sidebar {
-  width: 25%;
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Individual boxes in the sidebar */
+   width: 25%;
+   margin-left: 20px;
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ 
 .linksBox, .tagsBox {
-  background-color: var(--white);
-  border: 1px solid var(--light-gray);
-  border-radius: 5px;
-  padding: 15px;
-  margin-bottom: 20px;
+   background-color: var(--white);
+   border: 1px solid var(--light-gray);
+   border-radius: 5px;
+   padding: 15px;
+   margin-bottom: 20px;
+   h3 {margin-top: 0;}
+   li {margin: 5px 0;}
+   ul {list-style: none; padding: 0;}
 }
-
-/* Headings inside the boxes */
-.linksBox h3, .tagsBox h3 {
-  margin-top: 0;
-}
-
-/* Lists inside the boxes */
-.linksBox ul, .tagsBox ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* List items */
-.linksBox li, .tagsBox li {
-  margin: 5px 0;
-}
-
-/* Links styling */
-.linksBox a {
-  text-decoration: none;
-  color: black;
-}
-
-.linksBox a:hover {
-  text-decoration: underline;
-}
-
-/* Existing styles */
+ 
+.linksBox {
+   a {
+      text-decoration: none;
+      &:hover {
+         text-decoration: underline;
+      }
+   }
+ }
+ 
+ 
 .problemHeader {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
+   display: flex;
+   align-items: center;       /* Vertically centers the items */
+   justify-content: space-between; /* Places items at the ends */
+   margin-bottom: 20px;
+  }
+  
+.problemTitle {
+   margin: 0;
+   font-size: 2em;            /* Adjust font size as needed */
+  }
+  
+.subTopic {
+   margin: 0;
+   font-size: 1.2em;          
+   text-align: right;
+   color: var(--secondary-color); 
+  }
+  
+ 
 .problemDetails h2 {
-  margin: 5px 0;
-  font-weight: normal;
-}
-
+   margin: 5px 0;
+   font-weight: normal;
+ }
+ 
 .problemBox {
-  border: 1px solid var(--light-gray);
-  padding: 20px;
-  background-color: var(--light-blue);
-  border-radius: 5px;
-}
+   border: 1px solid var(--light-gray);
+   padding: 20px;
+   background-color: var(--light-blue);
+   border-radius: 5px;
+ }
+ 

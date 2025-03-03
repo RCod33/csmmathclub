@@ -8,6 +8,9 @@
     --light-blue: #d8edffe1;
     --black: rgba(0, 0, 0, 0.1);
     --white: white;
+    --background-white: #f8f8f8;
+    --border-bottom: #ddd;
+    --hover-background: #f1f1f1;
     
 }
 

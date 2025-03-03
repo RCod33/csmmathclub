@@ -12,28 +12,34 @@
 
 /* header : ID - Title - etc */
 .table thead th {
-  background-color: #f8f8f8;
+  background-color: var(--background-white);
   padding: 12px;
   text-align: center;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid var(--border-bottom);
 }
 
 /* card look */
 .table tbody tr {
-  background: #fff;
+  background: var(--white);
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px var(--black);
 }
 
 /* Padding and right border for table cells */
 .table tbody tr td {
   padding: 12px 15px;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid var(--border-bottom);
 }
+
+/* 
+.table a, a:hover {
+   text-decoration: none;
+ }
+ */
 
 /* hover effect */
 .table tbody tr:hover {
-  background: #f1f1f1;
+  background: var(--hover-background);
 }
 
 /***********************************************************************************/

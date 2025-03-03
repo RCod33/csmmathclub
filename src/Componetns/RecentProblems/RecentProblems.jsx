@@ -2,14 +2,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import problemsDataBase from "../../JsonFiles/Problems.json";
+import styles from "./RecentProblem.module.css"; // Import CSS
 
 function RecentProblems() {
   return (
-    <section>
+    <section className={styles.recentProblemsBox}>
       <h3>Recent Problems</h3>
-      <ul>
+      <ul className={styles.recentProblemsList}>
         {
-          // prettier-ignore
           problemsDataBase.slice(-7).reverse().map((problem) => (
             <li key={`recent-problem-${problem.problemID}`}>
               <Link to="/Problem" state={{ currentProblem: problem }}>
