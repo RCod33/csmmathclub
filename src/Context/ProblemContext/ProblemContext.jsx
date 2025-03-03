@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import problemsData from "../../TEX_to_JSON/JSON_Files/Problems.json";
+import problemsData from "../../JsonFiles/Problems.json";
 
 const ProblemContext = createContext();
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CategoryFilter from "../CategoryFilter/CategoryFilter";
 import { ProblemContext } from "../../Context/ProblemContext/ProblemContext";
 import { FiltersContext } from "../../Context/FiltersContext/FiltersContext";
-import originalProblems from "../../TEX_to_JSON/JSON_Files/Problems.json";
+import originalProblems from "../../JsonFiles/Problems.json";
 import styles from "./FilterBox.module.css";
 
 function FilterBox() {
