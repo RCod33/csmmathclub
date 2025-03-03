@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect, useMemo } from "react";
 import categories from "../../JsonFiles/Categories.json";
 import styles from "./CategoryFilter.module.css";
 
-function Tags({ tags, setTags }) {
+function Tags({ category, tags, setTags }) {
   const [tagNames, setTagNames] = useState("");
   const [open, setOpen] = useState(true);
   const dropdownRef = useRef(null);
@@ -15,7 +15,7 @@ function Tags({ tags, setTags }) {
   }, [tags]);
 
   const createTagList = useMemo(() => {
-    return categories
+    return categories[category.map((element) => element)]
       .flatMap((element) => element.labels)
       .reduce((acc, curr) => {
         if (!acc.includes(curr)) {
@@ -165,7 +165,9 @@ function CategoryFilter({ category, setCategory, tags, setTags }) {
         </ul>
       )}
 
-      {category.length > 0 && <Tags tags={tags} setTags={setTags} />}
+      {category.length > 0 && (
+        <Tags category={category} tags={tags} setTags={setTags} />
+      )}
     </section>
   );
 }
