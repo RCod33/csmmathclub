@@ -23,6 +23,7 @@ GEOMETRY = ['G']
 TOPIC_MATRIX = [ALGEBRA, NUMBER_THEORY, DISCRETE, CALCULUS, GEOMETRY]
 
 TOPIC_INV = {v: k for k, v in TOPIC.items()}  # Inverse mapping
+
 TITLE_CNT = dict()
 
 used_id = [False for _ in range(10000)]
@@ -54,7 +55,7 @@ def generate_problem_id(mp: MathProblem):
    # Fix to 4 digits
    hash_string = str(hash_value).zfill(4)
    # Append topic identifier and level
-   hash_string += TOPIC_INV.get(mp.major_topic, 'Z') + level_str
+   hash_string += TOPIC_INV.get(mp.topic, 'Z') + level_str
    mp.id = hash_string
 
 
@@ -76,3 +77,4 @@ def get_major_topic(C):
       if C in topic and topic[0] in MAJOR_TOPIC:
          return MAJOR_TOPIC[topic[0]]
    return "Any"
+

@@ -1,6 +1,6 @@
 [
    {
-      "problemID": "7531A02",
+      "problemID": "7531Q02",
       "majorTopic": "Algebra",
       "subTopic": "Inequalities",
       "problemLevel": 2,
@@ -19,7 +19,7 @@
       ]
    },
    {
-      "problemID": "6225A04",
+      "problemID": "6225Q04",
       "majorTopic": "Algebra",
       "subTopic": "Inequalities",
       "problemLevel": 4,
@@ -39,7 +39,7 @@
       ]
    },
    {
-      "problemID": "6479A04",
+      "problemID": "6479Q04",
       "majorTopic": "Algebra",
       "subTopic": "Inequalities",
       "problemLevel": 4,
@@ -57,7 +57,7 @@
       ]
    },
    {
-      "problemID": "0830A05",
+      "problemID": "0830Q05",
       "majorTopic": "Algebra",
       "subTopic": "Inequalities",
       "problemLevel": 5,
@@ -78,7 +78,7 @@
       ]
    },
    {
-      "problemID": "4642A06",
+      "problemID": "4642Q06",
       "majorTopic": "Algebra",
       "subTopic": "Inequalities",
       "problemLevel": 6,
@@ -101,7 +101,7 @@
       ]
    },
    {
-      "problemID": "4871A12",
+      "problemID": "4871Q12",
       "majorTopic": "Algebra",
       "subTopic": "Inequalities",
       "problemLevel": 12,
@@ -343,7 +343,7 @@
       ]
    },
    {
-      "problemID": "8401Z02",
+      "problemID": "8401C02",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 2,
@@ -365,7 +365,7 @@
       ]
    },
    {
-      "problemID": "0737Z01",
+      "problemID": "0737C01",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 1,
@@ -384,7 +384,7 @@
       ]
    },
    {
-      "problemID": "5603Z03",
+      "problemID": "5603C03",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 3,
@@ -424,7 +424,7 @@
       ]
    },
    {
-      "problemID": "6652Z05",
+      "problemID": "6652C05",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 5,
@@ -487,7 +487,7 @@
       ]
    },
    {
-      "problemID": "7041Z07",
+      "problemID": "7041P07",
       "majorTopic": "Discrete",
       "subTopic": "Probability",
       "problemLevel": 7,
@@ -552,7 +552,7 @@
       ]
    },
    {
-      "problemID": "6676Z07",
+      "problemID": "6676C07",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 7,
@@ -574,7 +574,7 @@
       ]
    },
    {
-      "problemID": "9732A05",
+      "problemID": "9732Q05",
       "majorTopic": "Algebra",
       "subTopic": "Inequalities",
       "problemLevel": 5,
@@ -613,7 +613,7 @@
       ]
    },
    {
-      "problemID": "0182N07",
+      "problemID": "0182D07",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 7,
@@ -637,7 +637,7 @@
       ]
    },
    {
-      "problemID": "4256N09",
+      "problemID": "4256D09",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 9,
@@ -666,7 +666,7 @@
       ]
    },
    {
-      "problemID": "4612N10",
+      "problemID": "4612D10",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 10,
@@ -686,7 +686,7 @@
       ]
    },
    {
-      "problemID": "5374N07",
+      "problemID": "5374D07",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 7,
@@ -706,7 +706,7 @@
       ]
    },
    {
-      "problemID": "4911N08",
+      "problemID": "4911D08",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 8,
@@ -757,7 +757,7 @@
       ]
    },
    {
-      "problemID": "3324Z03",
+      "problemID": "3324C03",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 3,
@@ -914,7 +914,7 @@
       ]
    },
    {
-      "problemID": "4524Z07",
+      "problemID": "4524C07",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 7,
@@ -939,7 +939,7 @@
       ]
    },
    {
-      "problemID": "2205Z01",
+      "problemID": "2205C01",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 1,
@@ -983,7 +983,7 @@
       ]
    },
    {
-      "problemID": "6193Z02",
+      "problemID": "6193C02",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 2,
@@ -1014,7 +1014,7 @@
       ]
    },
    {
-      "problemID": "5669Z04",
+      "problemID": "5669C04",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 4,
@@ -1200,7 +1200,7 @@
       ]
    },
    {
-      "problemID": "5633Z04",
+      "problemID": "5633C04",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 4,
@@ -1221,7 +1221,7 @@
       ]
    },
    {
-      "problemID": "0837Z05",
+      "problemID": "0837C05",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 5,
@@ -1259,7 +1259,7 @@
       ]
    },
    {
-      "problemID": "7171Z02",
+      "problemID": "7171C02",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 2,
@@ -1325,7 +1325,7 @@
       ]
    },
    {
-      "problemID": "5757N03",
+      "problemID": "5757D03",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 3,
@@ -1344,7 +1344,7 @@
       ]
    },
    {
-      "problemID": "5098N04",
+      "problemID": "5098D04",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 4,
@@ -1367,7 +1367,7 @@
       ]
    },
    {
-      "problemID": "3515N05",
+      "problemID": "3515D05",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 5,
@@ -1618,7 +1618,7 @@
       ]
    },
    {
-      "problemID": "8084Z03",
+      "problemID": "8084C03",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 3,
@@ -1644,7 +1644,7 @@
       ]
    },
    {
-      "problemID": "9084Z01",
+      "problemID": "9084C01",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 1,
@@ -1663,7 +1663,7 @@
       ]
    },
    {
-      "problemID": "3747Z02",
+      "problemID": "3747P02",
       "majorTopic": "Discrete",
       "subTopic": "Probability",
       "problemLevel": 2,
@@ -1729,7 +1729,7 @@
       ]
    },
    {
-      "problemID": "2943Z07",
+      "problemID": "2943C07",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 7,
@@ -1750,7 +1750,7 @@
       ]
    },
    {
-      "problemID": "3496Z07",
+      "problemID": "3496P07",
       "majorTopic": "Discrete",
       "subTopic": "Probability",
       "problemLevel": 7,
@@ -1770,7 +1770,7 @@
       ]
    },
    {
-      "problemID": "4994Z07",
+      "problemID": "4994C07",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 7,
@@ -1852,7 +1852,7 @@
       ]
    },
    {
-      "problemID": "8109Z02",
+      "problemID": "8109C02",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 2,
@@ -1913,7 +1913,7 @@
       ]
    },
    {
-      "problemID": "1061Z01",
+      "problemID": "1061C01",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 1,
@@ -1933,7 +1933,7 @@
       ]
    },
    {
-      "problemID": "1233Z01",
+      "problemID": "1233C01",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 1,
@@ -1958,7 +1958,7 @@
       ]
    },
    {
-      "problemID": "4033Z03",
+      "problemID": "4033C03",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 3,
@@ -2039,7 +2039,7 @@
       ]
    },
    {
-      "problemID": "2466Z06",
+      "problemID": "2466P06",
       "majorTopic": "Discrete",
       "subTopic": "Probability",
       "problemLevel": 6,
@@ -2078,7 +2078,7 @@
       ]
    },
    {
-      "problemID": "1086N04",
+      "problemID": "1086D04",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 4,
@@ -2125,7 +2125,7 @@
       ]
    },
    {
-      "problemID": "7786N09",
+      "problemID": "7786D09",
       "majorTopic": "Number Theory",
       "subTopic": "Divisibility",
       "problemLevel": 9,
@@ -2223,7 +2223,7 @@
       ]
    },
    {
-      "problemID": "6747Z04",
+      "problemID": "6747P04",
       "majorTopic": "Discrete",
       "subTopic": "Probability",
       "problemLevel": 4,
@@ -2242,7 +2242,7 @@
       ]
    },
    {
-      "problemID": "9901Z03",
+      "problemID": "9901C03",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 3,
@@ -2328,7 +2328,7 @@
       ]
    },
    {
-      "problemID": "5076Z07",
+      "problemID": "5076C07",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 7,
@@ -2391,7 +2391,7 @@
       ]
    },
    {
-      "problemID": "3261Z03",
+      "problemID": "3261P03",
       "majorTopic": "Discrete",
       "subTopic": "Probability",
       "problemLevel": 3,
@@ -2431,7 +2431,7 @@
       ]
    },
    {
-      "problemID": "1199Z05",
+      "problemID": "1199C05",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 5,
@@ -2471,7 +2471,7 @@
       ]
    },
    {
-      "problemID": "8145Z04",
+      "problemID": "8145C04",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 4,
@@ -2490,7 +2490,7 @@
       ]
    },
    {
-      "problemID": "7810Z05",
+      "problemID": "7810C05",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 5,
@@ -2509,7 +2509,7 @@
       ]
    },
    {
-      "problemID": "5340Z04",
+      "problemID": "5340P04",
       "majorTopic": "Discrete",
       "subTopic": "Probability",
       "problemLevel": 4,
@@ -2864,7 +2864,7 @@
       ]
    },
    {
-      "problemID": "1241Z04",
+      "problemID": "1241C04",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 4,
@@ -2887,7 +2887,7 @@
       ]
    },
    {
-      "problemID": "5450Z03",
+      "problemID": "5450C03",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 3,
@@ -2906,7 +2906,7 @@
       ]
    },
    {
-      "problemID": "3863Z01",
+      "problemID": "3863C01",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 1,
@@ -2925,7 +2925,7 @@
       ]
    },
    {
-      "problemID": "6326Z02",
+      "problemID": "6326C02",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 2,
@@ -2944,7 +2944,7 @@
       ]
    },
    {
-      "problemID": "4785Z03",
+      "problemID": "4785C03",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 3,
@@ -2964,7 +2964,7 @@
       ]
    },
    {
-      "problemID": "4533Z04",
+      "problemID": "4533C04",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 4,
@@ -2984,7 +2984,7 @@
       ]
    },
    {
-      "problemID": "2157Z07",
+      "problemID": "2157C07",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 7,
@@ -3002,7 +3002,7 @@
       ]
    },
    {
-      "problemID": "8444Z05",
+      "problemID": "8444C05",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 5,
@@ -3025,7 +3025,7 @@
       ]
    },
    {
-      "problemID": "6163Z05",
+      "problemID": "6163P05",
       "majorTopic": "Discrete",
       "subTopic": "Probability",
       "problemLevel": 5,
@@ -3044,7 +3044,7 @@
       ]
    },
    {
-      "problemID": "6589Z06",
+      "problemID": "6589C06",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 6,
@@ -3063,7 +3063,7 @@
       ]
    },
    {
-      "problemID": "4860Z07",
+      "problemID": "4860C07",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 7,
@@ -3082,7 +3082,7 @@
       ]
    },
    {
-      "problemID": "3574Z08",
+      "problemID": "3574C08",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 8,
@@ -3102,7 +3102,7 @@
       ]
    },
    {
-      "problemID": "6441Z09",
+      "problemID": "6441C09",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 9,
