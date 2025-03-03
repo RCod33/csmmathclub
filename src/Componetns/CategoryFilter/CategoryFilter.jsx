@@ -129,8 +129,6 @@ function CategoryFilter({ category, setCategory, tags, setTags }) {
     };
   }, []);
 
-  //todo: fix the dropdown menu to close when clicking inside the dropdown
-
   return (
     <section className={styles.container}>
       <div className={styles.selectedCategories}>

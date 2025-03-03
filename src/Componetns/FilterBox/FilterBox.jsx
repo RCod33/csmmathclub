@@ -7,13 +7,14 @@ import originalProblems from "../../JsonFiles/Problems.json";
 import styles from "./FilterBox.module.css";
 
 function FilterBox() {
+  const { filteredProblems, setFilteredProblems } =
+    React.useContext(ProblemContext);
   const [tempProblems, setTempProblems] = useState(originalProblems);
   // prettier-ignore
   const {
     nameFiltred, setNameFiltred, minLevel, setMinLevel, 
     maxLevel, setMaxLevel, category, setCategory, tags, setTags
   } = React.useContext(FiltersContext);
-  const { setFilteredProblems } = React.useContext(ProblemContext);
   const navigate = useNavigate();
 
   //Si en algun momento el boton go no funciona, utiliza el y quieres arreglarlo contrareloj,
@@ -34,7 +35,7 @@ function FilterBox() {
 
   const handleRandomizer = () => {
     const randomProblem =
-      tempProblems[Math.floor(Math.random() * tempProblems.length)];
+      filteredProblems[Math.floor(Math.random() * tempProblems.length)];
     if (randomProblem === undefined) {
       alert("No problems found with the current filters");
       return;
@@ -83,7 +84,7 @@ function FilterBox() {
             className={styles.inputText}
             id="filter by max level"
             type="text"
-            value={maxLevel === 12 ? "" : maxLevel} //para que no se vea el 1 por defecto
+            value={maxLevel === 12 ? "" : maxLevel} //para que no se vea el 12 por defecto
             onChange={(event) => setMaxLevel(Number(event.target.value))}
             placeholder="12"
           />
@@ -96,16 +97,9 @@ function FilterBox() {
           setTags={setTags}
           className={styles.categoryFilter}
         />
-        {
-          //todo: mejorar la logica de clear all ya q al implemetar el boton de go no funciona como estaba pensado
-        }
-        {tempProblems.length !== originalProblems.length && (
-          <button type="button" onClick={handleClearAllFilters}>
-            Clear All
-          </button>
-        )}
+
         <button className={styles.button} type="button" onClick={handleGo}>
-          Go
+          Apply Filters
         </button>
         <button
           className={styles.button}
@@ -113,6 +107,9 @@ function FilterBox() {
           onClick={handleRandomizer}
         >
           Randomizer
+        </button>
+        <button type="button" onClick={handleClearAllFilters}>
+          Clear All
         </button>
       </form>
     </section>

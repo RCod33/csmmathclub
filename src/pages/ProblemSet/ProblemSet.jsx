@@ -7,8 +7,6 @@ import { ProblemContext } from "../../Context/ProblemContext/ProblemContext";
 import { FiltersProvider } from "../../Context/FiltersContext/FiltersContext";
 import styles from "./ProblemSet.module.css";
 
-//todo: cambiar el nombre de filteredProblems por filtred filteredProblems
-
 function ProblemSet() {
   const [currentProblemPage, setCurrentProblemPage] = useState(0);
   const { filteredProblems, totalPages, pageRange } =
