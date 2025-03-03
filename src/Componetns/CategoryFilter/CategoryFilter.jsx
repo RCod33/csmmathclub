@@ -6,7 +6,7 @@ function Tags({ category, tags, setTags }) {
   const [tagNames, setTagNames] = useState("");
   const [open, setOpen] = useState(true);
   const dropdownRef = useRef(null);
-  const inputRef = useRef(null); // Referencia al input
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -15,15 +15,11 @@ function Tags({ category, tags, setTags }) {
   }, [tags]);
 
   const createTagList = useMemo(() => {
-    return categories[category.map((element) => element)]
-      .flatMap((element) => element.labels)
-      .reduce((acc, curr) => {
-        if (!acc.includes(curr)) {
-          acc.push(curr);
-        }
-        return acc;
-      }, []);
-  }, [categories]);
+    return categories
+      .filter((element) => category.includes(Object.keys(element)[0])) // Filtra por majorTopic
+      .flatMap((element) => Object.values(element)[0]) // Obtiene las etiquetas del majorTopic
+      .filter((tag, index, self) => self.indexOf(tag) === index); // Elimina duplicados
+  }, [categories, category]);
 
   const handleEraseTag = (eraseTag) => {
     setTags((prevTags) => prevTags.filter((tag) => tag !== eraseTag));
@@ -152,16 +148,20 @@ function CategoryFilter({ category, setCategory, tags, setTags }) {
       </div>
       {open && (
         <ul ref={dropdownRef} className={styles.menu}>
-          {categories.map((element) => (
-            <li key={element.majorTopic}>
-              <button
-                type="button"
-                onClick={() => handleAddCategory(element.majorTopic)}
-              >
-                {element.majorTopic}
-              </button>
-            </li>
-          ))}
+          {categories.map((category, index) => {
+            const majorTopic = Object.keys(category)[0]; // Obtiene el majorTopic (la clave)
+
+            return (
+              <li key={index}>
+                <button
+                  type="button"
+                  onClick={() => handleAddCategory(majorTopic)}
+                >
+                  {majorTopic}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       )}
 

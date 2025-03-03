@@ -20,7 +20,7 @@ function FilterBox() {
   //Si en algun momento el boton go no funciona, utiliza el y quieres arreglarlo contrareloj,
   //  en el discord de edgar esta fijado un useEffect
 
-  const handleGo = () => {
+  const handleApplyFilters = () => {
     setTempProblems(() => {
       //prettier-ignore
       return originalProblems.filter((element) =>
@@ -48,8 +48,15 @@ function FilterBox() {
     setMinLevel(-1);
     setMaxLevel(-1);
     setCategory([]);
+    setTags([]);
     setTempProblems([...originalProblems]);
   };
+
+  useEffect(() => {
+    if (category.length === 0) {
+      setTags([]);
+    }
+  }, [category]);
 
   useEffect(() => {
     setFilteredProblems([...tempProblems]);
@@ -98,7 +105,11 @@ function FilterBox() {
           className={styles.categoryFilter}
         />
 
-        <button className={styles.button} type="button" onClick={handleGo}>
+        <button
+          className={styles.button}
+          type="button"
+          onClick={handleApplyFilters}
+        >
           Apply Filters
         </button>
         <button
