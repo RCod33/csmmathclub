@@ -15,7 +15,7 @@
  
  /* Existing table styles remain unchanged */
  .table {
-   width: 70%;
+   width: 800px;
    max-width: 900px;
    border-collapse: separate;
    text-align: center;
@@ -69,7 +69,7 @@
  /***********************************************************************************/
  /* Filter Box Styles */
  .filterBoxWrapper {
-   width: 500px;           /* Smaller width */
+   width: 300px;           /* Smaller width */
    background-color: var(--background-white);
    border: 1px solid var(--border-bottom);
    border-radius: 8px;

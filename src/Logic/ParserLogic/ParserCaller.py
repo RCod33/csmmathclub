@@ -24,5 +24,3 @@ if latest_input_time > last_update:
          print("file: ", Path(tex_file).name)
          input_tex(tex_file)} '''
   
-
-

@@ -44,7 +44,7 @@ class MathProblem:
 def generate_problem_id(mp: MathProblem):
    level_str = f"{mp.problem_level:02d}"  # two-digit format
     
-   content = f"{mp.major_topic}|{level_str}|{mp.source}|{mp.tex_string[0]}" 
+   content = f"{mp.major_topic}|{level_str}|{mp.source}|{mp.title}" 
    hash_value = int(hashlib.sha256(content.encode()).hexdigest(), 16) % 10000
    
    while used_id[hash_value]:

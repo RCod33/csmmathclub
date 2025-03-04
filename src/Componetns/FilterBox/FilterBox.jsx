@@ -9,7 +9,6 @@ import styles from "./FilterBox.module.css";
 function FilterBox() {
   const { filteredProblems, setFilteredProblems } = React.useContext(ProblemContext);
   const [tempProblems, setTempProblems] = useState(originalProblems);
-  // prettier-ignore
   const {
     nameFiltred, setNameFiltred,
     minLevel, setMinLevel,
@@ -17,25 +16,29 @@ function FilterBox() {
     category, setCategory,
     tags, setTags
   } = React.useContext(FiltersContext);
+
   const navigate = useNavigate();
 
-  //Si en algun momento el boton go no funciona, utiliza el y quieres arreglarlo contrareloj,
-  //  en el discord de edgar esta fijado un useEffect
-
   const handleApplyFilters = () => {
-    setTempProblems(() => {
-      return originalProblems.filter((element) =>
+    setTempProblems(() =>
+      originalProblems.filter((element) =>
         element.title.toLowerCase().includes(nameFiltred.toLowerCase()) &&
         (minLevel !== -1 ? element.problemLevel >= minLevel : true) &&
         (maxLevel !== -1 ? element.problemLevel <= maxLevel : true) &&
         (category.length > 0 ? category.includes(element.majorTopic) : true) &&
-        (tags.length > 0 ? element.tags.some((tag)=> tags.includes(tag)) : true)
-      );
-    });
+        (tags.length > 0 ? element.tags.some((tag) => tags.includes(tag)) : true)
+      )
+    );
   };
 
+  /** 
+   * Keep the randomizer logic here, but *don’t* render the button in FilterBox. 
+   * We'll pass this function down to CategoryFilter instead.
+   */
   const handleRandomizer = () => {
-    const randomProblem = filteredProblems[Math.floor(Math.random() * tempProblems.length)];
+    const randomProblem = filteredProblems[
+      Math.floor(Math.random() * tempProblems.length)
+    ];
     if (!randomProblem) {
       alert("No problems found with the current filters");
       return;
@@ -53,10 +56,11 @@ function FilterBox() {
   };
 
   useEffect(() => {
+    // If no category is chosen, clear tags as well
     if (category.length === 0) {
       setTags([]);
     }
-  }, [category]);
+  }, [category, setTags]);
 
   useEffect(() => {
     setFilteredProblems([...tempProblems]);
@@ -65,7 +69,6 @@ function FilterBox() {
   return (
     <section className={styles.filterBox}>
       <form id="filterForm" className={styles.filterForm}>
-
         {/* Search input */}
         <input
           className={styles.inputText}
@@ -85,7 +88,7 @@ function FilterBox() {
               value={minLevel === -1 ? "" : minLevel}
               onChange={(e) => setMinLevel(Number(e.target.value))}
               placeholder="0"
-              className={styles.inputText}
+              className={styles.inputTextSmall}
             />
           </div>
 
@@ -97,35 +100,37 @@ function FilterBox() {
               value={maxLevel === -1 ? "" : maxLevel}
               onChange={(e) => setMaxLevel(Number(e.target.value))}
               placeholder="12"
-              className={styles.inputText}
+              className={styles.inputTextSmall}
             />
           </div>
         </div>
 
-        {/* Category filter */}
+        {/* Categories & tags (with the randomizer button inside CategoryFilter) */}
         <CategoryFilter
           category={category}
           setCategory={setCategory}
-          setTempProblems={setTempProblems}
           tags={tags}
           setTags={setTags}
-          className={styles.categoryFilter}
+          handleRandomizer={handleRandomizer}
         />
 
-        <button
-          className={styles.button}
-          type="button"
-          onClick={handleApplyFilters}
-        >
-          Apply Filters
-        </button>
-        <button
-          className={styles.button}
-          type="button"
-          onClick={handleRandomizer}
-        >
-          Randomizer
-        </button>
+        {/* Apply Filters & Clear All on one row */}
+        <div className={styles.buttonRow}>
+          <button
+            className={styles.button}
+            type="button"
+            onClick={handleApplyFilters}
+          >
+            Apply Filters
+          </button>
+          <button
+            className={styles.button}
+            type="button"
+            onClick={handleClearAllFilters}
+          >
+            Clear All
+          </button>
+        </div>
       </form>
     </section>
   );

@@ -1,77 +1,149 @@
+@import "../../main.css";
+
+/* Outer container of the entire CategoryFilter */
 .container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 8px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 0.85rem; /* Smaller font overall */
 }
 
+/* Top row: categories on the left, Randomizer on the right */
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Left side: selected categories + dropdown button */
+.categoriesSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative; /* for absolute .menu overlay */
+}
+
+/* The row of selected category pills */
 .selectedCategories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.selectedButton {
-    background: var(--primary-color);
-    justify-content: center;
-    color: black;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: background 0.3s;
+/* The button for toggling the category dropdown */
+.dropdownWrapper {
+  position: relative; /* Contains the .menu absolutely */
 }
 
 .dropdownButton {
-    background: white;
-    border: 1px solid var(--light-gray);
-    padding: 10px 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background 0.3s, color 0.3s;
+  background: white;
+  border: 1px solid var(--light-gray);
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  transition: background 0.3s, color 0.3s;
 }
 
 .dropdownButton:hover {
-    background: #f0f0f0;
-    color: black;
+  background: #f0f0f0;
+  color: black;
 }
 
+/* Randomizer on the right side */
+.randomizerButton {
+  background: none;
+  border: 1px solid var(--light-gray);
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* The dropdown menu for categories or tags */
 .menu {
-    list-style: none;
-    padding: 0;
-    margin-top: 5px;
-    background: white;
-    border: 1px solid var(--light-gray);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 200px;
-    text-align: right;
+  position: absolute;
+  top: 100%;    /* appear just below the button/input */
+  left: 0;
+  z-index: 999;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  background: white;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 200px;
+  max-height: 150px;    /* scroll if taller */
+  overflow-y: auto;
+  text-align: right;    /* your original alignment */
 }
 
 .menu li {
-    padding: 8px;
+  padding: 0;
 }
 
 .menu li button {
-    width: 100%;
-    background: none;
-    border: none;
-    text-align: left;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background 0.3s;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.3s;
 }
 
 .menu li button:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
+}
+
+/* Tag input and selected tags container */
+.selectedTags {
+  position: relative;  /* for absolute .menu overlay */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* The text input for searching tags */
+.inputText {
+  padding: 6px;
+  border: 1px solid var(--light-gray);
+  border-radius: 5px;
+  font-size: 0.8rem;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+/* The pills for selected categories or tags */
+.selectedButton {
+  background: var(--primary-color);
+  color: black;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.3s;
+}
+
+.selectedButton:hover {
+  filter: brightness(95%);
+}
+
+/* The container for the tags input & pills (shown if category.length>0) */
+.tagsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }

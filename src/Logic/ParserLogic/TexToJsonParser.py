@@ -77,7 +77,7 @@ def input_tex(input_path):
        
       tex_string = problem_chunk[2 : -1]  
       mp = MathProblem(
-         major_topic, sub_topic, problem_level, source_str, week_discussed, title, labels, tex_string
+         major_topic, sub_topic, problem_level, source_str, week_discussed, title, labels, tex_string, "0000"
       )
       generate_problem_id(mp)
       problems.append(mp)

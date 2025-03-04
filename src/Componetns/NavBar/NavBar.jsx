@@ -44,14 +44,14 @@ function NavBar() {
 
       {/* SECOND BAR: SlateBlue */}
       <div className={styles.secondBar}>
-        <div className={styles.searchContainer}>
+        {<div className={styles.searchContainer}>
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Coming soon..."
             id="searchBar"
             className={styles.searchBar}
           />
-        </div>
+        </div>}
       </div>
     </nav>
   );

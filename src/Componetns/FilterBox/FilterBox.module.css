@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* You can adjust width to shrink the big gray box if you want: */
   max-width: 350px;
   padding: 20px;
   background-color: var(--background-color);
@@ -12,66 +11,89 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Form container */
+/* Make the entire form a bit smaller */
 .filterForm {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   width: 100%;
-  /* max-width: 400px; You can remove or reduce if it's too wide */
+  font-size: 0.85rem; /* smaller font for everything inside */
 }
 
-/* Text inputs */
+/* Default text input */
 .inputText {
-  padding: 10px;
+  padding: 8px;
   border: 1px solid var(--light-gray);
   border-radius: 5px;
-  font-size: 15px;
-  width: 100%;
   transition: border-color 0.3s;
+  width: 100%;
+  font-size: 0.85rem;
 }
 
-/* Min/Max level side by side */
+/* Smaller for Min/Max inputs */
+.inputTextSmall {
+  width: 50px;
+  padding: 4px;
+  font-size: 0.8rem;
+}
+
+/* Keep min & max in the same row, close together */
 .levelInputs {
   display: flex;
-  gap: 15px;
-  /* If you want them equally wide: */
-  justify-content: space-between;
-  max-width: 350px;
+  gap: 10px; 
+  align-items: center;
 }
 
+/* Label & input side by side for each minMaxInput */
 .minMaxInput {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
 }
 
-/* Category filter (unchanged, except if you want to reduce width) */
+/* Category filter + Randomizer side by side */
+.categoryRandomRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Make the category filter not push the button away if the dropdown is large */
 .categoryFilter {
-  width: 100%;
-  /* max-width: 300px; */
+  position: relative;
+  flex: 1;
+}
+
+/* For standard <select>, the OS often controls dropdown height, but try: */
+.categoryFilter select {
+  max-height: 120px; 
+  overflow-y: auto;
+  font-size: 0.85rem;
+  /* If you truly want it to overlay, you'd use position: absolute here,
+     but that can cause other issues with standard <select>. */
 }
 
 /* Buttons row for Apply Filters & Clear All */
 .buttonRow {
   display: flex;
-  gap: 15px; /* space between the two buttons */
+  gap: 10px;
   justify-content: space-between;
 }
 
-/* Buttons: remove or override width:100% so they fit side-by-side nicely */
+/* Buttons smaller font & smaller padding */
 .button {
   background: none;
   border: 1px solid var(--light-gray);
-  padding: 10px 20px;
+  padding: 6px 12px;
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s, color 0.3s;
-  font-size: 12px;
-  width: 35%; /* override the old width: 100% */
-  max-width: none; /* override max-width if it was set */
+  font-size: 0.85rem; 
+  width: auto;
+  max-width: none;
 }
 
-/* Hover & active states (unchanged) */
 .button:hover {
   background: #f0f0f0;
   color: black;
