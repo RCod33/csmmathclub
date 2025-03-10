@@ -2,7 +2,7 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ["gh-pages"]  # Or "main" if that's your default branch
+    branches: ["master"]  # Or "main" if that's your default branch
   workflow_dispatch:
 
 permissions:
