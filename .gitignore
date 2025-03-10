@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# for the .exe file made by c++
+src/TEX_to_JSON/*.exe
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+#Python Auxiliar Files
+src/Logic/ParsingLogic/__pycache__
+
+# Math Club Auxiliar Files
+src/MathClubProblems/**/*.aux
+src/MathClubProblems/**/*.pdf
+src/MathClubProblems/**/*.fdb_latexmk
+src/MathClubProblems/**/*.fls
+src/MathClubProblems/**/*.synctex.gz
+src/MathClubProblems/**/*.xdv
+src/MathClubProblems/**/*.txt
