@@ -12,7 +12,7 @@ function NavBar() {
         {/* Izquierda */}
         <div className={styles.topBarLeftSection}>
           <img
-            src="CSM_MATH_CLUB_LOGO.png"
+            src="public/CSM_MATH_CLUB_LOGO.PNG"
             alt="Web Logo"
             className={styles.logo}
           />
