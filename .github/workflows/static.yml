@@ -1,12 +1,8 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch (main or master)
   push:
-    branches: ["master"]  # Change to "main" if that's your default branch
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: ["gh-pages"]  # Or "main" if that's your default branch
   workflow_dispatch:
 
 permissions:
@@ -19,7 +15,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
@@ -28,11 +23,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Change to the version you're using
+          node-version: '14'  # Or the version you're using
 
       - name: Install dependencies
         run: npm install
@@ -43,11 +38,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the build folder (not the entire repository)
-          path: './dist'
+          path: ./build  # Make sure to upload the built files (default folder is `build`)
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-
