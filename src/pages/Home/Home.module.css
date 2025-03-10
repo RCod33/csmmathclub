@@ -1,56 +1,99 @@
 .homeContainer {
-   display: flex;              /* Flex layout */
-   justify-content: center;     /* Center the whole layout */
-   margin: 20px auto;           /* Top and bottom margin, auto centers horizontally */
-   max-width: 1200px;           /* Optional: Limit the width of the whole layout */
- }
- 
- .mainContent {
-   width: 70%;                  /* Main content area */
-   padding: 20px;
-   box-shadow: 0 4px 6px var(--black);
-   background-color: var(--white);
-   border-radius: 5px;
- }
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* Permite que los elementos se acomoden mejor en pantallas pequeñas */
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+  /* Espacio en los lados */
+}
 
- .welcomeSection {
-   text-align: center;               /* Center-align all text */
-   padding: 40px 20px;               /* Generous padding */
-   
-   border-radius: 10px;              /* Rounded corners */
-   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);  /* Smooth shadow */
-   margin-bottom: 30px;
-   animation: fadeIn 1.2s ease-in-out; /* Subtle animation */
- }
- 
- .welcomeSection h1 {
-   font-size: 3em;                   /* Bigger size */
-   color: var(--primary-color);       /* Main color */
-   letter-spacing: 1.5px;            /* Slight spacing */
-   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-   margin-bottom: 10px;
- }
- 
- .welcomeSection h4 {
-   font-size: 1.5em;
-   color: var(--secondary-color);
-   margin-bottom: 20px;
- }
- 
- .welcomeSection p {
-   font-size: 1.2em;
-   line-height: 1.6;
-   color: var(--text-gray);
- }
- 
- 
- /*//////////////////////////////////////////////////////////////////////*/
- 
- .sidebar {
-   width: 35%;                  /* Sidebar width */
-   margin-left: 30px;           /* Gap between main content and sidebar */
-   display: flex;
-   flex-direction: column;       /* Stack components vertically */
- }
- 
- 
+/* CONTENIDO PRINCIPAL */
+.mainContent {
+  width: 70%;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.mainContent:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* SECCIÓN DE BIENVENIDA */
+.welcomeSection {
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30px;
+  background: var(--light-background);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.welcomeSection h1 {
+  font-size: 2.5em;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+}
+
+.welcomeSection h4 {
+  font-size: 1.3em;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.welcomeSection p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: var(--text-gray);
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 30%;
+  /* Reducido ligeramente para dar más espacio al contenido principal */
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .homeContainer {
+    flex-direction: column;
+    /* Apila elementos en pantallas pequeñas */
+    align-items: center;
+  }
+
+  .mainContent {
+    width: 90%;
+    /* Más ancho en tablets */
+  }
+
+  .sidebar {
+    width: 90%;
+    /* Sidebar se expande y se mueve abajo */
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcomeSection h1 {
+    font-size: 2em;
+  }
+
+  .welcomeSection h4 {
+    font-size: 1.1em;
+  }
+
+  .welcomeSection p {
+    font-size: 1em;
+  }
+}

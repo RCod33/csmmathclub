@@ -1,6 +1,5 @@
 @import "../../main.css";
 
-
 .navBarContainer {
   width: 100%;
 }
@@ -8,10 +7,9 @@
 /* TOP BAR (white) */
 .topBar {
   width: 100%;
-  background-color: var(white);
+  background-color: var(--white);
   display: flex;
   justify-content: space-between;
-  /* left and right alignment */
   align-items: center;
   padding: 10px 20px;
 }
@@ -27,6 +25,14 @@
   gap: 1rem;
 }
 
+@media (max-width: 768px) {
+  .topBarRightSection {
+    display: none;
+    /* Se oculta en móviles y se muestra con un botón */
+  }
+}
+
+/* Logo */
 .logo {
   width: 90px;
   height: 90px;
@@ -66,10 +72,31 @@
 .searchBar {
   font-family: 'Montserrat', sans-serif !important;
   position: relative;
-  right: 50px;
   padding: 5px 10px;
   border: 1px solid var(--light-gray);
   border-radius: 20px;
   outline: none;
   width: 150px;
+}
+
+@media (max-width: 768px) {
+  .searchBar {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* Menú Hamburguesa para móviles */
+.mobileMenuToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mobileMenuToggle {
+    display: block;
+  }
 }

@@ -1,77 +1,142 @@
-/* Container for the main layout */
+/* CONTAINER PRINCIPAL */
 .container {
    display: flex;
    justify-content: center;
-   margin: 20px;
- }
- 
- /* Main content area */
- .mainContent {
-   width: 60%;
+   flex-wrap: wrap;
+   /* Permite que los elementos se acomoden mejor en pantallas pequeñas */
+   margin: 20px auto;
+   max-width: 1200px;
+   padding: 0 20px;
+}
+
+/* CONTENIDO PRINCIPAL */
+.mainContent {
+   width: 65%;
    padding: 20px;
-   box-shadow: 0 4px 6px var(--black);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    background-color: var(--white);
- }
- 
- /* Sidebar area */
+   border-radius: 8px;
+   transition: box-shadow 0.3s ease-in-out;
+}
+
+.mainContent:hover {
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* SIDEBAR */
 .sidebar {
-   width: 25%;
+   width: 30%;
    margin-left: 20px;
    display: flex;
    flex-direction: column;
- }
- 
- 
-.linksBox, .tagsBox {
+}
+
+/* BOXES DENTRO DEL SIDEBAR */
+.linksBox,
+.tagsBox {
    background-color: var(--white);
    border: 1px solid var(--light-gray);
    border-radius: 5px;
    padding: 15px;
    margin-bottom: 20px;
-   h3 {margin-top: 0;}
-   li {margin: 5px 0;}
-   ul {list-style: none; padding: 0;}
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
- 
-.linksBox {
-   a {
-      text-decoration: none;
-      &:hover {
-         text-decoration: underline;
-      }
-   }
- }
- 
- 
+
+.linksBox h3,
+.tagsBox h3 {
+   margin-top: 0;
+   font-size: 1.2em;
+   color: var(--primary-color);
+}
+
+.linksBox ul,
+.tagsBox ul {
+   list-style: none;
+   padding: 0;
+}
+
+.linksBox li,
+.tagsBox li {
+   margin: 5px 0;
+}
+
+.linksBox a {
+   text-decoration: none;
+   color: var(--secondary-color);
+}
+
+.linksBox a:hover {
+   text-decoration: underline;
+}
+
+/* HEADER DEL PROBLEMA */
 .problemHeader {
    display: flex;
-   align-items: center;       /* Vertically centers the items */
-   justify-content: space-between; /* Places items at the ends */
+   align-items: center;
+   justify-content: space-between;
    margin-bottom: 20px;
-  }
-  
+}
+
 .problemTitle {
    margin: 0;
-   font-size: 2em;            /* Adjust font size as needed */
-  }
-  
+   font-size: 2em;
+}
+
 .subTopic {
    margin: 0;
-   font-size: 1.2em;          
+   font-size: 1.2em;
    text-align: right;
-   color: var(--secondary-color); 
-  }
-  
- 
+   color: var(--secondary-color);
+}
+
+/* DETALLES DEL PROBLEMA */
 .problemDetails h2 {
    margin: 5px 0;
    font-weight: normal;
- }
- 
+   font-size: 1.5em;
+}
+
+/* CUADRO DEL PROBLEMA */
 .problemBox {
    border: 1px solid var(--light-gray);
    padding: 20px;
    background-color: var(--light-blue);
    border-radius: 5px;
- }
- 
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+   .container {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .mainContent {
+      width: 90%;
+   }
+
+   .sidebar {
+      width: 90%;
+      margin-left: 0;
+      margin-top: 20px;
+   }
+}
+
+@media (max-width: 768px) {
+   .problemTitle {
+      font-size: 1.8em;
+   }
+
+   .subTopic {
+      font-size: 1em;
+   }
+
+   .problemDetails h2 {
+      font-size: 1.3em;
+   }
+
+   .problemBox {
+      padding: 15px;
+   }
+}

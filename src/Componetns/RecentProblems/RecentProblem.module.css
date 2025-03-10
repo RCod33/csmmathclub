@@ -1,33 +1,62 @@
 .recentProblemsBox {
-   border: 1px solid var(--light-gray); 
-   padding: 20px;                      
-   border-radius: 5px;                 
-   box-shadow: 0 4px 6px var(--black);  
-   margin-bottom: 30px;                
- }
- 
- .recentProblemsBox h3 {
-   margin-top: 0;                     
-   font-size: 1.4em;
-  
-   text-align: center;
- }
- 
- .recentProblemsList {
-   list-style: none;                   
-   padding: 0;                         
- }
- 
- .recentProblemsList li {
-   margin: 10px 0;                    
- }
- 
- .recentProblemsList a {
-   text-decoration: none;              
-   color: var(--primary-color);        
- }
- 
- .recentProblemsList a:hover {
-   text-decoration: underline;         
- }
- 
+  border: 1px solid var(--light-gray);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px var(--black);
+  margin-bottom: 30px;
+}
+
+.recentProblemsBox h3 {
+  margin-top: 0;
+  font-size: 1.4em;
+
+  text-align: center;
+}
+
+.recentProblemsList {
+  list-style: none;
+  padding: 0;
+}
+
+.recentProblemsList li {
+  margin: 10px 0;
+}
+
+.recentProblemsList a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.recentProblemsList a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .recentProblemsBox {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .recentProblemsBox h3 {
+    font-size: 1.2em;
+  }
+
+  .recentProblemsList li {
+    margin: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .recentProblemsBox {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .recentProblemsBox h3 {
+    font-size: 1em;
+  }
+
+  .recentProblemsList li {
+    margin: 5px 0;
+  }
+}

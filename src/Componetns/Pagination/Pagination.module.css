@@ -5,29 +5,53 @@
     list-style: none;
     padding: 0;
     justify-content: center;
-    gap: 5px;
+    gap: 8px;
+    flex-wrap: wrap;
+    /* Permite que los botones bajen de línea si no caben */
 }
 
-.pagination li {
-    display: inline;
-}
-
+/* Estilos generales para cada botón de paginación */
 .pagination button {
     background: none;
     border: 1px solid var(--light-gray);
-    padding: 5px 10px;
+    padding: 8px 12px;
     cursor: pointer;
     border-radius: 5px;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
+    font-size: 0.9rem;
+    min-width: 36px;
+    /* Tamaño mínimo para que sean fáciles de tocar */
 }
 
+/* Efecto hover */
 .pagination button:hover {
     background: #f0f0f0;
     color: black;
 }
 
+/* Página activa */
 .pagination .activePage {
     background: var(--primary-color);
     color: var(--white);
     border-color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pagination {
+        overflow-x: auto;
+        /* Scroll horizontal en móviles */
+        flex-wrap: nowrap;
+        /* Evita que bajen de línea */
+        padding-bottom: 5px;
+        white-space: nowrap;
+        /* Mantiene los elementos en una sola línea */
+    }
+
+    .pagination button {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+        min-width: 32px;
+        /* Botones más pequeños en móviles */
+    }
 }

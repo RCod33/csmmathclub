@@ -9,6 +9,14 @@
   background-color: var(--background-color);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .filterBox {
+    max-width: 100%;
+    padding: 15px;
+  }
 }
 
 /* Make the entire form a bit smaller */
@@ -17,7 +25,7 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  font-size: 0.85rem; /* smaller font for everything inside */
+  font-size: 0.85rem;
 }
 
 /* Default text input */
@@ -37,11 +45,24 @@
   font-size: 0.8rem;
 }
 
+@media (max-width: 480px) {
+  .inputTextSmall {
+    width: 100%;
+  }
+}
+
 /* Keep min & max in the same row, close together */
 .levelInputs {
   display: flex;
-  gap: 10px; 
+  gap: 10px;
   align-items: center;
+}
+
+@media (max-width: 480px) {
+  .levelInputs {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 /* Label & input side by side for each minMaxInput */
@@ -59,19 +80,25 @@
   align-items: center;
 }
 
+@media (max-width: 480px) {
+  .categoryRandomRow {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 /* Make the category filter not push the button away if the dropdown is large */
 .categoryFilter {
   position: relative;
   flex: 1;
+  width: 100%;
 }
 
 /* For standard <select>, the OS often controls dropdown height, but try: */
 .categoryFilter select {
-  max-height: 120px; 
+  max-height: 120px;
   overflow-y: auto;
   font-size: 0.85rem;
-  /* If you truly want it to overlay, you'd use position: absolute here,
-     but that can cause other issues with standard <select>. */
 }
 
 /* Buttons row for Apply Filters & Clear All */
@@ -79,6 +106,13 @@
   display: flex;
   gap: 10px;
   justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+  .buttonRow {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 /* Buttons smaller font & smaller padding */
@@ -89,9 +123,15 @@
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s, color 0.3s;
-  font-size: 0.85rem; 
+  font-size: 0.85rem;
   width: auto;
   max-width: none;
+}
+
+@media (max-width: 480px) {
+  .button {
+    width: 100%;
+  }
 }
 
 .button:hover {
@@ -102,4 +142,11 @@
 .button:active {
   background: var(--primary-color);
   color: black;
+}
+
+/* Extra class for full width in small screens */
+@media (max-width: 480px) {
+  .fullWidthOnMobile {
+    width: 100%;
+  }
 }

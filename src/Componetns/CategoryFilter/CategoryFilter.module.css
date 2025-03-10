@@ -8,7 +8,15 @@
   gap: 8px;
   width: 100%;
   max-width: 300px;
-  font-size: 0.85rem; /* Smaller font overall */
+  font-size: 0.85rem;
+  /* Smaller font overall */
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    /* Full width on small screens */
+  }
 }
 
 /* Top row: categories on the left, Randomizer on the right */
@@ -16,6 +24,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .topRow {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 /* Left side: selected categories + dropdown button */
@@ -23,7 +39,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  position: relative; /* for absolute .menu overlay */
+  position: relative;
+  /* for absolute .menu overlay */
+  flex-wrap: wrap;
 }
 
 /* The row of selected category pills */
@@ -31,11 +49,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .selectedCategories {
+    justify-content: center;
+  }
 }
 
 /* The button for toggling the category dropdown */
 .dropdownWrapper {
-  position: relative; /* Contains the .menu absolutely */
+  position: relative;
+  /* Contains the .menu absolutely */
 }
 
 .dropdownButton {
@@ -67,7 +93,7 @@
 /* The dropdown menu for categories or tags */
 .menu {
   position: absolute;
-  top: 100%;    /* appear just below the button/input */
+  top: 100%;
   left: 0;
   z-index: 999;
   list-style: none;
@@ -76,12 +102,21 @@
   background: white;
   border: 1px solid var(--light-gray);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 200px;
-  max-height: 150px;    /* scroll if taller */
+  max-height: 150px;
+  /* scroll if taller */
   overflow-y: auto;
-  text-align: right;    /* your original alignment */
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .menu {
+    max-width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .menu li {
@@ -105,7 +140,7 @@
 
 /* Tag input and selected tags container */
 .selectedTags {
-  position: relative;  /* for absolute .menu overlay */
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -146,4 +181,11 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+/* Extra class for full width in small screens */
+@media (max-width: 480px) {
+  .mobileFullWidth {
+    width: 100%;
+  }
 }

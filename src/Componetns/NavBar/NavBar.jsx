@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 
 function NavBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav className={styles.navBarContainer}>
       {/* TOP BAR: White */}
@@ -19,7 +22,8 @@ function NavBar() {
             </Link>
           </h1>
         </div>
-        {/* Derecha */}
+
+        {/* Derecha - Links normales en pantallas grandes */}
         <div className={styles.topBarRightSection}>
           <Link to="/Home" className={styles.navLink}>
             Home
@@ -40,18 +44,59 @@ function NavBar() {
             Courses
           </Link>
         </div>
+
+        {/* Botón de menú hamburguesa en móviles */}
+        <button
+          className={styles.mobileMenuToggle}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          ☰
+        </button>
       </div>
+
+      {/* Menú desplegable en móviles */}
+      {isMenuOpen && (
+        <div className={styles.mobileMenu}>
+          <Link
+            to="/Home"
+            className={styles.navLink}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            to="/ProblemSet"
+            className={styles.navLink}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Problem Set
+          </Link>
+          <Link
+            to="/Courses"
+            className={styles.navLink}
+            onClick={(e) => {
+              e.preventDefault();
+              alert(
+                "Courses page is under construction, sorry for the inconvenience :)"
+              );
+              setIsMenuOpen(false);
+            }}
+          >
+            Courses
+          </Link>
+        </div>
+      )}
 
       {/* SECOND BAR: SlateBlue */}
       <div className={styles.secondBar}>
-        {<div className={styles.searchContainer}>
+        <div className={styles.searchContainer}>
           <input
             type="text"
             placeholder="Coming soon..."
             id="searchBar"
             className={styles.searchBar}
           />
-        </div>}
+        </div>
       </div>
     </nav>
   );
