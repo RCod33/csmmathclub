@@ -25,6 +25,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Install dependencies
         run: npm ci
+      - name: Set git user
+        run: |
+          git config --global user.email "edgargonzalezgerman@gmail.com"
+          git config --global user.name "Edgar"
       - name: Build project
         run: |
           npm run build
