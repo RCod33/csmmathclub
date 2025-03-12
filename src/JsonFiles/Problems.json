@@ -4442,20 +4442,21 @@
       ]
    },
    {
-      "problemID": "2524Z04",
+      "problemID": "5824Z04",
       "majorTopic": "Any",
       "subTopic": "Any",
       "problemLevel": 4,
-      "cameFrom": "BmMT 2015 Individual 18]\\par\\vspace{-7pt",
+      "cameFrom": "BmMT 2015 Individual 18",
       "weekDiscussed": [
          "2",
          "8"
       ],
-      "title": "BmMT 2015 Individual 18]\\par\\vspace{-7pt",
+      "title": "BmMT 2015 Individual 18",
       "tags": [
-         "Geometry"
+         "\\par\\vspace{-7pt}"
       ],
       "texString": [
+         "    %Geometry",
          "    \\begin{minipage}[t]{0.7\\linewidth}\\vspace{0pt}",
          "    Assume that $A,B,C,D,E,F$ are equally spaced on a circle of radius 1, as in the figure on the right. Find the area of the kite bounded by the lines $EA, AC, F C, BE$.",
          "    \\end{minipage}\\hfill",
