@@ -27,7 +27,8 @@ src/TEX_to_JSON/*.exe
 *.sw?
 
 #Python Auxiliar Files
-src/Logic/ParsingLogic/__pycache__
+src/Logic/ParserLogic/__pycache__/
+src/Logic/ParserLogic/*.pyc
 
 # Math Club Auxiliar Files
 src/MathClubProblems/**/*.aux

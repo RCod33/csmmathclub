@@ -3711,5 +3711,788 @@
          "",
          "    What are B and C?"
       ]
+   },
+   {
+      "problemID": "0861Z02",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 2,
+      "cameFrom": "Remember the liter jug?",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Remember the liter jug? P1",
+      "tags": [
+         "MOD",
+         "Divisibility"
+      ],
+      "texString": [
+         "    Suppose you have a 4 litre jug and a 10 litre jug. We can perform any of the following moves:",
+         "    \\begin{itemize}[itemsep=5pt, topsep=5pt]",
+         "        \\item Fill a jug completely with water.",
+         "        \\item Transfer water from one jug to another, stopping if the other jug is filled.",
+         "        \\item Empty a jug of water.",
+         "    \\end{itemize}",
+         "    The goal is to end up with one jug having exactly 1 litre of water. Can we do this?"
+      ]
+   },
+   {
+      "problemID": "9030Z01",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 1,
+      "cameFrom": "Introducing mods",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Introducing mods P1",
+      "tags": [
+         "MOD Discrete"
+      ],
+      "texString": [
+         "    Consider a $ 2025 \\times 2025 $ checkerboard, we wish to cover it with %",
+         "    \\raisebox{-2pt}{\\tikz{\\draw[thick] (0,0) rectangle (0.2,0.2);",
+         "    \\draw[thick] (0.2,0) rectangle (0.4,0.2);",
+         "    \\draw[thick] (0.4,0) rectangle (0.6,0.2);",
+         "    \\draw[thick] (0.2,0.2) rectangle (0.4,0.4);}} shaped tiles, and as a last resource, we are allowed to use a single ",
+         "    \\raisebox{0pt}{\\tikz{\\draw[thick] (0,0) rectangle (0.2,0.2);",
+         "    \\draw[thick] (0.2,0) rectangle (0.4,0.2);",
+         "    \\draw[thick] (0.4,0) rectangle (0.6,0.2);}} shaped tile if necessary. Is there a way to achieve this?\\medbreak",
+         "    Note: By \"cover it\" we mean that no cell will be uncovered, with no overlaps nor tiles that go outside of the original grid."
+      ]
+   },
+   {
+      "problemID": "0117Z01",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 1,
+      "cameFrom": "Some divisibility rules",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Some divisibility rules P1",
+      "tags": [
+         "Divisibility"
+      ],
+      "texString": [
+         "    For a positive integer $n$, show that ",
+         "    \\begin{itemize}",
+         "        \\item[\\textbf{i)}] $n$ is congruent with its last two digits $\\bmod\\;4$, and $n^2 \\equiv 0,1 \\pmod 4$  ",
+         "        \\item[\\textbf{ii)}] $n$ is congruent with the sum of its digits $\\bmod\\;9$, and $n^3 \\equiv 0,1,-1 \\pmod 9$",
+         "    \\end{itemize}"
+      ]
+   },
+   {
+      "problemID": "1124Z02",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 2,
+      "cameFrom": "Introducing negative mods",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Introducing negative mods P1",
+      "tags": [
+         "MOD"
+      ],
+      "texString": [
+         "    Find the last two digits of $1^{23} + 2^{23} + \\ldots + 2323^{23}$."
+      ]
+   },
+   {
+      "problemID": "9912Z02",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 2,
+      "cameFrom": "Introducing exponentiation properties",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Introducing exponentiation properties P1",
+      "tags": [
+         "MOD"
+      ],
+      "texString": [
+         "    Find the last digit of $7^{100}$."
+      ]
+   },
+   {
+      "problemID": "8022Z03",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 3,
+      "cameFrom": "Introducing modular inverse",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Introducing modular inverse P1",
+      "tags": [
+         "MOD",
+         "Bezout's Identity"
+      ],
+      "texString": [
+         "    Show that for any pair of coprime integers $a,m$, there's an integer $x$ such that $ax \\equiv 1 \\pmod m$. Show that $x$ is unique $\\bmod\\;m$, that is, if $x_1, x_2$ are solutions to $ax \\equiv 1 \\pmod m$, then $x_1 \\equiv x_2 \\pmod m$"
+      ]
+   },
+   {
+      "problemID": "1901Z03",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 3,
+      "cameFrom": "AMC 12 2000 9",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "AMC 12 2000 9",
+      "tags": [
+         "MOD"
+      ],
+      "texString": [
+         "    Mrs. Walter gave an exam in a mathematics class of five students. She entered the scores in random order into a spreadsheet, which recalculated the class average after each score was entered. Mrs. Walter noticed that after each score was entered, the average was always an integer. The scores (listed in ascending order) were 71, 76, 80, 82, and 91. What was the last score Mrs. Walter entered?"
+      ]
+   },
+   {
+      "problemID": "3858Z04",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 4,
+      "cameFrom": "AIME 1989 9",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "AIME 1989 9",
+      "tags": [
+         "MOD",
+         "Chinese Remainder Theorem"
+      ],
+      "texString": [
+         "    One of Euler's conjectures was disproved in the 1960s by three American mathematicians when they showed there was a positive integer $n$ such that",
+         "    $$ 133^5 + 110^5 + 84^5 + 27^5 = n^5 $$",
+         "    Find the value of $n$."
+      ]
+   },
+   {
+      "problemID": "1319Z05",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 5,
+      "cameFrom": "Justin Stevens 1.2.7",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Justin Stevens 1.2.7",
+      "tags": [
+         "MOD",
+         "Bezout's Identity",
+         "GCD"
+      ],
+      "texString": [
+         "    Show that $\\gcd(a^m-1, a^n-1) = a^{\\gcd(m,n)}-1$ for any positive integers $m,n$."
+      ]
+   },
+   {
+      "problemID": "8961Z06",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 6,
+      "cameFrom": "Polish 2003",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Polish 2003 P2",
+      "tags": [
+         "MOD"
+      ],
+      "texString": [
+         "    Find all polynomials $W$ with integer coefficients satisfying the following condition: for every natural number $n$, $2^n-1$ is divisible by $W(n)$"
+      ]
+   },
+   {
+      "problemID": "5734Z02",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 2,
+      "cameFrom": "AMATYC Spring 2019 10",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "AMATYC Spring 2019 10",
+      "tags": [
+         "Discrete"
+      ],
+      "texString": [
+         "     Morse code involves transmitting dots \u201c\u2022\u201d and dashes \u201c\\textsf{---}\u201d. An agent attempted to send a five-character code five different times, but only one of the five transmissions was correct. However, it was known that each erroneous transmission had a different number of errors than the others, and no transmission had five errors. The first transmission was \u2022 \\textsf{---} \\textsf{---} \u2022 \\textsf{---}, which was not correct. The other four transmissions are listed below. Which one is correct? "
+      ]
+   },
+   {
+      "problemID": "5447Z03",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 3,
+      "cameFrom": "AMATYC Spring 2007 8",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "AMATYC Spring 2007 8",
+      "tags": [
+         "Algebra"
+      ],
+      "texString": [
+         "    A function $f$ is symmetric to the origin and periodic with period 8. If $f(2) = 3$, what is the value of $f(4) + f(6)$?"
+      ]
+   },
+   {
+      "problemID": "1548Z03",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 3,
+      "cameFrom": "AMATYC Spring 2004 12",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "AMATYC Spring 2004 12",
+      "tags": [
+         "Geometry",
+         "Pythagorean Theorem"
+      ],
+      "texString": [
+         "    A circular table is pushed into a corner of a rectangular room so that it touches both walls. A point on the edge of the table between the two points of contact is two inches from one wall and 9 inches from the other wall. What is the radius of the table? (SML P12 Spring 2004)"
+      ]
+   },
+   {
+      "problemID": "4273Z05",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 5,
+      "cameFrom": "BMT Calculus 2024 5",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "BMT Calculus 2024 5",
+      "tags": [
+         "Calculus",
+         "Algebra",
+         "Integrals",
+         "BMT"
+      ],
+      "texString": [
+         "    For a real number \\( n \\), let \\( \\lfloor n \\rfloor \\) be the greatest integer less than or equal to \\( n \\). Compute",
+         "    \\[",
+         "    \\lim_{n \\to \\infty} \\int_0^n \\frac{x \\lfloor x \\rfloor}{n^3} \\, dx.",
+         "    \\]"
+      ]
+   },
+   {
+      "problemID": "8595Z05",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 5,
+      "cameFrom": "Putnam 2023 A1",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Putnam 2023 A1",
+      "tags": [
+         "Putnam",
+         "Calculus",
+         "Derivatives"
+      ],
+      "texString": [
+         "    For a positive integer $n$, let $f_n(x)=\\cos(x) \\cos(2x) \\cdots \\cos(nx)$. Find the smallest $n$ such that $|f_n^{''}(0)|>2023$."
+      ]
+   },
+   {
+      "problemID": "4938Z06",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 6,
+      "cameFrom": "Putnam 2016 A1",
+      "weekDiscussed": [
+         "2",
+         "7"
+      ],
+      "title": "Putnam 2016 A1",
+      "tags": [
+         "Derivatives",
+         "Pigeon-Hole Principle",
+         "Divisibility",
+         "MinMax"
+      ],
+      "texString": [
+         "    Find the smallest positive integer \\( j \\) such that for every polynomial \\( p(x) \\) with integer coefficients and for every \\( k \\), the integer",
+         "\\[",
+         "p^{(j)}(k) = \\frac{d^j}{dx^j}p(x) \\bigg|_{x=k}",
+         "\\]",
+         "(the \\( j \\)-th derivative of \\( p(x) \\) at \\( k \\)) is divisible by 2016."
+      ]
+   },
+   {
+      "problemID": "1223C02",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 2,
+      "cameFrom": "Western PA ARML Practice 2",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "Western PA ARML Practice 2",
+      "tags": [
+         "Discrete",
+         "Invariants"
+      ],
+      "texString": [
+         "    The numbers $1, 2, \\ldots , 100$ are written on a blackboard. You may choose any two numbers $a$ and $b$ and erase them, replacing them with the single number $a + b - 1$. After 99 steps, only a single number will be left. What is it?"
+      ]
+   },
+   {
+      "problemID": "0636C03",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 3,
+      "cameFrom": "Engel",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "Engel P1",
+      "tags": [
+         "Construction",
+         "Discrete"
+      ],
+      "texString": [
+         "    There is a positive integer in each square of a rectangular table. In each move, you may double each number in a row or subtract 1 from each number of a column. Prove that you can reach a table of zeroes by a sequence of these permitted moves."
+      ]
+   },
+   {
+      "problemID": "3017C03",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 3,
+      "cameFrom": "A Dramatic Nim Game",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "A Dramatic Nim Game P1",
+      "tags": [
+         "Construction",
+         "Nim games"
+      ],
+      "texString": [
+         "    Deep within the Academy of Raya Lucaria, aspiring sorcerers must prove their intellect in a legendary test known as the Trial of Glintstone Embers. In the Grand Library, two scholars \\emph{take turns} siphoning 1, 2, or 3 embers from an enchanted brazier containing 2025 embers. The scholar who takes the last ember will see beyond the secrets of Rennala\u2019s full moon, gaining the favor of the academy\u2019s greatest minds. Tonight, you stand before the brazier, facing a rival scholar. So sure of himself, he gives you the first turn. Can you devise a winning strategy, or will you be left in the dark?"
+      ]
+   },
+   {
+      "problemID": "6551C05",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 5,
+      "cameFrom": "Swiss Olympiad 2010",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "Swiss Olympiad 2010 P1",
+      "tags": [
+         "Discrete",
+         "Invariants"
+      ],
+      "texString": [
+         "    Three coins lie on integer points on the number line. A move consists of choosing and moving two coins, the first one 1 unit to the right and the second one 1 unit to the left. Under which initial conditions is it possible to move all coins to one single point?"
+      ]
+   },
+   {
+      "problemID": "3766C01",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 1,
+      "cameFrom": "The so-called Pigeon-Hole Principle",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "The so-called Pigeon-Hole Principle P1",
+      "tags": [
+         "Discrete",
+         "Pigeon-Hole Principle"
+      ],
+      "texString": [
+         "    Show that among any eight positive integers, we can always find two whose sum or difference is a multiple of twelve. Is the same argument true if we select seven positive integers instead?"
+      ]
+   },
+   {
+      "problemID": "8112C03",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 3,
+      "cameFrom": "BMT 2021 Discrete 3",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "BMT 2021 Discrete 3",
+      "tags": [
+         "Discrete",
+         "Counting"
+      ],
+      "texString": [
+         "    How many distinct sums can be made from adding together exactly 8 numbers that are chosen from the set $\\{1,4,7,10\\}$, where each number in the set is chosen at least once? (For example, one possible sum is $1 + 1 + 1 + 4 + 7 + 7 + 10 + 10 = 41$.)"
+      ]
+   },
+   {
+      "problemID": "3159C04",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 4,
+      "cameFrom": "NIMO Winter 2014 3",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "NIMO Winter 2014 3",
+      "tags": [
+         "Discrete",
+         "Invariants"
+      ],
+      "texString": [
+         "     The numbers $1$, $2$, \\dots, $10$ are written on a board.",
+         "  Every minute, one can select three numbers",
+         "  $a$, $b$, $c$ on the board, erase them,",
+         "  and write $\\sqrt{a^2+b^2+c^2}$ in their place.",
+         "  This process continues until no more numbers can be erased.",
+         "  What is the largest possible number",
+         "  that can remain on the board at this point?"
+      ]
+   },
+   {
+      "problemID": "7218C03",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 3,
+      "cameFrom": "A Walk Through Combinatorics",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "A Walk Through Combinatorics P3",
+      "tags": [
+         "Discrete",
+         "Pigeon-Hole Principle"
+      ],
+      "texString": [
+         "    %The set $M$ consists of nine positive integers, none of which has a prime divisor larger than six. %Prove that $M$ has two elements whose product is the square of an integer."
+      ]
+   },
+   {
+      "problemID": "5302C02",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 2,
+      "cameFrom": "BAMO 2024 1",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "BAMO 2024 1",
+      "tags": [
+         "Discrete",
+         "Algebra"
+      ],
+      "texString": [
+         "    %Sugar Station sells 44 different kinds of candies, packaged one to a box. Each box is priced at a positive integer number of cents, and it costs \\$1.51 to buy one of every kind. (There is no discount based on the number of candies in a purchase.) Unfortunately, Anna only has \\$0.75.",
+         "    ",
+         "    %\\begin{itemize}",
+         "        %\\item[a)] Show that Anna can buy at least 22 boxes, each containing a different candy.",
+         "        %\\item[b)] Show that Anna can do even better, buying at least 25 boxes, each containing a different candy",
+         "    %\\end{itemize}"
+      ]
+   },
+   {
+      "problemID": "6511C02",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 2,
+      "cameFrom": "Any",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "Any P13",
+      "tags": [
+         "Discrete",
+         "Pigeon-Hole Principle"
+      ],
+      "texString": [
+         "    %Show that if we select 5 points inside a square of length $1$, there is at least two points whose %distance is at most $\\sqrt{2}/2$."
+      ]
+   },
+   {
+      "problemID": "2977C04",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 4,
+      "cameFrom": "Cuba 2022 6",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "Cuba 2022 6",
+      "tags": [
+         "Discrete",
+         "Invariants"
+      ],
+      "texString": [
+         "    On the board are written the positive integers $1, 2, \\ldots, 2022$. Alex and Sophia have the chance of making the next movement:",
+         "    They can select two of the numbers on the board, say $\\alpha, \\beta$ and substitute them for the numbers $4 \\alpha - \\beta, 7 \\beta - 8 \\alpha$. Alex claims that after a finite number of moves, it is possible that the numbers on the board are $3, 6, 9, \\ldots 6066$. Sophia claims that this is impossible. Who is right?"
+      ]
+   },
+   {
+      "problemID": "0589C06",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 6,
+      "cameFrom": "BAMO 2024 2",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "BAMO 2024 2",
+      "tags": [
+         "Discrete",
+         "Construction"
+      ],
+      "texString": [
+         "    Sasha wants to bake 6 cookies in his 8 inch \u00d7 8 inch square baking sheet. With a cookie cutter, he cuts out from the dough six circular shapes, each exactly 3 inches in diameter. Can he place these six dough shapes on the baking sheet without the shapes touching each other? If yes, show us how. If no, explain why not. (Assume that the dough does not expand during baking.)"
+      ]
+   },
+   {
+      "problemID": "7297C03",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 3,
+      "cameFrom": "MP4G 2024 14",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "MP4G 2024 14",
+      "tags": [
+         "Discrete",
+         "Counting",
+         "MinMax",
+         "Construction"
+      ],
+      "texString": [
+         "    The set $S$ contains $2024$ elements. What is the size of a largest collection $C$ of subsets of $S$ with the property that the intersection of every three subsets in $C$ is nonempty,",
+         "  but the intersection of every four is empty?"
+      ]
+   },
+   {
+      "problemID": "4835C08",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 8,
+      "cameFrom": "OTIS Mock AIME I 2025 9",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "OTIS Mock AIME I 2025 9",
+      "tags": [
+         "Discrete",
+         "Counting"
+      ],
+      "texString": [
+         "    Winston forgot the definition of a prime number. He instead defines a New-prime recursively as follows:",
+         "\\begin{itemize}",
+         "    \\item \\(1\\) is not New-prime.",
+         "    \\item A positive integer \\( n > 1 \\) is New-prime if and only if \\( n \\) cannot be expressed as the product of exactly two (not necessarily distinct) New-prime positive integers.",
+         "\\end{itemize}",
+         "Compute the number of positive integers dividing \\(50054\\) which are New-primes.",
+         ""
+      ]
+   },
+   {
+      "problemID": "2904C05",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 5,
+      "cameFrom": "BAMO 2013 4",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "BAMO 2013 4",
+      "tags": [
+         "For a positive integer $n \\geq 2$, consider the $n-1$ fractions"
+      ],
+      "texString": [
+         "    %$$ \\frac{2}{1}, \\frac{3}{2}, \\ldots, \\frac{n}{n-1}$$",
+         "    %The product of these fractions equals $n$, but if you reciprocate (i.e. turn upside down) some of the fractions, the product will change. Can you make the product equal 1? Find all values of $n$ for which this is possible and prove that you have found them all"
+      ]
+   },
+   {
+      "problemID": "9298Z03",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 3,
+      "cameFrom": "BMT 2023 Discrete 3",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "BMT 2023 Discrete 3",
+      "tags": [
+         "Find the number of positive integers $n$ less than 10000 such that there are more 4\u2019s in the digits of $n+1$ than in the digits of $n$."
+      ],
+      "texString": []
+   },
+   {
+      "problemID": "4329Z03",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 3,
+      "cameFrom": "BmMT 2015 Individual 7",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "BmMT 2015 Individual 7",
+      "tags": [
+         "Divisibility",
+         "Digits"
+      ],
+      "texString": [
+         "    A three digit number is a multiple of 35 and the sum of its digits is 15. Find this number."
+      ]
+   },
+   {
+      "problemID": "9442Z05",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 5,
+      "cameFrom": "AMATYC Fall 2013 4",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "AMATYC Fall 2013 4",
+      "tags": [
+         "Discrete"
+      ],
+      "texString": [
+         "    The digits of a number are rearranged, and the resulting number is added to the original number. Consider the following values:\\smallbreak",
+         "    \\hspace{25pt}777\\hfill7,777\\hfill77,777\\hfill777,777\\hfill7,777,777\\hspace{25pt}\\smallbreak",
+         "",
+         "    How many of the numbers above could NOT equal this sum?"
+      ]
+   },
+   {
+      "problemID": "9108Z05",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 5,
+      "cameFrom": "AMATYC Fall 2013 10",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "AMATYC Fall 2013 10",
+      "tags": [
+         "Knights and Knaves",
+         "Discrete"
+      ],
+      "texString": [
+         "    Knaves always lie; knights always tell the truth. Al says, \u201cBo is a knight,\u201d Bo says, \u201cCy is a knave,\u201d and Cy says, \u201cExactly one of Al and Bo is a knave.\" If Al, Bo, and Cy are each either a knight or a knave, it is true that"
+      ]
+   },
+   {
+      "problemID": "4635Z02",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 2,
+      "cameFrom": "BMT 2020 Calculus 6",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "BMT 2020 Calculus 6",
+      "tags": [
+         "Calculus",
+         "Derivatives"
+      ],
+      "texString": [
+         "    For some $a > 1$, the curves $y = a^x$ and $y = \\log_a(x)$ are tangent to each other at exactly one point. Compute $| \\ln(\\ln(a))|$."
+      ]
+   },
+   {
+      "problemID": "2524Z04",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 4,
+      "cameFrom": "BmMT 2015 Individual 18]\\par\\vspace{-7pt",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "BmMT 2015 Individual 18]\\par\\vspace{-7pt",
+      "tags": [
+         "Geometry"
+      ],
+      "texString": [
+         "    \\begin{minipage}[t]{0.7\\linewidth}\\vspace{0pt}",
+         "    Assume that $A,B,C,D,E,F$ are equally spaced on a circle of radius 1, as in the figure on the right. Find the area of the kite bounded by the lines $EA, AC, F C, BE$.",
+         "    \\end{minipage}\\hfill",
+         "    \\begin{minipage}[t]{0.3\\linewidth}\\vspace{-30pt}",
+         "    \\hfill\\begin{tikzpicture}[scale=0.7]",
+         "        % Define circle radius",
+         "        \\def\\r{3}",
+         "    ",
+         "        % Define points on the circle",
+         "        \\foreach \\i/\\name in {90/A, 30/B, -30/C, -90/D, -150/E, 150/F}",
+         "        {",
+         "            \\coordinate (\\name) at (\\i:\\r);",
+         "            \\fill (\\name) circle(3pt);",
+         "            \\node[anchor=\\i] at (\\i:{\\r+1}) {\\name};",
+         "        }",
+         "            %\\fill (\\name) circle(2pt) node[above right] {\\name};",
+         "    ",
+         "        % Draw the circle",
+         "        \\draw[thick] (0,0) circle(\\r);",
+         "    ",
+         "        % Draw the points",
+         "        % \\foreach \\name in {A, B, C, D, E, F}",
+         "        %     \\fill (\\name) circle(2pt) node[above right] {\\name};",
+         "    ",
+         "        % Draw connecting lines",
+         "        \\draw[thick] (E) -- (A);",
+         "        \\draw[thick] (A) -- (C);",
+         "        \\draw[thick] (F) -- (C);",
+         "        \\draw[thick] (B) -- (E);",
+         "        ",
+         "        % Additional lines for the pattern",
+         "        \\draw[thick] (B) -- (E);",
+         "        \\draw[thick] (C) -- (F);",
+         "        \\draw[thick] (D) -- (F);",
+         "        \\draw[thick] (B) -- (D);            ",
+         "    \\end{tikzpicture}\\hfill",
+         "\\end{minipage}"
+      ]
    }
 ]

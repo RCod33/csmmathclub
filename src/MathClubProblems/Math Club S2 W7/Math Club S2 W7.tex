@@ -1,0 +1,465 @@
+\input{Packages}
+\input{Definitions}
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+%this removes numbering from the section, from some reason the \section*{} command doesnt work once you redefine it
+\setcounter{secnumdepth}{0} 
+
+% Define variables for week number and meeting date
+\newcommand{\weekNum}{7} % Change this to update the week number
+\newcommand{\meetingDate}{Mar 5, 2025} 
+
+\begin{document}
+\pagestyle{empty}
+\sloppy
+\maketitle
+ 
+\section{Topic: Modular Arithmetic}
+
+\begin{problem}[M][2][Remember the liter jug?]
+    %MOD ^ Divisibility
+    Suppose you have a 4 litre jug and a 10 litre jug. We can perform any of the following moves:
+    \begin{itemize}[itemsep=5pt, topsep=5pt]
+        \item Fill a jug completely with water.
+        \item Transfer water from one jug to another, stopping if the other jug is filled.
+        \item Empty a jug of water.
+    \end{itemize}
+    The goal is to end up with one jug having exactly 1 litre of water. Can we do this?
+\end{problem}
+
+\begin{solution}
+     \fbox{No, we cannot.} Consider what the moves do in combination. Emptying the 4 L jug and pouring water from the 10 L jug into it works as subtracting 4 from 10. Repeat this, and you can subtract 4 from the remaining 6 to get 2 L left behing in the 10 L jug. Move these 2 L to the 4 L jug, fill the 10 L jug again, and pour water into the 4 L jug (already half filled) to get 8 L remaining in the 10 L jug. 
+    
+    This scenario can be modeled by the a linear combination of the two jug capacities. In other words, the various amounts you can end up with are described by the expression \(T = 4x + 10y\), where \(x,y\) are integers. For those familiar with Bézout's Identity, recall that any $T$ must be a multiple of $\gcd(4,10)=2$. Since 1 is not a multiple of 2, then, it's impossible for $4x + 10y$ to equal 1, and thus, we cannot isolate exactly 1 litre of water in a jug. Another way to show this is to point out that 2 can be factored out of $4x + 10y$ to get $2(2x+5y)$, further showing that the value cannot sum to 1 (since $2x+5y$ must be an integer).
+    
+    You can also see this more intuitively by testing different sequences of manipulations, and noticing that no matter what, the amounts of water in each jug are always multiples of 2.
+\end{solution}
+
+\begin{problem}[M][1][Introducing mods]
+    %MOD %Discrete
+    Consider a $ 2025 \times 2025 $ checkerboard, we wish to cover it with %
+    \raisebox{-2pt}{\tikz{\draw[thick] (0,0) rectangle (0.2,0.2);
+    \draw[thick] (0.2,0) rectangle (0.4,0.2);
+    \draw[thick] (0.4,0) rectangle (0.6,0.2);
+    \draw[thick] (0.2,0.2) rectangle (0.4,0.4);}} shaped tiles, and as a last resource, we are allowed to use a single 
+    \raisebox{0pt}{\tikz{\draw[thick] (0,0) rectangle (0.2,0.2);
+    \draw[thick] (0.2,0) rectangle (0.4,0.2);
+    \draw[thick] (0.4,0) rectangle (0.6,0.2);}} shaped tile if necessary. Is there a way to achieve this?\medbreak
+    Note: By "cover it" we mean that no cell will be uncovered, with no overlaps nor tiles that go outside of the original grid.
+\end{problem}
+
+\begin{solution}
+    If we can fill up the checkerboard without using the \raisebox{0pt}{\tikz{\draw[thick] (0,0) rectangle (0.2,0.2);
+    \draw[thick] (0.2,0) rectangle (0.4,0.2);
+    \draw[thick] (0.4,0) rectangle (0.6,0.2);}} tile, the total number of grid squares must be of the form $N=4k$ (since \raisebox{-2pt}{\tikz{\draw[thick] (0,0) rectangle (0.2,0.2);
+    \draw[thick] (0.2,0) rectangle (0.4,0.2);
+    \draw[thick] (0.4,0) rectangle (0.6,0.2);
+    \draw[thick] (0.2,0.2) rectangle (0.4,0.4);}} is made up of 4 grid squares). If we can fill the checkerboard using the \raisebox{0pt}{\tikz{\draw[thick] (0,0) rectangle (0.2,0.2);
+    \draw[thick] (0.2,0) rectangle (0.4,0.2);
+    \draw[thick] (0.4,0) rectangle (0.6,0.2);}} tile, the number of grid squares must be of the form $N=4k+3$. In other words, if our goal is achievable, we must have $N\equiv0$ or $3 \pmod 4$. However, observe that
+    \[
+        N=2025^2 \equiv 1^2 \equiv 1 \pmod 4.
+    \]
+    Therefore, it is \fbox{not possible}.
+\end{solution}
+
+\begin{problem}[M][1][Some divisibility rules]
+    %Divisibility
+    For a positive integer $n$, show that 
+    \begin{itemize}
+        \item[\textbf{i)}] $n$ is congruent with its last two digits $\bmod\;4$, and $n^2 \equiv 0,1 \pmod 4$  
+        \item[\textbf{ii)}] $n$ is congruent with the sum of its digits $\bmod\;9$, and $n^3 \equiv 0,1,-1 \pmod 9$
+    \end{itemize}
+\end{problem}
+
+\begin{solution}
+        \textbf{i)} Let the last two digits of $n$ be $b$ and $c$, and let $A$ represent $n$ if $b$ and $c$ were removed (i.e. $n=31415 \ \Rightarrow \ A=314$). Now observe that $n=100A+10b+c$, and
+        \begin{align*}
+            n &= 4(25A) +10b + c\\
+            \Rightarrow \ n &\equiv 10b + c \pmod 4.
+        \end{align*}
+        So $n$ is congruent with its last two digits.
+
+        To show that $n^2 \equiv 0,1 \pmod 4$, recall that a property of mod arithmetic is $n^2 \bmod 4 = (n \bmod 4)^2 \bmod 4$. Thus all we have to do is check possible values of $n \bmod 4$, which are 0, 1, 2, and 3:
+        \begin{align*}
+            n &\equiv 0 \quad \Rightarrow \quad n^2 \equiv 0\\
+            n &\equiv 1 \quad \Rightarrow \quad n^2 \equiv 1\\
+            n &\equiv 2 \quad \Rightarrow \quad n^2 \equiv 4 \equiv 0\\
+            n &\equiv 3 \quad \Rightarrow \quad n^2 \equiv 9 \equiv 1
+        \end{align*}
+        Thus, we have $n^2 \equiv 0,1 \pmod 4$ for any positive integer  $n$.
+
+        \textbf{ii)} For a positive integer $n$ with $D$ digits, we have $\displaystyle n = d_0 \cdot 10^0 + d_1 \cdot 10^1 + d_2 \cdot 10^2 + \cdots = \sum_{k=0}^D d_k \cdot 10^k$. Recalling that $a^b \bmod c = (a \bmod c)^b \bmod c$, and knowing that $10 \bmod 9 = 1$, observe that
+        \[
+            n \equiv d_0 \cdot 1^0 + d_1 \cdot 1^1 + d_2 \cdot 1^2 + \cdots \equiv d_0 + d_1+d_2 + \cdots.
+        \]
+        So we've shown that $n$ is congruent with the sum of its digits mod 9. For the second property, we'll use a similar method to the one in part i), but we'll take advantage of the fact that $a \equiv a - c \pmod c$ to make some numbers easier to work with.\\[-17pt]
+        \noindent \hspace{30pt}
+        \begin{minipage}[t]{0.45\linewidth}\vspace{0pt}
+        \begin{alignat*}{5}
+        &n &&\equiv 0 \quad &&\Rightarrow \quad &&n^3 &&\equiv 0\\
+        &n &&\equiv 1 \quad &&\Rightarrow \quad &&n^3 &&\equiv 1\\
+        &n &&\equiv 2 \quad &&\Rightarrow \quad &&n^3 &&\equiv 8 \equiv -1\\
+        &n &&\equiv 3 \quad &&\Rightarrow \quad &&n^3 &&\equiv 27 \equiv 0\\
+        &n &&\equiv 4 \quad &&\Rightarrow \quad &&n^3 &&\equiv 64 \equiv 1
+        \end{alignat*}
+        \end{minipage}
+        \hspace{0pt}
+        \begin{minipage}[t]{0.3\linewidth}\vspace{0pt}
+        \begin{alignat*}{5}
+        &n &&\equiv 5 \equiv -4 \quad &&\Rightarrow \quad &&n^3 &&\equiv -1\\
+        &n &&\equiv 6 \equiv -3 \quad &&\Rightarrow \quad &&n^3 &&\equiv 0\\
+        &n &&\equiv 7 \equiv -2 \quad &&\Rightarrow \quad &&n^3 &&\equiv 1\\
+        &n &&\equiv 8 \equiv -1 \quad &&\Rightarrow \quad &&n^3 &&\equiv -1
+        \end{alignat*}
+        \end{minipage}\\[10pt]
+        Thus, we have $n^3 \equiv 0,1, -1 \pmod 9$ for any positive integer  $n$.
+\end{solution}
+
+\begin{problem}[M][2][Introducing negative mods]
+    %MOD
+    Find the last two digits of $1^{23} + 2^{23} + \ldots + 2323^{23}$.
+\end{problem}
+
+\begin{solution}[76]
+    In terms of modular arithmetic, the last two digits of a number can be found by taking mod 100. To compute mod 100 of our massive number efficiently, we'll take advantage of the fact that $k \equiv k - n \pmod n$. To start, we'll group every 100 terms, momentarily leaving aside the extra 23 terms at the end of our sum.
+    \begin{align*}
+        1^{23} + 2^{23} + \ldots + 2300^{23} &= \underbrace{(1^{23} + 2^{23} + \ldots + 99^{23} + 100^{23}) + \ldots + (2201^{23}+\ldots+2299^{23}+2300^{23})}_{\text{23 groups}}
+    \end{align*}
+    Now, taking mod 100, notice that each of these 23 groups is reduced to be the same as the first group, since, for example, $2201^{23} \equiv 1^{23} \pmod {100}$. Also, all multiples of 100 can be removed, since \(100^{23} \equiv 0 \pmod {100}\).
+    \begin{align*}
+        1^{23} + 2^{23} + \ldots + 2300^{23} &\equiv 23\left(1^{23} + 2^{23} + \ldots + 99^{23}\right) \pmod {100}
+    \end{align*}
+    This is where the trick comes in. Recall that $99 \equiv -1 \pmod {100}$, that $98 \equiv -2 \pmod {100}$, and so on. To take advantage of this, we'll regroup our sum.
+    \begin{alignat*}{3}
+        1^{23} + 2^{23} + \ldots + 2300^{23}
+        &&\;\equiv\;&
+        23\Big[\bigl(1^{23} + 99^{23}\bigr) \;+\; \ldots \;+\; (49^{23} + 51^{23}) \;+\; 50^{23}\Big]
+        &\;\pmod{100}\\[6pt]
+        &&\;\equiv\;&
+        23\Big[\cancel{\bigl(1^{23} + (-1)^{23}\bigr)} \;+\; \ldots \;+\; \cancel{\bigl(49^{23} + (-49)^{23}\bigr)} \;+\; 50^{23}\Big]
+        &\;\pmod{100}\\[6pt]
+        &&\;\equiv\;&
+        23 \big( 50^{23} \big)
+        &\;\pmod{100}\\[6pt]
+        &&\;\equiv\;&
+        23\cdot10^{23}\cdot5^{23} \;\equiv\;  100\big( 23\cdot10^{21}\cdot5^{23} \big) \;\equiv\; 0
+        &\;\pmod{100}
+    \end{alignat*}
+    So, mod 100, the first 2300 terms add to 0. Let's now return to the last 23 terms.
+    \begin{alignat*}{3}
+        2301^{23} + 2302^{23} + \ldots + 2323^{23}
+        &&\;\equiv\;&
+        1^{23}+2^{23}+\ldots+23^{23} 
+        &\;\pmod{100}    
+    \end{alignat*}
+    Unfortunately, there's no nice and simple identity for evaluating this sum. So what we'll do is evaluate it mod 4 and mod 25 separately. In both cases, we can use the same grouping trick as before. Recall that we can do $1^{23} + 3^{23} \equiv 1^{23} + (-1)^{23} \equiv 0 \pmod 4$. First:
+    \begin{alignat*}{3}
+        1^{23}+2^{23}+\ldots+23^{23}
+        &&\;\equiv\;&
+        5\left(1^{23}+2^{23}+3^{23}+\cancel{4^{23}}\right) + 21^{23}+22^{23}+23^{23} 
+        &\;\pmod{4}\\[6pt]    
+        &&\;\equiv\;&
+        5\left(\cancel{1^{23}}+2^{23}+\cancel{3^{23}}\right) + \bcancel{1^{23}}+2^{23}+\bcancel{3^{23}} 
+        &\;\pmod{4}\\[6pt]
+        &&\;\equiv\;&
+        5\cdot2^{23} + 2^{23} \equiv 4\left( 5\cdot2^{21} +2^{21}\right) \equiv 0
+        &\;\pmod{4}
+    \end{alignat*}
+    And then:
+    \begin{alignat*}{3}
+        1^{23}+2^{23}+\ldots+23^{23}
+        &&\;\equiv\;&
+        1^{23} + \left(2^{23}+23^{23} \right) + \ldots + \left(12^{23}+13^{23} \right)
+        &\;\pmod{25}\\[6pt]    
+        &&\;\equiv\;&
+        1^{23} + \cancel{\left(2^{23}+(-2)^{23} \right)} + \ldots + \cancel{\left(12^{23}+(-12)^{23} \right) }
+        &\;\pmod{25}\\[6pt]
+        &&\;\equiv\;&
+        1
+        &\;\pmod{25}
+    \end{alignat*}
+    % So we have $n=4k$ and $n=25j+1$, meaning
+    % \begin{align*}
+    %     \begin{cases}
+    %         n=4k\\n=25j+1
+    %     \end{cases}
+    % \quad \Rightarrow \quad
+    %     \begin{split}
+    %         25n = 100k\\+(4n = 100j + 4)
+    %     \end{split}
+    % \quad \Rightarrow \quad
+    %         29n = 100(k+j) + 4
+    % \end{align*}
+    % Then, taking $\bmod\,100$ gives \[29n \equiv 4 \quad \Rightarrow \quad n \equiv 29^{-1} \cdot 4 \equiv 19\cdot 4 \equiv \boxed{76} \pmod {100}. \]
+    So we have $n=4k$ and $n=25j+1$. Checking values of $n=25j+1$ for divisibility by 4, we have $26, 51, 76, 101, \dots$ and only \fbox{76} is divisible by 4. 
+\end{solution}
+
+\begin{problem}[M][2][Introducing exponentiation properties]
+    %MOD
+    Find the last digit of $7^{100}$.
+\end{problem}
+
+\begin{solution}
+    For this problem, we'll use a standard approach to determine the last digit of large powers. The last digit of a number $n$ is simply $n \bmod{10}$. So, we compute
+    \[
+        7^{100} \equiv (7^2)^{50} \equiv 49^{50} \equiv 9^{50} \equiv (9^2)^{25} \equiv 81^{25} \equiv 1^{25} \equiv 1 \pmod {10}
+    \]
+    Thus the last digit of $7^{100}$ is \fbox{1}.
+\end{solution}
+
+\begin{problem}[M][3][Introducing modular inverse]
+    %MOD ^ Bezout's Identity
+    Show that for any pair of coprime integers $a,m$, there's an integer $x$ such that $ax \equiv 1 \pmod m$. Show that $x$ is unique $\bmod\;m$, that is, if $x_1, x_2$ are solutions to $ax \equiv 1 \pmod m$, then $x_1 \equiv x_2 \pmod m$
+\end{problem}
+
+\begin{solution}
+    By Bézout’s Identity, if $\gcd(a,m)=1$, then there exists a solution $(x,y)$ to $ax+my = 1$. Now, since $my \equiv 0\pmod m$, taking $\bmod\;m$ of both sides of this equation gives us \(ax \equiv 1 \pmod m\), showing that such an $x$ exists. 
+
+    Now suppose there exists an alternate solution $x'$. Notice that if we multiply both sides of \(ax \equiv 1 \pmod m\) by \(x'\), we get 
+    \(x'ax \equiv x'\). And since, by definition, \(x'a \equiv 1\), we can conclude \(x \equiv x'\), showing that $x$ is unique $\bmod\;m$.
+\end{solution}
+
+\begin{problem}[M][3][AMC 12 2000/9]
+    % MOD 
+    Mrs. Walter gave an exam in a mathematics class of five students. She entered the scores in random order into a spreadsheet, which recalculated the class average after each score was entered. Mrs. Walter noticed that after each score was entered, the average was always an integer. The scores (listed in ascending order) were 71, 76, 80, 82, and 91. What was the last score Mrs. Walter entered?
+\end{problem}
+
+\begin{solution}
+    First, consider that the sum of the first 3 scores must be divisible by 3. Taking mod 3, we find that our scores look like $2, 1, 2, 1, 1$. Since the only way to get to three by adding three of these values is from the three ones, we know $76+82+91 = 249$ is the numerator of the third average. We then watch to find a fourth numerator that is divisible by 4. $249 \bmod{4} = 1$, and looking at our remaining scores we have $71 \bmod{4} = 3$ and $80 \bmod{4} = 0$. Thus 71 must have been the fourth score entered (to get $3+1\equiv0 \bmod{4}$), and \fbox{80} must have been the fifth.
+\end{solution}
+
+\begin{problem}[M][4][AIME 1989/9]
+    %MOD ^ Chinese Remainder Theorem
+    One of Euler's conjectures was disproved in the 1960s by three American mathematicians when they showed there was a positive integer $n$ such that
+    $$ 133^5 + 110^5 + 84^5 + 27^5 = n^5 $$
+    Find the value of $n$.
+\end{problem}
+\newpageSol
+\begin{solution}%
+    We take the initial equation $\!\!\!\pmod {2,3,5,7}$:
+    \begin{alignat*}{5}
+    n^5 &\;\equiv\;& 1^5 + 0^5 + 0^5 + 1^5 
+         &\;\equiv\;& 0 \pmod 2
+         &\quad \Rightarrow \quad& n 
+         &\;\equiv\;& 0 \pmod 2\\
+    n^5 &\;\equiv\;& 1^5 + (-1)^5 + 0^5 + 0^5
+         &\;\equiv\;& 0 \pmod 3
+         &\quad \Rightarrow \quad& n
+         &\;\equiv\;& 0 \pmod 3\\
+    n^5 &\;\equiv\;& (-2)^5 + 0^5 + (-1)^5 + 2^5
+         &\;\equiv\;& -1 \pmod 5
+         &\quad \Rightarrow \quad& n
+         &\;\equiv\;& -1 \pmod 5\\
+    n^5 &\;\equiv\;& 0^5 + (-2)^5 + 0^5 + (-1)^5
+         &\;\equiv\;& 2 \pmod 7
+         &\quad \Rightarrow \quad& n
+         &\;\equiv\;& -3 \pmod 7
+    \end{alignat*}
+    $n$ is a number divisible by 6 of the form $5k-1$, it is not hard to see that it means that $n \equiv -6 \pmod{30}$, if we further impose $n \equiv -3 \pmod 7$ then $n \equiv -66 \equiv 144 \pmod{ {210}}$. If $n > 144$ then $n \geq 144 + 210 = 354$, this is obviously false, in fact we can use a pretty crude estimate to see that  $n^5 = 133^5 + 110^5 + 84^5 + 27^5 < (133 + 110 + 84 + 27)^5 = 354^5$. Therefore $n = 144$ $\Box$
+\end{solution}
+
+\begin{problem}[M][5][Justin Stevens/1.2.7]
+    %MOD ^ Bezout's Identity ^ GCD
+    Show that $\gcd(a^m-1, a^n-1) = a^{\gcd(m,n)}-1$ for any positive integers $m,n$.
+\end{problem}
+
+\begin{solution}
+    Let $\gcd(m, n) = k$. Then $k \mid m$ and $k \mid n$, and so there exists integers $x,y$ such that $m = kx$ and $n=ky$. So
+    $ a^m - 1 = a^{kx} - 1 = \left(a^k\right)^x - 1 $ and $ a^n - 1 = \left(a^k\right)^y - 1 $, both of which are divisible by $a^{k} -1$ (we always have $z-1 \mid z^v-1$). Thus we can say $a^{k} -1 = a^{\gcd(m,n)}-1 \mid \gcd(a^m-1, a^n-1)$.
+
+    Next, we wish to show that $\gcd(a^m-1, a^n-1) \mid a^{\gcd(m,n)}-1$, in order to establish equality. Observe that if $\gcd(a^m-1, a^n-1) = j$, then $a^m \equiv 1 \pmod j$ and $a^n \equiv 1 \pmod j$. Also notice that, by Bezout's Identity, there exist integers $x,y$ such that $\gcd(m,n)=mx+ny$. Thus,
+    \[
+        a^{\gcd(m,n)} = a^{mx+ny} = a^{mx}a^{ny} \equiv 1\cdot1\equiv 1 \pmod j.
+    \]
+    In other words, $j = \gcd(a^m-1, a^n-1) \mid a^{\gcd(m,n)} - 1 $. And since we also have $a^{\gcd(m,n)}-1 \mid \gcd(a^m-1, a^n-1)$, we can now conclude that $\gcd(a^m-1, a^n-1) = a^{\gcd(m,n)} - 1 $. $\Box$
+\end{solution} 
+
+\begin{problem}[M][6][Polish 2003]
+    %MOD 
+    Find all polynomials $W$ with integer coefficients satisfying the following condition: for every natural number $n$, $2^n-1$ is divisible by $W(n)$
+\end{problem}
+
+\begin{solution}[$W(x) \equiv \pm 1$]
+    Assume by contradiction that there is some integer $n \geq 1$ for which $W(n) \neq \pm 1$, let $p$ be a prime divisor of $W(n)$, note that $p$ is always odd because $2^n-1$ is odd. Also see that because $W$ is a polynomial, we have that $W(n) \equiv W(n + p) \pmod p$. But by definition $W(n) \mid 2^n - 1$. 
+    \begin{align*}
+    & 2^{n}-1 \equiv 0 \equiv 2^{n+p} -1 \pmod p \\
+    \Rightarrow& 2^n \equiv 2^{n+p} \pmod p \\
+    \Rightarrow& 1 \equiv 2^p \equiv 2 \pmod p \rightarrow \leftarrow
+    \end{align*}
+    We know from Fermat's Little Theorem that $2^p \equiv 2 \pmod p$, and because it must also leave a remainder of $1$, we conclude that such prime never exists, because we always have $W(x) = \pm 1$ $\Box$
+\end{solution}
+
+\section{Other Fun Stuff}\setcounter{problem}{0}
+
+\begin{problem}[Z][2][AMATYC Spring 2019/10]
+    %Discrete
+     Morse code involves transmitting dots “•” and dashes “\textsf{---}”. An agent attempted to send a five-character code five different times, but only one of the five transmissions was correct. However, it was known that each erroneous transmission had a different number of errors than the others, and no transmission had five errors. The first transmission was • \textsf{---} \textsf{---} • \textsf{---}, which was not correct. The other four transmissions are listed below. Which one is correct? 
+\end{problem}
+\multOpt[5]{• \textsf{---} \textsf{---} \textsf{---} •}
+[\textsf{---} \textsf{---} • • \textsf{---}][• \textsf{---} • \textsf{---} •][• • • • •][Impossible to determine]
+
+\begin{solution}[A]
+    Between the four erroneous transmissions, there could be 1, 2, 3, 4, or 5 errors. But since none of the five transmissions are exact opposites of another, there is exactly one transmission with 1, 2, 3, and 4 errors, and a correct transmission. 
+    
+    A has 2 differences with G (given), 4 differences with B, 1 difference with C, and 3 differences with D.
+
+    B can't be correct, since it has 3 differences with both C and D.
+
+    C can't be correct, since it has 3 differences with both G and B.
+
+    D can't be correct, since it has 3 differences with both G and A.
+
+    So \fbox{A} is the correct transmission.
+\end{solution}
+
+\begin{problem}[Z][3][AMATYC Spring 2007/8]
+    %Algebra
+    A function $f$ is symmetric to the origin and periodic with period 8. If $f(2) = 3$, what is the value of $f(4) + f(6)$?
+\end{problem}
+\multOpt[5]{$-6$}[$-3$][$0$][$3$][$6$]
+
+\begin{solution}[B]
+    Symmetry about the origin means (i) $f(a)=-f(-a)$ and 8-periodicity means (ii) $f(a)=f(a\pm8k)$. 
+
+    Finding $f(6)$ is relatively simple, since using (i) and then (ii) we get $f(6) = -f(-6) = -f(2) = -3$.
+
+    To find $f(4)$, observe that (i) gives $f(-4) = -f(4)$ and (ii) gives $f(-4) = f(4)$. So $-f(4)=f(4)$ and thus we could only have $f(4)=0$.
+
+    Therefore $f(4) + f(6) = 0 + (-3) = \boxed{-3}$.
+\end{solution}
+
+\begin{problem}[Z][3][AMATYC Spring 2004/12]
+    %Geometry ^ Pythagorean Theorem
+    A circular table is pushed into a corner of a rectangular room so that it touches both walls. A point on the edge of the table between the two points of contact is two inches from one wall and 9 inches from the other wall. What is the radius of the table? (SML P12 Spring 2004)
+\end{problem}
+\multOpt[5]{$5$}[$12$][$15$][$17$][$20$]
+
+\begin{solution}[D] 
+    Let $X$ be the point that is 2 inches from one wall and 9 inches from the other wall. Let $A,B$ be the points where the rectangle is tangent to the circle and let $C$ be the vertice of the rectangle between $A$ and $B$.
+    Call $r$ to the radius of the circle, since $AO=OB=r$ and $\angle ACB = 90^\circ$ we
+    must have $AOBC$ to be a square, so we can define $X'$ to be the projection of $X$ onto 
+    AO, meaning $OX'=r-2$ and $XX'=r-9$. 
+    
+    \noindent\begin{minipage}[t]{0.35\textwidth}\vspace{0pt}
+        By the Pythagorean Theorem:
+        \begin{align*}
+            &(r-2)^2 + (r-9)^2 = r^2 \\
+            \iff& r^2-22r+85=0 \\
+            \iff& (r-5)(r-17)=0 \\
+        \end{align*}
+        Since $XX'$ exists, we necessarily have $r>9$, in particular $r \neq 5$, and therefore $r=17$ $\Box$
+    \end{minipage}\hfill%
+    \begin{minipage}[t]{0.62\textwidth}\vspace{-20pt}
+        \begin{center}
+        \begin{tikzpicture}[scale = 0.7]
+            \def\radius{4} \tkzSetUpLabel[font=\footnotesize] 
+            \tkzDefPoints{0/0/A, \radius/0/R, 4.25/4.25/B, 0/4.25/C, 4.25/0/O, 0.5/2/X, 0.5/0/X'} 
+            \tkzDefPointBy[projection=onto A--C](X) \tkzGetPoint{R1}
+            \tkzDefPointBy[projection=onto B--C](X) \tkzGetPoint{R2}
+        
+            % Drawing
+            \tkzDrawSegments(X,R1 X,R2 A,O A,X)
+            \tkzDrawSegments[color = blue](O,X O,B)
+            \tkzDrawCircle(O,A) 
+            \tkzDrawSegments[dash pattern=on 5pt off 5pt](X,X') 
+            \tkzDrawLine[add = 0.9 and 0,dash pattern=on 5pt off 5pt](A,C)
+            \tkzDrawLine[add = 0 and 0.9,dash pattern=on 5pt off 5pt](C,B)
+    
+            %Labeling
+            \tkzLabelPoints[below](O){O}
+            \tkzLabelPoints[above right](B,X){B,X}
+            \tkzLabelPoint[above](C){C}
+            \tkzLabelPoint[left](A){A}
+            \tkzLabelPoint[below right](X'){X'}
+            \tkzLabelSegment[below](X',O){$r-2$}
+            \tkzLabelSegment[right](X,X'){$r-9$}
+            \tkzLabelSegment[above](O,X){$r$} 
+        \end{tikzpicture}
+        \end{center}
+    \end{minipage} 
+\end{solution}
+
+\begin{problem}[Z][5][BMT Calculus 2024/5]
+    %Calculus ^ Algebra ^ Integrals ^ BMT
+    For a real number \( n \), let \( \lfloor n \rfloor \) be the greatest integer less than or equal to \( n \). Compute
+    \[
+    \lim_{n \to \infty} \int_0^n \frac{x \lfloor x \rfloor}{n^3} \, dx.
+    \]
+\end{problem}
+
+\begin{solution}[$1/3$]
+    Whenever we see $\lfloor x \rfloor$, we should try to force it as an integer as much as we can, otherwise there's not a lot to do. In this case, because $n$ is taken to infinity, we take the liberty to see it as an integer, for us would make easy to split the integral into terms in which $\lfloor x \rfloor $ is constant. 
+
+    For example, if $n=2$ then we can do:
+    \begin{align*}
+        \int_0^2 \frac{x \lfloor x \rfloor}{8} \mathrm{d}x = \int_0^1 \frac{x \cdot 0}{8} \mathrm{d}x + \int_1^2 \frac{x \cdot 1}{8} \mathrm{d}x = \frac{x^2}{16} \bigg|_1^2 = \frac{1}{4} - \frac{1}{16}
+    \end{align*}
+    Because, by definition, $\lfloor x \rfloor$ remains constant as its decimal points change---since $\lfloor x \rfloor=k$ whenever $k + 1 > \lfloor x \rfloor \geq k$ is an integer---we can split our integral on $n$ terms, where each of them secures $\lfloor x \rfloor$ constant:
+    \begin{align*}
+        \int_0^n \frac{x \lfloor x \rfloor}{n^3} \, \mathrm{d}x &=
+        \frac{1}{n^3}\sum_{k=0}^{n-1} \int_k^{k+1} k  x \, \mathrm{d}x = 
+        \frac{1}{n^3} \sum_{k=0}^{n-1} \frac{kx^2}{2} \bigg|_k^{k+1} \\
+        &= \frac{1}{2n^3} \sum_{k=0}^{n-1} k(2k+1) = \frac{(n-1)(4n+1)}{12n^2}
+    \end{align*}
+    Here we used the fact that $1+2+\ldots+m=m(m+1)/2$ and $1^2+2^2+ \ldots +m^2 = m(m+1)(2m+1)/6$ to obtain a closed expression for $\sum k(2k+1) = 2\sum k^2+ \sum k$. Now we can conclude that
+    \begin{align*}
+        \lim_{n \rightarrow \infty} \int _0^n \frac{x \lfloor x \rfloor}{n^3} =
+        \lim_{n \rightarrow \infty} \frac{(n-1)(4n+1)}{12n^3} =
+        \lim_{n \rightarrow \infty} \frac{1}{12}\left(1 - \frac{1}{n}\right) \left(4 + \frac{1}{n} \right) =
+        \frac{4}{12} = \boxed{\frac{1}{3}}
+    \end{align*}
+\end{solution}
+
+\begin{problem}[Z][5][Putnam 2023/A1]
+    %Putnam ^ Calculus ^ Derivatives
+    For a positive integer $n$, let $f_n(x)=\cos(x) \cos(2x) \cdots \cos(nx)$. Find the smallest $n$ such that $|f_n^{''}(0)|>2023$.
+\end{problem}
+
+\begin{solution}[18]
+    Let's start by taking the derivative of $f_n(x)$. I will use the fact that the product rule can be extended to products involving more than 2 functions. For example,
+    \[
+        \frac{d}{dx}\big[g(x)h(x)k(x)\big]=g'(x)h(x)k(x)+g(x)h'(x)k(x)+g(x)h(x)k'(x)
+    \]
+    Notice that in each term there's only one derivative. Observing that the derivative of $\cos(kx)$ is $-k\sin(x)$, we can representative the derivative of $f_n(x)$ as
+    \begin{align*}
+        f_n'(x) &= \sum_{k=1}^n\frac{-k\sin(kx)}{\cos(kx)}\cdot\cos(x) \cos(2x) \cdots \cos(nx) \\
+        &= -\sum_{k=1}^nk\tan(kx)f_n(x)
+    \end{align*}
+    The $\frac{-k\sin(kx)}{\cos(kx)}$ acts to remove the original term from the function and replace it with it's derivative.
+
+    Now, taking the second derivative we get
+    \begin{align*}
+        f''_n(x) &= -\sum_{k=1}^n\left[k^2\sec^2(kx)f_n(x)+k\tan(kx)f_n'(x)\right] \\
+        &= -\sum_{k=1}^n\left[k^2\sec^2(kx)f_n(x)\right]-\sum_{k=1}^n\left[k\tan(kx)f_n'(x)\right]
+    \end{align*}
+    Now we'll plug in $0$. Note that $f_n(0)=1$ and $f'_n(0)=0$.
+    \begin{align*}
+        f''_n(0) &= -\sum_{k=1}^n\left[k^2\sec^2(0)f_n(0)\right]-\sum_{k=1}^n\left[k\tan(0)f_n'(0)\right]\\[1mm]
+        &= -\sum_{k=1}^nk^2-0\\[1mm]
+        &= -\frac{n(n+1)(2n+1)}{6}
+    \end{align*}
+    Plugging in some plausible $n$ we eventually get $|f''_{17}(0)|=1785$ and $|f''_{18}(0)|=2109>2023$ and thus our solution is \fbox{18}.
+\end{solution}
+\newpageSol
+\begin{problem}[Z][6][Putnam 2016/A1]
+    %Derivatives ^ Pigeon-Hole Principle ^ Divisibility ^ MinMax
+    Find the smallest positive integer \( j \) such that for every polynomial \( p(x) \) with integer coefficients and for every \( k \), the integer
+\[
+p^{(j)}(k) = \frac{d^j}{dx^j}p(x) \bigg|_{x=k}
+\]
+(the \( j \)-th derivative of \( p(x) \) at \( k \)) is divisible by 2016.
+\end{problem}
+
+\begin{solution}[8]
+    We need 2016 to divide the coefficient of every term of $p^{(j)}(x)$. Without loss of generality, we'll assume every coefficient in the original $p(x)$ is $1$. Considering the $n$-th term of $p(x)$, observe that
+    \begin{align*}
+        \frac{d^j}{dx^j}x^n = 0 \quad \text{for}\ n < j \qquad \qquad \frac{d^j}{dx^j}x^n = \frac{n!}{(n-j)!}x^{n-j} \quad \text{for}\ n \geq j
+    \end{align*}
+    So terms of degree $n<j$ are all $0$, which 2016 divides. The remaining terms have coefficients of form
+    \begin{align*}
+        c_n = \frac{n!}{(n-j)!} = (n)(n-1)(n-2)\dots(n-(j-1)) = \prod_{i=0}^{j-1}(n-i)
+    \end{align*}
+    So to get $2016 \mid c_n$, we must find the smallest $j$ such that the 2016 divides any product of $j$ consecutive integers, using the fact that $2016 = 2^5 \cdot 3^2 \cdot 7$. This immediately tells us that we must have $j \geq 7$ for $7 \mid c_n$, because 7 divides only one in every seven consecutive integers. We also know 3 divides one in every three consecutive integers and thus two in every six, meaning $3^2 \mid c_n$ for all $j \geq 7$ as well. However, $j = 7$ is not sufficient for $2^5 \mid c_n$. Out of seven factors, three will be a multiple of 2 and one of these will be a multiple of 4, but this guarantees us divisibility by $2^4$ only. Thus, the smallest possible $j$ is $j =\boxed{8}$.
+\end{solution}
+%ya
+\end{document}
