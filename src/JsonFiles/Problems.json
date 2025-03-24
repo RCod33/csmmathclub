@@ -4429,28 +4429,14 @@
       ],
       "title": "BmMT 2015 Individual 2",
       "tags": [
-         "In Fourtown, every person must have a car and therefore a license plate. Every license plate must be a 4-digit number where each digit is a value between 0 and 9 inclusive. However 0000 is not a valid license plate. What is the minimum population of Fourtown to guarantee that at least two people have the same license plate?"
+         "Counting"
       ],
-      "texString": []
+      "texString": [
+         "    In Fourtown, every person must have a car and therefore a license plate. Every license plate must be a 4-digit number where each digit is a value between 0 and 9 inclusive. However 0000 is not a valid license plate. What is the minimum population of Fourtown to guarantee that at least two people have the same license plate?"
+      ]
    },
    {
-      "problemID": "0604C00",
-      "majorTopic": "Discrete",
-      "subTopic": "Combinatorics",
-      "problemLevel": 0,
-      "cameFrom": "Any",
-      "weekDiscussed": [
-         "2",
-         "9"
-      ],
-      "title": "Any P13",
-      "tags": [
-         "In Fivetown, every person must have a phone and therefore a phone number. Every phone number must be a 5-digit number where each digit is a value between 0 and 9 inclusive. However 0000 is not a valid license plate. What is the minimum population of Fourtown to guarantee that at least two people have the same license plate??"
-      ],
-      "texString": []
-   },
-   {
-      "problemID": "2095C03",
+      "problemID": "6737C03",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 3,
@@ -4459,7 +4445,7 @@
          "2",
          "9"
       ],
-      "title": "Any P14",
+      "title": "Any P13",
       "tags": [
          "Discrete",
          "Pigeon-Hole Principle"
@@ -4481,7 +4467,8 @@
       "title": "Problem Solving Seminar, Hough and Vakil 3",
       "tags": [
          "Discrete",
-         "?"
+         "Monovariants",
+         "Invariants"
       ],
       "texString": [
          "    N cats and N dogs are distributed among the rooms of a mansion. They move among the rooms according to the rules: either  ",
@@ -4514,7 +4501,7 @@
       ]
    },
    {
-      "problemID": "6786C00",
+      "problemID": "0363C00",
       "majorTopic": "Discrete",
       "subTopic": "Combinatorics",
       "problemLevel": 0,
@@ -4523,11 +4510,12 @@
          "2",
          "9"
       ],
-      "title": "Any P15",
+      "title": "Any P14",
       "tags": [
-         "We fill a $4 \\times 4$ grid with light bulbs."
+         "Invariants"
       ],
       "texString": [
+         "    We fill a $4 \\times 4$ grid with light bulbs.",
          "",
          "    \\noindent\\begin{minipage}[t]{0.65\\textwidth}\\vspace{0pt}",
          "        Each bulb has two states, is either on or off. We are allowed to change the bulbs in the following way: Select all the bulbs in a row or column and switch their state (if a bulb is on, we turn it off, and vice-versa). Can we turn all light bulbs on? If this is possible, find the minimum amount of steps we need. If not, explain why. ",
@@ -4605,9 +4593,11 @@
       ],
       "title": "BAMO 2013 4",
       "tags": [
-         "For a positive integer $n \\geq 2$, consider the $n-1$ fractions"
+         "Construction",
+         "Invariants"
       ],
       "texString": [
+         "    For a positive integer $n \\geq 2$, consider the $n-1$ fractions",
          "    $$ \\frac{2}{1}, \\frac{3}{2}, \\ldots, \\frac{n}{n-1}$$",
          "    The product of these fractions equals $n$, but if you reciprocate (i.e. turn upside down) some of the fractions, the product will change. Can you make the product equal 1? Find all values of $n$ for which this is possible, and prove that you have found them all."
       ]
@@ -4624,10 +4614,12 @@
       ],
       "title": "Mock Spain 2025 2",
       "tags": [
-         "Let $m$ be a positive integer. We say an integer $x$ is $m$-good if $a",
-         "m$ divides $x$ for some integer $a>1$. We say that an integer $x$ is $m$-bad if $x$ is not $m$-good. \\smallbreak"
+         "Chinese Remainder Theorem",
+         "Construction",
+         "Pigeon-Hole Principle"
       ],
       "texString": [
+         "    Let $m$ be a positive integer. We say an integer $x$ is $m$-good if $a^m$ divides $x$ for some integer $a>1$. We say that an integer $x$ is $m$-bad if $x$ is not $m$-good. \\smallbreak",
          "    ",
          "    \\begin{itemize}",
          "        \\item[a)] Is it true that for all integers $n>0$, there are $n$ consecutive integers that are $m$-bad? ",
@@ -4647,12 +4639,15 @@
       ],
       "title": "AMATYC Fall 2015 13",
       "tags": [
-         "Knights always tell the truth, and knaves always lie. A knight and $12N - 1$ other people (each one either a knight or a knave) sit in a circle, and each one says, \u201cExactly one of my two immediate neighbors is a knave.\u201d How many knaves are in the circle?"
+         "Knights and Knaves",
+         "Discrete"
       ],
-      "texString": []
+      "texString": [
+         "     Knights always tell the truth, and knaves always lie. A knight and $12N - 1$ other people (each one either a knight or a knave) sit in a circle, and each one says, \u201cExactly one of my two immediate neighbors is a knave.\u201d How many knaves are in the circle?"
+      ]
    },
    {
-      "problemID": "1148Z03",
+      "problemID": "5242Z03",
       "majorTopic": "Any",
       "subTopic": "Any",
       "problemLevel": 3,
@@ -4661,11 +4656,13 @@
          "2",
          "9"
       ],
-      "title": "Any P16",
+      "title": "Any P15",
       "tags": [
-         "25 people are standing in a queue. Each of them is either a knight or a knave. The first person in the queue says that everybody behind them is a knave. Each of the others in the queue say that the person immediately in front of them in the queue is a knave.\\\\[\\parskip]"
+         "Knights and Knaves",
+         "Discrete"
       ],
       "texString": [
+         "    25 people are standing in a queue. Each of them is either a knight or a knave. The first person in the queue says that everybody behind them is a knave. Each of the others in the queue say that the person immediately in front of them in the queue is a knave.\\\\[\\parskip]",
          "    ",
          "    How many knights are in the queue?"
       ]
@@ -4682,9 +4679,13 @@
       ],
       "title": "BMT 2024 Discrete 7",
       "tags": [
-         "Gigi randomly rearranges four $G$\u2019s and seven $I$\u2019s to form an eleven-letter string. What is the probability that there is a group of four consecutive letters that form \u201c$GIGI$,\u201d her name?"
+         "Counting",
+         "Discrete",
+         "Inclusion Exlusion Principle"
       ],
-      "texString": []
+      "texString": [
+         "     Gigi randomly rearranges four $G$\u2019s and seven $I$\u2019s to form an eleven-letter string. What is the probability that there is a group of four consecutive letters that form \u201c$GIGI$,\u201d her name?"
+      ]
    },
    {
       "problemID": "9298Z03",
@@ -4698,9 +4699,11 @@
       ],
       "title": "BMT 2023 Discrete 3",
       "tags": [
-         "Find the number of positive integers $n$ less than 10000 such that there are more 4\u2019s in the digits of $n+1$ than in the digits of $n$."
+         "Counting"
       ],
-      "texString": []
+      "texString": [
+         "     Find the number of positive integers $n$ less than 10000 such that there are more 4\u2019s in the digits of $n+1$ than in the digits of $n$."
+      ]
    },
    {
       "problemID": "5702Z06",
@@ -4714,9 +4717,12 @@
       ],
       "title": "BMT 2024 Calculus 10",
       "tags": [
-         "Let a function \\( f(n) \\) satisfy \\( f(1) = 0 \\), and for positive integers \\( n > 1 \\),"
+         "Induction",
+         "Derivatives",
+         "Integrals"
       ],
       "texString": [
+         "     Let a function \\( f(n) \\) satisfy \\( f(1) = 0 \\), and for positive integers \\( n > 1 \\),",
          "",
          "    \\[",
          "    f(n) =",

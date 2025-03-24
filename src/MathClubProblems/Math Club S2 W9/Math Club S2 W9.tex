@@ -83,6 +83,7 @@
 \end{solution}
 
 \begin{problem}[C][2][BmMT 2015 Individual/2]
+    %Counting
     In Fourtown, every person must have a car and therefore a license plate. Every license plate must be a 4-digit number where each digit is a value between 0 and 9 inclusive. However 0000 is not a valid license plate. What is the minimum population of Fourtown to guarantee that at least two people have the same license plate?
 \end{problem}
 
@@ -90,9 +91,6 @@
     The smallest license plate number is $0001$ and the largest is $9999$, for a total of $9999$ possible license plates. Thus, by the Pigeonhole Principle, there must be $\boxed{10000}$ people in Fourtown to gaurentee at least one duplicate license plate.
 \end{solution}
 
-% \begin{problem}[C][3] idk what i was doing here
-%     In Fivetown, every person must have a phone and therefore a phone number. Every phone number must be a 5-digit number where each digit is a value between 0 and 9 inclusive. However 0000 is not a valid license plate. What is the minimum population of Fourtown to guarantee that at least two people have the same license plate??
-% \end{problem}
 
 %this one is easier so i moved it up -- edgar
 \begin{problem}[C][3]
@@ -105,7 +103,7 @@
 \end{solution}
 
 \begin{problem}[C][4][Problem Solving Seminar, Hough and Vakil/3]
-    %Discrete ^?
+    %Discrete ^ Monovariants ^ Invariants
     N cats and N dogs are distributed among the rooms of a mansion. They move among the rooms according to the rules: either  
 
     {\raggedright\begin{itemize}[topsep=2mm, itemsep=1mm]
@@ -147,8 +145,9 @@
     And since we start with $N=0$ at the beginning of the party, we must always have an even number of odd people. $\Box$
 \end{solution}
 
-
+% \newpageSol
 \begin{problem}[C][3] 
+    % Invariants
     We fill a $4 \times 4$ grid with light bulbs.
 
     \noindent\begin{minipage}[t]{0.65\textwidth}\vspace{0pt}
@@ -211,6 +210,7 @@
 \end{solution}
 
 \begin{problem}[C][5][BAMO 2013/4]
+    % Construction ^ Invariants
     For a positive integer $n \geq 2$, consider the $n-1$ fractions
     $$ \frac{2}{1}, \frac{3}{2}, \ldots, \frac{n}{n-1}$$
     The product of these fractions equals $n$, but if you reciprocate (i.e. turn upside down) some of the fractions, the product will change. Can you make the product equal 1? Find all values of $n$ for which this is possible, and prove that you have found them all.
@@ -260,6 +260,7 @@ Finally, we've shown that it's possible to get a product of 1 if and only if $n$
 \end{solution}
 
 \begin{problem}[C][8][Mock Spain 2025/2]
+    %Chinese Remainder Theorem ^ Construction ^ Pigeon-Hole Principle
     Let $m$ be a positive integer. We say an integer $x$ is $m$-good if $a^m$ divides $x$ for some integer $a>1$. We say that an integer $x$ is $m$-bad if $x$ is not $m$-good. \smallbreak
     
     \begin{itemize}
@@ -284,6 +285,7 @@ Finally, we've shown that it's possible to get a product of 1 if and only if $n$
 \section{Other Fun Stuff}\setcounter{problem}{0}
 
 \begin{problem}[Z][2][AMATYC Fall 2015/13]
+    % Knights and Knaves ^ Discrete
      Knights always tell the truth, and knaves always lie. A knight and $12N - 1$ other people (each one either a knight or a knave) sit in a circle, and each one says, “Exactly one of my two immediate neighbors is a knave.” How many knaves are in the circle?
  \end{problem}
 \multOpt[5]{$2N$}[$3N$][$4N$][$6N$][Depends on $N$]
@@ -316,6 +318,7 @@ Let $T$ represent a knight, and $F$ represent a knave. We know the original knig
 \end{solution}
 
  \begin{problem}[Z][3]
+    % Knights and Knaves ^ Discrete
     25 people are standing in a queue. Each of them is either a knight or a knave. The first person in the queue says that everybody behind them is a knave. Each of the others in the queue say that the person immediately in front of them in the queue is a knave.\\[\parskip]
     
     How many knights are in the queue?
@@ -328,6 +331,7 @@ Let $T$ represent a knight, and $F$ represent a knave. We know the original knig
  \end{solution}
 
  \begin{problem}[Z][3][BMT 2024 Discrete/7]
+    % Counting ^ Discrete ^ Inclusion Exlusion Principle
      Gigi randomly rearranges four $G$’s and seven $I$’s to form an eleven-letter string. What is the probability that there is a group of four consecutive letters that form “$GIGI$,” her name?
  \end{problem}
 
@@ -350,6 +354,7 @@ Let $T$ represent a knight, and $F$ represent a knave. We know the original knig
  \end{solution}
 
  \begin{problem}[Z][3][BMT 2023 Discrete/3]
+    % Counting
      Find the number of positive integers $n$ less than 10000 such that there are more 4’s in the digits of $n+1$ than in the digits of $n$.
  \end{problem}
 
@@ -359,6 +364,7 @@ Let $T$ represent a knight, and $F$ represent a knave. We know the original knig
 \end{solution}
 
   \begin{problem}[Z][6][BMT 2024 Calculus/10]
+    %Induction ^ Derivatives ^ Integrals
      Let a function \( f(n) \) satisfy \( f(1) = 0 \), and for positive integers \( n > 1 \),
 
     \[
