@@ -4395,5 +4395,342 @@
          "        \\fill[color=red, opacity=0.3] (P) -- (Q) -- (R) -- (A);",
          "    \\end{tikzpicture}"
       ]
+   },
+   {
+      "problemID": "7942C02",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 2,
+      "cameFrom": "Arthur Engel, Problem Solving Strategies",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "Arthur Engel, Problem Solving Strategies P1",
+      "tags": [
+         "Discrete",
+         "Invariants"
+      ],
+      "texString": [
+         "    An $8\\times8$ chessboard is colored in the usual way, but that\u2019s boring, so you decide to fix this. You can take any row, column, or $2\\times2$ square, and reverse the colors inside it, switching black to white and white to black.\\\\[\\parskip]",
+         "    ",
+         "    Prove that it\u2019s impossible to end up with 63 white squares and 1 black square."
+      ]
+   },
+   {
+      "problemID": "1053C02",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 2,
+      "cameFrom": "BmMT 2015 Individual 2",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "BmMT 2015 Individual 2",
+      "tags": [
+         "In Fourtown, every person must have a car and therefore a license plate. Every license plate must be a 4-digit number where each digit is a value between 0 and 9 inclusive. However 0000 is not a valid license plate. What is the minimum population of Fourtown to guarantee that at least two people have the same license plate?"
+      ],
+      "texString": []
+   },
+   {
+      "problemID": "0604C00",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 0,
+      "cameFrom": "Any",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "Any P13",
+      "tags": [
+         "In Fivetown, every person must have a phone and therefore a phone number. Every phone number must be a 5-digit number where each digit is a value between 0 and 9 inclusive. However 0000 is not a valid license plate. What is the minimum population of Fourtown to guarantee that at least two people have the same license plate??"
+      ],
+      "texString": []
+   },
+   {
+      "problemID": "2095C03",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 3,
+      "cameFrom": "Any",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "Any P14",
+      "tags": [
+         "Discrete",
+         "Pigeon-Hole Principle"
+      ],
+      "texString": [
+         "    Show that if we select 5 points inside a square of length $1$, there are at least two points who are at most $\\sqrt{2}/2$ apart."
+      ]
+   },
+   {
+      "problemID": "7382C04",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 4,
+      "cameFrom": "Problem Solving Seminar, Hough and Vakil 3",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "Problem Solving Seminar, Hough and Vakil 3",
+      "tags": [
+         "Discrete",
+         "?"
+      ],
+      "texString": [
+         "    N cats and N dogs are distributed among the rooms of a mansion. They move among the rooms according to the rules: either  ",
+         "",
+         "    {\\raggedright\\begin{itemize}[topsep=2mm, itemsep=1mm]",
+         "        \\item a cat moves from a room with more cats than dogs (counted before it moves) into a room with more dogs than cats, or  ",
+         "        \\item a dog moves from a room with more dogs than cats into a room with more cats than dogs.",
+         "    \\end{itemize}}",
+         "",
+         "    Show that, eventually, the cats and dogs will stop moving. "
+      ]
+   },
+   {
+      "problemID": "9417C04",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 4,
+      "cameFrom": "Western PA ARML Practice 4",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "Western PA ARML Practice 4",
+      "tags": [
+         "Discrete",
+         "Invariants"
+      ],
+      "texString": [
+         "    At a party, some pairs of people shake hands. We call a person \\emph{odd} if they have shaken hands with an odd number of other guests. Prove that there is an even number of odd people at the party."
+      ]
+   },
+   {
+      "problemID": "6786C00",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 0,
+      "cameFrom": "Any",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "Any P15",
+      "tags": [
+         "We fill a $4 \\times 4$ grid with light bulbs."
+      ],
+      "texString": [
+         "",
+         "    \\noindent\\begin{minipage}[t]{0.65\\textwidth}\\vspace{0pt}",
+         "        Each bulb has two states, is either on or off. We are allowed to change the bulbs in the following way: Select all the bulbs in a row or column and switch their state (if a bulb is on, we turn it off, and vice-versa). Can we turn all light bulbs on? If this is possible, find the minimum amount of steps we need. If not, explain why. ",
+         "    \\end{minipage}\\hfill%",
+         "    \\begin{minipage}[t]{0.32\\textwidth}\\vspace{-20pt}",
+         "    \\begin{center}",
+         "    \\begin{tikzpicture}[scale=1]",
+         "        \\newif\\ifbulbison\\bulbisontrue",
+         "        ",
+         "        \\draw[step=1cm, gray, very thin] (0,0) grid (4,4);",
+         "        \\tikzset{",
+         "            turned on/.is if=bulbison, ",
+         "            turned on/.default=true,",
+         "            light bulb/.style={",
+         "                path picture={       ",
+         "                    % base (three ellipses)",
+         "                    \\draw[fill=gray!50, draw=black] (0,0.1) ellipse (0.15 and 0.05);",
+         "                    \\draw[fill=gray!50, draw=black] (0,0.01) ellipse (0.13 and 0.03);",
+         "                    \\draw[fill=gray!50, draw=black] (0,-0.07) ellipse (0.11 and 0.04);",
+         "                    %circle",
+         "                    \\draw[black] (0,0.4) circle (0.3);",
+         "                    % turned on",
+         "                    \\ifbulbison",
+         "                        \\fill[yellow!80!white] (0,0.4) circle (0.3);",
+         "                    \\fi",
+         "                     % filament",
+         "                    \\draw[thick, red] (0,0.55) -- (0,0.35);",
+         "                },",
+         "                minimum width=0.7cm,",
+         "                minimum height=1.5cm,",
+         "            }",
+         "        }",
+         "    ",
+         "        % (x,y) -> (x - .5, y - .8)",
+         "        \\foreach \\x/\\y in {1/1, 4/1, 3/2, 4/3, 1/4, 3/4} {",
+         "            \\node[light bulb, turned on = false] at (\\x - 0.5,\\y - 0.8) { };",
+         "        }",
+         "        ",
+         "        \\foreach \\x/\\y in { 2/1, 3/1, 1/2, 2/2, 4/2, 1/3, 2/3, 3/3, 2/4, 4/4} {",
+         "            \\node[light bulb, turned on = true] at (\\x - 0.5,\\y - 0.8) { };     ",
+         "        }",
+         "    \\end{tikzpicture}",
+         "    \\end{center}",
+         "    \\end{minipage}"
+      ]
+   },
+   {
+      "problemID": "7218C03",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 3,
+      "cameFrom": "A Walk Through Combinatorics",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "A Walk Through Combinatorics P3",
+      "tags": [
+         "Discrete",
+         "Pigeon-Hole Principle"
+      ],
+      "texString": [
+         "    The set $M$ consists of nine positive integers, none of which has a prime divisor larger than six. Prove that $M$ has two elements whose product is the square of an integer."
+      ]
+   },
+   {
+      "problemID": "2904C05",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 5,
+      "cameFrom": "BAMO 2013 4",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "BAMO 2013 4",
+      "tags": [
+         "For a positive integer $n \\geq 2$, consider the $n-1$ fractions"
+      ],
+      "texString": [
+         "    $$ \\frac{2}{1}, \\frac{3}{2}, \\ldots, \\frac{n}{n-1}$$",
+         "    The product of these fractions equals $n$, but if you reciprocate (i.e. turn upside down) some of the fractions, the product will change. Can you make the product equal 1? Find all values of $n$ for which this is possible, and prove that you have found them all."
+      ]
+   },
+   {
+      "problemID": "1247C08",
+      "majorTopic": "Discrete",
+      "subTopic": "Combinatorics",
+      "problemLevel": 8,
+      "cameFrom": "Mock Spain 2025 2",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "Mock Spain 2025 2",
+      "tags": [
+         "Let $m$ be a positive integer. We say an integer $x$ is $m$-good if $a",
+         "m$ divides $x$ for some integer $a>1$. We say that an integer $x$ is $m$-bad if $x$ is not $m$-good. \\smallbreak"
+      ],
+      "texString": [
+         "    ",
+         "    \\begin{itemize}",
+         "        \\item[a)] Is it true that for all integers $n>0$, there are $n$ consecutive integers that are $m$-bad? ",
+         "        \\item[b)] Is it true that for all integers $n>0$, there are $n$ consecutive integers that are $m$-good? ",
+         "    \\end{itemize}"
+      ]
+   },
+   {
+      "problemID": "5799Z02",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 2,
+      "cameFrom": "AMATYC Fall 2015 13",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "AMATYC Fall 2015 13",
+      "tags": [
+         "Knights always tell the truth, and knaves always lie. A knight and $12N - 1$ other people (each one either a knight or a knave) sit in a circle, and each one says, \u201cExactly one of my two immediate neighbors is a knave.\u201d How many knaves are in the circle?"
+      ],
+      "texString": []
+   },
+   {
+      "problemID": "1148Z03",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 3,
+      "cameFrom": "Any",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "Any P16",
+      "tags": [
+         "25 people are standing in a queue. Each of them is either a knight or a knave. The first person in the queue says that everybody behind them is a knave. Each of the others in the queue say that the person immediately in front of them in the queue is a knave.\\\\[\\parskip]"
+      ],
+      "texString": [
+         "    ",
+         "    How many knights are in the queue?"
+      ]
+   },
+   {
+      "problemID": "6368Z03",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 3,
+      "cameFrom": "BMT 2024 Discrete 7",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "BMT 2024 Discrete 7",
+      "tags": [
+         "Gigi randomly rearranges four $G$\u2019s and seven $I$\u2019s to form an eleven-letter string. What is the probability that there is a group of four consecutive letters that form \u201c$GIGI$,\u201d her name?"
+      ],
+      "texString": []
+   },
+   {
+      "problemID": "9298Z03",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 3,
+      "cameFrom": "BMT 2023 Discrete 3",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "BMT 2023 Discrete 3",
+      "tags": [
+         "Find the number of positive integers $n$ less than 10000 such that there are more 4\u2019s in the digits of $n+1$ than in the digits of $n$."
+      ],
+      "texString": []
+   },
+   {
+      "problemID": "5702Z06",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 6,
+      "cameFrom": "BMT 2024 Calculus 10",
+      "weekDiscussed": [
+         "2",
+         "9"
+      ],
+      "title": "BMT 2024 Calculus 10",
+      "tags": [
+         "Let a function \\( f(n) \\) satisfy \\( f(1) = 0 \\), and for positive integers \\( n > 1 \\),"
+      ],
+      "texString": [
+         "",
+         "    \\[",
+         "    f(n) =",
+         "    \\begin{cases}",
+         "    f\\!\\left(\\frac{n}{2}\\right) + \\ln 2, & \\text{if } n \\text{ is even} \\\\",
+         "    \\frac{f(n-1) + f(n+1)}{2}, & \\text{if } n \\text{ is odd}.",
+         "    \\end{cases}",
+         "    \\]",
+         "    ",
+         "    Find the value of",
+         "    ",
+         "    \\[",
+         "    \\lim_{n \\to \\infty} \\frac{1}{2^n} \\sum_{k=2^n}^{2^{n+1}} \\big|\\ln k - f(k)\\big|.",
+         "    \\]"
+      ]
    }
 ]
