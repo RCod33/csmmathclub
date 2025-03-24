@@ -21,20 +21,66 @@
     The numbers $1, 2, \ldots , 100$ are written on a blackboard. You may choose any two numbers $a$ and $b$ and erase them, replacing them with the single number $a + b - 1$. After 99 steps, only a single number will be left. What is it?
 \end{problem}
 
+\begin{solution}
+    Observe that if we were not subtracting 1 at each step, the sum $S$ of all the numbers on the board would remain constant. Thus, this is a monovariant problem, with the key property being that $1$ is subtracted from the otherwise fixed $S$ at each step. Thus, the last number left is
+    \[ S-99=\frac{(100)(101)}{2}-99=\boxed{4951}. \]\vspace{-20pt}
+\end{solution}
+
 \begin{problem}[C][3][Engel]
     %Construction ^ Discrete 
     There is a positive integer in each square of a rectangular table. In each move, you may double each number in a row or subtract 1 from each number of a column. Prove that you can reach a table of zeroes by a sequence of these permitted moves.
 \end{problem}
 
+\begin{solution}
+    % this is my solution but idk how to say it mathematically
+    % Perform the following procedure:
+	% A. If any entry in the first column equals 1, double its row.
+	% B. Subtract 1 from all entries in column 1. Return to A.
+    % If you continue this process, after a finite amount of steps, all entries in the first column will be 1. At this point, subtract 1 from the column to get a column of all zeroes. At this point,  you can carry on to the second column. Since the 1s are added by column, and since doubling row entries won’t affect zeroes, the first column will remain all zeroes. Thus, you can create a table of all zeroes.
+    %
+    Let $R_n$ denote the $n$th row and $C_m$ denote the $m$th column of an $N \times M$ table, and let $a^{i,j}$ denote the entry in row $R_i$ and column $C_j$. Notice that if we can achieve a first column of entirely zeroes (that is, if $a^{i,1}=0$ for all $i$), then we can do the same for all of them, since the 0 entries of completed columns won't be affected by rows being doubled. To exploit this monovariant property, we'll carry out the following steps for all $j\in\{1, 2,\ldots,M\}$.
+
+    \noindent
+    \hspace{10pt}\begin{minipage}{0.02\linewidth} % Adjust width of rule container
+        \rule{1pt}{0.95in} % Vertical rule
+    \end{minipage}%
+    \begin{minipage}{0.95\linewidth}
+        While there exists an $i\in\{1, 2,\ldots,N\}$ such that $a^{i,j} \neq 1$,
+        \begin{enumerate}[label=(\arabic*), topsep=1.5mm, itemsep=1mm]
+            \item Double each row $R_i$ where $a^{i,j} = 1$.
+            \item Subtract 1 from each entry of column $C_j$.
+        \end{enumerate}
+        Once all entries in $C_j$ are ones, perform Step (2) a final time.
+    \end{minipage}
+    
+    Why does this work? Each “subtract 1” move decreases the larger entries in $C_j$, but risks pushing any 1s down to 0 or negative values---states from which we cannot recover with the allowed moves. Doubling any 1s first ensures they remain at 1 after the subtraction. Repeating these steps ultimately reduces every entry to 1, at which point a final subtraction gives us a full column of 0s.
+
+    Once the procedure is performed for all columns ($C_1,C_2, C_3, \ldots,C_M$), we will have reached a complete table of zeroes.
+    
+    % Observe that, had there been zeroes in any other columns in the table, they would have been unchanged throughout this process, since we only ever subtracted 1 from the entries of $C_1$, and if their row was doubled, they still would have remained $2\cdot0=0$. Thus, once complete, you should carry out the same procedure with columns $C_2, C_3, \ldots,C_M$ to reach a table of all zeroes.
+\end{solution}
+
 \begin{problem}[C][3][A Dramatic Nim Game]
     %Construction ^ Nim games
-    Deep within the Academy of Raya Lucaria, aspiring sorcerers must prove their intellect in a legendary test known as the Trial of Glintstone Embers. In the Grand Library, two scholars take turns siphoning 1, 2, or 3 embers from an enchanted brazier containing 2025 embers. The scholar who takes the last ember will see beyond the secrets of Rennala’s full moon, gaining the favor of the academy’s greatest minds. Tonight, you stand before the brazier, facing a rival scholar. So sure of himself, he gives you the first turn. Can you devise a winning strategy, or will you be left in the dark?
+    Deep within the Academy of Raya Lucaria, aspiring sorcerers must prove their intellect in a legendary test known as the Trial of Glintstone Embers. In the Grand Library, two scholars \emph{take turns} siphoning 1, 2, or 3 embers from an enchanted brazier containing 2025 embers. The scholar who takes the last ember will see beyond the secrets of Rennala’s full moon, gaining the favor of the academy’s greatest minds. Tonight, you stand before the brazier, facing a rival scholar. So sure of himself, he gives you the first turn. Can you devise a winning strategy, or will you be left in the dark?
 \end{problem}
+
+\begin{solution}[You can win!]
+    First, you can take one ember. Then, in each movement, it is possible to complement the rival's choice such that 4 embers are taken every two turns. In other words, if the rival takes $k \in \{1,2,3\}$ embers, then you take $4-k$ embers. Because you initially took 1 ember, and 4 new embers are added every two turns, it follows that you always take the embers in position $4n+1$. In particular, when $n=506$, you can take the last ember $\Box$ 
+\end{solution}
 
 \begin{problem}[C][5][Swiss Olympiad 2010]
     %Discrete ^ Invariants
     Three coins lie on integer points on the number line. A move consists of choosing and moving two coins, the first one 1 unit to the right and the second one 1 unit to the left. Under which initial conditions is it possible to move all coins to one single point?
 \end{problem}
+
+\begin{solution}[An average integer value from the coins]
+    Let $(a,b,c) \in \mathbb{Z}^3 : a \leq b \leq c$ be the positions of the coins at the beginning and let $S = a+b+c$. This is quite important because $S$ never changes, if I replace $(a,b) \rightarrow (a-1, b+1)$ then $S = (a-1)+(b+1)+c = a+b+c$. We wish to bring all three coins to the same point, let $A$ be this point. We know however that $S$ is constant, so $a+b+c = S = A+A+A \iff A = \frac{a+b+c}{3}$. 
+
+    This means two things: first that the average of $a,b,c$ is an integer (same as saying $3 \mid S$), second that this average is necessarily the point in which they meet. But can any three coins with integer average value meet this conditions? Well, yes!
+
+    We can have either $b \leq A$ or $b > A$, also note that the average is somewhere in $[a,c]$. Assume that $b \leq A$, we first make $A-a$ moves with $a$ and $c$. The coins now lie in $(A, b, c - A + a)$. Now we do $A-b$ moves with $b$ and $c$, which means that the coins will be placed in $(A, A, c - 2A + a + b)$, and $c-2A+a+b = 3A - 2A = A$. So all three coins landed at $(A,A,A)$! We can make an analogous argument when $A > b$. Thus, the initial conditions that we need is an integer average value from the coins' initial positions.   
+\end{solution}
 
 \begin{problem}[C][1][The so-called Pigeon-Hole Principle]
     %Discrete ^ Pigeon-Hole Principle
@@ -42,13 +88,23 @@
 \end{problem}
 
 \begin{solution}
-    just leaving this here so we remember to turn solutions off when printing
+    Because we want a sum/difference being divisible by 12, we consider the remainders of these seven numbers when divided by 12. These remainders are numbers between 0 and 11. Consider the pairs $(0,12), (1,11), (2,10), \ldots, (5,7), (6,6)$. We claim that we always choose at least two numbers whose remainders---when divided by 12---are part of a single pair. Indeed, we have 7 pairs but we select 8 numbers, so the argument follows. Let this pair be $(r, 12 - r)$, if we chose $a,b$ such that $a = 12n+r, b=12m+r$ for some integers $m,n$, then $a-b$ is divisible by twelve. Similarly, if we chose $a=12n + r, b = 12m + (12-r)$, then $a+b$ is divisible by 12. So, in any case, these numbers always exist. $\Box$
+
+    Note that this is not always true if we select only seven numbers. Consider selecting $12$ and $1,2, \ldots, 6$ $\Box$
 \end{solution}
 
 \begin{problem}[C][3][BMT 2021 Discrete/3]
     %Discrete ^ Counting
     How many distinct sums can be made from adding together exactly 8 numbers that are chosen from the set $\{1,4,7,10\}$, where each number in the set is chosen at least once? (For example, one possible sum is $1 + 1 + 1 + 4 + 7 + 7 + 10 + 10 = 41$.)
 \end{problem}
+
+\begin{solution}
+        Let $S$ denote the sum. Since each number is chosen at least once, we know $1+4+7+10=22$ will be included in the sum, and we'll only consider possible combinations of the other 4 numbers. Thus, for $0 \leq w,x,y,z \leq 4$, which count the additional 1s, 4s, 7s, and 10s respectively, we have
+        \[
+            S=22+w+4x+7y+10z \qquad \text{and} \qquad w+x+y+z=4.
+        \]
+        By adding these together, we get $S=26+3x+6y+9z$. Since we have a minimum value for $S$ when $(x,y,z)=(4,0,0)$ and a maximum when $(x,y,z)=(0,0,4)$, we find that $38 \leq S \leq 62$. Also, taking mod 3, we have $S\equiv2$. Thus, our possibilities are $S\in\{38, 41, 44, 47, 50, 53, 56, 59, 62\}$ for a total of \fbox{9} distinct sums.         
+\end{solution}
 
 \begin{problem}[C][4][NIMO Winter 2014/3]
     %Discrete ^ Invariants
@@ -61,6 +117,18 @@
   that can remain on the board at this point?
 \end{problem}
 
+\begin{solution}[$\sqrt{384}$]
+    Suppose we apply once to $a,b,c$ to get \(Z=\sqrt{a^2+b^2+c^2}\). Then if we apply again to $Z, d,e$ we get
+    \[
+        Y=\sqrt{Z^2+d^2+e^2} = \sqrt{a^2+b^2+c^2+d^2+e^2}.
+    \]
+    This tells us that the order in which we apply the transformation does not matter. Another way to state this is that the Euclidean norm (which is the term for the square root of a sum of squares) of all the numbers on the board is constant.
+
+    At this point, the only question remaining is when will this process end? For example, if before the final possible step, we had 3 numbers on the board, we would end with a single number. If, on the other hand, we had 4 numbers on the board, we could combine 3 of them and end up with 2 numbers remaining. Since at every step we replace 3 numbers with 1, we erase 2 numbers at each time. This means after 4 steps we'll have $10-4(2)$ numbers remaining, bringing us to 2 final numbers. To maximize one of these numbers, we'll leave the 1 alone so that our final numbers on the board are 1 and $\sqrt{2^2+3^2+4^2+5^2+6^2+7^2+8^2+9^2+10^2}$, which simplifies to
+    \[\sqrt{\left(\sum_{n=1}^{10}n^2\right)-1}=\sqrt{\frac{(10)(11)(21)}{6}-1} = \boxed{\sqrt{384}}\]
+    using the sum of squares formula.
+\end{solution}
+
 
 \begin{problem}[C][4][Cuba 2022/6]
     %Discrete ^ Invariants
@@ -68,11 +136,231 @@
     They can select two of the numbers on the board, say $\alpha, \beta$ and substitute them for the numbers $4 \alpha - \beta, 7 \beta - 8 \alpha$. Alex claims that after a finite number of moves, it is possible that the numbers on the board are $3, 6, 9, \ldots 6066$. Sophia claims that this is impossible. Who is right?
 \end{problem}
 
+\begin{solution}[Sophia is right]
+    Let $S$ denote the sum of all the numbers written on the board. Initially 
+    $$S = 1 + 2 + \ldots + 2022 = 1011 \cdot 2023$$
+    See that the contribution to $S$ of any two numbers $\alpha, \beta$ on the board is obviously $\alpha + \beta$. After we substitute them with $4 \alpha - \beta, 7 \beta - 8 \alpha$, their contribution is $6 \beta - 4 \alpha$. 
+    However, we have that $6 \beta - 4 \alpha \equiv \alpha + \beta \pmod{5}$; thus $S$ is invariant $\bmod{\hspace{5pt} 5}$. Alex's claim would mean that 
+    $$S \equiv 3S \pmod{5} \iff 5 \mid S = 1011 \cdot 2023,$$ 
+    which is false. Therefore Sophia is right.
+\end{solution}
+
 \begin{problem}[C][6][BAMO 2024/2]
     %Discrete ^ Construction
     Sasha wants to bake 6 cookies in his 8 inch × 8 inch square baking sheet. With a cookie cutter, he cuts out from the dough six circular shapes, each exactly 3 inches in diameter. Can he place these six dough shapes on the baking sheet without the shapes touching each other? If yes, show us how. If no, explain why not. (Assume that the dough does not expand during baking.)
 \end{problem}
 
+\begin{solution}[Yes, he can.]
+    To start, note that it's impossible to place 3 cookies directly in a row, as they would have a total width of 9 inches. We might instead consider an arrangement of cookies like that of the figure below, where the cookies are packed as tightly as possible.\vspace{-\parskip}
+    % diagram parameters
+    \pgfmathsetmacro{\r}{1.2}                           % radius
+    \pgfmathsetmacro{\d}{2*\r}                          % diameter
+    \pgfmathsetmacro{\S}{(5.3333)*\r}                   % square baking sheet size
+    \pgfmathsetmacro{\s}{(3.3333)*\r}                   % center square size
+    \pgfmathsetmacro{\l}{0}                             % hor dist b/t adj sides
+    \pgfmathsetmacro{\w}{2*\r + \l}                     % hor dist b/t adj centers
+    \pgfmathsetmacro{\h}{sqrt((2*\r)^2 - (0.5*\w)^2)}   % vert disp b/t row centers
+    \pgfmathsetmacro{\m}{0.5pt}                          % "margin" (very small space)
+    
+    
+    \begin{minipage}[t]{0.69\linewidth}\vspace{0pt}\raggedright
+    To determine whether or not this arrangement would fit on the baking sheet, observe that $\triangle ABC$ and $\triangle FEC$ are congruent equilateral triangles with side length $2r$. This means they both have height $h=\frac{2r\sqrt{3}}{2}=r\sqrt{3}$.\\[2pt]
+    \begin{center}\begin{tikzpicture}[scale=0.75]
+        % circle centers
+        \coordinate (BL) at (0,0);                      % bottom left
+        \coordinate (BR) at ($(BL)+(\w,0)$);            % bottom right
+        \coordinate (ML) at ($(BL)+(0.5*\w,\h)$);       % middle left
+        \coordinate (MR) at ($(ML)+(\w,0)$);            % middle right
+        \coordinate (TL) at ($(BL)+(0,2*\h)$);          % top left
+        \coordinate (TR) at ($(BR)+(0,2*\h)$);          % middle right
+
+        \def\labelshift{7}
+        
+        % points
+        \foreach \center / \label / \shift in {(ML)/C/(\labelshift*\r), (BL)/E/(-\labelshift*\r), (BR)/F/(\labelshift*\r)} {
+            \node[xshift=\shift,fill=headershade] at \center {$\label$};
+            \fill \center circle (0.04*\r);
+            \draw[thick, opacity=0.1] \center circle (\r);
+        }
+
+        \coordinate (ef) at ($(BL)!0.5!(BR)$);
+        \coordinate (ec) at ($(BL)!0.5!(ML)$);
+        \coordinate (fc) at ($(BR)!0.5!(ML)$);
+
+        % side labels
+        \node[above left] at (ec) {$2r$};
+        \node[below, yshift={-2*\r}] at (ef) {$2r$};
+        \node[above right] at (fc) {$2r$};
+        \node[below right] at ($(ef)!0.5!(ML)$) {$h$};
+                
+        \draw[thick] (BL) -- (BR) -- (ML) -- cycle;
+        \draw[thick, dashed] (ML) -- (ef);
+    \end{tikzpicture}\end{center}    
+    \end{minipage}
+    \begin{minipage}[t]{0.29\linewidth}\vspace{0pt}
+    \begin{tikzpicture}[scale=0.75]
+        % circle centers
+        \coordinate (BL) at (0,0);                      % bottom left
+        \coordinate (BR) at ($(BL)+(\w,0)$);            % bottom right
+        \coordinate (ML) at ($(BL)+(0.5*\w,\h)$);       % middle left
+        \coordinate (MR) at ($(ML)+(\w,0)$);            % middle right
+        \coordinate (TL) at ($(BL)+(0,2*\h)$);          % top left
+        \coordinate (TR) at ($(BR)+(0,2*\h)$);          % middle right
+
+        % vertical dimension labels
+        \begin{scope}[semithick, <->, shorten >=\m, shorten <=\m, xshift=5pt]
+            \draw (4.2*\r,-\r) -- node[midway,fill=headershade] {\small $r$} (4.2*\r,0);
+            \draw (4.2*\r,0) -- node[midway,fill=headershade] {\small $h$} (4.2*\r,\h);
+            \draw (4.2*\r,\h) -- node[midway,fill=headershade] {\small $h$} (4.2*\r,2*\h);
+            \draw (4.2*\r,2*\h) -- node[midway,fill=headershade] {\small $r$} (4.2*\r,2*\h+\r);
+        \end{scope}
+
+        % horizontal dimension labels
+        \begin{scope}[semithick, <->, shorten >=\m, shorten <=\m, yshift=-10pt]
+            \draw (-\r,-\r) -- node[midway,fill=headershade] {\small $2r$} (\r,-\r);
+            \draw (\r,-\r) -- node[midway,fill=headershade] {\small $2r$} (3*\r,-\r);
+            \draw (3*\r,-\r) -- node[midway,fill=headershade] {\small $r$} (4*\r,-\r);
+        \end{scope}
+        
+        % circles
+        \foreach \center / \label in {(TL)/A, (TR)/B, (ML)/C, (MR)/D, (BL)/E, (BR)/F} {
+            \draw[thick] \center circle (\r);
+            \fill \center circle (0.04*\r) node[right, xshift={2*\r},fill=headershade] {$\label$};
+        }
+    \end{tikzpicture}
+    \end{minipage}
+
+    Thus, the total height of our arrangement is
+    \[
+        H=2r+2h=2r+2r\sqrt{3} \quad \xrightarrow{r\, =\, 1.5} \quad H \approx 8.2 > 8,
+    \]
+    and so it is invalid. Our width, however, is $W = 5r = 7.5<8$, which suggests that we may be able to make our setup work by shrinking vertically while expanding horizontally. To accomplish this, we'll introduce a horizontal gap of length $l$ between each cookie.
+    \pagebreak
+    % diagram parameters
+    \pgfmathsetmacro{\r}{1.2}                           % radius
+    \pgfmathsetmacro{\d}{2*\r}                          % diameter
+    \pgfmathsetmacro{\S}{(5.3333)*\r}                   % square baking sheet size
+    \pgfmathsetmacro{\s}{(3.3333)*\r}                   % center square size
+    \pgfmathsetmacro{\l}{0.75*\r}                             % hor dist b/t adj sides
+    \pgfmathsetmacro{\w}{2*\r + \l}                     % hor dist b/t adj centers
+    \pgfmathsetmacro{\h}{sqrt((2*\r)^2 - (0.5*\w)^2)}   % vert disp b/t row centers
+    \pgfmathsetmacro{\m}{0.5pt}                          % "margin" (very small space)
+
+    \begin{minipage}[t]{0.63\linewidth}\vspace{0pt}\raggedright
+        Our new $h$ can then be found by applying Pythagorean theorem to either half of $\triangle FEC$ (each with base length $\frac{2r+l}{2}=r+\frac{1}{2}l$ and hypotenuse $2r$), giving us
+    \[
+        h=\sqrt{(2r)^2-\left(r+\tfrac{1}{2}l\right)^{2}}.
+    \]
+    \end{minipage}
+    \begin{minipage}[t]{0.35\linewidth}\vspace{0pt}\centering
+    \begin{tikzpicture}[scale=0.81]        
+        % circle centers
+        \coordinate (BL) at (0,0);                      % bottom left
+        \coordinate (BR) at ($(BL)+(\w,0)$);            % bottom right
+        \coordinate (ML) at ($(BL)+(0.5*\w,\h)$);       % middle left
+
+        % horizontal dimension labels
+        \begin{scope}[semithick, <->, yshift=25pt]
+            \draw (0,-\r-0.5) -- node[midway,fill=headershade] {\small $2r+l$} (2*\r+\l,-\r-0.5);
+            %\draw (0,-\r) -- node[midway,fill=headershade] {\small $r$} (\r-0.05*\m,-\r);
+            \draw (\r,-\r) -- node[midway,fill=headershade] {\small $l$} (\r+\l,-\r);
+            %\draw (\r+\l+0.05*\m,-\r) -- node[midway,fill=headershade] {\small $r$} (2*\r+\l,-\r);
+        \end{scope}
+
+        \def\labelshift{7}
+        
+        % points
+        \foreach \center / \label / \shift in {(ML)/C/(1.3*\labelshift*\r), (BL)/E/(-\labelshift*\r), (BR)/F/(\labelshift*\r)} {
+            \node[xshift=\shift,fill=headershade] at \center {$\label$};
+            \fill \center circle (0.04*\r);
+            \draw[thick, opacity=0.1] \center circle (\r);
+        }
+
+        \coordinate (ef) at ($(BL)!0.5!(BR)$);
+        \coordinate (ec) at ($(BL)!0.5!(ML)$);
+        \coordinate (fc) at ($(BR)!0.5!(ML)$);
+
+        % side labels
+        \node[above left] at (ec) {$2r$};
+        % \node[below, yshift={-2*\r}] at (ef) {$2r$};
+        \node[above right] at (fc) {$2r$};
+        \node[yshift={-2.5*\r}, right] at ($(ef)!0.5!(ML)$) {$h$};
+                
+        \draw[thick] (BL) -- (BR) -- (ML) -- cycle;
+        \draw[thick, dashed] (ML) -- (ef);
+    \end{tikzpicture}\end{minipage}
+
+    Now, observe that total height and width are $H=2r+2h$ and $W=5r+\frac{3}{2}l$. (The dashed lines on the diagram below should make the formula for $W$ more obvious.)\vspace{-\parskip}
+    % diagram parameters
+    \pgfmathsetmacro{\r}{1.2}                           % radius
+    \pgfmathsetmacro{\d}{2*\r}                          % diameter
+    \pgfmathsetmacro{\S}{(5.3333)*\r}                   % square baking sheet size
+    \pgfmathsetmacro{\s}{(3.3333)*\r}                   % center square size
+    \pgfmathsetmacro{\l}{0.22*\r}                       % hor dist b/t adj sides
+    \pgfmathsetmacro{\w}{2*\r + \l}                     % hor dist b/t adj centers
+    \pgfmathsetmacro{\h}{sqrt((2*\r)^2 - (0.5*\w)^2)}   % vert disp b/t row centers
+    \pgfmathsetmacro{\m}{0.5pt}                          % "margin" (very small space)
+    
+    \begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
+    \begin{tikzpicture}[scale=0.7]
+        % little square
+        % \fill[blue!50, opacity=0.1] (0,0) rectangle (\s, \s);
+        % \draw[semithick] (0,0) rectangle (\s, \s);
+        % \draw[semithick] (0, 0.5*\s) -- (\s, 0.5*\s);
+        % \draw[semithick] (0.33*\s, 0) -- (0.33*\s, \s);
+        % \draw[semithick] (0.66*\s, 0) -- (0.66*\s, \s);
+
+        % vertical dimension labels
+        \begin{scope}[semithick, <->, shorten >=\m, shorten <=\m, xshift=15pt]
+            \draw (4.2*\r,-\r) -- node[midway,fill=headershade] {\small $r$} (4.2*\r,0);
+            \draw (4.2*\r,0) -- node[midway,fill=headershade] {\small $h$} (4.2*\r,\h);
+            \draw (4.2*\r,\h) -- node[midway,fill=headershade] {\small $h$} (4.2*\r,2*\h);
+            \draw (4.2*\r,2*\h) -- node[midway,fill=headershade] {\small $r$} (4.2*\r,2*\h+\r);
+        \end{scope}
+
+        % horizontal dimension labels
+        \begin{scope}[semithick, <->, shorten >=\m, shorten <=\m, yshift=-15pt]
+            \draw (-\r,-\r) -- node[midway,fill=headershade] {\small $r$} (0,-\r);
+            \draw (0,-\r) -- node[midway,fill=headershade] {\small $3\left(r+\frac{1}{2}l\right)$} (3*\r+1.5*\l,-\r);
+            % \draw (\r,-\r) -- node[midway,fill=headershade] {\small $2r$} (3*\r,-\r);
+            \draw (3*\r+1.5*\l,-\r) -- node[midway,fill=headershade] {\small $r$} (4*\r+1.5*\l,-\r);
+        \end{scope}
+
+        \begin{scope}[thin, opacity=0.75]
+            \draw[dashed] (\r+0.5*\l,-\r)--(\r+0.5*\l,-\r+\S);
+            \draw[dashed] (0,-\r)--(0,-\r+\S);
+            \draw[dashed] (2*\r+\l,-\r)--(2*\r+\l,-\r+\S);
+            \draw[dashed] (3*\r+1.5*\l,-\r)--(3*\r+1.5*\l,-\r+\S);
+        \end{scope}
+
+        % big square
+        \draw[thick] (-\r,-\r) rectangle (-\r+\S, -\r+\S);
+        
+        % circle centers
+        \coordinate (BL) at (0,0);                      % bottom left
+        \coordinate (BR) at ($(BL)+(\w,0)$);            % bottom right
+        \coordinate (ML) at ($(BL)+(0.5*\w,\h)$);       % middle left
+        \coordinate (MR) at ($(ML)+(\w,0)$);            % middle right
+        \coordinate (TL) at ($(BL)+(0,2*\h)$);          % top left
+        \coordinate (TR) at ($(BR)+(0,2*\h)$);          % middle right
+        
+        % circles
+        \foreach \center / \label in {(TL)/A, (TR)/B, (ML)/C, (MR)/D, (BL)/E, (BR)/F} {
+            \draw[thick] \center circle (\r);
+            \fill \center circle (0.04*\r);
+        }
+
+    \end{tikzpicture}\end{minipage}\hfill
+    \begin{minipage}[t]{0.7\linewidth}\vspace{0pt}
+    Thus, after substituting for $h$ and plugging in $\frac{3}{2}$ for $r$, we simply need to find an $l$ such that
+    \begin{align*}
+        H &= 2r+2h=3+2\sqrt{(3)^2-\left(\tfrac{3}{2}+\tfrac{1}{2}l\right)^{2}}<8, \quad \text{and}\\
+        W &= 5r+\frac{3}{2}l = \frac{15}{2} + \frac{3}{2}l < 8.
+    \end{align*}
+    Solving both inequalities for $l$ gives us $l>\sqrt{11}-3\approx0.3166$ and $l<\frac{1}{3}\approx0.3333$. 
+    \end{minipage}\vspace{2pt}
+    Since the cookies are already separated horizontally, and since we now have a range of $l$ values for which the height of the cookies is less than 8 inches, we know that there is a finite distance with which we could vertically separate the cookies (even if it is so small that it's visually imperceptible, as shown in the diagram on the left). Thus, \fbox{it is possible} for Sasha to place the cookies on the baking sheet without any touching each other.
+\end{solution}
 
 \begin{problem}[C][3][MP4G 2024/14]
     %Discrete ^ Counting ^ MinMax ^ Construction
@@ -80,25 +368,76 @@
   but the intersection of every four is empty?
 \end{problem}
 
+\begin{solution}[24]
+    Let $k$ denote our solution, the maximum possible size of $C$. From a set $S$ that meets $|S| = 2024$ we refer to the elements of the collection $C$ as the subsets $C_1, C_2, \ldots, C_k$. We must have, by definition, that any tuple $(i,j,u,v): 1\leq i<j<u<v \leq k$ meets 
+    $C_i \in C \Rightarrow C_i \subseteq S$, and 
+    \begin{align}
+         C_i \cap C_j \cap C_u \neq \emptyset, \\ 
+        C_i \cap C_j \cap C_u \cap C_v = \emptyset,
+    \end{align}
+    From (1) we see that all possible triplets have at least one element, but two different triplets cannot share any element, that'd break (2). Because in two different triplets, there are at least four different subsets. For example if $C_1 \cap C_3 \cap C_7 = \{ A, B \}$ and $C_2 \cap C_3 \cap C_7 = \{B,C\}$, it is clear that $C_1 \cap C_2 \cap C_3 \cap C_7 = \{B \} \neq \emptyset$.
+    
+    Another way to see it is that each element $a \in S$ can appear in at most three subsets from the collection $C$. So we can link every triplet to at most one element of S. Thus $\binom{k}{3} \leq |S|=2024 \iff k \leq 24$.
 
-%\newpage %I did a page-break here to not separate problem 8. 
+    These problems are always two-part problems. First we find the bounds and then we show that we can reach these bounds. Now we proceed to prove that $k=24$ is possible. The main reason I didn't say $S = \{1,2, \ldots, 2024\}$ is because is easier to define the elements of $S$ based on what we need. We define $a(i,j,u)$ where $1 \leq i<j<u \leq 24$ to mean that $a \in C_i , C_j, C_u$ and $a \notin C_v$ for any $v$ different from $i,j$ and $u$. This fulfills (1). Even better than, each $a$ is the only element of that intersection, in particular
+    $$  C_i \cap C_j \cap C_u \cap C_v = \{a(i,j,u)\} \cap C_v = \emptyset$$
+    By having $S = \{a(i,j,u) \, | \, 1 \leq i<j<u \leq 24 \}$, we can ensure $|S| = 2024$, as well as $(1)$ and $(2)$, therefore we can conclude that our answer is indeed $k=24$ $\Box$
+
+    Note: I didn't say $S = \{1,2,\ldots,2024\}$ because there's not a compelling reason to do it, but it can be done. Each subset $C_i \in C$ has $\binom{23}{2}=253$ elements and they intersect in such a way that make it tedious to define a function over the integers. Perhaps there's a nice way to map each $a(i,j,u)$ to an integer, who knows.
+\end{solution}
+
+\newpageSol
 \begin{problem}[C][8][OTIS Mock AIME I 2025/9]
     %Discrete ^ Counting
-    Winston forgot the definition of a prime number. He instead defines a New-prime recursively as follows: \\
-   a) \item \(1\) is not New-prime. \\
-   b) \item A positive integer \( n > 1 \) is New-prime if and only if \( n \) cannot be expressed as the product of exactly two (not necessarily distinct) New-prime positive integers. \\
-Compute the number of positive integers dividing \(50054\) which are New-primes.
+    Winston forgot the definition of a prime number. He instead defines a New-prime recursively as follows:
+\begin{itemize}
+    \item \(1\) is not New-prime.
+    \item A positive integer \( n > 1 \) is New-prime if and only if \( n \) cannot be expressed as the product of exactly two (not necessarily distinct) New-prime positive integers.
+\end{itemize}
+Compute the number of positive integers dividing \(5005^4\) which are New-primes.
 
 \end{problem}
 
+\begin{solution}[312]
+    %MODEL 2
+    For any integer $n$, let 
+    $$ s(n) = \sum _{p \mid n} v_p(n)$$
+    Be the sum of exponents in the prime factorization of $n$, for example if $n=3^2 \cdot 7^9$ then $s(n) = 2 + 9 = 11$.
+    
+    We claim that $n$ is new prime whenever $s(n)$ is odd. We use strong induction for $n \geq 1$ with the given case that $1$ is not New-prime. If $n$ is an integer such that $s(n)$ is odd, then it cannot be decomposed into the product of two numbers $a,b$ where both $s(a), s(b)$ are odd. This would imply $2 \mid s(n)$, contrary to what we just assumed. Now if we do have $2 \mid s(n)$ then we decompose it into the product of two numbers $p,k$ where $p$ is prime. Then both $s(p), s(k)$ are odd. By our induction step it means that they are New-primes and therefore $n$ is not.
 
+    In particular, $5005^4 = 5^4 \cdot 7^4 \cdot 11^4 \cdot 13^4$. Counting all divisors $d \mid 5005^4$ that have $2 \nmid s(d)$ is equivalent to count all ordered tuples $(a_1, a_2, a_3, a_4)$ of integers in $[0,4]$ that meet $2 \nmid a_1+a_2+a_3+a_4 = S$. The thing is, $S$ is either even or odd. 
+    
+    Let $\mathcal{O}$ be the set tuples where $S$ is odd ($|\mathcal{O}|$ is our answer). Similarly, let $\mathcal{E}$ be the set of tuples where $S$ is even. It is clear that $|\mathcal{E}| + |\mathcal{O}| = 5^4$. Now, for almost each tuple where $S$ is even, we can add $1$ to get a tuple where $S$ is odd. We can do so rigorously in the next way: 
+    
+    For each tuple $(a_1, a_2, a_3, a_4) \in \mathcal{E}$, if $a_1 < 4$ then $(a_1+1, a_2, a_3, a_4) \in \mathcal{O}$. If $a_1=4$ then try with $a_2$ and so on. The only case where we can't add one to any $a_i$ is when $a_1=a_2=a_3=a_4=4$. This can be interpreted as  $|\mathcal{O}| = |\mathcal{E}|-1$, which implies $|\mathcal{O}| = 5^4 - |\mathcal{O}| - 1 \iff |\mathcal{O}| = \frac{5^4-1}{2} = 312$ $\Box$ 
+\end{solution}
+
+
+\newpageSol
 \section{Other Fun Stuff}\setcounter{problem}{0}
-
 
 \begin{problem}[Z][3][BmMT 2015 Individual/7]
     %Divisibility ^ Digits
     A three digit number is a multiple of 35 and the sum of its digits is 15. Find this number.
 \end{problem}
+
+\begin{solution}[735]
+    We represent this number as $\overline{abc} = 100a+10b+c$, here $0 \leq a,b,c \leq 9$ are digits, and $a \neq 0$. The problem statement says that $35 \mid \overline{abc}$ and $a+b+c = 15$. Now $5 \mid 35 \mid 100a+10b+c \Rightarrow 5 \mid c \Rightarrow c\in \{0,5\}$.
+    
+    \textbf{Case 1:} If $c = 0$ then $a+b=15$ and 
+    \begin{align*}
+        \overline{abc} = 100a + 10b \equiv 0 \pmod {7} \iff a \equiv 2b \pmod{7} \\
+        \iff 15 - b \equiv 2b \pmod{7} \iff 5 \equiv b \pmod{7}    
+    \end{align*}
+     Because $b$ is a digit, it is necessary to have $b=5$, but then $a=15-5=10$ is no longer a digit.
+     \textbf{Case 2:} If $c=5$ then $a+b = 10$ and 
+     \begin{align*}
+         \overline{abc} = 100a + 10b + 5 \equiv 0 \pmod {7} \iff a \equiv 2b + 1 \pmod{7} \\
+         \iff 10 - b \equiv 2b+1 \pmod{7} \iff 3 \equiv b \pmod{7}
+     \end{align*}
+     Almost like last case, in this case we necessarily have $b=3$, which means $a=10-3=7$. Our solution must be $\overline{abc} = \boxed{735}.$
+\end{solution}
 
 \begin{problem}[Z][5][AMATYC Fall 2013/4]
     %Discrete
@@ -108,6 +447,14 @@ Compute the number of positive integers dividing \(50054\) which are New-primes.
     How many of the numbers above could NOT equal this sum?
     \end{problem}
     \multOpt[5]{0}[1][2][3][4]
+
+\begin{solution}[D]
+    We will show that whenever we have an even amount of $7's$, this is possible. For $7,777$ we can use $3,434$ and rearrange it as $4,343$. The same idea clearly works for $777,777$ as well.
+    
+    Assume that we have an odd amount of sevens and we are rearranging $n$. We cannot have an equal amount of $4's$ and $3's$ in this case. Say you use an arbitrary amount of $4's$ and $3's$, this does not change the fact that we have an odd amount of $7's$ left to fill. The only other way to get $7's$ is using $9's$ and $8's$, but because $9+8=17$, we would now need to ensure two digits that add up to $6$---and they would have two be just on the side of the $(9,8)$ pairs. However, this means that for each pair of digits $(9,8)$ there is a pair that "corrects" them by adding up to 6. In other words, each pair of $(9,8)$ comes with another pair, but this means, just like when we used $4's$ and $3's$, that we are not affecting the parity of the $7's$ left! 
+    
+    This is a contradiction because we can never possibly get to zero $7's$ left if can never change parity and is initially odd. So the numbers that could not add to this sum are those with an odd amount of $7's$, we find $3$ pairs in our possible choices, namely $777; \hspace{4pt} 77,777$ and $7,777,777$ $\Box$
+\end{solution}
 
 \begin{problem}[Z][5][AMATYC Fall 2013/10]
     %Knights and Knaves ^ Discrete
@@ -119,10 +466,157 @@ Compute the number of positive integers dividing \(50054\) which are New-primes.
     E. & it cannot be determined what Al and Cy are &
 \end{tabular}
 
+\begin{solution}[C]
+    Consider two possibilities: Al is a knight, or Al is a Knave. If Al is a knave, then Bo is a knave, meaning that he is lying when he says Cy is a knave. But Cy can't be a knight, since he says only one of Al and Bo are a knave. Thus, Al must be a knight. Indeed, if Al is a knight, then Bo is a knight, and so they are both knights and Cy is lying---consistent with Bo's claim that Cy is a knave. Thus, our answer is that \fbox{Al is a knight and Cy is a knave}.
+\end{solution}
+
 \begin{problem}[Z][2][BMT 2020 Calculus/6]
     %Calculus ^ Derivatives
-    For some $a > 1$, the curves $y = a^x$ and $y = \log_a(x)$ are tangent to each other at exactly one point. Compute $| \ln(\ln(a))|$.
+     For some $a > 1$, the curves $y = a^x$ and $y = \log_a(x)$ are tangent to each other at exactly one point. Compute $| \ln(\ln(a))|$.
 \end{problem}
+
+\begin{solution}[1]
+    Since $y=a^x$ and $y=\log_a(x)$ are inverses, their intersection must occur at a point on $y=x$. Let this point be $(z,z)$. We now have
+    \begin{align}\setcounter{equation}{0}
+        z=a^z &=\log_a(z),\ \text{and}\\
+        \frac{d}{dx}\left[a^x\right] = \frac{d}{dx}\left[\log_a(x)\right] \quad \Rightarrow \quad \ln(a)\cdot a^z &= \frac{1}{z\cdot \ln(a)}.
+    \end{align}
+    First, observe that since $a^z=z$, we have $a=z^{1/z}$ (3). Then, substituting (3) into (2), we get
+    \begin{alignat*}{3}
+        && \quad \ln\!\left(z^{1/z}\right)\cdot \left(z^{1/z}\right)^z &{}= \frac{1}{z\cdot \ln\!\left(z^{1/z}\right)} & & \\
+        \Rightarrow && \quad \big[\ln(z)\big]^2 &{}= 1 & & \\
+        \Rightarrow && \quad \ln(z) &{}= \pm1 & & \\
+        \Rightarrow && \quad z &{}= e,e^{-1} & &
+    \end{alignat*}
+    Now, using (3), we find $a=e^{1/e}$ when $z=e$ and $a = e^{-e}$ when $z=e^{-1}$. Thus, for $\ln(\ln(a))$, we find
+    \begin{alignat*}{4}
+        a=e^{1/e} && \quad \Rightarrow \quad && \ln\!\big[\ln\!\big(e^{1/e}\big)\big] &{}= \ln\!\big[e^{-1}\cdot\ln(e)] &&{}= -1\\
+        a=e^{-e} && \quad \Rightarrow \quad && \ln\!\big[\ln\!\big(e^{-e}\big)\big] &{}= \ln\!\big[-e\cdot\ln(e)\big] &&{}\Rightarrow \text{undefined}\\
+    \end{alignat*}
+    And so, taking the absolute value, our solution is \fbox{1}.
+\end{solution}
+
+\newpageSol
+
+\begin{problem}[Z][4][BmMT 2015 Individual/18]
+   %Geometry
+    Assume that $A,B,C,D,E,F$ are equally spaced on a circle of radius 1, as in the figure on the right. Find the area of the kite bounded by the lines $\overline{EA}, \overline{AC}, \overline{FC}, \overline{BE}$.
+    
+    \begin{tikzpicture}[scale=0.7]
+        % Define circle radius
+        \def\r{3}
+    
+        % Define points on the circle
+        \foreach \i/\name in {90/A, 30/B, -30/C, -90/D, -150/E, 150/F}
+        {
+            \coordinate (\name) at (\i:\r);
+            \fill (\name) circle(3pt);
+            \node[anchor=\i] at (\i:{\r+1}) {\name};
+        }
+    
+        % Draw the circle
+        \draw[thick] (0,0) circle(\r);
+    
+        % Draw connecting lines
+        \draw[thick] (E) -- (A);
+        \draw[thick] (A) -- (C);
+        \draw[thick] (F) -- (C);
+        \draw[thick] (B) -- (E);
+        \draw[thick] (D) -- (F);
+        \draw[thick] (B) -- (D);       
+
+        \coordinate (P) at ($(A)!0.5!(C)$);
+        \coordinate (Q) at (0,0);
+        \coordinate (R) at ($(A)!0.5!(E)$);
+
+        % \node at (P) {$P$};
+        % \node at (Q) {$Q$};
+        % \node at (R) {$R$};
+
+        \fill[color=red, opacity=0.3] (P) -- (Q) -- (R) -- (A);
+    \end{tikzpicture}
+\end{problem}
+
+\begin{solution}[$\sqrt{3}/4$]\raggedright
+    Our method will involve finding half the area and then simply doubling that result.
+    \begin{minipage}[t]{0.76\linewidth}\vspace{0pt}
+        Since $\overline{FC}$ and $\overline{BE}$ are intersecting diameters of the circle, their point of intersection---which we'll call $P$---must be the center of the circle. Notice that if we draw radii from $P$ to each of our points, we divide the circle up into 6 regions of equal size, each with a $60^\circ$ angle between the two radii. For our purposes, we only need to examine the 2 regions that make up the sector formed by $\angle APC$, shown on the right. Since $\triangle APC$ is isosceles and $\angle APC = 120^\circ$, we have $\angle PAC = \angle PCA = 30^\circ$. Now, let $Q$ be the intersection of $\overline{AC}$ and $\overline{PB}$.
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.2\linewidth}\vspace{0pt}
+        \hfill\begin{tikzpicture}[scale=0.7]
+        % Define circle radius
+        \def\r{3}
+    
+        % Define points on the circle
+        \foreach \i/\name in {90/A, 30/B, -30/C}
+        {
+            \coordinate (\name) at (\i:\r);
+            \fill (\name) circle(3pt);
+            \node[anchor=\i] at (\i:{\r+1}) {\name};    
+        }
+
+        % Define angles on the circle
+        \foreach \i/\name in {90/A, 30/B}
+        {
+            \node[anchor={\i-30}] at ({\i-30}:{1.3}) {\scalebox{0.8}{$60^\circ$}};       
+        }
+    
+        % Draw the circle
+        %\draw[thick] (0,0) circle(\r);  
+        \draw[thick] (0,\r) arc(90:-30:\r);  
+
+        % intersection points
+        \coordinate (J) at ($(A)!0.5!(C)$);
+        \coordinate (K) at (0,0);
+        \coordinate (L) at ($(A)!0.5!(E)$);
+        \coordinate (P) at (0,0);
+
+        % Draw radii
+        \draw[thick] (A) -- (P);
+        \draw[thick] (B) -- (P);
+        \draw[thick] (C) -- (P);   
+
+        % point Q
+        \draw[thick] (A) -- node[midway, above, xshift=2pt] {Q} (C);
+        \fill ($(A)!0.5!(C)$) circle (3pt);
+        
+        % \fill[headershade] (-0.1,-0.2) rectangle (0.1,-0.87);
+        \fill (P) circle(3pt) node[below, yshift=-2pt] {P};
+
+        \fill[color=red, opacity=0.25] (P) -- (J) -- (A) -- cycle;
+    \end{tikzpicture}\hspace{17pt}
+    \end{minipage}
+
+    \hspace{5pt}\begin{minipage}[t]{0.15\linewidth}\vspace{0pt}
+    \begin{tikzpicture}[scale=1]
+        \coordinate (P) at (0,0);
+        \coordinate (Q) at (1.5,0);
+        \coordinate (A) at (1.5,{1.5*sqrt(3)});
+
+        \draw[thick] (P) -- (Q) -- (A) -- cycle;
+        \draw (Q) --++(-0.3,0) --++(0,0.3) --++(0.3,0);
+
+        \node[left] at ($(P)!0.6!(A)$) {$1$};
+
+        \fill (P) circle(2pt) node[left] {P};
+        \fill (Q) circle(2pt) node[right] {Q};
+        \fill (A) circle(2pt) node[above] {A};
+
+        \draw (P) --++(0.35,0) arc(0:60:0.35);
+        \node[shift={(25:0.65)}] at (P) {\scalebox{0.7}{$60^\circ$}};
+
+        \draw (A) --++(0,-0.45) arc(-90:-120:0.45);
+        \node[shift={(256:1)}] at (A) {\scalebox{0.7}{$30^\circ$}};
+    \end{tikzpicture}
+    \end{minipage}\hspace{5pt}
+    \begin{minipage}[t]{0.79\linewidth}\vspace{0pt}
+        We have that $\angle APQ = 60^\circ$ and $\angle PAQ = 30^\circ$, so we know $\angle AQP = 90^\circ$ and thus $\triangle AQP$ is a right triangle with hypotenuse $AP=1$. This means that $PQ=\cos 60^\circ=\frac{1}{2}$ and $AQ=\sin 60^\circ=\frac{\sqrt{3}}{2}$ and so $\triangle AQP$ has area
+        \[
+            A_{\triangle AQP}=\frac{1}{2}\bigg(\frac{1}{2}\bigg)\!\bigg(\frac{\sqrt{3}}{2}\bigg) = \frac{1}{2}\bigg(\frac{\sqrt{3}}{4}\bigg).
+        \]
+    \end{minipage}
+    Since $\triangle AQP$ makes up half of our desired kite, the solution is $\displaystyle \boxed{A=\frac{\sqrt{3}}{4}}$.
+\end{solution}
 
 %Saying Discrete is too wide, i was planning on also doing Discrete next week, i might remove some of the problems i added -- edgar
 

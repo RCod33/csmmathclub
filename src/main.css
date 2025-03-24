@@ -18,9 +18,25 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Latin Modern Roman', sans-serif;
+    font-family: 'Computer Modern', sans-serif;
 }
 
 .mathjax-container {
-    font-weight: normal !important;
+   font-weight: normal !important; /* Ensure normal font weight */
+   font-family: 'Computer Modern', sans-serif !important; /* Match the font family */
+   font-size: 1em !important; /* Match the font size */
+   line-height: normal !important; /* Match the line height */
+}
+
+/* Override MathJax-specific styles */
+mjx-container {
+   font-weight: normal !important;
+   font-family: 'Computer Modern', sans-serif !important;
+   font-size: 1em !important;
+   line-height: normal !important;
+}
+
+mjx-math, mjx-mi, mjx-mo, mjx-mn, mjx-mtext {
+   font-weight: normal !important;
+   font-family: 'Computer Modern', sans-serif !important;
 }

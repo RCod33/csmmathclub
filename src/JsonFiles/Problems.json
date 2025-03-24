@@ -4095,7 +4095,7 @@
          "Nim games"
       ],
       "texString": [
-         "    Deep within the Academy of Raya Lucaria, aspiring sorcerers must prove their intellect in a legendary test known as the Trial of Glintstone Embers. In the Grand Library, two scholars take turns siphoning 1, 2, or 3 embers from an enchanted brazier containing 2025 embers. The scholar who takes the last ember will see beyond the secrets of Rennala\u2019s full moon, gaining the favor of the academy\u2019s greatest minds. Tonight, you stand before the brazier, facing a rival scholar. So sure of himself, he gives you the first turn. Can you devise a winning strategy, or will you be left in the dark?"
+         "    Deep within the Academy of Raya Lucaria, aspiring sorcerers must prove their intellect in a legendary test known as the Trial of Glintstone Embers. In the Grand Library, two scholars \\emph{take turns} siphoning 1, 2, or 3 embers from an enchanted brazier containing 2025 embers. The scholar who takes the last ember will see beyond the secrets of Rennala\u2019s full moon, gaining the favor of the academy\u2019s greatest minds. Tonight, you stand before the brazier, facing a rival scholar. So sure of himself, he gives you the first turn. Can you devise a winning strategy, or will you be left in the dark?"
       ]
    },
    {
@@ -4257,10 +4257,12 @@
          "Counting"
       ],
       "texString": [
-         "    Winston forgot the definition of a prime number. He instead defines a New-prime recursively as follows: \\\\",
-         "   a) \\item \\(1\\) is not New-prime. \\\\",
-         "   b) \\item A positive integer \\( n > 1 \\) is New-prime if and only if \\( n \\) cannot be expressed as the product of exactly two (not necessarily distinct) New-prime positive integers. \\\\",
-         "Compute the number of positive integers dividing \\(50054\\) which are New-primes.",
+         "    Winston forgot the definition of a prime number. He instead defines a New-prime recursively as follows:",
+         "\\begin{itemize}",
+         "    \\item \\(1\\) is not New-prime.",
+         "    \\item A positive integer \\( n > 1 \\) is New-prime if and only if \\( n \\) cannot be expressed as the product of exactly two (not necessarily distinct) New-prime positive integers.",
+         "\\end{itemize}",
+         "Compute the number of positive integers dividing \\(5005^4\\) which are New-primes.",
          ""
       ]
    },
@@ -4298,8 +4300,8 @@
          "Discrete"
       ],
       "texString": [
-         "    The digits of a number are rearranged, and the resulting number is added to the original number. Consider the following values:\\\\",
-         "    777, 7,777, 77,777, 777,777, 7,777,777",
+         "    The digits of a number are rearranged, and the resulting number is added to the original number. Consider the following values:\\smallbreak",
+         "    \\hspace{25pt}777\\hfill7,777\\hfill77,777\\hfill777,777\\hfill7,777,777\\hspace{25pt}\\smallbreak",
          "",
          "    How many of the numbers above could NOT equal this sum?"
       ]
@@ -4339,7 +4341,59 @@
          "Derivatives"
       ],
       "texString": [
-         "    For some $a > 1$, the curves $y = a^x$ and $y = \\log_a(x)$ are tangent to each other at exactly one point. Compute $| \\ln(\\ln(a))|$."
+         "     For some $a > 1$, the curves $y = a^x$ and $y = \\log_a(x)$ are tangent to each other at exactly one point. Compute $| \\ln(\\ln(a))|$."
+      ]
+   },
+   {
+      "problemID": "5824Z04",
+      "majorTopic": "Any",
+      "subTopic": "Any",
+      "problemLevel": 4,
+      "cameFrom": "BmMT 2015 Individual 18",
+      "weekDiscussed": [
+         "2",
+         "8"
+      ],
+      "title": "BmMT 2015 Individual 18",
+      "tags": [
+         "Geometry"
+      ],
+      "texString": [
+         "    Assume that $A,B,C,D,E,F$ are equally spaced on a circle of radius 1, as in the figure on the right. Find the area of the kite bounded by the lines $\\overline{EA}, \\overline{AC}, \\overline{FC}, \\overline{BE}$.",
+         "    ",
+         "    \\begin{tikzpicture}[scale=0.7]",
+         "        % Define circle radius",
+         "        \\def\\r{3}",
+         "    ",
+         "        % Define points on the circle",
+         "        \\foreach \\i/\\name in {90/A, 30/B, -30/C, -90/D, -150/E, 150/F}",
+         "        {",
+         "            \\coordinate (\\name) at (\\i:\\r);",
+         "            \\fill (\\name) circle(3pt);",
+         "            \\node[anchor=\\i] at (\\i:{\\r+1}) {\\name};",
+         "        }",
+         "    ",
+         "        % Draw the circle",
+         "        \\draw[thick] (0,0) circle(\\r);",
+         "    ",
+         "        % Draw connecting lines",
+         "        \\draw[thick] (E) -- (A);",
+         "        \\draw[thick] (A) -- (C);",
+         "        \\draw[thick] (F) -- (C);",
+         "        \\draw[thick] (B) -- (E);",
+         "        \\draw[thick] (D) -- (F);",
+         "        \\draw[thick] (B) -- (D);       ",
+         "",
+         "        \\coordinate (P) at ($(A)!0.5!(C)$);",
+         "        \\coordinate (Q) at (0,0);",
+         "        \\coordinate (R) at ($(A)!0.5!(E)$);",
+         "",
+         "        % \\node at (P) {$P$};",
+         "        % \\node at (Q) {$Q$};",
+         "        % \\node at (R) {$R$};",
+         "",
+         "        \\fill[color=red, opacity=0.3] (P) -- (Q) -- (R) -- (A);",
+         "    \\end{tikzpicture}"
       ]
    }
 ]
