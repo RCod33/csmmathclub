@@ -10,25 +10,23 @@ import { ProblemProvider } from "../../Context/ProblemContext/ProblemContext";
 
 function App() {
   return (
-    <Router>
-      <main>
-        <NavBar />
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route index element={<Home />} />
-          <Route
-            path="/problemset"
-            element={
-              <ProblemProvider>
-                <ProblemSet />
-              </ProblemProvider>
-            }
-          />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/problem" element={<Problem />} />
-        </Routes>
-      </main>
-    </Router>
+    <main>
+      <NavBar />
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route index element={<Home />} />
+        <Route
+          path="/problemset"
+          element={
+            <ProblemProvider>
+              <ProblemSet />
+            </ProblemProvider>
+          }
+        />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/problem" element={<Problem />} />
+      </Routes>
+    </main>
   );
 }
 
