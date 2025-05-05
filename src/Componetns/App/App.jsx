@@ -6,27 +6,31 @@ import Home from "../../pages/Home/Home";
 import ProblemSet from "../../pages/ProblemSet/ProblemSet";
 import Problem from "../../pages/Problems/Problem";
 import Courses from "../../pages/Courses/Courses";
-import { ProblemProvider } from "../../Context/ProblemContext/ProblemContext"; // Importa el Provider
+import { ProblemProvider } from "../../Context/ProblemContext/ProblemContext";
 
 function App() {
   return (
-    <main>
-      <NavBar />
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route index element={<Home />} />
-        <Route
-          path="/problemset"
-          element={
-            <ProblemProvider>
-              <ProblemSet />
-            </ProblemProvider>
-          }
-        />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/problem" element={<Problem />} />
-      </Routes>
-    </main>
+    <Router>
+      {" "}
+      {/* <- Este es el cambio clave */}
+      <main>
+        <NavBar />
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route index element={<Home />} />
+          <Route
+            path="/problemset"
+            element={
+              <ProblemProvider>
+                <ProblemSet />
+              </ProblemProvider>
+            }
+          />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/problem" element={<Problem />} />
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
