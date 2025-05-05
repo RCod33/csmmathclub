@@ -62,15 +62,20 @@
 
 /* Target the second column (Problem) */
 .table td:nth-child(2) a {
-   color: var(--secondary-color); /* Use your defined blue color */
-   text-decoration: underline; /* Add underline to make it look like a link */
-   font-weight: normal; /* Optional: Adjust font weight if needed */
-   transition: color 0.3s ease-in-out; /* Smooth transition for hover effect */
- }
- 
- .table td:nth-child(2) a:hover {
-   color: var(--hover-link); /* Change color on hover */
- }
+  color: var(--secondary-color);
+  /* Use your defined blue color */
+  text-decoration: underline;
+  /* Add underline to make it look like a link */
+  font-weight: normal;
+  /* Optional: Adjust font weight if needed */
+  transition: color 0.3s ease-in-out;
+  /* Smooth transition for hover effect */
+}
+
+.table td:nth-child(2) a:hover {
+  color: var(--hover-link);
+  /* Change color on hover */
+}
 
 .table td:nth-child(4),
 .table td:nth-child(5) {
@@ -121,6 +126,24 @@
 }
 
 @media (max-width: 768px) {
+
+  /* Colocar la caja de filtros arriba de la tabla */
+  .problemSetWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filterBoxWrapper {
+    width: 90%;
+    margin-bottom: 20px;
+    /* Separación entre el filtro y la tabla */
+  }
+
+  .table {
+    width: 100%;
+  }
+
+  /* Ajustar la tabla para pantallas más pequeñas */
   .table tbody tr td {
     font-size: 0.9rem;
     padding: 8px;
