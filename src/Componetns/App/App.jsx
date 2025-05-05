@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { HashRouterRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "../../Componetns/NavBar/NavBar";
 import Home from "../../pages/Home/Home";
 import ProblemSet from "../../pages/ProblemSet/ProblemSet";
