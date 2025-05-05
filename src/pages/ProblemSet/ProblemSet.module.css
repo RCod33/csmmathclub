@@ -107,7 +107,7 @@
 /* 📱 Responsividad */
 @media (max-width: 1024px) {
   .problemSetWrapper {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
   }
 
@@ -126,24 +126,6 @@
 }
 
 @media (max-width: 768px) {
-
-  /* Colocar la caja de filtros arriba de la tabla */
-  .problemSetWrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .filterBoxWrapper {
-    width: 90%;
-    margin-bottom: 20px;
-    /* Separación entre el filtro y la tabla */
-  }
-
-  .table {
-    width: 100%;
-  }
-
-  /* Ajustar la tabla para pantallas más pequeñas */
   .table tbody tr td {
     font-size: 0.9rem;
     padding: 8px;
