@@ -11,8 +11,6 @@ import { ProblemProvider } from "../../Context/ProblemContext/ProblemContext";
 function App() {
   return (
     <Router>
-      {" "}
-      {/* <- Este es el cambio clave */}
       <main>
         <NavBar />
         <Routes>
