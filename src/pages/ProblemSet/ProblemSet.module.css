@@ -107,7 +107,7 @@
 /* 📱 Responsividad */
 @media (max-width: 1024px) {
   .problemSetWrapper {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
   }
 
@@ -126,6 +126,21 @@
 }
 
 @media (max-width: 768px) {
+  .problemSetWrapper {
+    flex-direction: column-reverse;
+    /* Invertir el orden de los elementos */
+    align-items: center;
+  }
+
+  .filterBoxWrapper {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .table {
+    width: 100%;
+  }
+
   .table tbody tr td {
     font-size: 0.9rem;
     padding: 8px;

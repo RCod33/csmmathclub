@@ -8,7 +8,8 @@ import styles from "./ProblemSet.module.css";
 
 function ProblemSet() {
   const [currentProblemPage, setCurrentProblemPage] = useState(0);
-  const { filteredProblems, totalPages, pageRange } = useContext(ProblemContext);
+  const { filteredProblems, totalPages, pageRange } =
+    useContext(ProblemContext);
 
   // prettier-ignore
   const paginatedProblems = useMemo(() =>
@@ -23,6 +24,11 @@ function ProblemSet() {
 
   return (
     <div className={styles.problemSetWrapper}>
+      <Pagination
+        currentPage={currentProblemPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentProblemPage}
+      />
       <section className={styles.problemsContainer}>
         <table className={styles.table}>
           <thead>
@@ -67,7 +73,7 @@ function ProblemSet() {
           onPageChange={setCurrentProblemPage}
         />
       </section>
-      
+
       <aside className={styles.filterBoxWrapper}>
         <FiltersProvider>
           <FilterBox />
