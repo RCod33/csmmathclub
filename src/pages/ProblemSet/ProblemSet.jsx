@@ -25,6 +25,11 @@ function ProblemSet() {
   return (
     <div className={styles.problemSetWrapper}>
       <section className={styles.problemsContainer}>
+        <Pagination
+          currentPage={currentProblemPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentProblemPage}
+        />
         <table className={styles.table}>
           <thead>
             <tr>
