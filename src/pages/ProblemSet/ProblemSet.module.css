@@ -126,21 +126,27 @@
 }
 
 @media (max-width: 768px) {
+
+  /* Colocar la caja de filtros arriba de la tabla */
   .problemSetWrapper {
     flex-direction: column-reverse;
     /* Invertir el orden de los elementos */
     align-items: center;
   }
 
+  /* Hacer que el filtro sea más pequeño en móvil */
   .filterBoxWrapper {
-    width: 90%;
+    width: 80%;
+    /* Reducir el ancho del filtro */
     margin-bottom: 20px;
+    /* Separación entre el filtro y la tabla */
   }
 
   .table {
     width: 100%;
   }
 
+  /* Ajustar la tabla para pantallas más pequeñas */
   .table tbody tr td {
     font-size: 0.9rem;
     padding: 8px;
