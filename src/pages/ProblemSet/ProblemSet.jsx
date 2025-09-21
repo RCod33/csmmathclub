@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext } from "react";
+import { useState, useMemo, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../Componetns/Pagination/Pagination";
 import FilterBox from "../../Componetns/FilterBox/FilterBox";
@@ -8,19 +8,24 @@ import styles from "./ProblemSet.module.css";
 
 function ProblemSet() {
   const [currentProblemPage, setCurrentProblemPage] = useState(0);
-  const { filteredProblems, totalPages, pageRange } =
-    useContext(ProblemContext);
+  const { filteredProblems, totalPages, pageRange } = useContext(ProblemContext);
 
-  // prettier-ignore
-  const paginatedProblems = useMemo(() =>
-      filteredProblems.slice(
-        currentProblemPage * pageRange,
-        currentProblemPage * pageRange + pageRange
-      ),
-    [currentProblemPage, filteredProblems, pageRange]
-  );
+  useEffect(() => {
+    if (totalPages === 0 && currentProblemPage !== 0) {
+      setCurrentProblemPage(0);
+    } else if (totalPages > 0 && currentProblemPage >= totalPages) {
+      setCurrentProblemPage(totalPages - 1);
+    }
+  }, [currentProblemPage, totalPages]);
 
-  if (!Array.isArray(filteredProblems)) return null;
+  const paginatedProblems = useMemo(() => {
+    const safeProblems = Array.isArray(filteredProblems) ? filteredProblems : [];
+
+    return safeProblems.slice(
+      currentProblemPage * pageRange,
+      currentProblemPage * pageRange + pageRange
+    );
+  }, [currentProblemPage, filteredProblems, pageRange]);
 
   return (
     <div className={styles.problemSetWrapper}>
@@ -46,15 +51,14 @@ function ProblemSet() {
                 <tr key={problem.problemID}>
                   <td>{problem.problemID}</td>
                   <td>
-                    <Link to="/Problem" state={{ currentProblem: problem }}>
+                    <Link to="/problem" state={{ currentProblem: problem }}>
                       {problem.title}
                     </Link>
                   </td>
                   <td>{problem.majorTopic}</td>
                   <td>{`Level: ${problem.problemLevel}`}</td>
                   <td>
-                    {problem.weekDiscussed[0] === "0" &&
-                    problem.weekDiscussed[1] === "0"
+                    {problem.weekDiscussed[0] === "0" && problem.weekDiscussed[1] === "0"
                       ? "None"
                       : `S${problem.weekDiscussed[0]} W${problem.weekDiscussed[1]}`}
                   </td>

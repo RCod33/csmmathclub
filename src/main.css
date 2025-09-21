@@ -7,12 +7,13 @@
     --light-gray: #ccc;
     --light-blue: #d8edffe1;
     --black: rgba(0, 0, 0, 0.1);
-    --white: white;
+    --white: #ffffff;
     --background-white: #f8f8f8;
     --border-bottom: #ddd;
     --hover-background: #f1f1f1;
-    
-
+    --background-color: #ffffff;
+    --light-background: #f4f6ff;
+    --text-gray: #333;
 }
 
 * {
@@ -22,10 +23,10 @@
 }
 
 .mathjax-container {
-   font-weight: normal !important; /* Ensure normal font weight */
-   font-family: 'Computer Modern', sans-serif !important; /* Match the font family */
-   font-size: 1em !important; /* Match the font size */
-   line-height: normal !important; /* Match the line height */
+   font-weight: normal !important;
+   font-family: 'Computer Modern', sans-serif !important;
+   font-size: 1em !important;
+   line-height: normal !important;
 }
 
 /* Override MathJax-specific styles */
@@ -36,7 +37,11 @@ mjx-container {
    line-height: normal !important;
 }
 
-mjx-math, mjx-mi, mjx-mo, mjx-mn, mjx-mtext {
+mjx-math,
+mjx-mi,
+mjx-mo,
+mjx-mn,
+mjx-mtext {
    font-weight: normal !important;
    font-family: 'Computer Modern', sans-serif !important;
 }

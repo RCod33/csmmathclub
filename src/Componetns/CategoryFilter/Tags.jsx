@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useMemo } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import categories from "../../JsonFiles/Categories.json";
 import styles from "./CategoryFilter.module.css";
 
@@ -15,12 +15,14 @@ function Tags({ category, tags, setTags }) {
     }
   }, [tags]);
 
-  const createTagList = useMemo(() => {
-    return categories
-      .filter((element) => category.includes(Object.keys(element)[0]))
-      .flatMap((element) => Object.values(element)[0])
-      .filter((tag, index, self) => self.indexOf(tag) === index);
-  }, [category]);
+  const createTagList = useMemo(
+    () =>
+      categories
+        .filter((element) => category.includes(Object.keys(element)[0]))
+        .flatMap((element) => Object.values(element)[0])
+        .filter((tag, index, self) => self.indexOf(tag) === index),
+    [category]
+  );
 
   const handleEraseTag = (eraseTag) => {
     setTags((prev) => prev.filter((tag) => tag !== eraseTag));
@@ -60,14 +62,14 @@ function Tags({ category, tags, setTags }) {
         placeholder="Search tag..."
       />
       {tags.length > 0 &&
-        tags.map((t) => (
+        tags.map((tag) => (
           <button
-            key={`tag-${t}`}
+            key={`tag-${tag}`}
             type="button"
             className={styles.selectedButton}
-            onClick={() => handleEraseTag(t)}
+            onClick={() => handleEraseTag(tag)}
           >
-            {t} ✖
+            {tag} x
           </button>
         ))}
 
@@ -91,6 +93,7 @@ function Tags({ category, tags, setTags }) {
     </div>
   );
 }
+
 Tags.propTypes = {
   category: PropTypes.array.isRequired,
   tags: PropTypes.array.isRequired,

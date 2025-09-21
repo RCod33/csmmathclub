@@ -1,4 +1,6 @@
-import React, { createContext, useState } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useState } from "react";
+import PropTypes from "prop-types";
 
 export const FiltersContext = createContext();
 
@@ -27,4 +29,8 @@ export const FiltersProvider = ({ children }) => {
       {children}
     </FiltersContext.Provider>
   );
+};
+
+FiltersProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

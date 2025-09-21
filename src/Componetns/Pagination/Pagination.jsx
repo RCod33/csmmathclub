@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import getPageNumbers from "../../Logic/PaginationLogic/PaginationLogic";
 import styles from "./Pagination.module.css";
 
@@ -26,6 +26,12 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       )}
     </ul>
   );
+};
+
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 export default Pagination;

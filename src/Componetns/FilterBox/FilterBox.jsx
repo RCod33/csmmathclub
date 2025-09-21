@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryFilter from "../CategoryFilter/CategoryFilter";
 import { ProblemContext } from "../../Context/ProblemContext/ProblemContext";
@@ -7,43 +7,49 @@ import originalProblems from "../../JsonFiles/Problems.json";
 import styles from "./FilterBox.module.css";
 
 function FilterBox() {
-  const { filteredProblems, setFilteredProblems } = React.useContext(ProblemContext);
+  const { setFilteredProblems } = React.useContext(ProblemContext);
   const [tempProblems, setTempProblems] = useState(originalProblems);
   const {
-    nameFiltred, setNameFiltred,
-    minLevel, setMinLevel,
-    maxLevel, setMaxLevel,
-    category, setCategory,
-    tags, setTags
+    nameFiltred,
+    setNameFiltred,
+    minLevel,
+    setMinLevel,
+    maxLevel,
+    setMaxLevel,
+    category,
+    setCategory,
+    tags,
+    setTags,
   } = React.useContext(FiltersContext);
 
   const navigate = useNavigate();
 
-  const handleApplyFilters = () => {
-    setTempProblems(() =>
-      originalProblems.filter((element) =>
-        element.title.toLowerCase().includes(nameFiltred.toLowerCase()) &&
-        (minLevel !== -1 ? element.problemLevel >= minLevel : true) &&
-        (maxLevel !== -1 ? element.problemLevel <= maxLevel : true) &&
-        (category.length > 0 ? category.includes(element.majorTopic) : true) &&
-        (tags.length > 0 ? element.tags.some((tag) => tags.includes(tag)) : true)
-      )
-    );
-  };
+  const handleApplyFilters = useCallback(() => {
+    const nextProblems = originalProblems.filter((problem) => {
+      const nameMatches = problem.title
+        .toLowerCase()
+        .includes(nameFiltred.toLowerCase());
+      const minMatches = minLevel !== -1 ? problem.problemLevel >= minLevel : true;
+      const maxMatches = maxLevel !== -1 ? problem.problemLevel <= maxLevel : true;
+      const categoryMatches =
+        category.length > 0 ? category.includes(problem.majorTopic) : true;
+      const tagsMatch =
+        tags.length > 0 ? problem.tags.some((tag) => tags.includes(tag)) : true;
 
-  /** 
-   * Keep the randomizer logic here, but *don’t* render the button in FilterBox. 
-   * We'll pass this function down to CategoryFilter instead.
-   */
+      return nameMatches && minMatches && maxMatches && categoryMatches && tagsMatch;
+    });
+
+    setTempProblems(nextProblems);
+  }, [category, maxLevel, minLevel, nameFiltred, tags]);
+
   const handleRandomizer = () => {
-    const randomProblem = filteredProblems[
-      Math.floor(Math.random() * tempProblems.length)
-    ];
-    if (!randomProblem) {
+    if (tempProblems.length === 0) {
       alert("No problems found with the current filters");
       return;
     }
-    navigate("/Problem", { state: { currentProblem: randomProblem } });
+
+    const randomProblem = tempProblems[Math.floor(Math.random() * tempProblems.length)];
+    navigate("/problem", { state: { currentProblem: randomProblem } });
   };
 
   const handleClearAllFilters = () => {
@@ -56,7 +62,6 @@ function FilterBox() {
   };
 
   useEffect(() => {
-    // If no category is chosen, clear tags as well
     if (category.length === 0) {
       setTags([]);
     }
@@ -66,27 +71,38 @@ function FilterBox() {
     setFilteredProblems([...tempProblems]);
   }, [tempProblems, setFilteredProblems]);
 
+  const handleLevelChange = (setter) => (event) => {
+    const { value } = event.target;
+    if (value === "") {
+      setter(-1);
+      return;
+    }
+    const parsed = Number(value);
+    if (!Number.isNaN(parsed)) {
+      setter(parsed);
+    }
+  };
+
   return (
     <section className={styles.filterBox}>
       <form id="filterForm" className={styles.filterForm}>
-        {/* Search input */}
         <input
           className={styles.inputText}
           type="text"
           value={nameFiltred}
-          onChange={(e) => setNameFiltred(e.target.value)}
+          onChange={(event) => setNameFiltred(event.target.value)}
           placeholder="Search problem..."
         />
 
-        {/* Min/Max level side by side */}
         <div className={styles.levelInputs}>
           <div className={styles.minMaxInput}>
             <label htmlFor="minLevel">Min lvl:</label>
             <input
               id="minLevel"
-              type="text"
+              type="number"
+              min="0"
               value={minLevel === -1 ? "" : minLevel}
-              onChange={(e) => setMinLevel(Number(e.target.value))}
+              onChange={handleLevelChange(setMinLevel)}
               placeholder="0"
               className={styles.inputTextSmall}
             />
@@ -96,16 +112,16 @@ function FilterBox() {
             <label htmlFor="maxLevel">Max lvl:</label>
             <input
               id="maxLevel"
-              type="text"
+              type="number"
+              min="0"
               value={maxLevel === -1 ? "" : maxLevel}
-              onChange={(e) => setMaxLevel(Number(e.target.value))}
+              onChange={handleLevelChange(setMaxLevel)}
               placeholder="12"
               className={styles.inputTextSmall}
             />
           </div>
         </div>
 
-        {/* Categories & tags (with the randomizer button inside CategoryFilter) */}
         <CategoryFilter
           category={category}
           setCategory={setCategory}
@@ -114,20 +130,11 @@ function FilterBox() {
           handleRandomizer={handleRandomizer}
         />
 
-        {/* Apply Filters & Clear All on one row */}
         <div className={styles.buttonRow}>
-          <button
-            className={styles.button}
-            type="button"
-            onClick={handleApplyFilters}
-          >
+          <button className={styles.button} type="button" onClick={handleApplyFilters}>
             Apply Filters
           </button>
-          <button
-            className={styles.button}
-            type="button"
-            onClick={handleClearAllFilters}
-          >
+          <button className={styles.button} type="button" onClick={handleClearAllFilters}>
             Clear All
           </button>
         </div>
