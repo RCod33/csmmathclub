@@ -1,57 +1,47 @@
 @import "../../main.css";
 
 .pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    /* Permite que los botones bajen de línea si no caben */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
 }
 
-/* Estilos generales para cada botón de paginación */
 .pagination button {
-    background: none;
-    border: 1px solid var(--light-gray);
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s, color 0.3s;
-    font-size: 0.9rem;
-    min-width: 36px;
-    /* Tamaño mínimo para que sean fáciles de tocar */
+  min-width: 42px;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: var(--color-text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-base);
 }
 
-/* Efecto hover */
 .pagination button:hover {
-    background: #f0f0f0;
-    color: black;
+  border-color: var(--color-primary-light);
+  color: var(--color-primary);
+  transform: translateY(-1px);
 }
 
-/* Página activa */
-.pagination .activePage {
-    background: var(--primary-color);
-    color: var(--white);
-    border-color: var(--primary-color);
+.activePage {
+  background: var(--color-primary);
+  color: var(--color-surface);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 20px rgba(30, 58, 138, 0.25);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .pagination {
-        overflow-x: auto;
-        /* Scroll horizontal en móviles */
-        flex-wrap: nowrap;
-        /* Evita que bajen de línea */
-        padding-bottom: 5px;
-        white-space: nowrap;
-        /* Mantiene los elementos en una sola línea */
-    }
+.ellipsis {
+  color: var(--color-text-soft);
+  padding-inline: 0.4rem;
+}
 
-    .pagination button {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-        min-width: 32px;
-        /* Botones más pequeños en móviles */
-    }
+@media (max-width: 600px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
 }

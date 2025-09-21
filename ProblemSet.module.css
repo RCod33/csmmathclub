@@ -1,0 +1,119 @@
+@import "../../main.css";
+
+.problemSetWrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+  margin: 2.5rem 0 3rem;
+}
+
+.problemsContainer {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.65rem;
+}
+
+.table thead th {
+  text-align: left;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  padding-inline: 1.25rem;
+}
+
+.table tbody tr {
+  background: var(--color-surface-alt);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+}
+
+.table tbody tr:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+}
+
+.table tbody td {
+  padding: 1rem 1.25rem;
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.table tbody td:first-child {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.table tbody td:nth-child(2) a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-base);
+}
+
+.table tbody td:nth-child(2) a:hover {
+  color: var(--color-primary-light);
+}
+
+.filterBoxWrapper {
+  position: sticky;
+  top: 7.5rem;
+  align-self: start;
+}
+
+@media (max-width: 1100px) {
+  .problemSetWrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .filterBoxWrapper {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .table {
+    display: block;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .table tbody tr {
+    display: grid;
+    gap: 0.6rem;
+    padding: 1rem;
+  }
+
+  .table tbody td {
+    padding: 0;
+    border: none;
+  }
+
+  .table tbody td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+  }
+}

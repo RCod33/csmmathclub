@@ -1,152 +1,89 @@
 @import "../../main.css";
 
 .filterBox {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(148, 163, 184, 0.25);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 350px;
-  padding: 20px;
-  background-color: var(--background-color);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 1.25rem;
   width: 100%;
 }
 
-@media (max-width: 480px) {
-  .filterBox {
-    max-width: 100%;
-    padding: 15px;
-  }
-}
-
-/* Make the entire form a bit smaller */
 .filterForm {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  font-size: 0.85rem;
+  display: grid;
+  gap: 1.25rem;
 }
 
-/* Default text input */
-.inputText {
-  padding: 8px;
-  border: 1px solid var(--light-gray);
-  border-radius: 5px;
-  transition: border-color 0.3s;
-  width: 100%;
-  font-size: 0.85rem;
-}
-
-/* Smaller for Min/Max inputs */
+.inputText,
 .inputTextSmall {
-  width: 50px;
-  padding: 4px;
-  font-size: 0.8rem;
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-surface-muted);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  transition: var(--transition-base);
 }
 
-@media (max-width: 480px) {
-  .inputTextSmall {
-    width: 100%;
-  }
+.inputText:focus,
+.inputTextSmall:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
 
-/* Keep min & max in the same row, close together */
 .levelInputs {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
 }
 
-@media (max-width: 480px) {
-  .levelInputs {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
-
-/* Label & input side by side for each minMaxInput */
 .minMaxInput {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
 }
 
-/* Category filter + Randomizer side by side */
-.categoryRandomRow {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-@media (max-width: 480px) {
-  .categoryRandomRow {
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
-/* Make the category filter not push the button away if the dropdown is large */
-.categoryFilter {
-  position: relative;
-  flex: 1;
-  width: 100%;
-}
-
-/* For standard <select>, the OS often controls dropdown height, but try: */
-.categoryFilter select {
-  max-height: 120px;
-  overflow-y: auto;
-  font-size: 0.85rem;
-}
-
-/* Buttons row for Apply Filters & Clear All */
 .buttonRow {
   display: flex;
-  gap: 10px;
-  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
-@media (max-width: 480px) {
-  .buttonRow {
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
-/* Buttons smaller font & smaller padding */
 .button {
-  background: none;
-  border: 1px solid var(--light-gray);
-  padding: 6px 12px;
+  flex: 1 1 140px;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s, color 0.3s;
-  font-size: 0.85rem;
-  width: auto;
-  max-width: none;
+  transition: var(--transition-base);
 }
 
-@media (max-width: 480px) {
-  .button {
-    width: 100%;
-  }
+.button:nth-child(2) {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  border: 1px solid var(--color-surface-muted);
 }
 
 .button:hover {
-  background: #f0f0f0;
-  color: black;
+  filter: brightness(1.05);
 }
 
-.button:active {
-  background: var(--primary-color);
-  color: black;
+.button:nth-child(2):hover {
+  border-color: var(--color-primary-light);
+  color: var(--color-primary);
 }
 
-/* Extra class for full width in small screens */
-@media (max-width: 480px) {
-  .fullWidthOnMobile {
-    width: 100%;
+@media (max-width: 600px) {
+  .levelInputs {
+    grid-template-columns: 1fr;
   }
 }

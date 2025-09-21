@@ -1,102 +1,142 @@
 @import "../../main.css";
 
 .navBarContainer {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  background: transparent;
+  margin-bottom: 1.5rem;
 }
 
-/* TOP BAR (white) */
 .topBar {
-  width: 100%;
-  background-color: var(--white);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  justify-content: space-between;
+  padding: 1.25rem var(--layout-gutter) 0.75rem;
 }
 
 .topBarLeftSection {
   display: flex;
   align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  width: clamp(54px, 6vw, 72px);
+  height: clamp(54px, 6vw, 72px);
+  border-radius: 1rem;
+  border: 2px solid rgba(59, 130, 246, 0.25);
+  box-shadow: var(--shadow-sm);
+  background: var(--color-surface);
+}
+
+.navTitle {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.navLink {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+  transform: translateY(-1px);
 }
 
 .topBarRightSection {
   display: flex;
-  padding-right: 50px;
-  gap: 1rem;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-@media (max-width: 768px) {
-  .topBarRightSection {
-    display: none;
-    /* Se oculta en móviles y se muestra con un botón */
-  }
+.mobileMenuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.85rem;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
 }
 
-/* Logo */
-.logo {
-  width: 90px;
-  height: 90px;
-  margin-right: 10px;
+.mobileMenuToggle:hover {
+  filter: brightness(1.05);
 }
 
-.navTitle {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif !important;
-  color: var(--secondary-color);
-}
-
-.navLink {
-  text-decoration: none;
-  color: var(--secondary-color);
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif !important;
-  padding: 5px;
-}
-
-.navLink:hover {
-  color: var(--hover-link);
-}
-
-/* SECOND BAR (SlateBlue) */
 .secondBar {
-  width: 100%;
-  background-color: var(--primary-color);
+  margin-top: 0.75rem;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.92), rgba(59, 130, 246, 0.78));
+  border-radius: var(--radius-lg);
+  margin-inline: var(--layout-gutter);
+  padding: 0.85rem clamp(1rem, 3vw, 2rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.searchContainer {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  padding: 10px 20px;
 }
 
 .searchBar {
-  font-family: 'Montserrat', sans-serif !important;
-  position: relative;
-  padding: 5px 10px;
-  border: 1px solid var(--light-gray);
-  border-radius: 20px;
-  outline: none;
-  width: 150px;
+  width: min(320px, 100%);
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: var(--transition-base);
 }
 
-@media (max-width: 768px) {
-  .searchBar {
-    width: 100%;
-    max-width: 250px;
+.searchBar::placeholder {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.searchBar:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  background: rgba(15, 23, 42, 0.3);
+}
+
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0  var(--layout-gutter);
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  background: var(--color-surface);
+}
+
+@media (max-width: 900px) {
+  .topBarRightSection {
+    display: none;
+  }
+
+  .mobileMenuToggle {
+    display: inline-flex;
+  }
+
+  .mobileMenu {
+    display: flex;
   }
 }
 
-/* Menú Hamburguesa para móviles */
-.mobileMenuToggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
+@media (max-width: 600px) {
+  .secondBar {
+    margin-inline: 1rem;
+  }
 
-@media (max-width: 768px) {
-  .mobileMenuToggle {
-    display: block;
+  .topBar {
+    padding-inline: 1rem;
   }
 }

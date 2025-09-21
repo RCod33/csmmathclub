@@ -27,6 +27,10 @@ function ProblemSet() {
     );
   }, [currentProblemPage, filteredProblems, pageRange]);
 
+  const renderDataCell = (label, content) => (
+    <td data-label={label}>{content}</td>
+  );
+
   return (
     <div className={styles.problemSetWrapper}>
       <section className={styles.problemsContainer}>
@@ -49,24 +53,28 @@ function ProblemSet() {
             {paginatedProblems.length > 0 ? (
               paginatedProblems.map((problem) => (
                 <tr key={problem.problemID}>
-                  <td>{problem.problemID}</td>
-                  <td>
+                  {renderDataCell("ID", problem.problemID)}
+                  {renderDataCell(
+                    "Problem",
                     <Link to="/problem" state={{ currentProblem: problem }}>
                       {problem.title}
                     </Link>
-                  </td>
-                  <td>{problem.majorTopic}</td>
-                  <td>{`Level: ${problem.problemLevel}`}</td>
-                  <td>
-                    {problem.weekDiscussed[0] === "0" && problem.weekDiscussed[1] === "0"
+                  )}
+                  {renderDataCell("Topic", problem.majorTopic)}
+                  {renderDataCell("Difficulty", `Level: ${problem.problemLevel}`)}
+                  {renderDataCell(
+                    "Week Discussed",
+                    problem.weekDiscussed[0] === "0" && problem.weekDiscussed[1] === "0"
                       ? "None"
-                      : `S${problem.weekDiscussed[0]} W${problem.weekDiscussed[1]}`}
-                  </td>
+                      : `S${problem.weekDiscussed[0]} W${problem.weekDiscussed[1]}`
+                  )}
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="5">No results found</td>
+                <td data-label="Status" colSpan="5">
+                  No results found
+                </td>
               </tr>
             )}
           </tbody>

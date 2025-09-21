@@ -1,47 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap');
 
 :root {
-    --primary-color: SlateBlue;
-    --secondary-color: rgb(37.821, 75.798, 198.9);
-    --hover-link: rgb(0, 123, 255);
-    --light-gray: #ccc;
-    --light-blue: #d8edffe1;
-    --black: rgba(0, 0, 0, 0.1);
-    --white: #ffffff;
-    --background-white: #f8f8f8;
-    --border-bottom: #ddd;
-    --hover-background: #f1f1f1;
-    --background-color: #ffffff;
-    --light-background: #f4f6ff;
-    --text-gray: #333;
+  --color-primary: #1e3a8a;
+  --color-primary-dark: #1d2f6f;
+  --color-primary-light: #3b82f6;
+  --color-accent: #f97316;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8fafc;
+  --color-surface-muted: #e2e8f0;
+  --color-border: #cbd5f5;
+  --color-border-strong: #94a3b8;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-soft: #64748b;
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.12);
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --layout-max-width: 1200px;
+  --layout-gutter: clamp(1rem, 4vw, 2.5rem);
+  --transition-base: all 180ms ease;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    font-family: 'Computer Modern', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.mathjax-container {
-   font-weight: normal !important;
-   font-family: 'Computer Modern', sans-serif !important;
-   font-size: 1em !important;
-   line-height: normal !important;
+html, body {
+  min-height: 100%;
 }
 
-/* Override MathJax-specific styles */
-mjx-container {
-   font-weight: normal !important;
-   font-family: 'Computer Modern', sans-serif !important;
-   font-size: 1em !important;
-   line-height: normal !important;
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+main {
+  width: min(100%, calc(var(--layout-max-width) + var(--layout-gutter) * 2));
+  margin: 0 auto;
+  padding-inline: var(--layout-gutter);
+}
+
+section,
+header,
+footer,
+article {
+  width: 100%;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+}
+
+.tikzjax script {
+  display: none;
+}
+
+.mathjax-container,
+mjx-container,
 mjx-math,
 mjx-mi,
 mjx-mo,
 mjx-mn,
 mjx-mtext {
-   font-weight: normal !important;
-   font-family: 'Computer Modern', sans-serif !important;
+  font-family: 'Source Serif 4', 'Computer Modern', serif !important;
+  font-weight: 400 !important;
 }

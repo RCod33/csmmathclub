@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryFilter from "../CategoryFilter/CategoryFilter";
 import { ProblemContext } from "../../Context/ProblemContext/ProblemContext";
@@ -7,7 +7,7 @@ import originalProblems from "../../JsonFiles/Problems.json";
 import styles from "./FilterBox.module.css";
 
 function FilterBox() {
-  const { setFilteredProblems } = React.useContext(ProblemContext);
+  const { setFilteredProblems } = useContext(ProblemContext);
   const [tempProblems, setTempProblems] = useState(originalProblems);
   const {
     nameFiltred,
@@ -20,7 +20,7 @@ function FilterBox() {
     setCategory,
     tags,
     setTags,
-  } = React.useContext(FiltersContext);
+  } = useContext(FiltersContext);
 
   const navigate = useNavigate();
 
